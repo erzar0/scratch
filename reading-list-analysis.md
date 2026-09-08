@@ -1,6 +1,6 @@
-# Analysis of a 63-item research bookmark collection
+# Analysis of a 61-item research bookmark collection
 
-Compiled 2026-09-08 from a browser bookmark export spanning 2025-08-24 → 2026-09-07.
+Compiled 2026-09-08 from a browser bookmark export of 61 items spanning 2025-08-24 → 2026-09-07.
 
 Titles and abstracts for items that could not be identified from the URL alone were
 verified against arXiv/JMLR listings rather than recalled. Nine items were misfiled in
@@ -22,10 +22,12 @@ This is not a general ML reading list. It is two lists layered on top of each ot
 - **An active research layer** (last five days) that is extremely narrow and reads like
   a literature sweep for a specific paper.
 
-The dates make this unambiguous. **Twenty of the 63 items were added on 2026-09-07 inside
-a two-hour window (21:31 → 21:53), and the item added the evening before was Neel Nanda's
-"Highly Opinionated Advice on How to Write ML Papers."** That is the signature of someone
-who has decided on a contribution and is now assembling related work.
+The dates make this unambiguous. **Fourteen of the 61 items were added on 2026-09-07
+inside a twenty-two-minute window (21:31 → 21:53). The bookmark saved an hour and forty
+minutes earlier that same evening was Neel Nanda's "Highly Opinionated Advice on How to
+Write ML Papers."** Fifteen items landed that day, and twenty-one across 2 → 7 September.
+That is the signature of someone who has decided on a contribution and is now assembling
+related work.
 
 What that sweep contains is two tightly-scoped literatures, pulled in back to back:
 
@@ -272,7 +274,7 @@ complete path and 6.S184 the most rigorous. The other two add nothing.
 **Reference tools, not reading** (fine to keep, but they aren't papers): alphaXiv,
 ML-Papers-of-the-Week, Zenodo, both DeepWiki pages, deep-ml.
 
-Net effect: 63 bookmarks → roughly 45 distinct items, of which ~15 are load-bearing.
+Net effect: 61 bookmarks → roughly 45 distinct items, of which ~15 are load-bearing.
 
 ---
 

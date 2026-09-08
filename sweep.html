@@ -1,0 +1,526 @@
+<title>The 22-Minute Sweep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --paper:#F6F4F3;
+  --raise:#FDFCFC;
+  --ink:#1A1618;
+  --ink2:#5F5457;
+  --ink3:#8A7E82;
+  --rule:#E2DBDA;
+  --rule2:#EFEAE9;
+  --accent:#A31D1D;
+  --cool:#2F6FA8;
+  --accent-wash:#F3E4E3;
+  --cool-wash:#E4EDF5;
+  --shadow:0 1px 2px rgba(26,22,24,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --paper:#141113;
+    --raise:#1F1B1E;
+    --ink:#F2EEEE;
+    --ink2:#B3A9AC;
+    --ink3:#877C81;
+    --rule:#332D31;
+    --rule2:#262125;
+    --accent:#DE5F58;
+    --cool:#5296DA;
+    --accent-wash:#33201F;
+    --cool-wash:#182430;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --paper:#141113;
+  --raise:#1F1B1E;
+  --ink:#F2EEEE;
+  --ink2:#B3A9AC;
+  --ink3:#877C81;
+  --rule:#332D31;
+  --rule2:#262125;
+  --accent:#DE5F58;
+  --cool:#5296DA;
+  --accent-wash:#33201F;
+  --cool-wash:#182430;
+  --shadow:0 1px 2px rgba(0,0,0,.4);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:16.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px 96px}
+.col{max-width:660px}
+h1,h2,h3{font-family:"Instrument Serif",Georgia,"Times New Roman",serif;font-weight:400;text-wrap:balance;letter-spacing:.004em}
+p{margin:0 0 1em}
+a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);transition:border-color .15s,color .15s}
+a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);margin:0}
+
+/* ---- masthead ---- */
+header.mast{padding:72px 0 0}
+header.mast h1{font-size:clamp(46px,7.4vw,82px);line-height:.98;margin:18px 0 0;letter-spacing:-.012em}
+header.mast h1 em{font-style:italic}
+.stand{max-width:600px;font-size:19px;line-height:1.55;color:var(--ink2);margin:22px 0 0}
+.stand b{color:var(--ink);font-weight:500}
+.meta{display:flex;flex-wrap:wrap;gap:0 30px;margin:34px 0 0;padding:14px 0 0;border-top:1px solid var(--rule);
+      font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.meta span b{color:var(--ink2);font-weight:500}
+
+/* ---- figure ---- */
+figure.tl{margin:60px 0 0;padding:0}
+.figtop{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 24px;margin:0 0 4px}
+.figtop h2{font-size:25px;margin:0}
+.legend{display:flex;gap:18px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink2)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:baseline}
+.figsub{font-size:14.5px;color:var(--ink2);margin:0 0 20px;max-width:640px}
+.plot{position:relative;overflow-x:auto;overflow-y:hidden;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:22px 0 6px}
+.plot svg{display:block;width:100%;min-width:660px;height:auto}
+.tip{position:absolute;pointer-events:none;opacity:0;transition:opacity .11s;background:var(--raise);border:1px solid var(--rule);
+     box-shadow:0 4px 14px rgba(0,0,0,.13);padding:8px 11px;max-width:250px;font-size:12.5px;line-height:1.42;z-index:5;border-radius:3px}
+.tip .t-id{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink3);display:block;letter-spacing:.03em}
+.tip .t-ti{display:block;margin:2px 0 3px;font-weight:500}
+.tip .t-dt{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink3)}
+details.tbl{margin:14px 0 0;font-size:13.5px}
+details.tbl summary{cursor:pointer;font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+details.tbl summary:hover{color:var(--accent)}
+details.tbl table{border-collapse:collapse;margin:14px 0 0;font-variant-numeric:tabular-nums}
+details.tbl th,details.tbl td{text-align:left;padding:5px 26px 5px 0;border-bottom:1px solid var(--rule2);font-size:13px}
+details.tbl th{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);font-weight:400}
+details.tbl td:first-child{font-family:"IBM Plex Mono",monospace}
+
+/* ---- sections ---- */
+section{margin:66px 0 0}
+section > h2{font-size:31px;margin:0 0 6px;letter-spacing:-.006em}
+.lede{color:var(--ink2);font-size:15px;margin:0 0 26px;max-width:620px}
+
+/* the pull section */
+.pull{background:var(--raise);border:1px solid var(--rule);border-left:3px solid var(--accent);padding:30px 34px;margin:0;max-width:720px}
+.pull h2{margin:0 0 12px;font-size:29px}
+.pull blockquote{margin:0 0 20px;padding:0;font-family:"Instrument Serif",Georgia,serif;font-size:22px;line-height:1.42;color:var(--ink)}
+.pull ol{margin:0;padding-left:1.15em}
+.pull li{margin:0 0 14px;font-size:15.5px}
+.pull li:last-child{margin-bottom:0}
+.pull li b{font-weight:600}
+
+/* ---- cluster shelves ---- */
+.shelf{border-top:1px solid var(--ink);padding:16px 0 34px}
+.shelf + .shelf{border-top:1px solid var(--rule)}
+.shelfhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin:0 0 4px}
+.shelfhead h3{font-size:24px;margin:0}
+.shelfhead .count{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink3);letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.shelfnote{font-size:15px;color:var(--ink2);margin:0 0 22px;max-width:640px}
+.shelfnote b{color:var(--ink);font-weight:500}
+dl.items{margin:0;display:grid;grid-template-columns:132px 1fr;gap:14px 20px;align-items:baseline}
+dl.items dt{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink3);font-variant-numeric:tabular-nums;line-height:1.5}
+dl.items dt.hot{color:var(--accent)}
+dl.items dd{margin:0;font-size:15px;line-height:1.55}
+dl.items dd b{font-weight:600}
+dl.items dd span{color:var(--ink2)}
+
+/* ---- ranked gaps ---- */
+ol.gaps{margin:0;padding:0;list-style:none;counter-reset:g;max-width:680px}
+ol.gaps li{counter-increment:g;display:grid;grid-template-columns:34px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--rule2)}
+ol.gaps li::before{content:counter(g);font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink3);padding-top:4px}
+ol.gaps li:first-child::before{color:var(--accent)}
+ol.gaps p{margin:0;font-size:15px}
+ol.gaps p strong{display:block;font-weight:600;font-size:15.5px;margin:0 0 3px}
+
+/* ---- housekeeping ---- */
+ul.keep{list-style:none;margin:0;padding:0;max-width:660px}
+ul.keep li{padding:11px 0;border-bottom:1px solid var(--rule2);font-size:14.5px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline}
+ul.keep li span{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink3);white-space:nowrap}
+.tally{margin:22px 0 0;font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.tally b{color:var(--accent);font-weight:500}
+
+/* ---- routes ---- */
+.routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:34px;max-width:840px}
+.route h3{font-size:20px;margin:0 0 3px}
+.route .rsub{font-size:13px;color:var(--ink3);margin:0 0 16px;font-family:"IBM Plex Mono",monospace}
+.route ol{margin:0;padding-left:1.3em}
+.route li{margin:0 0 9px;font-size:14.5px;line-height:1.5}
+.route li code{font-size:12px;color:var(--ink3)}
+.route li.stop{list-style:none;margin-left:-1.3em;padding:11px 14px;background:var(--accent-wash);border-left:2px solid var(--accent);font-size:14px}
+
+footer{margin:80px 0 0;padding:22px 0 0;border-top:1px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink3);line-height:1.75}
+
+@media (max-width:620px){
+  .wrap{padding:0 20px 72px}
+  dl.items{grid-template-columns:1fr;gap:3px 0}
+  dl.items dd{margin:0 0 16px}
+  .pull{padding:24px 22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Bookmark collection · 2025-08-24 → 2026-09-07</p>
+  <h1>The 22-Minute<br><em>Sweep</em></h1>
+  <p class="stand">Sixty-one saved papers, courses and tools, read as one object. Forty of them accumulated over thirteen months. <b>Fourteen arrived in twenty-two minutes on the last evening</b> — and they are not a random fourteen.</p>
+  <div class="meta">
+    <span><b>61</b> items</span>
+    <span><b>380</b> days</span>
+    <span><b>6</b> clusters</span>
+    <span><b>10</b> titles verified against source listings</span>
+    <span><b>4</b> exact duplicates</span>
+  </div>
+</header>
+
+<figure class="tl">
+  <div class="figtop">
+    <h2>When each bookmark was saved</h2>
+    <div class="legend">
+      <span><i style="background:var(--cool)"></i>Earlier collection</span>
+      <span><i style="background:var(--accent)"></i>September sweep</span>
+    </div>
+  </div>
+  <p class="figsub">One dot per bookmark, stacked where several landed on the same day. Hover any dot for its title and timestamp.</p>
+  <div class="plot" id="plot">
+    <svg id="tlsvg" viewBox="0 0 940 300" role="img" aria-label="Timeline of 61 bookmarks from August 2025 to September 2026, showing a column of 15 items on 7 September 2026."></svg>
+    <div class="tip" id="tip" aria-hidden="true"></div>
+  </div>
+  <details class="tbl">
+    <summary>Table view — every day with more than one save</summary>
+    <table>
+      <thead><tr><th>Date</th><th>Saved</th><th>Window</th><th>What landed</th></tr></thead>
+      <tbody>
+        <tr><td>2026-09-07</td><td>15</td><td>19:51 – 21:53</td><td>Nanda on paper-writing, then depth-recurrence and zeroth-order training</td></tr>
+        <tr><td>2025-11-30</td><td>7</td><td>18:25 – 18:42</td><td>Diffusion tutorial, GDL, MADDNESS, SpGEMM, two RL courses</td></tr>
+        <tr><td>2025-08-24</td><td>5</td><td>00:11 – 00:13</td><td>Sutton &amp; Barto, CS 285, modded-nanogpt, Bayesian handouts</td></tr>
+        <tr><td>2026-09-03</td><td>4</td><td>22:37 – 22:40</td><td>mHC, DeepSeek-V4, backprop↔forward-forward, PyTorch wiki</td></tr>
+        <tr><td>2026-06-11</td><td>2</td><td>22:08</td><td>Sorting-barrier SSSP, smoothed analysis</td></tr>
+        <tr><td>2026-06-17</td><td>2</td><td>21:11 – 21:27</td><td>Neuroscience of Transformers, cortical columns</td></tr>
+        <tr><td>2026-08-18</td><td>2</td><td>15:22</td><td>SSOG-Attention, SynthID-Text</td></tr>
+        <tr><td>2025-11-01</td><td>2</td><td>20:46 – 22:48</td><td>CS 329S, CS 224n</td></tr>
+        <tr><td>2026-04-03</td><td>3</td><td>19:02 – 19:30</td><td>Practical diffusion, Sutton &amp; Barto again, alphaXiv</td></tr>
+        <tr><td>2026-09-02</td><td>2</td><td>18:27 – 19:39</td><td>Kimi K3 on vLLM, CUDA for H100s</td></tr>
+      </tbody>
+    </table>
+  </details>
+</figure>
+
+<section class="col">
+  <h2>What the spike is made of</h2>
+  <p class="lede">The sweep is not miscellaneous. It is two literatures, pulled back to back.</p>
+  <p>At <code>21:31</code> the depth papers start — virtual logic depth, looped mixture-of-experts, gated recurrence, inference-time recirculation. At <code>21:33</code> the topic switches cleanly to zeroth-order and memory-constrained training. At <code>21:48</code> it returns to depth and picks up three algorithmic-limits papers on the way.</p>
+  <p>An hour and forty minutes before any of it, at <code>19:51</code>, came <i>Highly Opinionated Advice on How to Write ML Papers</i>. Read in that order, the evening has an obvious shape: a contribution was decided on, and then the related work was assembled.</p>
+</section>
+
+<section>
+  <div class="pull">
+    <h2>The gap between the two piles</h2>
+    <blockquote>Depth-recurrent models are parameter-light and compute-heavy. That is exactly the regime the memory-constrained training literature targets — and exactly the regime it never evaluates on.</blockquote>
+    <p style="font-size:15px;color:var(--ink2);margin:0 0 18px">Both literatures were saved ninety seconds apart. Neither cites the other. Two openings sit in the space between them:</p>
+    <ol>
+      <li><b>Recirculation and FoRo are the same move on different resources.</b> Both freeze the pretrained weights and add capability — one adds serial computation, the other forward-only adaptation. Nobody has stacked them. A gated recurrent core's update gate is precisely the small, cheap-to-tune module that zeroth-order methods handle well and that backpropagation through <code>R</code> unrolled iterations handles badly.</li>
+      <li><b>Looping changes the memory profile of backpropagation non-linearly.</b> Backprop through <code>R</code> iterations of a shared block costs <code>R</code>× activation memory unless you recompute. MeSP's argument — recompute the cheap low-rank intermediate rather than store it — generalises directly to shared blocks, and neither paper mentions the other's setting. SMELT supplies the compute-matched protocol to evaluate it fairly.</li>
+    </ol>
+  </div>
+  <p class="lede" style="margin:20px 0 0;max-width:720px">The first is the more novel framing. The second is the more defensible empirical contribution.</p>
+</section>
+
+<section>
+  <h2>Six clusters</h2>
+  <p class="lede">Counts and date ranges are the collection's own; nothing here is a category invented to fill a row.</p>
+
+  <div class="shelf">
+    <div class="shelfhead"><h3>Depth as a resource separate from parameters</h3><span class="count">9 items · 2026-06-17 → 2026-09-07</span></div>
+    <p class="shelfnote">The dominant thread, and near-complete for its scope. These are not nine papers on a topic — they are nine positions on one question: <b>how much serial computation does a forward pass get, and can you buy more without buying more weights?</b></p>
+    <dl class="items">
+      <dt class="hot">2506.18233</dt><dd><b>Beyond Parameters: Virtual Logic Depth.</b> The thesis stated plainly — parameter reuse holds knowledge capacity near-constant while materially improving reasoning. <span>Parameters ↔ knowledge; depth ↔ reasoning.</span></dd>
+      <dt class="hot">2609.01343</dt><dd><b>SMELT.</b> The rigorous version. Loops the middle half of an MoE while matching per-token FLOPs, non-embedding parameters <i>and</i> KV cache; fits a separate Chinchilla law per architecture; 6.8–18.0% FLOP savings on the compute-optimal frontier. <span>Fixes the standard cheat of comparing at fixed model size. This is the methodology to match.</span></dd>
+      <dt class="hot">2608.17981</dt><dd><b>Recirculation</b> (Mozer et al., DeepMind). The strongest item here. Inference-time recurrence on <i>frozen off-the-shelf</i> models, framed as letting the network act as a dynamical system tracking belief states — explicitly distinct from both chain-of-thought and looping. <span>Near-zero added generation latency; serial cost confined to prefill.</span></dd>
+      <dt class="hot">2608.15062</dt><dd><b>Gated Recurrent Transformers.</b> Fixed prelude and coda blocks bracketing one shared core iterated <code>R</code> times, with a GRU-style update gate so the shared block can specialise per iteration. <span>Directly addresses why naive depth-sharing collapses representational diversity.</span></dd>
+      <dt class="hot">2608.09888</dt><dd><b>BDH-CQ.</b> Recurrent latent reasoning without verbalising: 150M parameters, 29.5% pass@2 on ARC-AGI-1 at $0.0007 per task. <span>The existence proof that latent serial compute beats token-serial compute on cost.</span></dd>
+      <dt>2512.24880</dt><dd><b>mHC</b> (DeepSeek). The plumbing. Hyper-Connections widened the residual stream and broke the identity-mapping property; mHC projects the connection space onto a manifold to restore it. <span>What makes deep and heavily-recirculated stacks trainable at scale.</span></dd>
+      <dt>2606.19348</dt><dd><b>DeepSeek-V4.</b> mHC in production, beside hybrid compressed-sparse attention and Muon. <span>Evidence the residual-stream work is not academic.</span></dd>
+      <dt>2603.15339</dt><dd><b>The Neuroscience of Transformers</b> — and the cortical-columns chapter beside it. A cortical column <i>is</i> a repeated shared block applied recurrently. <span>Motivation paragraph, not evidence. Treat accordingly.</span></dd>
+    </dl>
+  </div>
+
+  <div class="shelf">
+    <div class="shelfhead"><h3>Gradient-free and memory-constrained training</h3><span class="count">6 items · all 2026-09-03 → 09-07</span></div>
+    <p class="shelfnote">Saved minutes after the depth papers. Also near-complete, and it has a clear internal argument: exact-but-heavy versus cheap-but-noisy, and the attempts to split the difference.</p>
+    <dl class="items">
+      <dt class="hot">2006.06224</dt><dd><b>A Primer on Zeroth-Order Optimization.</b> <span>The entry point; start here if the training-side angle is the direction.</span></dd>
+      <dt class="hot">2402.15751</dt><dd><b>Sparse MeZO.</b> Fewer parameters, better zeroth-order fine-tuning.</dd>
+      <dt class="hot">2404.08080</dt><dd><b>Variance-reduced Zeroth-Order Methods.</b> <span>The main lever on ZO's central weakness — estimate variance.</span></dd>
+      <dt class="hot">2602.13069</dt><dd><b>MeSP.</b> The counter-position: don't go gradient-free, go <i>structured</i>. Hand-derived backward passes exploiting LoRA's low rank, recomputing <code>h = xA</code> rather than storing it. 49% memory cut with <b>mathematically identical</b> gradients — 361 MB → 136 MB on Qwen2.5-0.5B.</dd>
+      <dt class="hot">2509.01533</dt><dd><b>FoRo.</b> Forward-only, gradient-free continual learning; prompt tuning plus knowledge encoding, backbone untouched.</dd>
+      <dt>2409.19561</dt><dd><b>Unifying backprop and forward-forward via model predictive control.</b> The theoretical keystone — puts both on one continuum indexed by look-forward horizon, with an exact analysis on deep linear networks. <span>The paper that gives this area a coordinate system.</span></dd>
+    </dl>
+  </div>
+
+  <div class="shelf">
+    <div class="shelfhead"><h3>Limits of computation</h3><span class="count">4 items · 2025-09-17 → 2026-09-07</span></div>
+    <p class="shelfnote">Small, deliberate, and thematically the parent of the depth cluster. The shared shape is exact: <b>an assumed floor on the cost of computation, and evidence it isn't the real floor.</b></p>
+    <dl class="items">
+      <dt>quant-ph/<br>9908043</dt><dd><b>Ultimate physical limits to computation</b> (Lloyd). The ceiling — what a kilogram of matter can compute. <span>Saved nine months before everything it anticipates.</span></dd>
+      <dt>cs/0111050</dt><dd><b>Smoothed Analysis of Algorithms</b> (Spielman &amp; Teng). Why worst-case bounds mislead about practice. <span>The methodological ancestor of “your benchmark comparison measures the wrong thing.”</span></dd>
+      <dt class="hot">2608.16884</dt><dd><b>Improving the matrix multiplication exponent with AlphaEvolve.</b> ω &lt; 2.371177, via machine-designed optimisation over the laser method. <span>Note the shape: learned search beating hand-designed search on a theory problem.</span></dd>
+      <dt>2504.17033</dt><dd><b>Breaking the Sorting Barrier for Directed SSSP.</b> A decades-old barrier falling.</dd>
+    </dl>
+  </div>
+
+  <div class="shelf">
+    <div class="shelfhead"><h3>Diffusion and flow matching</h3><span class="count">7 items · newest 2026-07-05</span></div>
+    <p class="shelfnote">Entirely pedagogy and surveys. Zero research contributions, and nothing added in two months. <b>This reads as a completed or abandoned learning phase.</b></p>
+    <dl class="items">
+      <dt>2406.08929</dt><dd><b>Step-by-Step Diffusion: An Elementary Tutorial.</b> <span>The fastest complete path; the single one to keep.</span></dd>
+      <dt>1609.03890</dt><dd><b>{Euclidean, Metric, Wasserstein} Gradient Flows</b> (Santambrogio). Filed here as if it were another tutorial. <span>It is the mathematical substrate — optimal transport, geodesic convexity, the JKO scheme. The one item that would make this interest deep rather than broad.</span></dd>
+      <dt>MIT 6.S184</dt><dd>Flow Matching and Diffusion Models, 2026. <span>The rigorous course.</span></dd>
+      <dt>MIT 6.S183</dt><dd>A Practical Introduction to Diffusion Models, IAP 2026. <span>Redundant with the above.</span></dd>
+      <dt>MLG blog</dt><dd>Cambridge introduction to flow matching. <span>Short-form version of the same material.</span></dd>
+      <dt>2502.06805<br>2604.15911</dt><dd>Efficiency surveys — diffusion models, then video diffusion models.</dd>
+    </dl>
+  </div>
+
+  <div class="shelf">
+    <div class="shelfhead"><h3>Systems and performance</h3><span class="count">9 items · 2025-08-24 → 2026-09-03</span></div>
+    <p class="shelfnote">Steady background accumulation. One sub-theme rhymes with the depth cluster more than it appears to: <b>the cost of a matmul is not fixed.</b></p>
+    <dl class="items">
+      <dt>Playbook</dt><dd><b>The Ultra-Scale Playbook</b> (HF/nanotron). <span>The best single distributed-training reference in the collection.</span></dd>
+      <dt>2106.10860</dt><dd><b>Multiplying Matrices Without Multiplying</b> (MADDNESS). Approximate matmul via learned hashing. <span>The “you don't actually need the multiply” position.</span></dd>
+      <dt>2508.04077</dt><dd><b>The Ubiquitous Sparse Matrix-Matrix Products.</b> SpGEMM survey.</dd>
+      <dt>nanogpt</dt><dd><b>modded-nanogpt</b> (Keller Jordan). <span>Speedrun as a source of empirically-validated tricks.</span></dd>
+      <dt>CUDA, Triton</dt><dd>H100 video course and a Triton introduction. <span>Kernel-level entry points, both recent.</span></dd>
+      <dt>vLLM, wikis</dt><dd>Kimi K3 preview; frontier-training methodologies; DeepWiki for PyTorch and nanochat. <span>Navigation aids, not reading.</span></dd>
+    </dl>
+  </div>
+
+  <div class="shelf">
+    <div class="shelfhead"><h3>Reinforcement learning</h3><span class="count">6 items · largest cluster, weakest content</span></div>
+    <p class="shelfnote">Sutton &amp; Barto <b>twice</b>, plus CS 285, CS 234, the Hugging Face course and a video series — five overlapping introductions to the same material spread across a year — and exactly one research paper.</p>
+    <dl class="items">
+      <dt class="hot">1707.05300</dt><dd><b>Reverse Curriculum Generation</b> (Florensa et al.). <span>Nine years old, and the only RL paper here. Nothing from the era that made RL central to language models: no RLHF, no PPO or GRPO, no RLVR, no verifier or process-reward work.</span></dd>
+      <dt>Courses ×5</dt><dd>Sutton &amp; Barto (two copies), CS 285, CS 234, HF Deep RL, <i>RL by the Book</i>. <span>Intake, not frontier.</span></dd>
+    </dl>
+  </div>
+
+  <div class="shelf">
+    <div class="shelfhead"><h3>Singletons and tools</h3><span class="count">20 items · no cluster</span></div>
+    <p class="shelfnote">Each the sole representative of its area; none connects to the active thread. Two are worth more attention than their isolation suggests.</p>
+    <dl class="items">
+      <dt>JMLR 22<br>20-1061</dt><dd><b>Deciphering t-SNE, UMAP, TriMap and PaCMAP.</b> What dimensionality-reduction plots actually preserve. <span>Practically the most useful item in this section — most people over-read these plots.</span></dd>
+      <dt>pisoni.ai</dt><dd><b>SSOG-Attention.</b> Separable sum-of-Gaussians attention for vision transformers: content never <i>scores</i>, only <i>steers</i> a learned positional field, which factorises into two 1D passes so the N×N matrix never materialises. The content-blind field alone lands within a point of scaled dot-product attention on ImageNet. <span>Speculative and unrefereed — but the only attention-side idea in a collection otherwise entirely about depth. Keep it for that.</span></dd>
+      <dt class="hot">2608.10257</dt><dd><b>GenRec</b> (Netflix). Verbalised user histories replacing thousands of engineered features, at ~40× less training data, with a real large-scale A/B result. <span>Rare honest industrial reporting.</span></dd>
+      <dt class="hot">2402.15391</dt><dd><b>Genie.</b> 11B foundation world model; latent actions learned from unlabelled video.</dd>
+      <dt>Nature</dt><dd><b>SynthID-Text.</b> Production watermarking for language-model output.</dd>
+      <dt>2104.13478</dt><dd><b>Geometric Deep Learning</b> proto-book. The grids/groups/graphs/geodesics/gauges framework.</dd>
+      <dt>+ 14 more</dt><dd>CS 224n (twice), CS 329S, lernapparat, Bayesian handouts, deep-ml (twice), alphaXiv, ML-Papers-of-the-Week, Zenodo, and Nanda's writing advice. <span>Courses and reference tools.</span></dd>
+    </dl>
+  </div>
+</section>
+
+<section>
+  <h2>What's missing</h2>
+  <p class="lede">Ranked by how much each would hurt in review, if the September sweep is heading where it looks like it's heading.</p>
+  <ol class="gaps">
+    <li><p><strong>No history of depth-sharing failures.</strong> The depth cluster cites no Universal Transformers, ALBERT, Adaptive Computation Time or PonderNet. Every one of them tried parameter sharing across depth, and the field largely moved on. A reviewer <i>will</i> ask what is different now, and “we didn't cite them” is the worst available answer. Fix this first.</p></li>
+    <li><p><strong>No negative or null results anywhere.</strong> Sixty-one bookmarks and every paper worked. That biases both the effect sizes you expect and the baselines you'll choose.</p></li>
+    <li><p><strong>No evaluation methodology.</strong> The cluster's whole premise is that prior comparisons were unfair. You have SMELT's compute-matching protocol but nothing on benchmark contamination, significance testing in LM evaluation, or ablation design — which is precisely the ground a compute-matched-comparison paper gets attacked on.</p></li>
+    <li><p><strong>RL post-training absent.</strong> Defensible if the work is purely architectural. Indefensible the moment a claim touches <i>reasoning capability</i>, because the standard rival explanation for improved reasoning in 2026 is post-training, not architecture.</p></li>
+    <li><p><strong>No mechanistic interpretability.</strong> “Depth buys reasoning, parameters buy knowledge” is a claim about what computation happens inside — and the collection has no tooling to look. The neuroscience pair is analogy, not measurement.</p></li>
+  </ol>
+</section>
+
+<section>
+  <h2>Housekeeping</h2>
+  <p class="lede">Exact duplicates and redundant coverage, before anything else gets added.</p>
+  <ul class="keep">
+    <li><span style="color:var(--accent)">delete one</span><span>Sutton &amp; Barto — <code>RLbook2020.pdf</code> = <code>SuttonBartoIPRLBook2ndEd.pdf</code></span></li>
+    <li><span style="color:var(--accent)">delete one</span><span>SMELT — <code>abs/2609.01343</code> = <code>pdf/2609.01343</code></span></li>
+    <li><span style="color:var(--accent)">delete one</span><span>CS 224n — course site = YouTube playlist</span></li>
+    <li><span style="color:var(--accent)">delete one</span><span>deep-ml — <code>/problems</code> = <code>/collections</code></span></li>
+    <li><span style="color:var(--ink2)">keep one of four</span><span>Diffusion intros — Step-by-Step, or 6.S184 for rigour</span></li>
+  </ul>
+  <p class="tally">61 bookmarks → <b>~45 distinct items</b> → <b>~15 load-bearing</b></p>
+</section>
+
+<section>
+  <h2>Where to start</h2>
+  <p class="lede">Two routes. The first is the one the September sweep implies.</p>
+  <div class="routes">
+    <div class="route">
+      <h3>Toward the paper</h3>
+      <p class="rsub">7 items + one detour</p>
+      <ol>
+        <li><b>Virtual Logic Depth</b> <code>2506.18233</code> — the thesis, plainly stated</li>
+        <li><b>SMELT</b> <code>2609.01343</code> — the methodology to match or beat</li>
+        <li><b>Recirculation</b> <code>2608.17981</code> — the strongest and most orthogonal recent result</li>
+        <li><b>Gated Recurrent Transformers</b> <code>2608.15062</code> — the architecture you'd build on</li>
+        <li><b>mHC → DeepSeek-V4</b> — why it trains, and that it ships</li>
+        <li class="stop">Then stop and find Universal Transformers, ACT and PonderNet <b>before writing a word of related work.</b></li>
+        <li><b>Backprop ↔ forward-forward</b> <code>2409.19561</code> — if the training-side opening is the direction</li>
+        <li><b>Nanda on writing</b> — last, when there are results. Not now.</li>
+      </ol>
+    </div>
+    <div class="route">
+      <h3>For the pleasure of it</h3>
+      <p class="rsub">4 short papers, one idea, four decades</p>
+      <ol>
+        <li><b>Lloyd</b> <code>quant-ph/9908043</code> — the physical ceiling on computation</li>
+        <li><b>Spielman &amp; Teng</b> <code>cs/0111050</code> — why the worst case was the wrong question</li>
+        <li><b>MADDNESS</b> <code>2106.10860</code> — the multiply you don't have to do</li>
+        <li><b>AlphaEvolve on ω</b> <code>2608.16884</code> — a machine moving a fifty-year-old constant</li>
+      </ol>
+      <p style="font-size:14px;color:var(--ink2);margin:16px 0 0">The most enjoyable reading in the collection, and the least useful for shipping anything.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Compiled 2026-09-08 from a browser bookmark export · 61 items, 2025-08-24 → 2026-09-07<br>
+  Ten items were not identifiable from their URLs and were verified against source listings rather than recalled — among them 1609.03890 (Wasserstein gradient flows, not an ML paper), cs/0111050 (smoothed analysis), 2402.15391 (Genie), 1707.05300 (reverse curriculum), 2608.16884 (AlphaEvolve on ω), 2608.17981 (Recirculation), 2608.09888 (BDH-CQ), 2509.01533 (FoRo), 2409.19561 (backprop ↔ forward-forward) and JMLR 22:20-1061.
+</footer>
+
+</div>
+
+<script>
+const DATA=[
+[1758125576,"Ultimate physical limits to computation","quant-ph/9908043"],
+[1769458837,"{Euclidean, Metric, Wasserstein} Gradient Flows","1609.03890"],
+[1764528163,"Deciphering t-SNE, UMAP, TriMap, PaCMAP","JMLR 22:20-1061"],
+[1764527450,"Geometric Deep Learning proto-book","2104.13478"],
+[1760867173,"An introduction to Flow Matching","Cambridge MLG"],
+[1755994386,"Bayesian Data Analysis handouts","bookdown"],
+[1779018279,"Deep-ML collections","deep-ml.com"],
+[1755994405,"CS 285 Deep Reinforcement Learning","Berkeley"],
+[1764528024,"CS 234 Reinforcement Learning","Stanford"],
+[1770144064,"Efficient Diffusion Models: A Survey","2502.06805"],
+[1776102088,"Flow Matching and Diffusion Models","MIT 6.S184"],
+[1771616192,"Frontier model training methodologies","blog"],
+[1755994270,"modded-nanogpt","GitHub"],
+[1775242940,"A Practical Introduction to Diffusion Models","MIT 6.S183"],
+[1762993901,"Statistics, deep learning, nonparametrics","lernapparat"],
+[1764527365,"Multiplying Matrices Without Multiplying","2106.10860"],
+[1779226182,"Deep-ML practice problems","deep-ml.com"],
+[1759877772,"Reinforcement Learning, by the Book","video series"],
+[1775244520,"Sutton & Barto, RL: An Introduction","RLbook2020"],
+[1762037275,"CS 224n NLP with Deep Learning","Stanford"],
+[1762037295,"CS 224n lecture playlist","Stanford"],
+[1764527112,"Step-by-Step Diffusion: An Elementary Tutorial","2406.08929"],
+[1755994301,"Sutton & Barto, RL: An Introduction","duplicate copy"],
+[1762029964,"CS 329S Machine Learning Systems Design","Stanford"],
+[1764527733,"The Ubiquitous Sparse Matrix-Matrix Products","2508.04077"],
+[1769125598,"The Ultra-Scale Playbook","nanotron"],
+[1764528124,"Deep RL Course","Hugging Face"],
+[1770156423,"Zenodo","tool"],
+[1779747489,"Genie: Generative Interactive Environments","2402.15391"],
+[1779749467,"Triton: make GPU go brrr","blog"],
+[1780673555,"nanochat overview","DeepWiki"],
+[1755994276,"ML Papers of the Week","GitHub"],
+[1775244630,"alphaXiv","tool"],
+[1781215709,"Breaking the Sorting Barrier for Directed SSSP","2504.17033"],
+[1781215723,"Smoothed Analysis of Algorithms","cs/0111050"],
+[1781730674,"The Neuroscience of Transformers","2603.15339"],
+[1781731671,"Cortical Columns Computing Systems","IntechOpen"],
+[1783256368,"Efficient Video Diffusion Models","2604.15911"],
+[1787066534,"SSOG-Attention: steers instead of scores","pisoni.ai"],
+[1787066543,"Scalable watermarking for LLM outputs","Nature"],
+[1788373650,"Kimi K3 on vLLM","vLLM blog"],
+[1788377964,"CUDA Programming for NVIDIA H100s","video course"],
+[1788475042,"mHC: Manifold-Constrained Hyper-Connections","2512.24880"],
+[1788475162,"Unifying backprop and forward-forward via MPC","2409.19561"],
+[1788475206,"DeepSeek-V4: Million-Token Context Intelligence","2606.19348"],
+[1788475218,"PyTorch overview","DeepWiki"],
+[1788810714,"Highly Opinionated Advice on How to Write ML Papers","AF"],
+[1788816707,"Beyond Parameters: Virtual Logic Depth","2506.18233"],
+[1788816730,"SMELT: Scaling Laws for Looped MoE Transformers","2609.01343"],
+[1788816761,"Gated Recurrent Transformers","2608.15062"],
+[1788816768,"GenRec: LLM-Backed Ranker at Netflix","2608.10257"],
+[1788816776,"A Primer on Zeroth-Order Optimization","2006.06224"],
+[1788816782,"Memory-Efficient Structured Backpropagation","2602.13069"],
+[1788816787,"Sparse MeZO","2402.15751"],
+[1788816792,"Variance-reduced Zeroth-Order Methods","2404.08080"],
+[1788817729,"Recirculation","2608.17981"],
+[1788817754,"Improving the matrix multiplication exponent","2608.16884"],
+[1788817769,"Reverse Curriculum Generation for RL","1707.05300"],
+[1788817917,"BDH-CQ: Recurrent Latent Reasoning","2608.09888"],
+[1788817944,"SMELT (duplicate copy)","2609.01343"],
+[1788818004,"Forward-Only Continual Learning","2509.01533"]
+];
+
+const SVGNS="http://www.w3.org/2000/svg";
+const svg=document.getElementById("tlsvg");
+const tip=document.getElementById("tip");
+const plot=document.getElementById("plot");
+
+const W=940,H=300,L=8,R=64,BOT=44;
+const T0=Date.UTC(2025,7,18)/1000, T1=Date.UTC(2026,8,20)/1000;
+const SWEEP=Date.UTC(2026,8,1)/1000;           // September 2026 sweep begins
+const x=t=>L+(t-T0)/(T1-T0)*(W-L-R);
+const baseY=H-BOT, dY=13, r=4.6;
+
+function mk(n,a){const e=document.createElementNS(SVGNS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
+
+// --- axis ---
+svg.appendChild(mk("line",{x1:L,y1:baseY+11,x2:W-R,y2:baseY+11,stroke:"var(--rule)","stroke-width":1}));
+const months=[[2025,8],[2025,10],[2026,0],[2026,2],[2026,4],[2026,6],[2026,8]];
+const MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+months.forEach(([y,m])=>{
+  const t=Date.UTC(y,m,1)/1000, px=x(t);
+  svg.appendChild(mk("line",{x1:px,y1:baseY+11,x2:px,y2:baseY+16,stroke:"var(--rule)","stroke-width":1}));
+  const lab=mk("text",{x:px,y:baseY+31,"text-anchor":"middle",fill:"var(--ink3)","font-family":"IBM Plex Mono, monospace","font-size":"11"});
+  lab.textContent=(m===0?"Jan "+y:(m===8?"Sep "+y:MN[m]));
+  svg.appendChild(lab);
+});
+
+// --- group by UTC day, stack ---
+const byDay={};
+DATA.forEach(d=>{const k=new Date(d[0]*1000).toISOString().slice(0,10);(byDay[k]=byDay[k]||[]).push(d);});
+const dots=[];
+Object.keys(byDay).sort().forEach(k=>{
+  byDay[k].sort((a,b)=>a[0]-b[0]).forEach((d,i)=>{
+    dots.push({d,cx:x(d[0]),cy:baseY-i*dY,hot:d[0]>=SWEEP});
+  });
+});
+
+// --- annotation for the tower (drawn under the dots) ---
+const tower=dots.filter(p=>p.d[0]>=Date.UTC(2026,8,7)/1000);
+const towerX=tower[0].cx, towerTop=baseY-(tower.length-1)*dY;
+svg.appendChild(mk("line",{x1:towerX-16,y1:towerTop-14,x2:towerX-58,y2:towerTop-14,stroke:"var(--accent)","stroke-width":1}));
+svg.appendChild(mk("line",{x1:towerX-16,y1:towerTop-14,x2:towerX-16,y2:towerTop-6,stroke:"var(--accent)","stroke-width":1}));
+[["15 saved on 7 Sep",-30],["14 of them in 22 minutes",-16]].forEach(([txt,dy])=>{
+  const t=mk("text",{x:towerX-64,y:towerTop+dy,"text-anchor":"end",fill:"var(--accent)","font-family":"IBM Plex Mono, monospace","font-size":"11.5"});
+  t.textContent=txt; svg.appendChild(t);
+});
+const t3=mk("text",{x:towerX-64,y:towerTop-2,"text-anchor":"end",fill:"var(--ink3)","font-family":"IBM Plex Mono, monospace","font-size":"11.5"});
+t3.textContent="starting with “how to write ML papers”"; svg.appendChild(t3);
+
+// --- dots ---
+dots.forEach(p=>{
+  const c=mk("circle",{cx:p.cx.toFixed(1),cy:p.cy,r:r,
+    fill:p.hot?"var(--accent)":"var(--cool)",stroke:"var(--paper)","stroke-width":2,tabindex:"0",role:"img"});
+  c.style.cursor="crosshair";
+  const dt=new Date(p.d[0]*1000).toISOString().replace("T"," ").slice(0,16);
+  c.setAttribute("aria-label",p.d[1]+", saved "+dt);
+  const show=()=>{
+    tip.innerHTML='<span class="t-id">'+p.d[2]+'</span><span class="t-ti">'+p.d[1]+'</span><span class="t-dt">'+dt+'</span>';
+    tip.style.opacity="1";
+    const pr=plot.getBoundingClientRect(), sr=svg.getBoundingClientRect();
+    const px=sr.left-pr.left+(p.cx/W)*sr.width, py=sr.top-pr.top+(p.cy/H)*sr.height;
+    tip.style.left=Math.max(4,Math.min(px+14,pr.width-262))+"px";
+    tip.style.top=Math.max(4,py-tip.offsetHeight-10)+"px";
+  };
+  const hide=()=>{tip.style.opacity="0";};
+  c.addEventListener("mouseenter",show); c.addEventListener("focus",show);
+  c.addEventListener("mouseleave",hide); c.addEventListener("blur",hide);
+  svg.appendChild(c);
+});
+</script>
