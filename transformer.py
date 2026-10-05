@@ -1,15 +1,22 @@
 """Minimal decoder-only transformer (GPT-style) in pure JAX.
 
-Two token mixers ("attention" layers) are available:
+Three token mixers ("attention" layers) are available:
 - "softmax": standard causal multi-head attention. Cost O(T²) per sequence of T tokens.
-- "frac": fractional Laplacian attention. Each head averages past tokens with weights
-  from a fractional heat kernel, computed with an FFT convolution. Cost O(T log T).
+- "csa": DeepSeek-V4 Compressed Sparse Attention. Top-k of the m-token compressed blocks
+  (picked by a small indexer) plus a sliding window of raw tokens.
+- "hier": hierarchical chunk attention (from modded-nanogpt). Chunk summaries, with the
+  top-S chunks re-read token by token; only the previous and current chunk are read exactly.
+- "hier_window": the same with a 512-token sliding window read exactly; the hierarchy covers
+  what lies before the window.
 
 The MLP is trained with nested dropout, so its hidden layer can be cut down at inference.
-Run this file to train both mixers on a toy task and run the self-checks.
+Run this file to train all mixers on a toy task and run the self-checks.
 """
 import jax
 import jax.numpy as jnp
+
+from csa import csa_attention, init_csa
+from hier import hier_attention
 
 
 def init_params(key, vocab, d_model=64, n_heads=4, n_layers=2, max_len=128, mixer="softmax"):
@@ -33,13 +40,13 @@ def init_params(key, vocab, d_model=64, n_heads=4, n_layers=2, max_len=128, mixe
         }
         for _ in range(n_layers)
     ]
-    if mixer == "frac":  # per head: α = 1.5, diffusion time t from 0.5 (local) to 32 (global)
-        # Both are stored unconstrained; frac_attention maps them into their valid ranges.
-        # alpha = 0 gives α = 1 + sigmoid(0) = 1.5. t is stored as inverse softplus, so
-        # softplus(t) recovers 0.5 ... 32: heads start with different window widths.
-        # The presence of "alpha" in a layer is what makes forward() use frac_attention.
+    if mixer == "csa":  # own projections replace qkv/proj; separate keys keep the other mixers' init unchanged
+        for layer, k in zip(layers, jax.random.split(jax.random.fold_in(key, 1), n_layers)):
+            del layer["qkv"], layer["proj"]
+            layer["csa"] = init_csa(k, d_model, n_heads)
+    if mixer in ("hier", "hier_window"):  # same weights as softmax; the empty dict only marks the layer (no leaves)
         for layer in layers:
-            layer.update(alpha=jnp.zeros(n_heads), t=jnp.log(jnp.expm1(jnp.geomspace(0.5, 32.0, n_heads))))
+            layer[mixer] = {}
     return {
         "tok_emb": jax.random.normal(next(keys), (vocab, d_model)) * 0.02,  # token id -> vector
         "pos_emb": jax.random.normal(next(keys), (max_len, d_model)) * 0.02,  # position -> vector; caps T at max_len
@@ -74,48 +81,20 @@ def attention(p, x, n_heads):
     return out.transpose(1, 0, 2).reshape(T, D) @ p["proj"]
 
 
-def causal_mix(w, v):
-    """y_i = Σ_{j≤i} w[i-j]·v_j / Σ_{j≤i} w[j] per head. w: (H, T) lag weights, v: (T, H, Dh).
-    FFT padded to 2T so the circular convolution never wraps future tokens into the past."""
-    # The weight between tokens i and j depends only on their distance i - j (the lag),
-    # so the whole weighted sum is a convolution. An FFT turns a convolution into an
-    # elementwise product: O(T log T) instead of building the O(T²) weight matrix.
-    # An FFT convolution is circular: the end of the sequence wraps around to the start.
-    # Zero-padding to length 2T leaves room for that wrap to land on zeros, and since w
-    # only has lags 0..T-1 (present and past), no future token reaches the output.
-    T = v.shape[0]
-    w = w.T[..., None]  # (T, H, 1)
-    y = jnp.fft.irfft(jnp.fft.rfft(v, 2 * T, axis=0) * jnp.fft.rfft(w, 2 * T, axis=0), 2 * T, axis=0)[:T]
-    # Token i sees only lags 0..i, so its weights sum to cumsum(w)[i]. Dividing by that makes
-    # every output a true weighted average (weights sum to 1), like a softmax row.
-    return y / jnp.cumsum(w, axis=0)
+HIER_WINDOW = 512  # tokens read exactly by "hier_window"
 
 
-def frac_attention(p, x, n_grid):
-    """Softmax weights replaced by the causal fractional heat kernel exp(-t·L^(α/2)),
-    L = graph Laplacian of a cycle of n_grid positions. O(T log T) instead of O(T²)."""
-    # Picture each token dropping ink on its position and letting it diffuse along the
-    # sequence for time t. The ink that reaches each earlier position is that position's weight.
-    # L^(α/2) is the fractional Laplacian: α = 2 is ordinary diffusion (local, fast decay);
-    # α -> 1 allows long jumps, so weights decay as a power law and reach far back.
-    T, D = x.shape
-    H = p["alpha"].shape[0]
-    alpha = 1 + jax.nn.sigmoid(p["alpha"])  # (H,) in (1, 2)
-    t = jax.nn.softplus(p["t"])  # (H,) diffusion time: window width
-    # fixed grid, not 2T: kernel must not depend on sequence length
-    # (otherwise appending a token would change the weights, and so every earlier output).
-    # On a cycle of n_grid positions, L's eigenvectors are Fourier modes with these eigenvalues:
-    lam = (2 * jnp.sin(jnp.pi * jnp.arange(n_grid // 2 + 1) / n_grid)) ** 2  # eigenvalues of L
-    lam = jnp.maximum(lam, 1e-12)  # λ=0 makes d/dα λ^(α/2) NaN
-    # Apply exp(-t·λ^(α/2)) to each Fourier mode, then inverse FFT to get the kernel over
-    # positions. Keep lags 0..T-1 only: that makes it causal. The kernel is positive and
-    # sums to 1 over the whole cycle (it's a random walk's transition probabilities).
-    w = jnp.fft.irfft(jnp.exp(-t[:, None] * lam ** (alpha[:, None] / 2)), n_grid)[:, :T]
-    # Gating adds content dependence: each token sends the message k ⊙ v, messages are
-    # averaged with the kernel weights, and the reader's q scales which channels it keeps.
-    q, k, v = jnp.split(x @ p["qkv"], 3, axis=-1)
-    mixed = causal_mix(w, (k * v).reshape(T, H, D // H)).reshape(T, D)
-    return (q * mixed) @ p["proj"]
+def mix(p, x, n_heads):
+    """Dispatch on which weights the layer has (see init_params)."""
+    if "csa" in p:  # recomputed in the backward, like softmax below: at T = 2048 its stored activations hit 3.9 GiB
+        return jax.checkpoint(csa_attention)(p["csa"], x)
+    if "hier" in p:
+        return hier_attention(p, x, n_heads)
+    if "hier_window" in p:
+        return hier_attention(p, x, n_heads, window=HIER_WINDOW)
+    # Recompute the T x T scores in the backward instead of storing them for every layer: same gradients;
+    # at T = 2048, batch 2, the stored scores (6.6 GiB) exceed WSL's 4 GiB buffer limit.
+    return jax.checkpoint(attention, static_argnums=2)(p, x, n_heads)
 
 
 def forward(params, tokens, k=None, n_heads=4):
@@ -126,7 +105,7 @@ def forward(params, tokens, k=None, n_heads=4):
         # Pre-norm residual block: each sublayer reads a normalized copy of x and adds
         # its result back to x, so information and gradients flow straight through.
         a = layer_norm(p["ln1"], x)
-        x = x + (frac_attention(p, a, 2 * len(params["pos_emb"])) if "alpha" in p else attention(p, a, n_heads))
+        x = x + mix(p, a, n_heads)
         h = jax.nn.gelu(layer_norm(p["ln2"], x) @ p["fc1"])
         if k is not None:
             # Nested dropout: zero every hidden unit from index k on. Units with low indices
@@ -184,7 +163,7 @@ if __name__ == "__main__":
     eval_batch = (starts.reshape(-1, 1) + steps.reshape(-1, 1) * jnp.arange(seq_len + 1)) % vocab
 
     # Train both mixers from the same seed on the same data, so their losses are comparable.
-    for mixer in ["softmax", "frac"]:
+    for mixer in ["softmax", "csa", "hier"]:
         key = jax.random.PRNGKey(0)
         params = init_params(key, vocab, mixer=mixer)
         for step in range(STEPS):
@@ -212,8 +191,32 @@ if __name__ == "__main__":
         print(f"[{mixer}] prefix vs full max diff: {diff:.2e}")
         assert diff < 1e-2, f"[{mixer}] outputs depend on future tokens"
 
-    # flat weights must give the running mean: catches FFT wrap-around and normalization bugs
-    # With every weight equal, output i must be the plain average of v_0..v_i.
-    v = jax.random.normal(key, (seq_len, 2, 3))
-    running_mean = jnp.cumsum(v, axis=0) / jnp.arange(1, seq_len + 1)[:, None, None]
-    assert jnp.allclose(causal_mix(jnp.ones((2, seq_len)), v), running_mean, atol=1e-5)
+    # full fp32 matmuls: GPU default (TF32) leaves ~1e-3 error vs the dense reference
+    with jax.default_matmul_precision("highest"):
+        # The toy is too short for CSA/hier to compress or select anything (32 tokens: 8 blocks <= top_k,
+        # one 32-token chunk), so check the sparse paths at the layer level with small settings.
+        x = jax.random.normal(key, (40, 32))
+        p_csa = init_csa(key, 32, 4)
+        y = csa_attention(p_csa, x, top_k=2, window=4)
+        # 6: fewer than top_k visible blocks, so masked picks (block t // block_size, holding later tokens) must stay masked
+        # 13: cut mid-block (padded); 24: deep enough that top_k=2 drops blocks
+        for n in [6, 13, 24]:
+            diff = jnp.abs(csa_attention(p_csa, x[:n], top_k=2, window=4) - y[:n]).max()
+            assert diff < 1e-4, f"[csa] layer depends on future tokens (prefix {n}: {diff:.2e})"
+        g = jax.grad(lambda p: csa_attention(p, x, top_k=2, window=4).sum())(p_csa)
+        assert jnp.abs(g["indexer"]["query_up"]).max() > 0, "[csa] indexer gets no gradient from its KL loss"
+
+        p_att = init_params(key, vocab, d_model=32, mixer="softmax")["layers"][0]
+        # window=8: two 4-token chunks (the default 512 would cover all 40 tokens: plain exact attention)
+        # n_refined >= every older chunk: all chunks refined, so hier must equal exact causal attention
+        full = hier_attention(p_att, x, 4, chunk_size=4, n_refined=10, window=8)
+        assert jnp.allclose(full, attention(p_att, x, 4), atol=1e-4), "[hier] all-refined != softmax attention"
+        # sparse (n_refined=1): picks depend on the whole query chunk, so prefixes must end on a chunk boundary
+        y = hier_attention(p_att, x, 4, chunk_size=4, n_refined=1, window=8)
+        for n in [16, 28]:
+            diff = jnp.abs(hier_attention(p_att, x[:n], 4, chunk_size=4, n_refined=1, window=8) - y[:n]).max()
+            assert diff < 1e-4, f"[hier] layer depends on future chunks (prefix {n}: {diff:.2e})"
+        # 10 chunks in blocks of 3: three full blocks plus a remainder must give the same output as one block
+        blocked = hier_attention(p_att, x, 4, chunk_size=4, n_refined=1, window=8, chunks_per_block=3)
+        assert jnp.allclose(blocked, y, atol=1e-5), "[hier] output depends on chunks_per_block"
+        print("csa / hier layer checks passed")

@@ -1,0 +1,298 @@
+[frac] 51.2M params, 24000 steps x 4096 tokens
+[frac] step 100: loss 7.029  |g| 0.66  24,305 tok/s
+[frac] step 200: loss 6.456  |g| 0.69  37,477 tok/s
+[frac] step 300: loss 6.448  |g| 0.70  45,893 tok/s
+[frac] step 400: loss 5.858  |g| 0.67  51,768 tok/s
+[frac] step 500: loss 5.882  |g| 0.66  56,117 tok/s
+[frac] step 500: val loss 5.767 (ppl 319.5)
+[frac] step 600: loss 5.722  |g| 0.63  56,714 tok/s
+[frac] step 700: loss 5.422  |g| 0.64  59,513 tok/s
+[frac] step 800: loss 5.668  |g| 0.66  61,596 tok/s
+[frac] step 900: loss 5.506  |g| 0.69  63,412 tok/s
+[frac] step 1000: loss 5.581  |g| 0.69  65,011 tok/s
+[frac] step 1000: val loss 5.297 (ppl 199.8)
+[frac] step 1100: loss 5.234  |g| 0.71  65,689 tok/s
+[frac] step 1200: loss 4.973  |g| 0.70  66,952 tok/s
+[frac] step 1300: loss 5.315  |g| 0.68  68,042 tok/s
+[frac] step 1400: loss 5.160  |g| 0.75  68,668 tok/s
+[frac] step 1500: loss 5.482  |g| 0.73  69,551 tok/s
+[frac] step 1500: val loss 5.091 (ppl 162.5)
+[frac] step 1600: loss 5.153  |g| 0.77  69,803 tok/s
+[frac] step 1700: loss 5.101  |g| 0.72  70,549 tok/s
+[frac] step 1800: loss 5.251  |g| 0.78  71,211 tok/s
+[frac] step 1900: loss 4.925  |g| 0.76  71,819 tok/s
+[frac] step 2000: loss 4.998  |g| 0.77  72,376 tok/s
+[frac] step 2000: val loss 4.961 (ppl 142.8)
+[frac] step 2100: loss 5.320  |g| 0.79  72,322 tok/s
+[frac] step 2200: loss 4.985  |g| 0.79  72,754 tok/s
+[frac] step 2300: loss 5.340  |g| 0.82  73,178 tok/s
+[frac] step 2400: loss 4.903  |g| 0.74  73,579 tok/s
+[frac] step 2500: loss 5.101  |g| 0.84  73,959 tok/s
+[frac] step 2500: val loss 4.866 (ppl 129.8)
+[frac] step 2600: loss 4.868  |g| 0.84  73,946 tok/s
+[frac] step 2700: loss 4.769  |g| 0.74  74,101 tok/s
+[frac] step 2800: loss 5.126  |g| 0.90  74,433 tok/s
+[frac] step 2900: loss 4.676  |g| 0.82  74,747 tok/s
+[frac] step 3000: loss 4.854  |g| 0.79  75,042 tok/s
+[frac] step 3000: val loss 4.805 (ppl 122.1)
+[frac] step 3100: loss 4.673  |g| 0.78  75,003 tok/s
+[frac] step 3200: loss 4.878  |g| 0.86  75,273 tok/s
+[frac] step 3300: loss 4.886  |g| 0.90  75,512 tok/s
+[frac] step 3400: loss 5.227  |g| 0.86  75,679 tok/s
+[frac] step 3500: loss 5.120  |g| 0.83  75,870 tok/s
+[frac] step 3500: val loss 4.776 (ppl 118.7)
+[frac] step 3600: loss 4.932  |g| 0.94  75,786 tok/s
+[frac] step 3700: loss 4.519  |g| 0.88  75,999 tok/s
+[frac] step 3800: loss 5.015  |g| 0.86  76,201 tok/s
+[frac] step 3900: loss 4.293  |g| 0.86  76,393 tok/s
+[frac] step 4000: loss 4.603  |g| 0.94  76,438 tok/s
+[frac] step 4000: val loss 4.722 (ppl 112.4)
+[frac] step 4100: loss 5.169  |g| 0.95  76,376 tok/s
+[frac] step 4200: loss 5.117  |g| 0.91  76,556 tok/s
+[frac] step 4300: loss 4.838  |g| 0.87  76,728 tok/s
+[frac] step 4400: loss 4.915  |g| 0.84  76,893 tok/s
+[frac] step 4500: loss 4.991  |g| 0.97  77,053 tok/s
+[frac] step 4500: val loss 4.667 (ppl 106.4)
+[frac] step 4600: loss 4.568  |g| 0.96  76,942 tok/s
+[frac] step 4700: loss 4.543  |g| 0.92  77,047 tok/s
+[frac] step 4800: loss 4.573  |g| 0.98  77,169 tok/s
+[frac] step 4900: loss 4.365  |g| 0.91  77,297 tok/s
+[frac] step 5000: loss 4.743  |g| 0.92  77,431 tok/s
+[frac] step 5000: val loss 4.630 (ppl 102.5)
+[frac] step 5100: loss 5.071  |g| 1.11  77,353 tok/s
+[frac] step 5200: loss 4.381  |g| 0.94  77,365 tok/s
+[frac] step 5300: loss 4.751  |g| 0.99  77,493 tok/s
+[frac] step 5400: loss 4.748  |g| 1.10  77,615 tok/s
+[frac] step 5500: loss 4.883  |g| 1.14  77,736 tok/s
+[frac] step 5500: val loss 4.629 (ppl 102.4)
+[frac] step 5600: loss 4.989  |g| 1.02  77,662 tok/s
+[frac] step 5700: loss 4.652  |g| 0.98  77,777 tok/s
+[frac] step 5800: loss 4.738  |g| 0.92  77,895 tok/s
+[frac] step 5900: loss 4.427  |g| 1.00  77,896 tok/s
+[frac] step 6000: loss 4.529  |g| 0.97  78,002 tok/s
+[frac] step 6000: val loss 4.580 (ppl 97.5)
+[frac] step 6100: loss 4.929  |g| 0.99  77,927 tok/s
+[frac] step 6200: loss 4.539  |g| 0.93  78,028 tok/s
+[frac] step 6300: loss 4.563  |g| 0.99  78,127 tok/s
+[frac] step 6400: loss 4.497  |g| 1.07  78,222 tok/s
+[frac] step 6500: loss 4.604  |g| 0.98  78,218 tok/s
+[frac] step 6500: val loss 4.568 (ppl 96.4)
+[frac] step 6600: loss 5.175  |g| 1.06  78,142 tok/s
+[frac] step 6700: loss 4.722  |g| 1.04  78,237 tok/s
+[frac] step 6800: loss 4.565  |g| 1.02  78,346 tok/s
+[frac] step 6900: loss 4.535  |g| 1.01  78,427 tok/s
+[frac] step 7000: loss 4.821  |g| 1.09  78,505 tok/s
+[frac] step 7000: val loss 4.543 (ppl 94.0)
+[frac] step 7100: loss 4.704  |g| 1.03  78,428 tok/s
+[frac] step 7200: loss 4.831  |g| 1.12  78,393 tok/s
+[frac] step 7300: loss 4.753  |g| 1.20  78,463 tok/s
+[frac] step 7400: loss 4.603  |g| 1.00  78,540 tok/s
+[frac] step 7500: loss 4.568  |g| 1.01  78,618 tok/s
+[frac] step 7500: val loss 4.528 (ppl 92.6)
+[frac] step 7600: loss 4.639  |g| 1.05  78,570 tok/s
+[frac] step 7700: loss 4.366  |g| 1.10  78,644 tok/s
+[frac] step 7800: loss 4.689  |g| 1.12  78,631 tok/s
+[frac] step 7900: loss 4.413  |g| 1.08  78,701 tok/s
+[frac] step 8000: loss 4.598  |g| 1.21  78,778 tok/s
+[frac] step 8000: val loss 4.504 (ppl 90.4)
+[frac] step 8100: loss 4.459  |g| 1.04  78,735 tok/s
+[frac] step 8200: loss 4.452  |g| 1.18  78,804 tok/s
+[frac] step 8300: loss 4.670  |g| 1.09  78,872 tok/s
+[frac] step 8400: loss 4.490  |g| 1.13  78,936 tok/s
+[frac] step 8500: loss 4.698  |g| 1.24  78,897 tok/s
+[frac] step 8500: val loss 4.461 (ppl 86.6)
+[frac] step 8600: loss 4.815  |g| 1.24  78,821 tok/s
+[frac] step 8700: loss 4.540  |g| 1.24  78,884 tok/s
+[frac] step 8800: loss 4.548  |g| 1.09  78,954 tok/s
+[frac] step 8900: loss 4.523  |g| 1.09  79,035 tok/s
+[frac] step 9000: loss 4.416  |g| 1.11  79,093 tok/s
+[frac] step 9000: val loss 4.459 (ppl 86.4)
+[frac] step 9100: loss 4.189  |g| 1.17  78,951 tok/s
+[frac] step 9200: loss 4.451  |g| 1.11  79,007 tok/s
+[frac] step 9300: loss 4.359  |g| 1.17  79,073 tok/s
+[frac] step 9400: loss 4.521  |g| 1.20  79,147 tok/s
+[frac] step 9500: loss 4.612  |g| 1.17  79,204 tok/s
+[frac] step 9500: val loss 4.440 (ppl 84.8)
+[frac] step 9600: loss 4.251  |g| 1.15  79,142 tok/s
+[frac] step 9700: loss 4.656  |g| 1.27  79,193 tok/s
+[frac] step 9800: loss 4.105  |g| 1.10  79,153 tok/s
+[frac] step 9900: loss 4.703  |g| 1.13  79,195 tok/s
+[frac] step 10000: loss 4.528  |g| 1.28  79,277 tok/s
+[frac] step 10000: val loss 4.409 (ppl 82.2)
+[frac] step 10100: loss 4.451  |g| 1.20  79,219 tok/s
+[frac] step 10200: loss 4.586  |g| 1.26  79,272 tok/s
+[frac] step 10300: loss 4.594  |g| 1.20  79,322 tok/s
+[frac] step 10400: loss 4.317  |g| 1.20  79,293 tok/s
+[frac] step 10500: loss 4.279  |g| 1.22  79,337 tok/s
+[frac] step 10500: val loss 4.403 (ppl 81.7)
+[frac] step 10600: loss 4.224  |g| 1.13  79,290 tok/s
+[frac] step 10700: loss 4.546  |g| 1.21  79,350 tok/s
+[frac] step 10800: loss 4.271  |g| 1.23  79,397 tok/s
+[frac] step 10900: loss 4.383  |g| 1.22  79,442 tok/s
+[frac] step 11000: loss 4.556  |g| 1.28  79,485 tok/s
+[frac] step 11000: val loss 4.352 (ppl 77.6)
+[frac] step 11100: loss 4.354  |g| 1.40  79,347 tok/s
+[frac] step 11200: loss 4.287  |g| 1.27  79,389 tok/s
+[frac] step 11300: loss 4.409  |g| 1.28  79,457 tok/s
+[frac] step 11400: loss 4.245  |g| 1.22  79,500 tok/s
+[frac] step 11500: loss 4.290  |g| 1.27  79,543 tok/s
+[frac] step 11500: val loss 4.354 (ppl 77.8)
+[frac] step 11600: loss 4.519  |g| 1.32  79,489 tok/s
+[frac] step 11700: loss 4.343  |g| 1.33  79,458 tok/s
+[frac] step 11800: loss 4.716  |g| 1.28  79,494 tok/s
+[frac] step 11900: loss 4.056  |g| 1.31  79,549 tok/s
+[frac] step 12000: loss 4.318  |g| 1.28  79,597 tok/s
+[frac] step 12000: val loss 4.354 (ppl 77.8)
+[frac] step 12100: loss 3.892  |g| 1.33  79,546 tok/s
+[frac] step 12200: loss 4.478  |g| 1.22  79,587 tok/s
+[frac] step 12300: loss 4.459  |g| 1.27  79,628 tok/s
+[frac] step 12400: loss 4.626  |g| 1.37  79,597 tok/s
+[frac] step 12500: loss 4.544  |g| 1.34  79,633 tok/s
+[frac] step 12500: val loss 4.315 (ppl 74.8)
+[frac] step 12600: loss 4.599  |g| 1.31  79,605 tok/s
+[frac] step 12700: loss 4.612  |g| 1.37  79,644 tok/s
+[frac] step 12800: loss 4.838  |g| 1.30  79,683 tok/s
+[frac] step 12900: loss 4.525  |g| 1.36  79,720 tok/s
+[frac] step 13000: loss 4.553  |g| 1.36  79,691 tok/s
+[frac] step 13000: val loss 4.282 (ppl 72.4)
+[frac] step 13100: loss 4.587  |g| 1.55  79,635 tok/s
+[frac] step 13200: loss 4.331  |g| 1.32  79,686 tok/s
+[frac] step 13300: loss 4.361  |g| 1.35  79,726 tok/s
+[frac] step 13400: loss 4.539  |g| 1.33  79,761 tok/s
+[frac] step 13500: loss 4.078  |g| 1.38  79,795 tok/s
+[frac] step 13500: val loss 4.277 (ppl 72.0)
+[frac] step 13600: loss 4.160  |g| 1.28  79,747 tok/s
+[frac] step 13700: loss 4.507  |g| 1.45  79,718 tok/s
+[frac] step 13800: loss 4.331  |g| 1.34  79,753 tok/s
+[frac] step 13900: loss 4.056  |g| 1.38  79,803 tok/s
+[frac] step 14000: loss 4.174  |g| 1.25  79,836 tok/s
+[frac] step 14000: val loss 4.262 (ppl 71.0)
+[frac] step 14100: loss 4.098  |g| 1.41  79,788 tok/s
+[frac] step 14200: loss 4.462  |g| 1.47  79,821 tok/s
+[frac] step 14300: loss 4.325  |g| 1.42  79,793 tok/s
+[frac] step 14400: loss 4.242  |g| 1.42  79,822 tok/s
+[frac] step 14500: loss 4.096  |g| 1.30  79,865 tok/s
+[frac] step 14500: val loss 4.237 (ppl 69.2)
+[frac] step 14600: loss 4.438  |g| 1.38  79,825 tok/s
+[frac] step 14700: loss 4.231  |g| 1.49  79,857 tok/s
+[frac] step 14800: loss 4.379  |g| 1.36  79,888 tok/s
+[frac] step 14900: loss 4.071  |g| 1.34  79,919 tok/s
+[frac] step 15000: loss 4.326  |g| 1.50  79,891 tok/s
+[frac] step 15000: val loss 4.223 (ppl 68.3)
+[frac] step 15100: loss 4.166  |g| 1.52  79,850 tok/s
+[frac] step 15200: loss 3.740  |g| 1.32  79,892 tok/s
+[frac] step 15300: loss 4.419  |g| 1.45  79,921 tok/s
+[frac] step 15400: loss 4.514  |g| 1.44  79,952 tok/s
+[frac] step 15500: loss 4.291  |g| 1.41  79,981 tok/s
+[frac] step 15500: val loss 4.221 (ppl 68.1)
+[frac] step 15600: loss 4.198  |g| 1.52  79,884 tok/s
+[frac] step 15700: loss 4.080  |g| 1.42  79,910 tok/s
+[frac] step 15800: loss 4.089  |g| 1.53  79,948 tok/s
+[frac] step 15900: loss 4.128  |g| 1.48  79,980 tok/s
+[frac] step 16000: loss 3.942  |g| 1.37  80,008 tok/s
+[frac] step 16000: val loss 4.186 (ppl 65.8)
+[frac] step 16100: loss 4.120  |g| 1.41  79,966 tok/s
+[frac] step 16200: loss 4.322  |g| 1.41  79,996 tok/s
+[frac] step 16300: loss 4.608  |g| 1.68  79,972 tok/s
+[frac] step 16400: loss 4.240  |g| 1.40  80,000 tok/s
+[frac] step 16500: loss 4.099  |g| 1.53  80,028 tok/s
+[frac] step 16500: val loss 4.178 (ppl 65.2)
+[frac] step 16600: loss 4.540  |g| 1.52  79,988 tok/s
+[frac] step 16700: loss 4.456  |g| 1.68  80,015 tok/s
+[frac] step 16800: loss 4.014  |g| 1.55  80,043 tok/s
+[frac] step 16900: loss 4.144  |g| 1.52  80,028 tok/s
+[frac] step 17000: loss 4.393  |g| 1.65  80,056 tok/s
+[frac] step 17000: val loss 4.155 (ppl 63.8)
+[frac] step 17100: loss 3.956  |g| 1.42  80,018 tok/s
+[frac] step 17200: loss 3.992  |g| 1.65  80,044 tok/s
+[frac] step 17300: loss 4.039  |g| 1.42  80,072 tok/s
+[frac] step 17400: loss 4.036  |g| 1.51  80,098 tok/s
+[frac] step 17500: loss 4.400  |g| 1.59  80,126 tok/s
+[frac] step 17500: val loss 4.143 (ppl 63.0)
+[frac] step 17600: loss 4.108  |g| 1.46  80,043 tok/s
+[frac] step 17700: loss 4.072  |g| 1.54  80,069 tok/s
+[frac] step 17800: loss 3.928  |g| 1.48  80,095 tok/s
+[frac] step 17900: loss 3.761  |g| 1.51  80,120 tok/s
+[frac] step 18000: loss 4.366  |g| 1.68  80,146 tok/s
+[frac] step 18000: val loss 4.105 (ppl 60.7)
+[frac] step 18100: loss 4.175  |g| 2.00  80,108 tok/s
+[frac] step 18200: loss 4.236  |g| 1.59  80,090 tok/s
+[frac] step 18300: loss 3.979  |g| 1.54  80,115 tok/s
+[frac] step 18400: loss 4.139  |g| 1.53  80,140 tok/s
+[frac] step 18500: loss 3.793  |g| 1.49  80,164 tok/s
+[frac] step 18500: val loss 4.109 (ppl 60.9)
+[frac] step 18600: loss 4.310  |g| 1.72  80,128 tok/s
+[frac] step 18700: loss 4.091  |g| 1.65  80,152 tok/s
+[frac] step 18800: loss 4.083  |g| 1.65  80,177 tok/s
+[frac] step 18900: loss 4.288  |g| 1.89  80,158 tok/s
+[frac] step 19000: loss 4.221  |g| 1.65  80,182 tok/s
+[frac] step 19000: val loss 4.092 (ppl 59.9)
+[frac] step 19100: loss 4.039  |g| 1.58  80,147 tok/s
+[frac] step 19200: loss 4.276  |g| 1.72  80,170 tok/s
+[frac] step 19300: loss 4.251  |g| 1.59  80,194 tok/s
+[frac] step 19400: loss 4.010  |g| 1.71  80,216 tok/s
+[frac] step 19500: loss 3.655  |g| 1.46  80,198 tok/s
+[frac] step 19500: val loss 4.072 (ppl 58.7)
+[frac] step 19600: loss 4.050  |g| 1.66  80,163 tok/s
+[frac] step 19700: loss 3.999  |g| 1.67  80,186 tok/s
+[frac] step 19800: loss 3.932  |g| 1.51  80,209 tok/s
+[frac] step 19900: loss 3.994  |g| 1.53  80,232 tok/s
+[frac] step 20000: loss 3.972  |g| 1.64  80,254 tok/s
+[frac] step 20000: val loss 4.052 (ppl 57.5)
+[frac] step 20100: loss 4.210  |g| 1.79  80,220 tok/s
+[frac] step 20200: loss 3.997  |g| 1.66  80,202 tok/s
+[frac] step 20300: loss 4.172  |g| 1.70  80,224 tok/s
+[frac] step 20400: loss 4.380  |g| 1.89  80,246 tok/s
+[frac] step 20500: loss 4.149  |g| 1.77  80,268 tok/s
+[frac] step 20500: val loss 4.052 (ppl 57.5)
+[frac] step 20600: loss 3.527  |g| 1.63  80,235 tok/s
+[frac] step 20700: loss 4.219  |g| 1.64  80,257 tok/s
+[frac] step 20800: loss 3.999  |g| 1.69  80,240 tok/s
+[frac] step 20900: loss 4.199  |g| 1.67  80,262 tok/s
+[frac] step 21000: loss 4.148  |g| 1.77  80,283 tok/s
+[frac] step 21000: val loss 4.043 (ppl 57.0)
+[frac] step 21100: loss 4.057  |g| 1.75  80,251 tok/s
+[frac] step 21200: loss 4.298  |g| 1.98  80,272 tok/s
+[frac] step 21300: loss 3.896  |g| 1.69  80,293 tok/s
+[frac] step 21400: loss 3.924  |g| 1.86  80,314 tok/s
+[frac] step 21500: loss 4.195  |g| 2.46  80,296 tok/s
+[frac] step 21500: val loss 4.032 (ppl 56.3)
+[frac] step 21600: loss 4.028  |g| 1.81  80,265 tok/s
+[frac] step 21700: loss 4.105  |g| 1.87  80,286 tok/s
+[frac] step 21800: loss 4.020  |g| 1.77  80,306 tok/s
+[frac] step 21900: loss 4.137  |g| 1.74  80,327 tok/s
+[frac] step 22000: loss 4.252  |g| 1.93  80,346 tok/s
+[frac] step 22000: val loss 4.021 (ppl 55.8)
+[frac] step 22100: loss 3.971  |g| 1.83  80,278 tok/s
+[frac] step 22200: loss 4.272  |g| 1.85  80,298 tok/s
+[frac] step 22300: loss 3.981  |g| 1.78  80,317 tok/s
+[frac] step 22400: loss 4.595  |g| 1.92  80,337 tok/s
+[frac] step 22500: loss 4.417  |g| 2.05  80,357 tok/s
+[frac] step 22500: val loss 4.010 (ppl 55.1)
+[frac] step 22600: loss 4.240  |g| 1.96  80,326 tok/s
+[frac] step 22700: loss 3.848  |g| 1.66  80,345 tok/s
+[frac] step 22800: loss 4.207  |g| 1.81  80,328 tok/s
+[frac] step 22900: loss 4.519  |g| 1.91  80,347 tok/s
+[frac] step 23000: loss 4.244  |g| 1.87  80,366 tok/s
+[frac] step 23000: val loss 4.004 (ppl 54.8)
+[frac] step 23100: loss 4.263  |g| 1.99  80,336 tok/s
+[frac] step 23200: loss 3.776  |g| 1.65  80,356 tok/s
+[frac] step 23300: loss 4.226  |g| 1.80  80,375 tok/s
+[frac] step 23400: loss 3.897  |g| 1.85  80,359 tok/s
+[frac] step 23500: loss 3.903  |g| 1.68  80,377 tok/s
+[frac] step 23500: val loss 4.005 (ppl 54.9)
+[frac] step 23600: loss 3.866  |g| 1.97  80,347 tok/s
+[frac] step 23700: loss 4.394  |g| 2.03  80,366 tok/s
+[frac] step 23800: loss 4.096  |g| 1.97  80,384 tok/s
+[frac] step 23900: loss 3.937  |g| 1.80  80,402 tok/s
+[frac] step 24000: loss 3.528  |g| 1.79  80,419 tok/s
+[frac] step 24000: val loss 4.003 (ppl 54.8)
+[frac] final val 4.0384 (ppl 56.74), test 4.0748 (ppl 58.84), 1226s
+[frac] layer 0: alpha [1.6999999 1.73      1.9       1.6899999 1.4499999 1.1999999 1.26
+[frac] layer 1: alpha [1.9599999 2.        2.        1.93      1.86      1.5       1.29
+[frac] layer 2: alpha [1.9799999 1.99      1.9799999 1.77      1.7199999 1.5799999 1.42
+[frac] layer 3: alpha [1.9599999 1.9699999 1.92      1.61      1.41      1.4699999 1.28
+[frac] layer 4: alpha [1.9       1.9499999 1.76      1.4499999 1.4699999 1.3299999 1.24
+[frac] layer 5: alpha [1.7199999 1.87      1.74      1.54      1.4499999 1.3199999 1.06
+[frac] layer 6: alpha [1.35      1.5899999 1.75      1.61      1.5799999 1.51      1.06
+[frac] layer 7: alpha [1.1899999 1.37      1.6999999 1.51      1.73      1.77      1.0799999
