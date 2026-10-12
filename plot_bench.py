@@ -1,6 +1,7 @@
-"""Plots of runs/bench_attention.csv (prefill), runs/bench_decode.csv (decode) and the train_lm.py runs
-(runs/<mixer>.csv and .log): hier vs CSA vs exact/softmax attention.
-    uv run --with matplotlib python plot_bench.py   -> runs/bench_prefill.png, runs/bench_decode.png, runs/train_loss.png
+"""Plots of runs/bench/bench_attention.csv (prefill), runs/bench/bench_decode.csv (decode) and the train_lm.py runs
+(runs/train/<mixer>.csv and .log): hier vs CSA vs exact/softmax attention; and evict.py's results.
+    uv run --with matplotlib python plot_bench.py   -> runs/bench/bench_prefill.png, runs/bench/bench_decode.png, runs/train/train_loss.png,
+                                                       runs/evict/evict.png
 """
 import csv
 import os
@@ -41,7 +42,7 @@ def kilo(ax):
 
 
 def plot_prefill():
-    rows = load("runs/bench_attention.csv")
+    rows = load("runs/bench/bench_attention.csv")
     fig, (time_ax, mem_ax) = plt.subplots(1, 2, figsize=(10, 3.8))
     for name, rs in rows.items():
         ran = [r for r in rs if r["forward_ms"]]
@@ -72,11 +73,11 @@ def plot_prefill():
     time_ax.legend()
     fig.suptitle("RTX 4070 Ti SUPER, d_model 64, 1 head, bf16, batch 1", fontsize=8, y=0.04)
     fig.tight_layout(rect=(0, 0.06, 1, 1))
-    fig.savefig("runs/bench_prefill.png", bbox_inches="tight")
+    fig.savefig("runs/bench/bench_prefill.png", bbox_inches="tight")
 
 
 def plot_decode():
-    rows = load("runs/bench_decode.csv")
+    rows = load("runs/bench/bench_decode.csv")
     fig, (b1, b64, mem) = plt.subplots(1, 3, figsize=(13, 3.8))
     for name, rs in rows.items():
         T = [int(r["context"]) for r in rs]
@@ -105,7 +106,7 @@ def plot_decode():
     fig.suptitle("RTX 4070 Ti SUPER, d_model 64, 1 head, bf16; one attention layer, cache update not timed",
                  fontsize=8, y=0.04)
     fig.tight_layout(rect=(0, 0.06, 1, 1))
-    fig.savefig("runs/bench_decode.png", bbox_inches="tight")
+    fig.savefig("runs/bench/bench_decode.png", bbox_inches="tight")
 
 
 def plot_training():
@@ -116,7 +117,7 @@ def plot_training():
     fig, axes = plt.subplots(len(lengths), 3, figsize=(13, 3.6 * len(lengths)), squeeze=False)
     for (suffix, shape), (train_ax, val_ax, clock_ax) in zip(lengths.items(), axes):
         for mixer, color in colors.items():
-            name = f"runs/{mixer}{suffix}"
+            name = f"runs/train/{mixer}{suffix}"
             if not os.path.exists(f"{name}.csv"):
                 continue
             with open(f"{name}.csv") as f:
@@ -147,10 +148,59 @@ def plot_training():
     fig.suptitle("WikiText-103, GPT-2 BPE; d_model 512, 8 layers, 8 heads; 4096 tokens per step, 24k steps; "
                  "same data order for every mixer of a row", fontsize=8, y=0.02)
     fig.tight_layout(rect=(0, 0.03, 1, 1))
-    fig.savefig("runs/train_loss.png", bbox_inches="tight")
+    fig.savefig("runs/train/train_loss.png", bbox_inches="tight")
+
+
+def plot_evict():
+    """runs/evict/evict.csv and runs/evict/evict_pool.csv (evict.py eval): CSA with an evicting block pool."""
+    with open("runs/evict/evict.csv") as f:
+        rows = list(csv.DictReader(f))
+    rule_color = {"stat": "#c44e52", "greedy": "#8172b3", "random": "#937860", "oldest": "#4c72b0"}
+    kind_style = {"sqrt": dict(ls="-", marker="o"), "log": dict(ls="--", marker="s")}
+    model_color = {"base": "#c44e52", "tuned full": "#7f7f7f", "tuned sqrt 4": "#2a9d8f", "tuned log 10": "#e9a03b"}
+    # x: indexer work, i.e. blocks scored per sequence and layer, summed over tokens (the full pool scores 524k at
+    # T = 2048). Pool size at T alone would favour log: it fills its pool early, so it works more for the same end size.
+    work = lambda r: float(r["scanned_blocks_per_seq"]) / 1000
+    fig, (rule_ax, tune_ax, pool_ax) = plt.subplots(1, 3, figsize=(13, 3.8))
+    for r in rows:  # full-pool reference lines
+        if r["budget"] == "full":
+            tune_ax.axhline(float(r["val_ppl"]), color=model_color[r["model"]], lw=0.8, ls=":",
+                            label=f"{r['model']}, full pool")
+            if r["model"] == "base":
+                rule_ax.axhline(float(r["val_ppl"]), color="black", lw=0.8, ls=":", label="full pool")
+    for kind in kind_style:
+        for rule, color in rule_color.items():
+            pts = [r for r in rows if r["model"] == "base" and r["budget"] == kind and r["rule"] == rule]
+            rule_ax.plot([work(r) for r in pts], [float(r["val_ppl"]) for r in pts], color=color,
+                         label=f"{rule}, {kind}", **kind_style[kind])
+        for model, color in model_color.items():
+            pts = [r for r in rows if r["model"] == model and r["budget"] == kind and r["rule"] == "stat"]
+            if pts:
+                tune_ax.plot([work(r) for r in pts], [float(r["val_ppl"]) for r in pts], color=color,
+                             label=f"{model}, {kind}", **kind_style[kind])
+    with open("runs/evict/evict_pool.csv") as f:
+        pool = defaultdict(list)
+        for r in csv.DictReader(f):
+            pool[(r["budget"], r["c"])].append((int(r["t"]), float(r["pool"])))
+    for (kind, c), pts in pool.items():
+        pool_ax.plot(*zip(*pts), label=f"{kind}, c={c}" if kind != "full" else "full",
+                     color="black" if kind == "full" else None, ls=kind_style.get(kind, {}).get("ls", "-"))
+    xlabel = "indexer work: blocks scored per sequence (k); full pool 524k"
+    rule_ax.set(title="Base model: eviction rule", xlabel=xlabel, ylabel="val ppl")
+    tune_ax.set(title="Rule stat: fine-tuned under eviction\n(the 3 tuned models coincide: gain = extra tokens)",
+                xlabel=xlabel, ylabel="val ppl")
+    pool_ax.set(title="Pool size (base model, rule stat)", xlabel="tokens decoded", ylabel="blocks in pool")
+    for ax in (rule_ax, tune_ax, pool_ax):
+        ax.legend(fontsize=6)
+    fig.suptitle("CSA (block 4, top-8, window 32), WikiText-103 val, 2048-token windows decoded token by token; "
+                 "pool per layer, mean over layers and sequences", fontsize=8, y=0.02)
+    fig.tight_layout(rect=(0, 0.04, 1, 1))
+    fig.savefig("runs/evict/evict.png", bbox_inches="tight")
 
 
 if __name__ == "__main__":
     plot_prefill()
     plot_decode()
     plot_training()
+    if os.path.exists("runs/evict/evict.csv"):
+        plot_evict()

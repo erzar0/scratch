@@ -7,7 +7,7 @@ bf16). Per token, exact attention reads the whole cache; CSA reads top_k + windo
 per block; hier reads one summary per chunk plus window + n_refined · chunk_size raw tokens. "hier" is hierarchical only
 (2-chunk window, 64 tokens); "hier + window" adds a 512 or 1024-token sliding window. hier_cache(offload=True),
 the raw K/V in host RAM, is not benchmarked here.
-    .env/bin/python bench_decode.py      -> table on stdout, runs/bench_decode.csv
+    .env/bin/python bench_decode.py      -> table on stdout, runs/bench/bench_decode.csv
 """
 import os
 import time
@@ -131,7 +131,7 @@ if __name__ == "__main__":
         print(f"{T:>7}" + "".join(f"{c:>22}" for c in cells))
 
     os.makedirs("runs", exist_ok=True)
-    with open("runs/bench_decode.csv", "w") as log:
+    with open("runs/bench/bench_decode.csv", "w") as log:
         log.write(f"method,context,gpu_cache_mib_per_seq,host_cache_mib_per_seq,us_batch1,us_batch{BATCH}\n")
         for name, T, gpu_mb, host_mb, us1, usb in rows:
             log.write(f"{name},{T},{gpu_mb:.3f},{host_mb:.3f},{us1:.1f},{usb:.1f}\n")

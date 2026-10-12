@@ -15,6 +15,7 @@ Run this file to train all mixers on a toy task and run the self-checks.
 import jax
 import jax.numpy as jnp
 
+from attn_methods_jax import bandit, bitonic_topk, ppr, sparse_softmax
 from csa import csa_attention, init_csa
 from hier import hier_attention
 
@@ -44,7 +45,7 @@ def init_params(key, vocab, d_model=64, n_heads=4, n_layers=2, max_len=128, mixe
         for layer, k in zip(layers, jax.random.split(jax.random.fold_in(key, 1), n_layers)):
             del layer["qkv"], layer["proj"]
             layer["csa"] = init_csa(k, d_model, n_heads)
-    if mixer in ("hier", "hier_window"):  # same weights as softmax; the empty dict only marks the layer (no leaves)
+    if mixer in ("hier", "hier_window") + tuple(APPROX):  # same weights as softmax; the empty dict only marks the layer (no leaves)
         for layer in layers:
             layer[mixer] = {}
     return {
@@ -83,11 +84,31 @@ def attention(p, x, n_heads):
 
 HIER_WINDOW = 512  # tokens read exactly by "hier_window"
 
+# Approximate attentions from attn_methods_jax.py, same qkv/proj weights as softmax. The random keys are fixed, so every
+# step sees the same random landmarks. lowrank, nystrom and stationary are not here: they read the future (test_attn_methods.py).
+APPROX = {
+    "sparse": lambda q, k, v, key: sparse_softmax(q, k, v, key, m=16, window=32),
+    "ppr": lambda q, k, v, key: ppr(q, k, v, key, m=16, window=32, alpha=0.7),
+    "bitonic": lambda q, k, v, key: bitonic_topk(q, k, v, key, topk=16, tau=0.1, pool=64),
+    "bandit": lambda q, k, v, key: bandit(q, k, v, key, z=2.0),
+}
 
-def mix(p, x, n_heads):
-    """Dispatch on which weights the layer has (see init_params)."""
+
+def approx_attention(p, x, n_heads, method):
+    """Like `attention`, with the per-head softmax replaced by APPROX[method]."""
+    T, D = x.shape
+    q, k, v = (a.reshape(T, n_heads, D // n_heads).transpose(1, 0, 2) for a in jnp.split(x @ p["qkv"], 3, axis=-1))
+    out = jax.vmap(APPROX[method], in_axes=(0, 0, 0, None))(q, k, v, jax.random.PRNGKey(0))
+    return out.transpose(1, 0, 2).reshape(T, D) @ p["proj"]
+
+
+def mix(p, x, n_heads, evicted_at=None):
+    """Dispatch on which weights the layer has (see init_params). evicted_at: CSA only, see csa_attention."""
     if "csa" in p:  # recomputed in the backward, like softmax below: at T = 2048 its stored activations hit 3.9 GiB
-        return jax.checkpoint(csa_attention)(p["csa"], x)
+        return jax.checkpoint(lambda p, x, e: csa_attention(p, x, evicted_at=e))(p["csa"], x, evicted_at)
+    for name in APPROX:
+        if name in p:
+            return jax.checkpoint(approx_attention, static_argnums=(2, 3))(p, x, n_heads, name)
     if "hier" in p:
         return hier_attention(p, x, n_heads)
     if "hier_window" in p:
@@ -97,15 +118,16 @@ def mix(p, x, n_heads):
     return jax.checkpoint(attention, static_argnums=2)(p, x, n_heads)
 
 
-def forward(params, tokens, k=None, n_heads=4):
+def forward(params, tokens, k=None, n_heads=4, evicted_at=None):
     """tokens: (T,) int -> logits (T, vocab). vmap for batches.
-    k: keep only the first k MLP hidden units (nested dropout during training)."""
+    k: keep only the first k MLP hidden units (nested dropout during training).
+    evicted_at: CSA only, (n_layers, blocks) from evict.py's decode; row l goes to layer l."""
     x = params["tok_emb"][tokens] + params["pos_emb"][: len(tokens)]
-    for p in params["layers"]:
+    for l, p in enumerate(params["layers"]):
         # Pre-norm residual block: each sublayer reads a normalized copy of x and adds
         # its result back to x, so information and gradients flow straight through.
         a = layer_norm(p["ln1"], x)
-        x = x + mix(p, a, n_heads)
+        x = x + mix(p, a, n_heads, None if evicted_at is None else evicted_at[l])
         h = jax.nn.gelu(layer_norm(p["ln2"], x) @ p["fc1"])
         if k is not None:
             # Nested dropout: zero every hidden unit from index k on. Units with low indices

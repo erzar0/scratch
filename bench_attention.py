@@ -8,7 +8,7 @@ matrix whose size doesn't depend on width: the indexer scores T x T/block_size. 
 T x T/chunk_size summary logits one block of query chunks at a time, so its memory is O(T). CSA with the
 reference block size 4 needs 12 GiB at 64k, so it also runs with block size 32, the same
 granularity as hier (both then pick 8 chunks of 32 tokens per query).
-    .env/bin/python bench_attention.py      -> table on stdout, runs/bench_attention.csv
+    .env/bin/python bench_attention.py      -> table on stdout, runs/bench/bench_attention.csv
 """
 import os
 import time
@@ -108,7 +108,7 @@ if __name__ == "__main__":
             print(f"  {name:14s} {ratio:.2f}x  ({ran[-4]}-{ran[-1]})")
 
     os.makedirs("runs", exist_ok=True)
-    with open("runs/bench_attention.csv", "w") as log:
+    with open("runs/bench/bench_attention.csv", "w") as log:
         log.write("mixer,seq_len,forward_ms,temp_gib\n")
         for name in MIXERS:
             for T, (ms, gib) in results[name].items():

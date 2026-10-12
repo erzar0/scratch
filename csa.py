@@ -121,11 +121,13 @@ with_aux_loss.defvjp(lambda y, aux_loss: (y, aux_loss),
                      lambda aux_loss, grad_y: (grad_y, jnp.ones_like(aux_loss)))
 
 
-def csa_attention(params, x, top_k=8, window=32):
+def csa_attention(params, x, top_k=8, window=32, evicted_at=None):
     """Compressed Sparse Attention. x: (T, D) -> (T, D).
     Token t attends to (a) the top_k compressed blocks, among those finished before t's block, that a
     lightweight indexer scores highest, and (b) the `window` most recent raw tokens. Every query head shares
-    one KV head, and each entry is both key and value. Reference config: block_size=4, top_k=8, window=32."""
+    one KV head, and each entry is both key and value. Reference config: block_size=4, top_k=8, window=32.
+    evicted_at: optional (ceil(T / block_size),) int, block b is no longer a candidate for tokens t >=
+    evicted_at[b]. Replays the evictions of a decode (evict.py) in one parallel pass, for training."""
     seq_len, _ = x.shape
     block_size = params["kv_compressor"]["bias_own"].shape[0]
     # Compression needs whole blocks. Round T up and pad with zeros at the end: only later (discarded)
@@ -156,10 +158,12 @@ def csa_attention(params, x, top_k=8, window=32):
     # block b holds tokens <= block_size·(b+1) - 1, so it's finished before t's block iff b < t // block_size
     n_finished = pos // block_size  # (T,)
     finished = jnp.arange(n_blocks) < n_finished[:, None]
+    if evicted_at is not None:
+        finished &= pos[:, None] < evicted_at
     picked_score, picked_block = jax.lax.top_k(jnp.where(finished, block_score, -jnp.inf), k)  # Eq. 17
     # Early tokens have fewer than k finished blocks, but top_k still returns k indices: the extras point
-    # at unfinished (future) blocks and must be masked. (The reference PyTorch code leaked here.)
-    picked_valid = picked_block < n_finished[:, None]
+    # at unfinished (future) or evicted blocks and must be masked. (The reference PyTorch code leaked here.)
+    picked_valid = jnp.take_along_axis(finished, picked_block, 1)
 
     # --- KV entries per token: k picked compressed blocks ++ the `window` raw tokens ending at t
     window_pos = pos[:, None] - jnp.arange(window)[::-1]  # (T, window): t-window+1, ..., t
@@ -229,10 +233,13 @@ def csa_cache(params, context, window=32):
     }
 
 
-def csa_decode_step(params, cache, x_t, t, top_k=8):
+def csa_decode_step(params, cache, x_t, t, top_k=8, return_picks=False):
     """Output for the token at position t (int), x_t: (D,) its layer input, cache: csa_cache of tokens < t.
     Same math as row t of csa_attention, for one query. Every cached block is finished before t's block:
-    block b holds tokens up to block_size·(b+1) - 1 < t, and t's own block isn't complete in the cache."""
+    block b holds tokens up to block_size·(b+1) - 1 < t, and t's own block isn't complete in the cache.
+    cache["block"], optional (n,) int: the block id held by each cache row, -1 for an empty row (evict.py's
+    pool of slots); without it, row i holds block i. return_picks: also return the picked rows (k,) and
+    each head's attention weight on them (heads, k)."""
     block_size = params["kv_compressor"]["bias_own"].shape[0]
     n_heads, kv_dim = params["sink"].shape[0], params["query_norm"].shape[0]
     window = cache["window_kv"].shape[0] + 1
@@ -240,21 +247,24 @@ def csa_decode_step(params, cache, x_t, t, top_k=8):
     latent_query = x_t @ params["query_down"]
 
     # Indexer: score the cached blocks, keep the top k (fewer if fewer blocks exist; prefill masks the rest)
-    k = min(top_k, cache["indexer_keys"].shape[0])
+    n_rows = cache["indexer_keys"].shape[0]
+    block = cache.get("block", jnp.arange(n_rows))
+    k = min(top_k, n_rows)
     if k > 0:
         indexer_query = (latent_query @ indexer["query_up"]).reshape(indexer["head_weight"].shape[1], -1)
         match = jax.nn.relu(indexer_query @ cache["indexer_keys"].T)  # (indexer heads, blocks)
         block_score = (x_t @ indexer["head_weight"]) @ match * indexer_query.size**-0.5
-        picked_block = jax.lax.top_k(block_score, k)[1]
+        picked = jax.lax.top_k(jnp.where(block >= 0, block_score, -jnp.inf), k)[1]
     else:
-        picked_block = jnp.zeros(0, jnp.int32)
+        picked = jnp.zeros(0, jnp.int32)
+    picked_block = block[picked]
 
     # KV entries: picked blocks ++ the window (cached window - 1 tokens, then this token's own entry)
     window_pos = t - jnp.arange(window)[::-1]
     window_kv = jnp.concatenate([cache["window_kv"], (x_t @ params["window_kv"])[None]])
-    kv = jnp.concatenate([cache["compressed_kv"][picked_block], window_kv])  # (k + window, kv_dim)
+    kv = jnp.concatenate([cache["compressed_kv"][picked], window_kv])  # (k + window, kv_dim)
     kv_pos = jnp.concatenate([picked_block * block_size + block_size // 2, window_pos])
-    kv_valid = jnp.concatenate([jnp.ones(k, bool), window_pos >= 0])
+    kv_valid = jnp.concatenate([picked_block >= 0, window_pos >= 0])
 
     # Core attention, as in csa_attention
     query = (latent_query @ params["query_up"]).reshape(n_heads, kv_dim)
@@ -265,4 +275,5 @@ def csa_decode_step(params, cache, x_t, t, top_k=8):
     out = rope(attn @ kv, jnp.full(n_heads, -t))
     n_groups = params["group_proj"].shape[0]
     grouped = jnp.einsum("gi,gio->go", out.reshape(n_groups, -1), params["group_proj"])
-    return grouped.reshape(-1) @ params["out_proj"]
+    y = grouped.reshape(-1) @ params["out_proj"]
+    return (y, picked, attn[:, :k]) if return_picks else y

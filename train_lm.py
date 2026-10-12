@@ -8,8 +8,8 @@ Train (JAX with CUDA from .env):
     .env/bin/python train_lm.py csa
     .env/bin/python train_lm.py hier
     .env/bin/python train_lm.py hier_window   # hier + a 512-token sliding window: exact attention unless SEQ > 512
-SEQ=2048 BATCH=2 trains on 2048-token windows (same tokens per step) and logs to runs/<mixer>_seq2048.csv.
-Logs go to runs/<mixer>.csv, final weights to runs/<mixer>.pkl. Loss is nats per BPE token, so perplexities are per BPE token,
+SEQ=2048 BATCH=2 trains on 2048-token windows (same tokens per step) and logs to runs/train/<mixer>_seq2048.csv.
+Logs go to runs/train/<mixer>.csv, final weights to runs/train/<mixer>.pkl. Loss is nats per BPE token, so perplexities are per BPE token,
 not the word-level perplexities that papers report on WikiText-103.
 """
 import math
@@ -130,7 +130,7 @@ def main(mixer):
 
     rng = np.random.default_rng(0)  # same data order for both mixers
     os.makedirs("runs", exist_ok=True)
-    run = f"runs/{mixer}" if SEQ == 512 else f"runs/{mixer}_seq{SEQ}"
+    run = f"runs/train/{mixer}" if SEQ == 512 else f"runs/train/{mixer}_seq{SEQ}"
     log = open(f"{run}.csv", "w")
     log.write("step,tokens,train_loss,val_loss,seconds\n")
     t0, seen = time.time(), 0
