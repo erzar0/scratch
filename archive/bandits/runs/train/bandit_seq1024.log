@@ -1,0 +1,44 @@
+E1013 03:20:00.320541 2023015 cuda_executor.cc:1365] [0] Failed to allocate device memory of 4.00GiB (4294967296 bytes): RESOURCE_EXHAUSTED: : CUDA_ERROR_OUT_OF_MEMORY: out of memory
+=== Source Location Trace: ===
+external/xla+/xla/stream_executor/cuda/cuda_status.cc:45
+external/xla+/xla/stream_executor/cuda/cuda_device_allocator.cc:230
+external/xla+/xla/stream_executor/cuda/cuda_device_allocator.cc:487
+
+[bandit] 51.5M params, 3000 steps x 4096 tokens
+[bandit] step 100: loss 7.167  |g| 0.83  6,502 tok/s
+[bandit] step 200: loss 6.852  |g| 0.89  8,996 tok/s
+[bandit] step 300: loss 6.271  |g| 0.73  10,311 tok/s
+[bandit] step 400: loss 6.445  |g| 0.66  11,127 tok/s
+[bandit] step 500: loss 6.219  |g| 0.70  11,680 tok/s
+[bandit] step 500: val loss 6.297 (ppl 542.8)
+[bandit] step 600: loss 6.370  |g| 0.72  10,956 tok/s
+[bandit] step 700: loss 6.146  |g| 0.69  11,360 tok/s
+[bandit] step 800: loss 6.051  |g| 0.67  11,683 tok/s
+[bandit] step 900: loss 5.972  |g| 0.67  11,946 tok/s
+[bandit] step 1000: loss 6.388  |g| 0.66  12,165 tok/s
+[bandit] step 1000: val loss 6.016 (ppl 409.9)
+[bandit] step 1100: loss 5.989  |g| 0.69  12,195 tok/s
+[bandit] step 1200: loss 6.046  |g| 0.72  12,364 tok/s
+[bandit] step 1300: loss 6.070  |g| 0.68  12,512 tok/s
+[bandit] step 1400: loss 6.231  |g| 0.71  12,642 tok/s
+[bandit] step 1500: loss 5.715  |g| 0.67  12,755 tok/s
+[bandit] step 1500: val loss 5.837 (ppl 342.6)
+[bandit] step 1600: loss 5.929  |g| 0.68  12,739 tok/s
+[bandit] step 1700: loss 5.871  |g| 0.64  12,834 tok/s
+[bandit] step 1800: loss 6.011  |g| 0.68  12,919 tok/s
+[bandit] step 1900: loss 5.578  |g| 0.68  12,997 tok/s
+[bandit] step 2000: loss 5.549  |g| 0.70  13,068 tok/s
+[bandit] step 2000: val loss 5.667 (ppl 289.1)
+[bandit] step 2100: loss 5.765  |g| 0.71  13,040 tok/s
+[bandit] step 2200: loss 5.209  |g| 0.88  13,105 tok/s
+[bandit] step 2300: loss 5.659  |g| 0.82  13,165 tok/s
+[bandit] step 2400: loss 5.523  |g| 0.80  13,221 tok/s
+[bandit] step 2500: loss 5.537  |g| 0.78  13,271 tok/s
+[bandit] step 2500: val loss 5.556 (ppl 258.8)
+[bandit] step 2600: loss 5.495  |g| 0.88  13,238 tok/s
+[bandit] step 2700: loss 5.742  |g| 0.81  13,283 tok/s
+[bandit] step 2800: loss 5.574  |g| 0.89  13,325 tok/s
+[bandit] step 2900: loss 5.521  |g| 0.81  13,364 tok/s
+[bandit] step 3000: loss 5.714  |g| 0.77  13,401 tok/s
+[bandit] step 3000: val loss 5.483 (ppl 240.7)
+[bandit] final val 5.5051 (ppl 245.95), test 5.4982 (ppl 244.24), 937s

@@ -1,0 +1,67 @@
+[project]
+name = "csa-double-indexing"
+version = "0.1.0"
+description = "DeepSeek CSA2 and a double indexer in PyTorch"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib==3.11.2",
+    "numpy==2.5.4",
+    "polars",
+    "torch==2.14.1",
+    "transformers==5.19.0",
+]
+
+[project.optional-dependencies]
+prep = ["pyarrow", "tiktoken"]
+
+[dependency-groups]
+dev = ["ipykernel", "ipywidgets", "mypy", "pytest", "ruff"]
+eval = [
+    "lm-eval[hf,ruler]==0.4.13",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bench", "src/deepseek", "src/experiments", "src/model", "src/plots", "src/qwen", "src/sparse"]
+
+[tool.ruff]
+line-length = 88
+src = ["src", "tests"]
+extend-exclude = ["tests/data", "archive"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "B", "UP"]
+ignore = ["N812"]  # torch's `functional as F`
+
+[tool.mypy]
+python_version = "3.12"
+mypy_path = "src"
+explicit_package_bases = true
+# The pre-refactor golden generator calls the old API on purpose.
+exclude = ["tests/data/"]
+
+[[tool.mypy.overrides]]
+module = ["pyarrow.*", "tiktoken", "lm_eval", "lm_eval.*", "datasets", "datasets.*", "triton", "triton.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["matplotlib.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.uv]
+default-groups = ["dev", "eval"]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu130" }
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true

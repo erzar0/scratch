@@ -1,0 +1,16 @@
+2026-10-13 03:30:31,066 layer 0 head 0 done
+2026-10-13 03:30:33,851 layer 0 head 2 done
+2026-10-13 03:30:36,591 layer 0 head 4 done
+2026-10-13 03:30:39,519 layer 0 head 6 done
+2026-10-13 03:30:42,240 layer 3 head 0 done
+2026-10-13 03:30:44,994 layer 3 head 2 done
+2026-10-13 03:30:47,860 layer 3 head 4 done
+2026-10-13 03:30:50,774 layer 3 head 6 done
+2026-10-13 03:30:53,596 layer 7 head 0 done
+2026-10-13 03:30:56,490 layer 7 head 2 done
+2026-10-13 03:30:59,281 layer 7 head 4 done
+2026-10-13 03:31:02,118 layer 7 head 6 done
+2026-10-13 03:31:24,476 {'method': 'exact', 'val_loss': 5.4308388233184814}
+2026-10-13 03:33:45,086 {'method': 'key bandit', 'ucb_width': 1.0, 'tolerance': 3.0, 'dims_per_round': 8, 'val_loss': 5.439048528671265}
+2026-10-13 03:36:14,058 {'method': 'key bandit', 'ucb_width': 2.0, 'tolerance': 3.0, 'dims_per_round': 8, 'val_loss': 5.430953115224838}
+2026-10-13 03:38:35,655 {'method': 'key bandit', 'ucb_width': 4.0, 'tolerance': 3.0, 'dims_per_round': 8, 'val_loss': 5.430840879678726}

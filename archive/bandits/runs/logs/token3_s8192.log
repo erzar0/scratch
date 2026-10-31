@@ -1,0 +1,6 @@
+2026-10-13 06:31:33,329 Unable to initialize backend 'tpu': INTERNAL: Failed to open libtpu.so: libtpu.so: cannot open shared object file: No such file or directory
+2026-10-13 06:31:33,802 token stage 3: 4 configs
+2026-10-13 06:31:45,372 {'T': 8192, 'stage': 3, 'top_k': 8, 'first_pulls': 1, 'second_pulls': 0, 'survivors': 16, 'ucb_width': 2.0, 'seed': 1, 'reads_per_seq': 33538048.0, 'reads_ratio': 0.24999994036623718, 'val_loss': 4.150830642382304, 'delta_vs_flat': 0.16568064238230384}
+2026-10-13 06:31:52,685 {'T': 8192, 'stage': 3, 'top_k': 8, 'first_pulls': 1, 'second_pulls': 0, 'survivors': 16, 'ucb_width': 2.0, 'seed': 2, 'reads_per_seq': 33538048.0, 'reads_ratio': 0.24999994036623718, 'val_loss': 4.1506153583526615, 'delta_vs_flat': 0.16546535835266152}
+2026-10-13 06:32:00,047 {'T': 8192, 'stage': 3, 'top_k': 8, 'first_pulls': 2, 'second_pulls': 0, 'survivors': 16, 'ucb_width': 2.0, 'seed': 1, 'reads_per_seq': 67076096.0, 'reads_ratio': 0.12499997018311859, 'val_loss': 4.150545374552409, 'delta_vs_flat': 0.16539537455240882}
+2026-10-13 06:32:07,054 {'T': 8192, 'stage': 3, 'top_k': 8, 'first_pulls': 2, 'second_pulls': 0, 'survivors': 16, 'ucb_width': 2.0, 'seed': 2, 'reads_per_seq': 67076096.0, 'reads_ratio': 0.12499997018311859, 'val_loss': 4.15034449895223, 'delta_vs_flat': 0.16519449895223026}

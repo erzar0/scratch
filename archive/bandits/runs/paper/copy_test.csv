@@ -1,0 +1,10 @@
+T,seed,method,config,reads_ratio,copy_loss,delta,se,n_batches
+2048,0,superblock,"superblock_size=32, kept_superblocks=2, first_pulls=2, survivors=4, second_pulls=16, ucb_width=1.0",1.79298,3.98964,0.138668,0.0055173,60
+2048,0,channel,"top_k=8, ucb_width=0.5, tolerance=0.0, dims_per_round=8",1.87378,3.86909,0.0181201,0.00127434,60
+2048,0,token,"top_k=8, first_pulls=2, second_pulls=2, survivors=32, ucb_width=0.0",0.111487,4.12321,0.272236,0.00729464,60
+8192,0,superblock,"superblock_size=64, kept_superblocks=4, first_pulls=2, survivors=8, second_pulls=32, ucb_width=1.0",1.97396,3.94228,0.0473273,0.0028589,30
+8192,0,channel,"top_k=8, ucb_width=0.25, tolerance=0.0, dims_per_round=16",1.51367,3.90558,0.0106327,0.00144207,30
+8192,0,token,"top_k=8, first_pulls=2, second_pulls=0, survivors=16, ucb_width=2.0",0.125,4.10161,0.206661,0.0123475,30
+2048,1,superblock,"superblock_size=32, kept_superblocks=2, first_pulls=2, survivors=4, second_pulls=16, ucb_width=1.0",1.79298,3.98503,0.137982,0.0057296,60
+2048,1,channel,"top_k=8, ucb_width=0.5, tolerance=0.0, dims_per_round=8",1.87378,3.8872,0.0401537,0.00202784,60
+2048,1,token,"top_k=8, first_pulls=2, second_pulls=2, survivors=32, ucb_width=0.0",0.111487,4.19056,0.343518,0.0114313,60

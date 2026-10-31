@@ -1,0 +1,10 @@
+05:49:24 queue paused between steps
+05:49:24 start route_mixed_T2048
+05:50:08 done route_mixed_T2048
+05:50:08 start paired_se_T2048
+05:51:10 done paired_se_T2048
+05:51:10 start copy_test_T2048
+05:52:15 done copy_test_T2048
+05:52:15 start pick_recall_T2048
+05:52:30 done pick_recall_T2048
+05:52:30 resumed queue

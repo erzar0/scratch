@@ -1,0 +1,7 @@
+T,method,config,reads_ratio,delta,se,n_batches
+2048,superblock,"superblock_size=32, kept_superblocks=2, first_pulls=2, survivors=4, second_pulls=16, ucb_width=1.0",1.79298,0.0314111,0.001769,60
+2048,channel,"top_k=8, ucb_width=0.5, tolerance=0.0, dims_per_round=8",1.87378,0.00931861,0.000877419,60
+2048,token,"top_k=8, first_pulls=2, second_pulls=2, survivors=32, ucb_width=0.0",0.111487,0.100037,0.00325549,60
+8192,superblock,"superblock_size=64, kept_superblocks=4, first_pulls=2, survivors=8, second_pulls=32, ucb_width=1.0",1.97396,0.0161123,0.00137372,30
+8192,channel,"top_k=8, ucb_width=0.25, tolerance=0.0, dims_per_round=16",1.51367,0.00885888,0.000864289,30
+8192,token,"top_k=8, first_pulls=2, second_pulls=0, survivors=16, ucb_width=2.0",0.125,0.164816,0.0105447,30

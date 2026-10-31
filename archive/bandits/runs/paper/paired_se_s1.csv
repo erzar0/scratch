@@ -1,0 +1,4 @@
+T,method,config,reads_ratio,delta,se,n_batches
+2048,superblock,"superblock_size=32, kept_superblocks=2, first_pulls=2, survivors=4, second_pulls=16, ucb_width=1.0",1.79298,0.0328324,0.0017206,60
+2048,channel,"top_k=8, ucb_width=0.5, tolerance=0.0, dims_per_round=8",1.87378,0.0128575,0.000817757,60
+2048,token,"top_k=8, first_pulls=2, second_pulls=2, survivors=32, ucb_width=0.0",0.111487,0.168304,0.00664018,60

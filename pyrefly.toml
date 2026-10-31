@@ -1,1 +1,2 @@
 python-interpreter-path = ".env/bin/python"
+search-path = ["src", "."]

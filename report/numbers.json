@@ -1,0 +1,413 @@
+{
+ "flat_val": {
+  "2048": "4.0462",
+  "8192": "3.9436"
+ },
+ "training": [
+  {
+   "model": "model 1",
+   "T": "2048",
+   "val": "4.0462",
+   "test": "4.0632",
+   "minutes": "61.3"
+  },
+  {
+   "model": "model 2 (another seed)",
+   "T": "2048",
+   "val": "4.0336",
+   "test": "4.0455",
+   "minutes": "63.9"
+  },
+  {
+   "model": "8192-token model",
+   "T": "8192",
+   "val": "3.9436",
+   "test": "3.9602",
+   "minutes": "42.7"
+  }
+ ],
+ "vanilla": [
+  {
+   "selector": "pure CSA2",
+   "top_k": "2",
+   "window": "32",
+   "2048": "+0.026",
+   "8192": "+0.036"
+  },
+  {
+   "selector": "pure CSA2",
+   "top_k": "4",
+   "window": "32",
+   "2048": "+0.009",
+   "8192": "+0.009"
+  },
+  {
+   "selector": "pure CSA2",
+   "top_k": "16",
+   "window": "32",
+   "2048": "+0.002",
+   "8192": "+0.008"
+  },
+  {
+   "selector": "pure CSA2",
+   "top_k": "32",
+   "window": "32",
+   "2048": "+0.023",
+   "8192": "+0.088"
+  },
+  {
+   "selector": "pure CSA2",
+   "top_k": "8",
+   "window": "1",
+   "2048": "+1.857",
+   "8192": "+3.262"
+  },
+  {
+   "selector": "pure CSA2",
+   "top_k": "8",
+   "window": "16",
+   "2048": "+0.035",
+   "8192": "+0.043"
+  },
+  {
+   "selector": "pure CSA2",
+   "top_k": "8",
+   "window": "64",
+   "2048": "+0.129",
+   "8192": "+0.039"
+  },
+  {
+   "selector": "random entries",
+   "top_k": "2",
+   "window": "32",
+   "2048": "+0.186",
+   "8192": "+0.160"
+  },
+  {
+   "selector": "random entries",
+   "top_k": "8",
+   "window": "32",
+   "2048": "+0.165",
+   "8192": "+0.151"
+  },
+  {
+   "selector": "oracle",
+   "top_k": "2",
+   "window": "32",
+   "2048": "+0.001",
+   "8192": "+0.062"
+  },
+  {
+   "selector": "oracle",
+   "top_k": "8",
+   "window": "32",
+   "2048": "+0.002",
+   "8192": "+0.003"
+  }
+ ],
+ "selectors": {
+  "2048": [
+   {
+    "method": "random entries",
+    "config": "8 entries",
+    "delta": "+0.1655 ± 0.0067",
+    "ratio": "no reads",
+    "ratio_at_target": "—",
+    "matched": false
+   },
+   {
+    "method": "oracle",
+    "config": "8 entries",
+    "delta": "+0.0016 ± 0.0003",
+    "ratio": "0.25×",
+    "ratio_at_target": "—",
+    "matched": false
+   },
+   {
+    "method": "double indexing: mean",
+    "config": "superblocks of 8, keep 8",
+    "delta": "+0.0072 ± 0.0005",
+    "ratio_at_target": "2.70×",
+    "ratio": "2.70×",
+    "matched": true
+   },
+   {
+    "method": "double indexing: bound",
+    "config": "superblocks of 8, keep 8",
+    "delta": "+0.0069 ± 0.0007",
+    "ratio_at_target": "2.03×",
+    "ratio": "2.03×",
+    "matched": true
+   },
+   {
+    "method": "double indexing: learned",
+    "config": "superblocks of 16, keep 4",
+    "delta": "+0.0094 ± 0.0008",
+    "ratio_at_target": "3.12×",
+    "ratio": "3.12×",
+    "matched": true
+   },
+   {
+    "method": "double indexing: mixed",
+    "config": "superblocks of 8, keep 1 (needle layers: keep 8)",
+    "delta": "+0.0076 ± 0.0007",
+    "ratio_at_target": "3.03×",
+    "ratio": "3.03×",
+    "matched": true
+   }
+  ],
+  "8192": [
+   {
+    "method": "random entries",
+    "config": "8 entries",
+    "delta": "+0.1511 ± 0.0073",
+    "ratio": "no reads",
+    "ratio_at_target": "—",
+    "matched": false
+   },
+   {
+    "method": "oracle",
+    "config": "8 entries",
+    "delta": "+0.0032 ± 0.0008",
+    "ratio": "0.25×",
+    "ratio_at_target": "—",
+    "matched": false
+   },
+   {
+    "method": "double indexing: mean",
+    "config": "superblocks of 64, keep 2",
+    "delta": "+0.0088 ± 0.0011",
+    "ratio_at_target": "6.06×",
+    "ratio": "6.06×",
+    "matched": true
+   },
+   {
+    "method": "double indexing: bound",
+    "config": "superblocks of 32, keep 4",
+    "delta": "+0.0087 ± 0.0008",
+    "ratio_at_target": "5.08×",
+    "ratio": "5.08×",
+    "matched": true
+   },
+   {
+    "method": "double indexing: learned",
+    "config": "superblocks of 16, keep 4",
+    "delta": "+0.0097 ± 0.0011",
+    "ratio_at_target": "7.65×",
+    "ratio": "7.65×",
+    "matched": true
+   },
+   {
+    "method": "double indexing: mixed",
+    "config": "superblocks of 16, keep 2 (needle layers: keep 8)",
+    "delta": "+0.0061 ± 0.0007",
+    "ratio_at_target": "7.24×",
+    "ratio": "7.24×",
+    "matched": true
+   }
+  ]
+ },
+ "cost": {
+  "layer": [
+   {
+    "layer": "CSA2 layer",
+    "decode1": "89",
+    "decode8": "161",
+    "cache": "6.0",
+    "prefill32k": "38.7"
+   },
+   {
+    "layer": "full attention (FlashAttention)",
+    "decode1": "450",
+    "decode8": "3443",
+    "cache": "256.0",
+    "prefill32k": "14.6"
+   }
+  ],
+  "indexer": [
+   {
+    "method": "pure CSA2 (scores every entry)",
+    "decode": "1518",
+    "prefill": "683.8",
+    "kib": "2048"
+   },
+   {
+    "method": "double indexing: learned, superblocks of 16, keep 4",
+    "decode": "109",
+    "prefill": "134.4",
+    "kib": "132"
+   },
+   {
+    "method": "double indexing: bound, superblocks of 16, keep 32",
+    "decode": "218",
+    "prefill": "154.5",
+    "kib": "288"
+   },
+   {
+    "method": "double indexing: learned, superblocks of 64, keep 4",
+    "decode": "70",
+    "prefill": "105.6",
+    "kib": "48"
+   }
+  ]
+ },
+ "seeds": [
+  {
+   "method": "random entries",
+   "config": "8 entries",
+   "seed0": "+0.1655 ± 0.0067",
+   "seed1": "+0.1665 ± 0.0062",
+   "matched0": false,
+   "matched1": false
+  },
+  {
+   "method": "oracle",
+   "config": "8 entries",
+   "seed0": "+0.0016 ± 0.0003",
+   "seed1": "+0.0015 ± 0.0003",
+   "matched0": true,
+   "matched1": true
+  },
+  {
+   "method": "double indexing: mean",
+   "config": "superblocks of 8, keep 8",
+   "seed0": "+0.0072 ± 0.0005",
+   "seed1": "+0.0060 ± 0.0005",
+   "matched0": true,
+   "matched1": true
+  },
+  {
+   "method": "double indexing: bound",
+   "config": "superblocks of 8, keep 8",
+   "seed0": "+0.0069 ± 0.0007",
+   "seed1": "+0.0054 ± 0.0005",
+   "matched0": true,
+   "matched1": true
+  },
+  {
+   "method": "double indexing: learned",
+   "config": "superblocks of 16, keep 4",
+   "seed0": "+0.0094 ± 0.0008",
+   "seed1": "+0.0079 ± 0.0007",
+   "matched0": true,
+   "matched1": true
+  },
+  {
+   "method": "double indexing: mixed",
+   "config": "superblocks of 8, keep 1 (needle layers: keep 8)",
+   "seed0": "+0.0076 ± 0.0007",
+   "seed1": "+0.0167 ± 0.0007",
+   "matched0": true,
+   "matched1": false
+  }
+ ],
+ "copy": [
+  {
+   "method": "pure CSA2",
+   "2048_s0": "3.950",
+   "8192_s0": "3.874",
+   "2048_s1": "3.942",
+   "normal_2048": "—",
+   "normal_8192": "—"
+  },
+  {
+   "method": "random entries",
+   "2048_s0": "+0.2756 ± 0.0100",
+   "8192_s0": "+0.1720 ± 0.0078",
+   "2048_s1": "+0.2751 ± 0.0090",
+   "normal_2048": "+0.1655 ± 0.0067",
+   "normal_8192": "+0.1511 ± 0.0073"
+  },
+  {
+   "method": "oracle",
+   "2048_s0": "-0.0013 ± 0.0004",
+   "8192_s0": "+0.0020 ± 0.0007",
+   "2048_s1": "-0.0021 ± 0.0004",
+   "normal_2048": "+0.0016 ± 0.0003",
+   "normal_8192": "+0.0032 ± 0.0008"
+  },
+  {
+   "method": "double indexing: mean",
+   "2048_s0": "+0.0587 ± 0.0026",
+   "8192_s0": "+0.0316 ± 0.0023",
+   "2048_s1": "+0.0503 ± 0.0026",
+   "normal_2048": "+0.0072 ± 0.0005",
+   "normal_8192": "+0.0088 ± 0.0011"
+  },
+  {
+   "method": "double indexing: bound",
+   "2048_s0": "+0.0342 ± 0.0023",
+   "8192_s0": "+0.0301 ± 0.0024",
+   "2048_s1": "+0.0322 ± 0.0021",
+   "normal_2048": "+0.0069 ± 0.0007",
+   "normal_8192": "+0.0087 ± 0.0008"
+  },
+  {
+   "method": "double indexing: learned",
+   "2048_s0": "+0.0890 ± 0.0040",
+   "8192_s0": "+0.0326 ± 0.0025",
+   "2048_s1": "+0.0762 ± 0.0041",
+   "normal_2048": "+0.0094 ± 0.0008",
+   "normal_8192": "+0.0097 ± 0.0011"
+  },
+  {
+   "method": "double indexing: mixed",
+   "2048_s0": "+0.0344 ± 0.0022",
+   "8192_s0": "+0.0229 ± 0.0018",
+   "2048_s1": "+0.0409 ± 0.0018",
+   "normal_2048": "+0.0076 ± 0.0007",
+   "normal_8192": "+0.0061 ± 0.0007"
+  }
+ ],
+ "picks": [
+  {
+   "method": "pure CSA2",
+   "pick_2048": "1.00",
+   "mass_2048": "1.00",
+   "pick_8192": "1.00",
+   "mass_8192": "1.00"
+  },
+  {
+   "method": "random entries",
+   "pick_2048": "0.06",
+   "mass_2048": "0.06",
+   "pick_8192": "0.02",
+   "mass_8192": "0.02"
+  },
+  {
+   "method": "oracle",
+   "pick_2048": "0.64",
+   "mass_2048": "0.77",
+   "pick_8192": "0.58",
+   "mass_8192": "0.72"
+  },
+  {
+   "method": "double indexing: mean",
+   "pick_2048": "0.76",
+   "mass_2048": "0.82",
+   "pick_8192": "0.67",
+   "mass_8192": "0.77"
+  },
+  {
+   "method": "double indexing: bound",
+   "pick_2048": "0.72",
+   "mass_2048": "0.77",
+   "pick_8192": "0.59",
+   "mass_8192": "0.67"
+  },
+  {
+   "method": "double indexing: learned",
+   "pick_2048": "0.78",
+   "mass_2048": "0.83",
+   "pick_8192": "0.63",
+   "mass_8192": "0.70"
+  },
+  {
+   "method": "double indexing: mixed",
+   "pick_2048": "0.53",
+   "mass_2048": "0.67",
+   "pick_8192": "0.51",
+   "mass_8192": "0.63"
+  }
+ ]
+}

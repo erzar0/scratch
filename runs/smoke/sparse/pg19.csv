@@ -1,0 +1,14 @@
+row,book,ce
+exact-128,0,2.61455
+tournament-random-bracket-approx-128,0,8.24608
+tournament-random-bracket-drop-128,0,7.75819
+tournament-random-bracket-mean-128,0,7.12818
+tournament-hadamard-halving-mean-128,0,8.74768
+tournament-pca-bracket-drop-128,0,7.72697
+loki-pre-32-128,0,6.13969
+loki-post-32-128,0,2.79433
+tournament-random-halving-drop-128,0,6.29696
+tournament-random-bracket-drop-1024,0,6.34476
+dense,0,2.84787
+tournament-query-halving-drop-128,0,3.12066
+sparq-32-128,0,3.02639

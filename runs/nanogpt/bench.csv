@@ -1,0 +1,31 @@
+stack,packing,T,forward_ms,train_step_ms,peak_gib
+CSA2,training,2048,14.4835,37.445,1.4285
+"flash, record 91 windows",training,2048,2.82626,10.4875,0.202527
+"flash, full causal",training,2048,3.29355,9.62296,0.174658
+"CSA2, not compiled",training,2048,74.6665,159.495,2.59771
+CSA2,training,4096,23.9294,60.5556,2.78858
+"flash, record 91 windows",training,4096,3.61762,11.3745,0.363129
+"flash, full causal",training,4096,3.58292,11.3702,0.346624
+"CSA2, not compiled",training,4096,68.8093,165.611,5.19936
+CSA2,training,6144,41.2117,96.6182,4.11279
+"flash, record 91 windows",training,6144,5.37579,17.1084,0.527624
+"flash, full causal",training,6144,5.07374,17.0431,0.527624
+"CSA2, not compiled",training,6144,106.265,253.25,7.80184
+CSA2,one document,8192,57.4077,131.498,5.55207
+"flash, record 91 windows",one document,8192,9.54891,28.4263,0.693243
+"flash, full causal",one document,8192,19.0452,62.227,0.693243
+"CSA2, not compiled",one document,8192,154.464,330.058,10.4024
+CSA2,one document,16384,168.381,nan,nan
+"flash, record 91 windows",one document,16384,19.5451,62.3674,1.38648
+"flash, full causal",one document,16384,66.0707,225.296,1.38648
+"CSA2, not compiled",one document,16384,nan,nan,nan
+CSA2,one document,32768,nan,nan,nan
+"flash, record 91 windows",one document,32768,36.1037,125.988,2.77295
+"flash, full causal",one document,32768,234.073,794.404,2.77295
+"CSA2, not compiled",one document,32768,nan,nan,nan
+"CSA2, transformers attention",training,2048,21.1615,47.1217,2.43037
+"CSA2, transformers attention",training,4096,58.4495,147.939,9.00392
+"CSA2, transformers attention",training,6144,nan,nan,nan
+"CSA2, transformers attention",one document,8192,nan,nan,nan
+"CSA2, transformers attention",one document,16384,nan,nan,nan
+"CSA2, transformers attention",one document,32768,nan,nan,nan

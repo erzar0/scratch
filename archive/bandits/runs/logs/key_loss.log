@@ -1,0 +1,11 @@
+2026-10-13 14:00:37,084 Unable to initialize backend 'tpu': INTERNAL: Failed to open libtpu.so: libtpu.so: cannot open shared object file: No such file or directory
+2026-10-13 14:00:42,215 {'method': 'exact', 'val_loss': 5.43083630502224, 'delta_vs_exact': 0.0, 'delta_se': 0.0}
+2026-10-13 14:01:14,586 {'method': 'key bandit', 'ucb_width': 0.5, 'tolerance': 3.0, 'dims_per_round': 4, 'val_loss': 5.573125883936882, 'delta_vs_exact': 0.14228957891464233, 'delta_se': 0.0030299431695691163}
+2026-10-13 14:01:25,084 {'method': 'key bandit', 'ucb_width': 0.5, 'tolerance': 3.0, 'dims_per_round': 8, 'val_loss': 5.48036827147007, 'delta_vs_exact': 0.0495319664478302, 'delta_se': 0.0016852291283863832}
+2026-10-13 14:01:35,841 {'method': 'key bandit', 'ucb_width': 1.0, 'tolerance': 1.0, 'dims_per_round': 8, 'val_loss': 5.470814563333988, 'delta_vs_exact': 0.039978258311748505, 'delta_se': 0.0014889991148053527}
+2026-10-13 14:01:46,537 {'method': 'key bandit', 'ucb_width': 1.0, 'tolerance': 3.0, 'dims_per_round': 8, 'val_loss': 5.4390391409397125, 'delta_vs_exact': 0.00820283591747284, 'delta_se': 0.0006011116199124963}
+2026-10-13 14:02:20,902 {'method': 'key bandit', 'ucb_width': 2.0, 'tolerance': 1.0, 'dims_per_round': 4, 'val_loss': 5.439411573112011, 'delta_vs_exact': 0.00857526808977127, 'delta_se': 0.000679432220316435}
+2026-10-13 14:02:26,001 {'method': 'key bandit', 'ucb_width': 1.0, 'tolerance': 3.0, 'dims_per_round': 16, 'val_loss': 5.433248318731785, 'delta_vs_exact': 0.0024120137095451355, 'delta_se': 0.00031325459220728116}
+2026-10-13 14:02:36,619 {'method': 'key bandit', 'ucb_width': 2.0, 'tolerance': 1.0, 'dims_per_round': 8, 'val_loss': 5.432861290872097, 'delta_vs_exact': 0.0020249858498573303, 'delta_se': 0.00036718071455929286}
+2026-10-13 14:02:46,906 {'method': 'key bandit', 'ucb_width': 2.0, 'tolerance': 3.0, 'dims_per_round': 8, 'val_loss': 5.430957540869713, 'delta_vs_exact': 0.00012123584747314453, 'delta_se': 8.674747373413952e-05}
+2026-10-13 14:02:57,334 {'method': 'key bandit', 'ucb_width': 4.0, 'tolerance': 3.0, 'dims_per_round': 8, 'val_loss': 5.430839493870735, 'delta_vs_exact': 3.1888484954833984e-06, 'delta_se': 2.764383590015884e-06}

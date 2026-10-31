@@ -1,0 +1,7 @@
+T,method,config,reads_ratio,delta,se,n_batches
+2048,random,top_k=8,"",0.166541,0.00615925,60
+2048,oracle,top_k=8,"",0.0014842,0.000305584,60
+2048,double indexing mean,"S=8, s=8",2.70456,0.00603496,0.000482928,60
+2048,double indexing bound,"S=8, s=8",2.02825,0.00537914,0.000511977,60
+2048,double indexing learned,"S=16, s=4",3.11712,0.00787446,0.000738195,60
+2048,double indexing mixed,"S=8/8, s=1/8",3.02656,0.0167195,0.000715616,60
