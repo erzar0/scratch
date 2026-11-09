@@ -1,0 +1,305 @@
+shape,problem,method,width,ms
+stage 1,top half,radix,128,0.06247
+stage 1,top half,sort,128,0.04879
+stage 1,top half,topk,128,0.05050
+stage 1,top half,topk tile,128,0.05721
+stage 1,top half,bisect,128,0.04560
+stage 1,top half,bisect tile,128,0.06427
+stage 1,top half,torch,128,0.26261
+stage 1,top half,radix,256,0.07293
+stage 1,top half,sort,256,0.04586
+stage 1,top half,topk,256,0.05348
+stage 1,top half,topk tile,256,0.07038
+stage 1,top half,bisect,256,0.04260
+stage 1,top half,bisect tile,256,0.06249
+stage 1,top half,torch,256,0.30477
+stage 1,top half,radix,512,0.06836
+stage 1,top half,sort,512,0.07138
+stage 1,top half,topk,512,0.10070
+stage 1,top half,topk tile,512,0.13616
+stage 1,top half,bisect,512,0.04909
+stage 1,top half,bisect tile,512,0.07815
+stage 1,top half,torch,512,0.70192
+stage 1,top half,radix,1024,0.15253
+stage 1,top half,sort,1024,0.23573
+stage 1,top half,topk,1024,0.21741
+stage 1,top half,topk tile,1024,0.49169
+stage 1,top half,bisect,1024,0.07011
+stage 1,top half,bisect tile,1024,0.09737
+stage 1,top half,torch,1024,0.31470
+stage 1,top-64,radix,128,0.01253
+stage 1,top-64,sort,128,0.00993
+stage 1,top-64,topk,128,0.01034
+stage 1,top-64,topk tile,128,0.01210
+stage 1,top-64,bisect,128,0.01092
+stage 1,top-64,bisect tile,128,0.01561
+stage 1,top-64,delegate,128,0.01385
+stage 1,top-64,delegate tile,128,0.02234
+stage 1,top-64,torch,128,0.04460
+stage 1,top-64,radix,256,0.02940
+stage 1,top-64,sort,256,0.02165
+stage 1,top-64,topk,256,0.02945
+stage 1,top-64,topk tile,256,0.04015
+stage 1,top-64,bisect,256,0.01721
+stage 1,top-64,bisect tile,256,0.02618
+stage 1,top-64,delegate,256,0.03148
+stage 1,top-64,delegate tile,256,0.06132
+stage 1,top-64,torch,256,0.14764
+stage 1,top-64,radix,512,0.04737
+stage 1,top-64,sort,512,0.05523
+stage 1,top-64,topk,512,0.08528
+stage 1,top-64,topk tile,512,0.10206
+stage 1,top-64,bisect,512,0.04975
+stage 1,top-64,bisect tile,512,0.08590
+stage 1,top-64,delegate,512,0.18913
+stage 1,top-64,delegate tile,512,0.24156
+stage 1,top-64,torch,512,0.38692
+stage 1,top-64,radix,1024,0.11658
+stage 1,top-64,sort,1024,0.39508
+stage 1,top-64,topk,1024,0.12770
+stage 1,top-64,topk tile,1024,0.21002
+stage 1,top-64,bisect,1024,0.09336
+stage 1,top-64,bisect tile,1024,0.08731
+stage 1,top-64,delegate,1024,0.22274
+stage 1,top-64,delegate tile,1024,0.34690
+stage 1,top-64,torch,1024,0.39390
+stage 2,top half,radix,128,0.09176
+stage 2,top half,sort,128,0.06500
+stage 2,top half,topk,128,0.07004
+stage 2,top half,topk tile,128,0.07142
+stage 2,top half,bisect,128,0.06509
+stage 2,top half,bisect tile,128,0.07768
+stage 2,top half,torch,128,0.38752
+stage 2,top half,radix,256,0.10118
+stage 2,top half,sort,256,0.08096
+stage 2,top half,topk,256,0.08301
+stage 2,top half,topk tile,256,0.10221
+stage 2,top half,bisect,256,0.05970
+stage 2,top half,bisect tile,256,0.08904
+stage 2,top half,torch,256,0.52603
+stage 2,top half,radix,512,0.11639
+stage 2,top half,sort,512,0.10586
+stage 2,top half,topk,512,0.11464
+stage 2,top half,topk tile,512,0.11449
+stage 2,top half,bisect,512,0.07568
+stage 2,top half,bisect tile,512,0.08502
+stage 2,top half,torch,512,1.07391
+stage 2,top half,radix,1024,0.12862
+stage 2,top half,sort,1024,0.12302
+stage 2,top half,topk,1024,0.12120
+stage 2,top half,topk tile,1024,0.36108
+stage 2,top half,bisect,1024,0.08114
+stage 2,top half,bisect tile,1024,0.11637
+stage 2,top half,torch,1024,0.70792
+stage 2,top-64,radix,128,0.01413
+stage 2,top-64,sort,128,0.01190
+stage 2,top-64,topk,128,0.01431
+stage 2,top-64,topk tile,128,0.01254
+stage 2,top-64,bisect,128,0.01188
+stage 2,top-64,bisect tile,128,0.01495
+stage 2,top-64,delegate,128,0.01480
+stage 2,top-64,delegate tile,128,0.02552
+stage 2,top-64,torch,128,0.05982
+stage 2,top-64,radix,256,0.02833
+stage 2,top-64,sort,256,0.01905
+stage 2,top-64,topk,256,0.01928
+stage 2,top-64,topk tile,256,0.04379
+stage 2,top-64,bisect,256,0.01831
+stage 2,top-64,bisect tile,256,0.02387
+stage 2,top-64,delegate,256,0.03138
+stage 2,top-64,delegate tile,256,0.06541
+stage 2,top-64,torch,256,0.17919
+stage 2,top-64,radix,512,0.06888
+stage 2,top-64,sort,512,0.04679
+stage 2,top-64,topk,512,0.04304
+stage 2,top-64,topk tile,512,0.04371
+stage 2,top-64,bisect,512,0.02717
+stage 2,top-64,bisect tile,512,0.03946
+stage 2,top-64,delegate,512,0.10563
+stage 2,top-64,delegate tile,512,0.14682
+stage 2,top-64,torch,512,0.34330
+stage 2,top-64,radix,1024,0.09583
+stage 2,top-64,sort,1024,0.08420
+stage 2,top-64,topk,1024,0.07284
+stage 2,top-64,topk tile,1024,0.07990
+stage 2,top-64,bisect,1024,0.04380
+stage 2,top-64,bisect tile,1024,0.06296
+stage 2,top-64,delegate,1024,0.14620
+stage 2,top-64,delegate tile,1024,0.22664
+stage 2,top-64,torch,1024,0.39035
+stage 2,top half,radix,2048,0.10409
+stage 2,top half,sort,2048,0.35272
+stage 2,top half,topk,2048,0.33585
+stage 2,top half,topk tile,2048,0.22916
+stage 2,top half,bisect,2048,0.04768
+stage 2,top half,bisect tile,2048,0.05137
+stage 2,top half,torch,2048,0.37695
+stage 2,top-64,radix,2048,0.10983
+stage 2,top-64,sort,2048,0.32770
+stage 2,top-64,topk,2048,0.19296
+stage 2,top-64,topk tile,2048,0.25211
+stage 2,top-64,bisect,2048,0.15504
+stage 2,top-64,bisect tile,2048,0.16250
+stage 2,top-64,delegate,2048,0.20155
+stage 2,top-64,delegate tile,2048,0.38830
+stage 2,top-64,torch,2048,0.30935
+stage 3,top half,radix,128,0.10587
+stage 3,top half,sort,128,0.07995
+stage 3,top half,topk,128,0.07812
+stage 3,top half,topk tile,128,0.07486
+stage 3,top half,bisect,128,0.07015
+stage 3,top half,bisect tile,128,0.09462
+stage 3,top half,torch,128,0.54796
+stage 3,top half,radix,256,0.13768
+stage 3,top half,sort,256,0.10366
+stage 3,top half,topk,256,0.10457
+stage 3,top half,topk tile,256,0.10155
+stage 3,top half,bisect,256,0.07022
+stage 3,top half,bisect tile,256,0.10928
+stage 3,top half,torch,256,0.70572
+stage 3,top half,radix,512,0.16519
+stage 3,top half,sort,512,0.15406
+stage 3,top half,topk,512,0.16294
+stage 3,top half,topk tile,512,0.16162
+stage 3,top half,bisect,512,0.08266
+stage 3,top half,bisect tile,512,0.11683
+stage 3,top half,torch,512,1.48608
+stage 3,top half,radix,1024,0.19994
+stage 3,top half,sort,1024,0.19297
+stage 3,top half,topk,1024,0.19369
+stage 3,top half,topk tile,1024,0.35653
+stage 3,top half,bisect,1024,0.09286
+stage 3,top half,bisect tile,1024,0.13194
+stage 3,top half,torch,1024,1.13847
+stage 3,top-64,radix,128,0.01655
+stage 3,top-64,sort,128,0.01358
+stage 3,top-64,topk,128,0.01425
+stage 3,top-64,topk tile,128,0.01497
+stage 3,top-64,bisect,128,0.01226
+stage 3,top-64,bisect tile,128,0.01583
+stage 3,top-64,delegate,128,0.01439
+stage 3,top-64,delegate tile,128,0.02572
+stage 3,top-64,torch,128,0.07614
+stage 3,top-64,radix,256,0.03683
+stage 3,top-64,sort,256,0.02569
+stage 3,top-64,topk,256,0.02419
+stage 3,top-64,topk tile,256,0.02357
+stage 3,top-64,bisect,256,0.01991
+stage 3,top-64,bisect tile,256,0.02786
+stage 3,top-64,delegate,256,0.04082
+stage 3,top-64,delegate tile,256,0.06514
+stage 3,top-64,torch,256,0.20321
+stage 3,top-64,radix,512,0.07450
+stage 3,top-64,sort,512,0.06331
+stage 3,top-64,topk,512,0.05820
+stage 3,top-64,topk tile,512,0.05827
+stage 3,top-64,bisect,512,0.03537
+stage 3,top-64,bisect tile,512,0.05035
+stage 3,top-64,delegate,512,0.14422
+stage 3,top-64,delegate tile,512,0.20007
+stage 3,top-64,torch,512,0.44600
+stage 3,top-64,radix,1024,0.14426
+stage 3,top-64,sort,1024,0.12855
+stage 3,top-64,topk,1024,0.11034
+stage 3,top-64,topk tile,1024,0.23978
+stage 3,top-64,bisect,1024,0.15856
+stage 3,top-64,bisect tile,1024,0.18429
+stage 3,top-64,delegate,1024,0.21907
+stage 3,top-64,delegate tile,1024,0.49301
+stage 3,top-64,torch,1024,0.52529
+stage 3,top half,radix,2048,0.14509
+stage 3,top half,sort,2048,0.22884
+stage 3,top half,topk,2048,0.23687
+stage 3,top half,topk tile,2048,0.25636
+stage 3,top half,bisect,2048,0.06721
+stage 3,top half,bisect tile,2048,0.07576
+stage 3,top half,torch,2048,0.63106
+stage 3,top-64,radix,2048,0.14120
+stage 3,top-64,sort,2048,0.22969
+stage 3,top-64,topk,2048,0.12754
+stage 3,top-64,topk tile,2048,0.13863
+stage 3,top-64,bisect,2048,0.06661
+stage 3,top-64,bisect tile,2048,0.07618
+stage 3,top-64,delegate,2048,0.21818
+stage 3,top-64,delegate tile,2048,0.26362
+stage 3,top-64,torch,2048,0.43037
+validation,top half,radix,128,0.16701
+validation,top half,sort,128,0.09977
+validation,top half,topk,128,0.10139
+validation,top half,topk tile,128,0.10026
+validation,top half,bisect,128,0.08942
+validation,top half,bisect tile,128,0.15522
+validation,top half,torch,128,0.96684
+validation,top half,radix,256,0.73357
+validation,top half,sort,256,0.70031
+validation,top half,topk,256,0.71281
+validation,top half,topk tile,256,1.05741
+validation,top half,bisect,256,0.67093
+validation,top half,bisect tile,256,1.11197
+validation,top half,torch,256,1.56258
+validation,top half,radix,512,0.29116
+validation,top half,sort,512,0.29059
+validation,top half,topk,512,0.29829
+validation,top half,topk tile,512,0.29923
+validation,top half,bisect,512,0.15777
+validation,top half,bisect tile,512,0.20337
+validation,top half,torch,512,3.16412
+validation,top half,radix,1024,0.82003
+validation,top half,sort,1024,0.84110
+validation,top half,topk,1024,0.84085
+validation,top half,topk tile,1024,5.71993
+validation,top half,bisect,1024,0.68692
+validation,top half,bisect tile,1024,0.81864
+validation,top half,torch,1024,4.44288
+validation,top half,radix,2048,1.12599
+validation,top half,sort,2048,2.47216
+validation,top half,topk,2048,2.23820
+validation,top half,topk tile,2048,2.43469
+validation,top half,bisect,2048,0.70065
+validation,top half,bisect tile,2048,0.92233
+validation,top half,torch,2048,12.68935
+validation,top-64,radix,128,0.02619
+validation,top-64,sort,128,0.01416
+validation,top-64,topk,128,0.01203
+validation,top-64,topk tile,128,0.01442
+validation,top-64,bisect,128,0.01280
+validation,top-64,bisect tile,128,0.01786
+validation,top-64,delegate,128,0.01450
+validation,top-64,delegate tile,128,0.02841
+validation,top-64,torch,128,0.08737
+validation,top-64,radix,256,0.04259
+validation,top-64,sort,256,0.02884
+validation,top-64,topk,256,0.02836
+validation,top-64,topk tile,256,0.02896
+validation,top-64,bisect,256,0.01840
+validation,top-64,bisect tile,256,0.03039
+validation,top-64,delegate,256,0.04430
+validation,top-64,delegate tile,256,0.07081
+validation,top-64,torch,256,0.22414
+validation,top-64,radix,512,0.08592
+validation,top-64,sort,512,0.07372
+validation,top-64,topk,512,0.06750
+validation,top-64,topk tile,512,0.06743
+validation,top-64,bisect,512,0.04107
+validation,top-64,bisect tile,512,0.05758
+validation,top-64,delegate,512,0.16916
+validation,top-64,delegate tile,512,0.23501
+validation,top-64,torch,512,0.52395
+validation,top-64,radix,1024,0.25548
+validation,top-64,sort,1024,0.15996
+validation,top-64,topk,1024,0.16472
+validation,top-64,topk tile,1024,0.15948
+validation,top-64,bisect,1024,0.07884
+validation,top-64,bisect tile,1024,0.11309
+validation,top-64,delegate,1024,0.27040
+validation,top-64,delegate tile,1024,1.06531
+validation,top-64,torch,1024,0.73540
+validation,top-64,radix,2048,1.15460
+validation,top-64,sort,2048,2.34014
+validation,top-64,topk,2048,1.22067
+validation,top-64,topk tile,2048,1.13452
+validation,top-64,bisect,2048,0.80168
+validation,top-64,bisect tile,2048,0.88798
+validation,top-64,delegate,2048,2.91896
+validation,top-64,delegate tile,2048,3.04811
+validation,top-64,torch,2048,9.19691

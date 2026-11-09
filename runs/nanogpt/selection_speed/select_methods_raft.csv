@@ -1,0 +1,39 @@
+shape,problem,method,width,ms
+stage 1,top half,RAFT select_k,128,1.75865
+stage 1,top half,RAFT select_k,256,2.42390
+stage 1,top half,RAFT select_k,512,2.75448
+stage 1,top half,RAFT select_k,1024,0.31629
+stage 1,top-64,RAFT select_k,128,0.08837
+stage 1,top-64,RAFT select_k,256,0.50938
+stage 1,top-64,RAFT select_k,512,0.65672
+stage 1,top-64,RAFT select_k,1024,0.55060
+stage 2,top half,RAFT select_k,128,3.12160
+stage 2,top half,RAFT select_k,256,4.17829
+stage 2,top half,RAFT select_k,512,3.93648
+stage 2,top half,RAFT select_k,1024,0.73618
+stage 2,top-64,RAFT select_k,128,0.56460
+stage 2,top-64,RAFT select_k,256,0.69565
+stage 2,top-64,RAFT select_k,512,0.85577
+stage 2,top-64,RAFT select_k,1024,0.85202
+stage 2,top half,RAFT select_k,2048,0.28560
+stage 2,top-64,RAFT select_k,2048,0.33432
+stage 3,top half,RAFT select_k,128,4.45598
+stage 3,top half,RAFT select_k,256,4.94064
+stage 3,top half,RAFT select_k,512,4.89266
+stage 3,top half,RAFT select_k,1024,1.12822
+stage 3,top-64,RAFT select_k,128,0.65365
+stage 3,top-64,RAFT select_k,256,1.07781
+stage 3,top-64,RAFT select_k,512,1.18689
+stage 3,top-64,RAFT select_k,1024,1.18123
+stage 3,top half,RAFT select_k,2048,0.48716
+stage 3,top-64,RAFT select_k,2048,0.58811
+validation,top half,RAFT select_k,128,5.00188
+validation,top half,RAFT select_k,256,5.74209
+validation,top half,RAFT select_k,512,7.07320
+validation,top half,RAFT select_k,1024,2.69998
+validation,top half,RAFT select_k,2048,2.40764
+validation,top-64,RAFT select_k,128,0.65172
+validation,top-64,RAFT select_k,256,1.03515
+validation,top-64,RAFT select_k,512,1.15771
+validation,top-64,RAFT select_k,1024,1.26637
+validation,top-64,RAFT select_k,2048,1.43835

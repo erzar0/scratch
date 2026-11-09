@@ -1,0 +1,13 @@
+version,n,ms_per_call
+"FlashAttention 2, dense, whole attention",8192,0.6339
+"Exact scores (all 128 dims), picks only",8192,2.1760
+"Union of top dims (256-wide scores), picks only",8192,2.4520
+Union features: top dims masks and copies,8192,0.7506
+"FlashAttention 2, dense, whole attention",32768,2.5252
+"Exact scores (all 128 dims), picks only",32768,9.6431
+"Union of top dims (256-wide scores), picks only",32768,10.9763
+Union features: top dims masks and copies,32768,2.7802
+"FlashAttention 2, dense, whole attention",131072,10.1131
+"Exact scores (all 128 dims), picks only",131072,46.9258
+"Union of top dims (256-wide scores), picks only",131072,51.9178
+Union features: top dims masks and copies,131072,10.9988

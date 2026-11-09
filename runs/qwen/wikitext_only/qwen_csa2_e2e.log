@@ -1,45 +1,0 @@
-2026-10-16 13:56:37,726 HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-0.6B-Base/revision/main "HTTP/1.1 200 OK"
-2026-10-16 13:56:37,881 HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-0.6B-Base/resolve/da87bfb608c14b7cf20ba1ce41287e8de496c0cd/adapter_config.json "HTTP/1.1 404 Not Found"
-Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:   0%|          | 1/310 [00:00<03:04,  1.68it/s]Loading weights:   6%|▋         | 20/310 [00:00<00:07, 37.77it/s]Loading weights:  12%|█▏        | 38/310 [00:00<00:03, 68.31it/s]Loading weights:  19%|█▉        | 59/310 [00:00<00:02, 99.75it/s]Loading weights:  26%|██▌       | 80/310 [00:01<00:01, 124.56it/s]Loading weights:  32%|███▏      | 98/310 [00:01<00:01, 137.44it/s]Loading weights:  37%|███▋      | 116/310 [00:01<00:01, 147.13it/s]Loading weights:  44%|████▍     | 136/310 [00:01<00:01, 155.03it/s]Loading weights:  51%|█████     | 157/310 [00:01<00:00, 166.32it/s]Loading weights:  57%|█████▋    | 176/310 [00:01<00:00, 170.93it/s]Loading weights:  63%|██████▎   | 195/310 [00:01<00:00, 170.50it/s]Loading weights:  69%|██████▉   | 214/310 [00:01<00:00, 171.74it/s]Loading weights:  76%|███████▌  | 235/310 [00:01<00:00, 177.96it/s]Loading weights:  82%|████████▏ | 254/310 [00:01<00:00, 178.97it/s]Loading weights:  88%|████████▊ | 273/310 [00:02<00:00, 177.18it/s]Loading weights:  94%|█████████▍| 291/310 [00:02<00:00, 166.51it/s]Loading weights: 100%|█████████▉| 309/310 [00:02<00:00, 169.90it/s]Loading weights: 100%|██████████| 310/310 [00:02<00:00, 133.47it/s]
-2026-10-16 13:56:41,317 [csa2 e2e] 59.0M trainable params, 2000 steps x 8192 tokens, from transfer
-2026-10-16 13:59:02,872 [csa2 e2e] step 50: train 2.7561
-2026-10-16 14:01:21,579 [csa2 e2e] step 100: train 2.6530
-2026-10-16 14:03:43,419 [csa2 e2e] step 150: train 2.3871
-2026-10-16 14:06:02,221 [csa2 e2e] step 200: train 2.3284
-2026-10-16 14:08:21,583 [csa2 e2e] step 250: train 2.4090
-2026-10-16 14:10:40,719 [csa2 e2e] step 300: train 2.5925
-2026-10-16 14:12:56,245 [csa2 e2e] step 350: train 2.3555
-2026-10-16 14:15:11,693 [csa2 e2e] step 400: train 2.3700
-2026-10-16 14:17:26,961 [csa2 e2e] step 450: train 2.3008
-2026-10-16 14:20:15,381 [csa2 e2e] step 500: train 2.4238, val 2.3414
-2026-10-16 14:22:31,080 [csa2 e2e] step 550: train 2.3567
-2026-10-16 14:24:46,621 [csa2 e2e] step 600: train 2.7038
-2026-10-16 14:27:01,959 [csa2 e2e] step 650: train 2.2587
-2026-10-16 14:29:17,901 [csa2 e2e] step 700: train 2.3033
-2026-10-16 14:31:33,637 [csa2 e2e] step 750: train 2.1580
-2026-10-16 14:33:49,184 [csa2 e2e] step 800: train 2.3263
-2026-10-16 14:36:04,916 [csa2 e2e] step 850: train 2.2052
-2026-10-16 14:38:20,384 [csa2 e2e] step 900: train 2.0549
-2026-10-16 14:40:35,943 [csa2 e2e] step 950: train 2.0914
-2026-10-16 14:43:25,217 [csa2 e2e] step 1000: train 1.8776, val 2.1175
-2026-10-16 14:45:43,823 [csa2 e2e] step 1050: train 1.8275
-2026-10-16 14:48:05,917 [csa2 e2e] step 1100: train 2.1652
-2026-10-16 14:50:28,073 [csa2 e2e] step 1150: train 2.1589
-2026-10-16 14:52:48,383 [csa2 e2e] step 1200: train 2.0576
-2026-10-16 14:55:07,088 [csa2 e2e] step 1250: train 2.0038
-2026-10-16 14:57:22,247 [csa2 e2e] step 1300: train 1.8394
-2026-10-16 14:59:37,436 [csa2 e2e] step 1350: train 1.9172
-2026-10-16 15:01:54,880 [csa2 e2e] step 1400: train 2.0118
-2026-10-16 15:04:13,354 [csa2 e2e] step 1450: train 1.8159
-2026-10-16 15:07:05,228 [csa2 e2e] step 1500: train 2.0348, val 1.9797
-2026-10-16 15:09:23,201 [csa2 e2e] step 1550: train 2.1866
-2026-10-16 15:11:41,218 [csa2 e2e] step 1600: train 1.8227
-2026-10-16 15:13:59,234 [csa2 e2e] step 1650: train 2.0414
-2026-10-16 15:16:17,197 [csa2 e2e] step 1700: train 2.0149
-2026-10-16 15:18:35,129 [csa2 e2e] step 1750: train 2.0083
-2026-10-16 15:20:53,139 [csa2 e2e] step 1800: train 1.8785
-2026-10-16 15:23:11,046 [csa2 e2e] step 1850: train 2.1577
-2026-10-16 15:25:29,150 [csa2 e2e] step 1900: train 1.6573
-2026-10-16 15:27:47,089 [csa2 e2e] step 1950: train 2.0564
-2026-10-16 15:30:39,188 [csa2 e2e] step 2000: train 2.0394, val 1.9248
-2026-10-16 15:30:39,403 [csa2 e2e] done in 5638 s

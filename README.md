@@ -1,97 +1,128 @@
-# CSA2 and double indexing (PyTorch)
+# Sparse decode attention: synthetic benchmarks
 
-Small decoder LMs on WikiText-103 (GPT-2 BPE). A cheaper entry picker for DeepSeek-V4.1 Compressed Sparse Attention 2
-(CSA2): double indexing, a two-level CSA2 indexer. The model is Hugging Face's DeepSeek-V4 (`transformers` 5.19.0), with
-V4.1's CSA2 written as a diff on it. Single GPU (RTX 4070 Ti SUPER 16 GB, WSL).
-Frozen: the JAX implementation and its results (`archive/jax/`), the bandit selectors (`archive/bandits/`).
+Sparse attention for decoding: one new query attends over a long KV cache, reading only some keys.
+- Every benchmarked version is listed in one registry: `src/attention/registry.py`.
+- Three benchmarks run every version: latency, fidelity, tasks.
+- Results go to local MLflow; there is one figure per benchmark, with every version on it.
+- Synthetic data only, except one training test: modded-nanogpt record 91 with tournament attention (`src/nanogpt/`). The other natural-text work (Qwen, CSA2, WikiText, the paper) is removed; git tag `before-synthetic-reorg` recovers it.
+- Hardware: one GPU (RTX 4070 Ti SUPER 16 GB, WSL).
 
 ## Layout
 
 ```
-src/
-  deepseek/     library, no side effects on import
-    csa.py                 base: HF DeepseekV4ForCausalLM unchanged, every layer CSA, shrunk (SMALL config)
-    csa2.py                V4.1 CSA2 as a diff on csa.py; each change marked "# CSA2 (V4.1 ...)"; modes
-                           Full / Reuse / Reindex; Csa2Attention.selector hook replaces the indexer's top-k
-    double_indexing.py     DoubleIndexing(S, s, coarse): coarse step on superblock summaries, Router
-    reference.py           RandomEntries, Oracle
-    v4_flash.py            DeepSeek-V4-Flash from its Hub config, no weights (shape checks)
-  model/        train.py (csa / csa2, per-layer torch.compile, bf16 autocast)
-  bench/        timing.py, layer.py (CSA2 vs SDPA flash layer), indexer.py (flat vs double indexing)
-  experiments/  results.py, selector_forward.py (forward with any selector), eval_csa.py (E0), train_router.py (R),
-                eval_route.py (E1), paired_se.py (E8: paired SE of each headline), pick_recall.py (E9: share of pure
-                CSA2's picks found), copy_test.py (E10: repeated-text retrieval stress test)
-  plots/        style.py + one module per figure; PNGs go next to their CSVs in runs/; paper.py and
-                methods.py (method illustrations) -> report/figs
-tests/          pytest, CPU (tests/conftest.py hides the GPU)
-runs/           train/ csa/ route/ bench/ paper/ logs/  (*.pt git-ignored)
-report/         paper.typ -> paper.pdf (figs/, numbers.json and the PDF from plots.paper pdf)
-docs/           two_level_indexer.md
-archive/        jax/: the JAX code and runs; bandits/: bandit selectors and dense control (neither linted nor tested)
+src/attention/            every attention version
+  registry.py             VERSIONS: the only list of what is benchmarked
+  harness.py              Chunk, Outcome, measures; hook into any HF model (AttentionInterface)
+  dense.py exact_topk.py sparq.py loki.py bandit.py block_topk.py
+  tournament/             general.py + one file per tournament variant
+  triton/                 kernels: common.py, sparq.py, tournament_*.py
+  fast_pytorch.py         plain PyTorch decode steps for versions without a kernel
+src/benchmarks/
+  synthetic.py            generated Q/K/V, task sequences
+  latency.py fidelity.py tasks.py
+  run.py                  suite runner (MLflow, resumable)
+  plot.py                 figures + tables
+  suites/standard.toml    the full suite; smoke.toml: minutes
+src/nanogpt/              record 91 training (worktree ~/repos/modded-nanogpt-r91):
+  tournament.py           tournament: shuffled blocks, growing budget, per query on its document prefix (Triton + flex)
+  tournament_fast.py      the same at any block / winners / channels per round: autotuned kernels, document-window bits; tournament.py's winners at its settings
+  plot.py                 every nanogpt figure -> runs/nanogpt/<topic>/ (training, checkpoints, selection_speed, long_context, settings; csa2: old)
+src/common/               timing.py (do_bench_cudagraph), tracking.py (MLflow), style.py
+tests/                    pytest, CPU (conftest hides the GPU; Triton tests skip); mirrors src/:
+                          tests/<package>/test_<module>.py tests src/<package>/<module>.py
+runs/benchmarks/<suite>/  figures (PDF + PNG), tables.md with captions
+runs/mlflow.db, runs/mlartifacts/, runs/tasks/, runs/logs/   git-ignored
+archive/bandits/          frozen, neither linted nor tested
+docs/methods.md           every version and setting, explained simply
+docs/papers/              reference papers (PDF)
 ```
 
-## Setup
+## Naming rules
 
-```
-uv sync                       # .venv with torch 2.14.1 (CUDA 13), transformers 5.19.0; src/ installed editable
-uv run pytest                 # CPU
-uv run ruff check src tests && uv run ruff format --check src tests && MYPYPATH=src uv run mypy src tests
-```
+- Version id: `<family>/<variant>`, e.g. `tournament/global-halving`, `block-topk/double-indexing-bound`.
+- No settings or codes in ids. Settings live in the registry entry and are logged as MLflow params.
+- Each version has a short name; figures label rows by name and kernel (the implementation timed).
+- [docs/methods.md](docs/methods.md) explains every version and setting in plain words.
+- Every sparse version gives exact attention to a budget of keys: KEEP = 512 by default; the suites also sweep 128–2048.
+  - Exceptions, checked in `tests/attention/test_correctness.py`: block top-k and double indexing up to 3 keys fewer (one chosen block can straddle the recent window).
+  - Tournaments keep every key tied at a cutoff, so exact copies of a key (synthetic sinks, needles) can leave a few extra.
+  - Block and bracket tournaments end below the budget (above half) unless the length is the budget times a power of two; the suites use only such lengths.
+  - Shuffled blocks, growing budget: budget × 1024 ÷ 32768 winners per 1024-key block, so budget × n ÷ 32K keys; not dense on short contexts.
+  - DeepSeek-V4 CSA: 128 raw recent keys plus top-budget compressed entries; latency only.
+- Figures are paper-style (7 pt serif, vector PDF + PNG), without titles; each caption (shape, dtype, distribution, repeats or seeds) is in `tables.md`.
+- Every figure lists the versions in registry order, one row each.
 
-Run everything from the repo root as modules; `runs/` and `data/` paths are relative to it. Settings come from the
-environment: `SEQ`, `BATCH`, `STEPS`, `PEAK_LR` (training and evals), `STEPS`, `LR`, `KEYS` (routers), `SEED` (model
-seed; 0 = the first model, other seeds add `_s<n>` to weight, router and result file names).
+## Versions
 
-```
-SEQ=2048 BATCH=2 STEPS=24000 uv run python -m model.train csa2         # -> runs/train/csa2_seq2048.{csv,pt,log}
-SEQ=2048 BATCH=2 uv run python -m experiments.eval_csa                 # E0 -> runs/csa/csa_loss.csv
-SEQ=2048 uv run python -m experiments.train_router 8 16                # R  -> runs/route/router_seq2048_S*_r1.pt
-SEQ=2048 BATCH=2 uv run python -m experiments.eval_route learned       # E1 (mean, bound, oracle, learned, mixed)
-SEQ=2048 BATCH=2 uv run python -m experiments.paired_se               # E8 -> runs/paper/paired_se.csv
-SEQ=2048 BATCH=2 uv run python -m experiments.pick_recall              # E9 -> runs/paper/pick_recall.csv
-SEQ=2048 BATCH=2 uv run python -m experiments.copy_test                # E10 -> runs/paper/copy_test.csv
-uv run python -m bench.indexer && uv run python -m bench.layer
-uv run python -m plots.route                                           # likewise plots.{training,layer}
-```
-
-`runs/queue_eval.sh` runs E0 to E10 and the indexer bench for every model in order, one GPU job at a time.
-
-## Results
-
-Paper with every method, comparison and ranking: `report/paper.pdf` (NeurIPS template, `bloated-neurips`).
-Rebuild figures, `numbers.json` and the PDF:
-
-```
-uv run --with typst python -m plots.paper pdf
-```
-
-All selectors run on frozen models; only the small routers are trained. "Extra loss" is a method's validation loss
-minus pure CSA2's on the same text, in nats (lower is better). A method matches pure CSA2 if its extra loss is at most
-0.01 nats (about 1% perplexity). "Times fewer reads" is how many times fewer index keys it reads than pure CSA2.
-
-| Model | Context (tokens) | Validation loss | Test loss | Training time |
-|---|---|---|---|---|
-| model 1 | 2048 | 4.0462 | 4.0632 | 61 min |
-| model 2 (another seed) | 2048 | 4.0336 | 4.0455 | 64 min |
-| 8192-token model | 8192 | 3.9436 | 3.9602 | 43 min |
-
-Cheapest matching setting of each selector on model 1 (`runs/paper/paired_se.csv`):
-
-| Selector | Times fewer reads, 2048 tokens | Times fewer reads, 8192 tokens |
+| Id | Name | Kernel |
 |---|---|---|
-| double indexing, learned router | 3.1× | 7.7× |
-| double indexing, mixed (more superblocks in needle layers) | 3.0× | 7.2× |
-| double indexing, mean summary key (no training) | 2.7× | 6.1× |
-| double indexing, bound summary key (no training) | 2.0× | 5.1× |
+| `dense` | Dense | PyTorch |
+| `exact-topk` | Exact top-k | PyTorch |
+| `sparq` | SparQ | Triton |
+| `loki` | Loki | PyTorch |
+| `deepseek-v4/csa` | DeepSeek-V4 CSA | transformers |
+| `deepseek-v4/csa-flash` | DeepSeek-V4 CSA, V4-Flash size | transformers |
+| `block-topk/flat` | Block top-k | PyTorch |
+| `block-topk/double-indexing-mean` | Double indexing: mean | PyTorch |
+| `block-topk/double-indexing-bound` | Double indexing: bound | PyTorch |
+| `tournament/global-halving` | Tournament: global halving | Triton |
+| `tournament/blocks` | Tournament: blocks | PyTorch |
+| `tournament/blocks-then-global` | Tournament: blocks, then global | Triton |
+| `tournament/wide-first-round` | Tournament: wide first round | PyTorch |
+| `tournament/sampled-cutoffs` | Tournament: sampled cutoffs | Triton |
+| `tournament/sampled-cutoffs-approximate-losers` | Tournament: sampled cutoffs, approximate losers | Triton |
+| `tournament/channel-groups` | Tournament: channel groups | PyTorch |
+| `tournament/mean-value-losers` | Tournament: mean-value losers | PyTorch |
+| `tournament/shuffled-blocks` | Tournament: shuffled blocks | Triton |
+| `tournament/shuffled-blocks-growing` | Tournament: shuffled blocks, growing budget | Triton |
+| `tournament/original` | Tournament: original | PyTorch |
+| `bandit/exact-bound` | Bandit: exact bound | PyTorch |
+| `bandit/gaussian-bound` | Bandit: Gaussian bound | PyTorch |
 
-- Nothing beats pure CSA2's loss: an oracle picking the attention's own top 8 is slightly worse.
-- Random entries cost about 0.16 nats, so selection matters.
-- On model 2 (no re-tuning), learned, mean and bound still match; mixed does not.
-- Copy test (second half repeats the first): every selector loses more than on text; bound loses least.
-- Selection step at 128k tokens, 64 sequences: 109 µs per new token vs 1518 µs for pure CSA2 (`runs/bench/indexer.csv`).
-- Whole layer at 128k: CSA2 decodes 5× faster than flash attention with a 43× smaller cache (`runs/bench/layer.csv`).
-- CSA2 prefill is slower than flash at every length and runs out of 16 GB GPU memory from 64k tokens.
+- Two implementations per version:
+  - emulation: float32, exact selection and read counts; the quality benchmarks run it;
+  - fast step: what the latency benchmark times.
+- `tests/attention/test_registry.py` checks that both select the same keys.
+- DeepSeek-V4 CSA is the transformers layer, unchanged, with random weights: fast step only, no emulation, so latency only. One row at the suite's shapes (projections sized down), one at the library's default V4-Flash sizes (64 heads × 512, batch 1).
+- Bandit fast steps mask over all keys and do no compaction, so their latency is an upper bound.
 
-⚠ The needle-layer rule and one mixed setting at 8192 tokens were chosen after first results; see paper Limitations.
+## Benchmarks
 
-The JAX results (V4-style CSA, different models) stay in `archive/jax/runs/` and are not comparable.
+| Benchmark | Input | Measures |
+|---|---|---|
+| latency | bf16 K/V from `synthetic.qkv`, 8K–128K keys, budgets 128–2048, batch 1, 8 KV heads × 2 query heads, head dim 128; iid, LLM-like | µs per decode step: median of 10 repeats, CUDA graphs |
+| fidelity | float32 Q/K/V, 8K–128K keys, budgets 128–2048, 128 decode queries, 10 seeds; 7 distributions (docs/methods.md) | output error vs dense, attention mass kept, top-128 recall, K/V share read, K sectors |
+| tasks (not usable yet) | one tiny Llama (4 layers, width 512, 4 query and 2 KV heads) trained on copy, MQAR and needle mixed, dense attention; tested at 4K–16K | answer accuracy with the version in every layer |
+
+## Commands
+
+```
+uv sync
+uv run pytest
+uv run ruff check src tests && uv run ruff format --check src tests && MYPYPATH=src uv run mypy src tests
+
+# full suite, detached; one GPU job at a time; a rerun skips finished runs
+setsid nohup uv run python -m benchmarks.run src/benchmarks/suites/standard.toml > runs/logs/standard.log 2>&1 < /dev/null &
+uv run python -m benchmarks.run src/benchmarks/suites/smoke.toml --only latency --versions dense sparq
+uv run python -m benchmarks.plot                    # runs/benchmarks/standard/: latency, fidelity, fidelity-harder, budget (.png), tables.md
+uv run mlflow ui --backend-store-uri sqlite:///runs/mlflow.db
+
+# record 91 with tournament attention, in the worktree; GPU check, then figures
+PYTHONPATH=src:. ~/repos/modded-nanogpt-r91/.venv/bin/python -m tests.nanogpt.test_tournament
+uv run python -m tests.nanogpt.test_tournament_fast     # GPU check of tournament_fast.py (about 30 min of first compiles)
+cd ~/repos/modded-nanogpt-r91 && TRAIN_SEED=1 SWEEP_VAL_EVERY=500 setsid nohup ./run_tournament.sh > ~/repos/scratch/runs/logs/nanogpt_tournament.log 2>&1 < /dev/null &
+uv run python -m nanogpt.plot                       # runs/nanogpt/<topic>/*.png
+```
+
+- ⚠ The tasks benchmark is not usable yet: dense attention scores at chance on MQAR and needle, and copy works only at some lengths, so the model has not learned content lookup. Run `--only latency fidelity` until that is fixed.
+- A budget runs only where the context is at least 16 times it (`registry.MIN_RATIO`).
+- Add `--force` to rerun finished runs.
+- Kill a run by its PID; a killed run is not finished, so it reruns.
+
+## Adding a version
+
+1. Emulation: `Chunk -> Outcome` under `src/attention/`, in its own file.
+2. Fast step: a Triton kernel in `src/attention/triton/`, or a function in `fast_pytorch.py`.
+3. Add a `Version` to `registry.versions()`: id, name, implementation, emulation, fast step, all built at budget `keep`. Emulation `None` = latency only.
+4. Explain it in `docs/methods.md` (`tests/test_docs.py` checks every id and name is there).
+5. `uv run pytest tests/attention/test_registry.py tests/attention/test_correctness.py`; GPU cases: `uv run python -m tests.attention.test_registry`.

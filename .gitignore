@@ -16,3 +16,4 @@ runs/mlflow.db
 runs/mlartifacts/
 runs/tasks/
 archive/**/*.pt
+archive/natural_text/

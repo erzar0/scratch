@@ -1,0 +1,20 @@
+version,n,peak_mib,ms_per_call
+"Dense flex attention, document-causal",8192,12.4,2.30
+"Dense flex attention, document-causal",16384,24.9,7.01
+"Dense flex attention, document-causal",32768,49.9,23.32
+"Dense flex attention, document-causal",65536,101.1,86.63
+"Dense flex attention, document-causal",131072,203.4,337.91
+"Fast tournament, query chunks of 2048",8192,37.1,50.21
+"Fast tournament, query chunks of 2048",16384,67.1,217.32
+"Fast tournament, query chunks of 2048",32768,127.4,1120.93
+"Fast tournament, query chunks of 2048",65536,247.2,5911.00
+"Fast tournament, query chunks of 2048",131072,490.2,27873.05
+"Fast tournament, query chunks of 8192",8192,72.1,47.99
+"Fast tournament, query chunks of 8192",16384,156.4,213.13
+"Fast tournament, query chunks of 8192",32768,324.6,1106.82
+"Fast tournament, query chunks of 8192",65536,661.4,5852.35
+"Fast tournament, query chunks of 8192",131072,1336.4,27516.20
+"Fast tournament, whole row",8192,72.1,48.93
+"Fast tournament, whole row",16384,288.1,211.83
+"Fast tournament, whole row",32768,1152.3,1103.32
+"Fast tournament, whole row",65536,4609.0,5836.57

@@ -1,0 +1,30 @@
+# Every registered version through every benchmark.
+name = "standard"
+
+# Budgets run where the length is at least 16 times the budget (registry.MIN_RATIO).
+[latency]
+lengths = [8192, 16384, 32768, 65536, 131072]
+budgets = [128, 256, 512, 1024, 2048]
+distributions = ["iid", "llm-like"]
+kv_heads = 8
+repeats = 10
+
+[fidelity]
+lengths = [8192, 16384, 32768, 65536, 131072]
+budgets = [128, 256, 512, 1024, 2048]
+distributions = [
+    "iid", "outlier-channels", "llm-like", "flat", "sharp", "local", "many-needles",
+]
+queries = 128
+seeds = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+[tasks]
+# not usable yet (2026-10-31): the trained model fails content lookup (dense at chance
+# on MQAR and needle, copy only at some lengths); run with --only latency fidelity
+tasks = ["copy", "mqar", "needle"]
+lengths = [4096, 8192, 16384]
+seeds = [0, 1, 2]
+sequences = 8
+train_lengths = [64, 256, 1024, 4096, 8192, 16384]
+train_steps = 6000
+accumulate = 4

@@ -1,0 +1,16 @@
+version,n,cache_mib
+"Dense stripped, FlashAttention 2 sliding windows 768 / 2560",8192,33.1
+"Dense stripped, FlashAttention 2 sliding windows 768 / 2560",32768,33.1
+"Dense stripped, FlashAttention 2 sliding windows 768 / 2560",131072,33.1
+"Run 4: exact top 64 per block, two Triton kernels",8192,240.0
+"Run 4: exact top 64 per block, two Triton kernels",32768,960.0
+"Run 4: exact top 64 per block, two Triton kernels",131072,3840.0
+"Runs 2 and 3: tournament, K stored transposed only",8192,240.0
+"Runs 2 and 3: tournament, K stored transposed only",32768,960.0
+"Runs 2 and 3: tournament, K stored transposed only",131072,3840.0
+"Runs 2 and 3: tournament, K in both layouts",8192,360.0
+"Runs 2 and 3: tournament, K in both layouts",32768,1440.0
+"Runs 2 and 3: tournament, K in both layouts",131072,5760.0
+"Run 5: tile selection, 32-key blocks (+ block mean keys)",8192,247.5
+"Run 5: tile selection, 32-key blocks (+ block mean keys)",32768,990.0
+"Run 5: tile selection, 32-key blocks (+ block mean keys)",131072,3960.0

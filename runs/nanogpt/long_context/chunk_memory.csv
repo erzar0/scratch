@@ -1,0 +1,30 @@
+version,n,peak_mib,ms_per_call
+"Dense flex attention, document-causal",8192,12.4,2.36
+"Dense flex attention, document-causal",16384,24.9,7.54
+"Dense flex attention, document-causal",32768,49.9,24.25
+"Dense flex attention, document-causal",65536,101.1,89.60
+"Dense flex attention, document-causal",131072,203.4,348.00
+"Fast tournament, query chunks of 2048",8192,63.1,45.07
+"Fast tournament, query chunks of 2048",16384,117.2,143.86
+"Fast tournament, query chunks of 2048",32768,225.5,569.63
+"Fast tournament, query chunks of 2048",65536,442.3,2114.79
+"Fast tournament, query chunks of 2048",131072,877.6,8907.21
+"Fast tournament, query chunks of 8192",8192,139.7,44.34
+"Fast tournament, query chunks of 8192",16384,290.3,149.11
+"Fast tournament, query chunks of 8192",32768,578.5,577.77
+"Fast tournament, query chunks of 8192",65536,1155.4,2204.19
+"Fast tournament, query chunks of 8192",131072,2310.7,8251.61
+"Fast tournament, whole row",8192,138.7,40.60
+"Fast tournament, whole row",16384,429.9,130.03
+"Fast tournament, whole row",32768,1442.3,491.02
+"Fast tournament, whole row",65536,5194.6,1899.15
+"Fast tournament, 64 winners per 2048, query chunks of 2048",8192,68.1,39.82
+"Fast tournament, 64 winners per 2048, query chunks of 2048",16384,127.8,132.62
+"Fast tournament, 64 winners per 2048, query chunks of 2048",32768,248.1,497.85
+"Fast tournament, 64 winners per 2048, query chunks of 2048",65536,489.0,1897.28
+"Fast tournament, 64 winners per 2048, query chunks of 2048",131072,972.2,7518.80
+"Exact top 64 per block (two Triton kernels), query chunks of 2048",8192,407.8,10.94
+"Exact top 64 per block (two Triton kernels), query chunks of 2048",16384,552.5,36.47
+"Exact top 64 per block (two Triton kernels), query chunks of 2048",32768,576.7,142.99
+"Exact top 64 per block (two Triton kernels), query chunks of 2048",65536,673.5,585.20
+"Exact top 64 per block (two Triton kernels), query chunks of 2048",131072,771.5,2475.06

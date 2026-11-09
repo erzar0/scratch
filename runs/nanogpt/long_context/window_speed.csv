@@ -1,0 +1,37 @@
+version,window,input,n,peak_mib,ms_per_call
+"FlashAttention 2, sliding window",768,validation row,8192,,0.3103
+"FlashAttention 2, sliding window",768,one document,8192,12.2,0.387
+"FlashAttention 2, sliding window",768,one document,16384,24.4,0.771
+"FlashAttention 2, sliding window",768,one document,32768,48.8,1.505
+"FlashAttention 2, sliding window",768,one document,65536,97.5,2.994
+"FlashAttention 2, sliding window",768,one document,131072,195.9,5.975
+"Tile selection in the window, 32-key blocks, 512 keys per tile",768,validation row,8192,,0.9313
+"Tile selection in the window, 32-key blocks, 512 keys per tile",768,one document,8192,12.8,0.975
+"Tile selection in the window, 32-key blocks, 512 keys per tile",768,one document,16384,26.3,0.934
+"Tile selection in the window, 32-key blocks, 512 keys per tile",768,one document,32768,55.6,1.305
+"Tile selection in the window, 32-key blocks, 512 keys per tile",768,one document,65536,124.1,2.708
+"Tile selection in the window, 32-key blocks, 512 keys per tile",768,one document,131072,408.0,7.876
+"Tile selection in the window, 32-key blocks, 1024 keys per tile",768,validation row,8192,,0.8909
+"Tile selection in the window, 32-key blocks, 1024 keys per tile",768,one document,8192,12.8,1.070
+"Tile selection in the window, 32-key blocks, 1024 keys per tile",768,one document,16384,26.3,1.002
+"Tile selection in the window, 32-key blocks, 1024 keys per tile",768,one document,32768,55.6,1.770
+"Tile selection in the window, 32-key blocks, 1024 keys per tile",768,one document,65536,124.1,3.662
+"Tile selection in the window, 32-key blocks, 1024 keys per tile",768,one document,131072,408.0,9.778
+"FlashAttention 2, sliding window",2560,validation row,8192,,0.4045
+"FlashAttention 2, sliding window",2560,one document,8192,12.2,0.858
+"FlashAttention 2, sliding window",2560,one document,16384,24.4,1.669
+"FlashAttention 2, sliding window",2560,one document,32768,48.8,3.340
+"FlashAttention 2, sliding window",2560,one document,65536,97.5,6.903
+"FlashAttention 2, sliding window",2560,one document,131072,195.9,14.122
+"Tile selection in the window, 32-key blocks, 512 keys per tile",2560,validation row,8192,,0.9247
+"Tile selection in the window, 32-key blocks, 512 keys per tile",2560,one document,8192,12.8,1.753
+"Tile selection in the window, 32-key blocks, 512 keys per tile",2560,one document,16384,26.3,2.177
+"Tile selection in the window, 32-key blocks, 512 keys per tile",2560,one document,32768,55.6,1.319
+"Tile selection in the window, 32-key blocks, 512 keys per tile",2560,one document,65536,124.1,2.705
+"Tile selection in the window, 32-key blocks, 512 keys per tile",2560,one document,131072,408.0,7.867
+"Tile selection in the window, 32-key blocks, 1024 keys per tile",2560,validation row,8192,,2.8713
+"Tile selection in the window, 32-key blocks, 1024 keys per tile",2560,one document,8192,12.8,0.902
+"Tile selection in the window, 32-key blocks, 1024 keys per tile",2560,one document,16384,26.3,1.090
+"Tile selection in the window, 32-key blocks, 1024 keys per tile",2560,one document,32768,55.6,1.962
+"Tile selection in the window, 32-key blocks, 1024 keys per tile",2560,one document,65536,124.1,3.990
+"Tile selection in the window, 32-key blocks, 1024 keys per tile",2560,one document,131072,408.0,10.409

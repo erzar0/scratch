@@ -1,0 +1,29 @@
+version,shape,ms_per_call
+"Dense flex attention, document-causal",stage 1,1.0168
+Exact top 64 per 2048-key block (two Triton kernels),stage 1,1.4989
+"Tile selection, 16-key blocks, 256 keys per query tile",stage 1,2.9177
+"Tile selection, 16-key blocks, 512 keys per query tile",stage 1,2.1521
+"Tile selection, 16-key blocks, 1024 keys per query tile",stage 1,2.6583
+"Tile selection, 32-key blocks, 512 keys per query tile",stage 1,2.1453
+"Tile selection, 128-key blocks, 512 keys per query tile",stage 1,1.6619
+"Dense flex attention, document-causal",stage 2,1.3857
+Exact top 64 per 2048-key block (two Triton kernels),stage 2,1.7641
+"Tile selection, 16-key blocks, 256 keys per query tile",stage 2,2.7337
+"Tile selection, 16-key blocks, 512 keys per query tile",stage 2,2.5856
+"Tile selection, 16-key blocks, 1024 keys per query tile",stage 2,2.5098
+"Tile selection, 32-key blocks, 512 keys per query tile",stage 2,1.9117
+"Tile selection, 128-key blocks, 512 keys per query tile",stage 2,1.5297
+"Dense flex attention, document-causal",stage 3,1.1546
+Exact top 64 per 2048-key block (two Triton kernels),stage 3,2.1924
+"Tile selection, 16-key blocks, 256 keys per query tile",stage 3,2.3082
+"Tile selection, 16-key blocks, 512 keys per query tile",stage 3,1.5496
+"Tile selection, 16-key blocks, 1024 keys per query tile",stage 3,1.6292
+"Tile selection, 32-key blocks, 512 keys per query tile",stage 3,2.1682
+"Tile selection, 128-key blocks, 512 keys per query tile",stage 3,1.6056
+"Dense flex attention, document-causal",validation,2.7832
+Exact top 64 per 2048-key block (two Triton kernels),validation,6.3723
+"Tile selection, 16-key blocks, 256 keys per query tile",validation,2.0586
+"Tile selection, 16-key blocks, 512 keys per query tile",validation,2.2834
+"Tile selection, 16-key blocks, 1024 keys per query tile",validation,2.4279
+"Tile selection, 32-key blocks, 512 keys per query tile",validation,1.8514
+"Tile selection, 128-key blocks, 512 keys per query tile",validation,2.3188

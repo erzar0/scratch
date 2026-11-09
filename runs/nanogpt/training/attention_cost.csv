@@ -1,0 +1,28 @@
+stage,row_tokens,part,ms_per_call,ms_per_step
+1,2048,dense short window,0.340,21.8
+1,2048,dense long window,0.382,6.1
+1,2048,tournament whole,2.158,172.7
+1,2048,mask building and other,0.194,15.5
+1,2048,|q| channel sort,0.115,9.2
+1,2048,halving rounds (Triton),1.233,98.6
+1,2048,flex forward,0.151,12.0
+1,2048,flex backward,0.338,27.0
+1,2048,logged step time difference,,148
+2,4096,dense short window,0.710,45.4
+2,4096,dense long window,0.754,12.1
+2,4096,tournament whole,4.967,397.4
+2,4096,mask building and other,0.711,56.9
+2,4096,|q| channel sort,0.246,19.7
+2,4096,halving rounds (Triton),2.323,185.8
+2,4096,flex forward,0.272,21.8
+2,4096,flex backward,0.824,65.9
+2,4096,logged step time difference,,366
+3,6144,dense short window,1.100,70.4
+3,6144,dense long window,1.103,17.7
+3,6144,tournament whole,6.748,539.8
+3,6144,mask building and other,1.508,120.7
+3,6144,|q| channel sort,0.348,27.9
+3,6144,halving rounds (Triton),3.306,264.5
+3,6144,flex forward,0.339,27.2
+3,6144,flex backward,1.113,89.0
+3,6144,logged step time difference,,586

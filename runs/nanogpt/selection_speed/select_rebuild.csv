@@ -1,0 +1,8 @@
+version,launch,ms_per_call
+"Full radix select, before",autotuned,2.990
+"Full radix select, before",fixed launch,3.398
+"Early-exit radix select, now",autotuned,2.447
+"Early-exit radix select, now",fixed launch,2.347
+"Ceiling: round 1 scores precomputed",fixed launch,2.245
+"Ceiling: no key loads",fixed launch,1.960
+"Ceiling: no keep threshold",fixed launch,0.560

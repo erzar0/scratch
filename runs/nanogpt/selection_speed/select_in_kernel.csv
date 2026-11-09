@@ -1,0 +1,41 @@
+shape,method,same winners,rounds ms,total ms
+stage 1,"Current: radix select at 512+ slots, sort below",yes,0.4951,0.5978
+stage 1,"Radix select at 512+ slots, sort below (copy of current)",yes,0.5763,0.6514
+stage 1,"Bisection at 512+ slots, sort below",yes,0.4881,0.5643
+stage 1,Bisection at every width,yes,0.4694,0.5515
+stage 1,"tl.topk at 512+ slots, sort below",yes,0.6731,0.7466
+stage 1,tl.topk at every width,yes,0.7014,0.7749
+stage 1,Halving in groups of 2,no,0.2837,0.3567
+stage 1,Halving in groups of 64,no,0.9535,1.0289
+stage 1,Halving in groups of 256,no,0.9576,1.0327
+stage 1,Exact top 64 per block (torch),no,0.0000,3.0928
+stage 2,"Current: radix select at 512+ slots, sort below",yes,1.4177,1.5957
+stage 2,"Radix select at 512+ slots, sort below (copy of current)",yes,1.4755,1.6169
+stage 2,"Bisection at 512+ slots, sort below",yes,1.2702,1.4099
+stage 2,Bisection at every width,yes,1.3349,1.4766
+stage 2,"tl.topk at 512+ slots, sort below",yes,1.9695,2.1113
+stage 2,tl.topk at every width,yes,1.9904,2.1360
+stage 2,Halving in groups of 2,no,0.7749,0.9181
+stage 2,Halving in groups of 64,no,2.9588,3.1014
+stage 2,Halving in groups of 256,no,2.8298,2.9750
+stage 2,Exact top 64 per block (torch),no,0.0000,7.0722
+stage 3,"Current: radix select at 512+ slots, sort below",yes,2.2769,2.5309
+stage 3,"Radix select at 512+ slots, sort below (copy of current)",yes,2.4286,2.6372
+stage 3,"Bisection at 512+ slots, sort below",yes,2.1449,2.3663
+stage 3,Bisection at every width,yes,2.3269,2.5560
+stage 3,"tl.topk at 512+ slots, sort below",yes,3.1667,3.3780
+stage 3,tl.topk at every width,yes,3.2951,3.5003
+stage 3,Halving in groups of 2,no,1.2324,1.4473
+stage 3,Halving in groups of 64,no,4.5262,4.7238
+stage 3,Halving in groups of 256,no,4.2978,4.4985
+stage 3,Exact top 64 per block (torch),no,0.0000,10.8163
+validation,"Current: radix select at 512+ slots, sort below",yes,6.4646,6.8618
+validation,"Radix select at 512+ slots, sort below (copy of current)",yes,6.4339,6.7896
+validation,"Bisection at 512+ slots, sort below",yes,5.5796,5.9350
+validation,Bisection at every width,yes,5.8335,6.1871
+validation,"tl.topk at 512+ slots, sort below",yes,8.5803,8.9354
+validation,tl.topk at every width,yes,8.7014,9.0577
+validation,Halving in groups of 2,no,3.1553,3.5149
+validation,Halving in groups of 64,no,13.5230,13.8736
+validation,Halving in groups of 256,no,11.9100,12.2648
+validation,Exact top 64 per block (torch),no,0.0000,18.3174

@@ -1,0 +1,237 @@
+model,run,group,tokens,share,loss
+Old tournament: 16 winners per 1024 (old run),5ce3c9c3-093a-43c7-b330-e7b3b90e4171,every token,1048576,1.0,4.0002
+Old tournament: 16 winners per 1024 (old run),5ce3c9c3-093a-43c7-b330-e7b3b90e4171,"document from its start, position < 2048",832335,0.7938,3.543
+Old tournament: 16 winners per 1024 (old run),5ce3c9c3-093a-43c7-b330-e7b3b90e4171,"row starts mid-document (no BOS), position < 2048",103979,0.0992,6.0836
+Old tournament: 16 winners per 1024 (old run),5ce3c9c3-093a-43c7-b330-e7b3b90e4171,position 2048 or later,112262,0.1071,5.4603
+Dense stripped: FlashAttention 2 sliding windows,337449e0-1b7d-41e4-9ea9-192f870a7ebb,every token,1048576,1.0,3.5872
+Dense stripped: FlashAttention 2 sliding windows,337449e0-1b7d-41e4-9ea9-192f870a7ebb,"document from its start, position < 2048",832335,0.7938,3.5538
+Dense stripped: FlashAttention 2 sliding windows,337449e0-1b7d-41e4-9ea9-192f870a7ebb,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.8319
+Dense stripped: FlashAttention 2 sliding windows,337449e0-1b7d-41e4-9ea9-192f870a7ebb,position 2048 or later,112262,0.1071,3.6087
+"Run 1: fast tournament, 32 winners per 2048",398ef768-7918-4de0-a888-5118b3487fe6,every token,1048576,1.0,3.6891
+"Run 1: fast tournament, 32 winners per 2048",398ef768-7918-4de0-a888-5118b3487fe6,"document from its start, position < 2048",832335,0.7938,3.6458
+"Run 1: fast tournament, 32 winners per 2048",398ef768-7918-4de0-a888-5118b3487fe6,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9901
+"Run 1: fast tournament, 32 winners per 2048",398ef768-7918-4de0-a888-5118b3487fe6,position 2048 or later,112262,0.1071,3.7316
+"Run 2: fast tournament, 64 winners per 2048",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0,3.5825
+"Run 2: fast tournament, 64 winners per 2048",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5342
+"Run 2: fast tournament, 64 winners per 2048",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9063
+"Run 2: fast tournament, 64 winners per 2048",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.6402
+Run 1 + last 64 keys of the document,398ef768-7918-4de0-a888-5118b3487fe6,every token,1048576,1.0,3.6917
+Run 1 + last 64 keys of the document,398ef768-7918-4de0-a888-5118b3487fe6,"document from its start, position < 2048",832335,0.7938,3.6486
+Run 1 + last 64 keys of the document,398ef768-7918-4de0-a888-5118b3487fe6,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9852
+Run 1 + last 64 keys of the document,398ef768-7918-4de0-a888-5118b3487fe6,position 2048 or later,112262,0.1071,3.7399
+Run 1 + last 128 keys of the document,398ef768-7918-4de0-a888-5118b3487fe6,every token,1048576,1.0,3.6982
+Run 1 + last 128 keys of the document,398ef768-7918-4de0-a888-5118b3487fe6,"document from its start, position < 2048",832335,0.7938,3.6554
+Run 1 + last 128 keys of the document,398ef768-7918-4de0-a888-5118b3487fe6,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9847
+Run 1 + last 128 keys of the document,398ef768-7918-4de0-a888-5118b3487fe6,position 2048 or later,112262,0.1071,3.7499
+Run 1 + last 256 keys of the document,398ef768-7918-4de0-a888-5118b3487fe6,every token,1048576,1.0,3.7112
+Run 1 + last 256 keys of the document,398ef768-7918-4de0-a888-5118b3487fe6,"document from its start, position < 2048",832335,0.7938,3.6684
+Run 1 + last 256 keys of the document,398ef768-7918-4de0-a888-5118b3487fe6,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9916
+Run 1 + last 256 keys of the document,398ef768-7918-4de0-a888-5118b3487fe6,position 2048 or later,112262,0.1071,3.7685
+"Run 1 checkpoint, dense attention",398ef768-7918-4de0-a888-5118b3487fe6,every token,1048576,1.0,3.7809
+"Run 1 checkpoint, dense attention",398ef768-7918-4de0-a888-5118b3487fe6,"document from its start, position < 2048",832335,0.7938,3.7027
+"Run 1 checkpoint, dense attention",398ef768-7918-4de0-a888-5118b3487fe6,"row starts mid-document (no BOS), position < 2048",103979,0.0992,4.0356
+"Run 1 checkpoint, dense attention",398ef768-7918-4de0-a888-5118b3487fe6,position 2048 or later,112262,0.1071,4.1244
+"Run 1, radix16 cutoff",398ef768-7918-4de0-a888-5118b3487fe6,every token,1048576,1.0,3.7867
+"Run 1, radix16 cutoff",398ef768-7918-4de0-a888-5118b3487fe6,"document from its start, position < 2048",832335,0.7938,3.7335
+"Run 1, radix16 cutoff",398ef768-7918-4de0-a888-5118b3487fe6,"row starts mid-document (no BOS), position < 2048",103979,0.0992,4.2235
+"Run 1, radix16 cutoff",398ef768-7918-4de0-a888-5118b3487fe6,position 2048 or later,112262,0.1071,3.7763
+"Run 1, linear cutoff",398ef768-7918-4de0-a888-5118b3487fe6,every token,1048576,1.0,4.3396
+"Run 1, linear cutoff",398ef768-7918-4de0-a888-5118b3487fe6,"document from its start, position < 2048",832335,0.7938,4.307
+"Run 1, linear cutoff",398ef768-7918-4de0-a888-5118b3487fe6,"row starts mid-document (no BOS), position < 2048",103979,0.0992,5.0619
+"Run 1, linear cutoff",398ef768-7918-4de0-a888-5118b3487fe6,position 2048 or later,112262,0.1071,3.9127
+"Run 1, sample cutoff",398ef768-7918-4de0-a888-5118b3487fe6,every token,1048576,1.0,4.3154
+"Run 1, sample cutoff",398ef768-7918-4de0-a888-5118b3487fe6,"document from its start, position < 2048",832335,0.7938,4.2756
+"Run 1, sample cutoff",398ef768-7918-4de0-a888-5118b3487fe6,"row starts mid-document (no BOS), position < 2048",103979,0.0992,5.0038
+"Run 1, sample cutoff",398ef768-7918-4de0-a888-5118b3487fe6,position 2048 or later,112262,0.1071,3.9724
+"Dense stripped checkpoint, run 1's tournament",337449e0-1b7d-41e4-9ea9-192f870a7ebb,every token,1048576,1.0,3.6771
+"Dense stripped checkpoint, run 1's tournament",337449e0-1b7d-41e4-9ea9-192f870a7ebb,"document from its start, position < 2048",832335,0.7938,3.6116
+"Dense stripped checkpoint, run 1's tournament",337449e0-1b7d-41e4-9ea9-192f870a7ebb,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9375
+"Dense stripped checkpoint, run 1's tournament",337449e0-1b7d-41e4-9ea9-192f870a7ebb,position 2048 or later,112262,0.1071,3.9212
+"Run 2 checkpoint, contiguous channel blocks (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0,3.5861
+"Run 2 checkpoint, contiguous channel blocks (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.539
+"Run 2 checkpoint, contiguous channel blocks (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.91
+"Run 2 checkpoint, contiguous channel blocks (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.6357
+"Run 3: contiguous channel blocks, 64 winners per 2048",408a1744-fce0-4de3-8eef-67acd7fb6223,every token,1048576,1.0,3.5376
+"Run 3: contiguous channel blocks, 64 winners per 2048",408a1744-fce0-4de3-8eef-67acd7fb6223,"document from its start, position < 2048",832335,0.7938,3.5048
+"Run 3: contiguous channel blocks, 64 winners per 2048",408a1744-fce0-4de3-8eef-67acd7fb6223,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.7771
+"Run 3: contiguous channel blocks, 64 winners per 2048",408a1744-fce0-4de3-8eef-67acd7fb6223,position 2048 or later,112262,0.1071,3.5588
+"Run 2 checkpoint, halving in groups of 2 (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0,3.5831
+"Run 2 checkpoint, halving in groups of 2 (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.535
+"Run 2 checkpoint, halving in groups of 2 (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.908
+"Run 2 checkpoint, halving in groups of 2 (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.638
+"Run 2 checkpoint, halving in groups of 64 (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0,3.5825
+"Run 2 checkpoint, halving in groups of 64 (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5342
+"Run 2 checkpoint, halving in groups of 64 (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9063
+"Run 2 checkpoint, halving in groups of 64 (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.6401
+"Run 2 checkpoint, halving in groups of 256 (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0,3.5824
+"Run 2 checkpoint, halving in groups of 256 (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5342
+"Run 2 checkpoint, halving in groups of 256 (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9062
+"Run 2 checkpoint, halving in groups of 256 (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.6401
+"Run 2 checkpoint, exact top 64 per block, torch (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0,3.5822
+"Run 2 checkpoint, exact top 64 per block, torch (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.534
+"Run 2 checkpoint, exact top 64 per block, torch (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9056
+"Run 2 checkpoint, exact top 64 per block, torch (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.6401
+"Run 2 checkpoint, exact top 64 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0,3.5822
+"Run 2 checkpoint, exact top 64 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.534
+"Run 2 checkpoint, exact top 64 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9056
+"Run 2 checkpoint, exact top 64 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.6402
+"Run 2 checkpoint, exact top 16 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0,3.6249
+"Run 2 checkpoint, exact top 16 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5703
+"Run 2 checkpoint, exact top 16 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,4.0326
+"Run 2 checkpoint, exact top 16 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.6523
+"Run 2 checkpoint, exact top 32 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0,3.5899
+"Run 2 checkpoint, exact top 32 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5413
+"Run 2 checkpoint, exact top 32 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9414
+"Run 2 checkpoint, exact top 32 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.6242
+"Run 2 checkpoint, exact top 128 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0,3.5896
+"Run 2 checkpoint, exact top 128 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5379
+"Run 2 checkpoint, exact top 128 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.8985
+"Run 2 checkpoint, exact top 128 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.6863
+"Run 2 checkpoint, exact top 256 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0,3.6033
+"Run 2 checkpoint, exact top 256 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5458
+"Run 2 checkpoint, exact top 256 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9056
+"Run 2 checkpoint, exact top 256 per block, Triton (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.7489
+"Run 4: exact top 64 per block, 64 winners per 2048",43f64f34-15b2-451c-a458-dcd2446f2cf0,every token,1048576,1.0,3.6585
+"Run 4: exact top 64 per block, 64 winners per 2048",43f64f34-15b2-451c-a458-dcd2446f2cf0,"document from its start, position < 2048",832335,0.7938,3.6235
+"Run 4: exact top 64 per block, 64 winners per 2048",43f64f34-15b2-451c-a458-dcd2446f2cf0,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9323
+"Run 4: exact top 64 per block, 64 winners per 2048",43f64f34-15b2-451c-a458-dcd2446f2cf0,position 2048 or later,112262,0.1071,3.6644
+"Run 4 checkpoint, fast tournament (no retraining)",43f64f34-15b2-451c-a458-dcd2446f2cf0,every token,1048576,1.0,3.6586
+"Run 4 checkpoint, fast tournament (no retraining)",43f64f34-15b2-451c-a458-dcd2446f2cf0,"document from its start, position < 2048",832335,0.7938,3.6236
+"Run 4 checkpoint, fast tournament (no retraining)",43f64f34-15b2-451c-a458-dcd2446f2cf0,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9329
+"Run 4 checkpoint, fast tournament (no retraining)",43f64f34-15b2-451c-a458-dcd2446f2cf0,position 2048 or later,112262,0.1071,3.6642
+"Run 2 checkpoint, 16-key blocks, 512 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6310
+"Run 2 checkpoint, 16-key blocks, 512 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5692
+"Run 2 checkpoint, 16-key blocks, 512 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9396
+"Run 2 checkpoint, 16-key blocks, 512 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.8033
+"Run 2 checkpoint, 16-key blocks, 1024 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6199
+"Run 2 checkpoint, 16-key blocks, 1024 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5579
+"Run 2 checkpoint, 16-key blocks, 1024 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9259
+"Run 2 checkpoint, 16-key blocks, 1024 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.7957
+"Run 2 checkpoint, 16-key blocks, 256 per 2048 of prefix (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6912
+"Run 2 checkpoint, 16-key blocks, 256 per 2048 of prefix (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.6351
+"Run 2 checkpoint, 16-key blocks, 256 per 2048 of prefix (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,4.0149
+"Run 2 checkpoint, 16-key blocks, 256 per 2048 of prefix (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.8074
+"Run 2 checkpoint, 16-key blocks, 512 per 2048 of prefix (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6315
+"Run 2 checkpoint, 16-key blocks, 512 per 2048 of prefix (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5689
+"Run 2 checkpoint, 16-key blocks, 512 per 2048 of prefix (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9396
+"Run 2 checkpoint, 16-key blocks, 512 per 2048 of prefix (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.8097
+"Run 2 checkpoint, 128-key blocks, 512 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6387
+"Run 2 checkpoint, 128-key blocks, 512 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5792
+"Run 2 checkpoint, 128-key blocks, 512 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9383
+"Run 2 checkpoint, 128-key blocks, 512 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.8024
+"Run 2 checkpoint, 32-key blocks, 512 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6322
+"Run 2 checkpoint, 32-key blocks, 512 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5707
+"Run 2 checkpoint, 32-key blocks, 512 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9396
+"Run 2 checkpoint, 32-key blocks, 512 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.8038
+"Run 2 checkpoint, 32-key blocks, 1024 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6196
+"Run 2 checkpoint, 32-key blocks, 1024 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5579
+"Run 2 checkpoint, 32-key blocks, 1024 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9254
+"Run 2 checkpoint, 32-key blocks, 1024 keys per tile (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.7937
+"Run 2 checkpoint, single keys, 128 queries per tile, 512 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6466
+"Run 2 checkpoint, single keys, 128 queries per tile, 512 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5815
+"Run 2 checkpoint, single keys, 128 queries per tile, 512 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9487
+"Run 2 checkpoint, single keys, 128 queries per tile, 512 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.8492
+"Run 2 checkpoint, single keys, 32 queries per tile, 512 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6319
+"Run 2 checkpoint, single keys, 32 queries per tile, 512 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5699
+"Run 2 checkpoint, single keys, 32 queries per tile, 512 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9301
+"Run 2 checkpoint, single keys, 32 queries per tile, 512 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.8153
+"Run 2 checkpoint, single keys, 128 queries per tile, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6285
+"Run 2 checkpoint, single keys, 128 queries per tile, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5617
+"Run 2 checkpoint, single keys, 128 queries per tile, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9300
+"Run 2 checkpoint, single keys, 128 queries per tile, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.8441
+"Run 2 checkpoint, single keys, 32 queries per tile, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6233
+"Run 2 checkpoint, single keys, 32 queries per tile, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5591
+"Run 2 checkpoint, single keys, 32 queries per tile, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9265
+"Run 2 checkpoint, single keys, 32 queries per tile, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.8183
+"Run 5: tile selection, 32-key blocks, 512 keys per tile",d8a58427-414a-4a38-b0a0-1797027cf6c3,every token,1048576,1.0000,3.6932
+"Run 5: tile selection, 32-key blocks, 512 keys per tile",d8a58427-414a-4a38-b0a0-1797027cf6c3,"document from its start, position < 2048",832335,0.7938,3.6240
+"Run 5: tile selection, 32-key blocks, 512 keys per tile",d8a58427-414a-4a38-b0a0-1797027cf6c3,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9407
+"Run 5: tile selection, 32-key blocks, 512 keys per tile",d8a58427-414a-4a38-b0a0-1797027cf6c3,position 2048 or later,112262,0.1071,3.9768
+"Run 5 checkpoint, 512 keys per 2048 of prefix (no retraining)",d8a58427-414a-4a38-b0a0-1797027cf6c3,every token,1048576,1.0000,3.6887
+"Run 5 checkpoint, 512 keys per 2048 of prefix (no retraining)",d8a58427-414a-4a38-b0a0-1797027cf6c3,"document from its start, position < 2048",832335,0.7938,3.6238
+"Run 5 checkpoint, 512 keys per 2048 of prefix (no retraining)",d8a58427-414a-4a38-b0a0-1797027cf6c3,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9407
+"Run 5 checkpoint, 512 keys per 2048 of prefix (no retraining)",d8a58427-414a-4a38-b0a0-1797027cf6c3,position 2048 or later,112262,0.1071,3.9358
+"Run 5 checkpoint, 2048 keys per tile (no retraining)",d8a58427-414a-4a38-b0a0-1797027cf6c3,every token,1048576,1.0000,3.6874
+"Run 5 checkpoint, 2048 keys per tile (no retraining)",d8a58427-414a-4a38-b0a0-1797027cf6c3,"document from its start, position < 2048",832335,0.7938,3.6219
+"Run 5 checkpoint, 2048 keys per tile (no retraining)",d8a58427-414a-4a38-b0a0-1797027cf6c3,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9326
+"Run 5 checkpoint, 2048 keys per tile (no retraining)",d8a58427-414a-4a38-b0a0-1797027cf6c3,position 2048 or later,112262,0.1071,3.9454
+"Run 5 checkpoint, dense attention (no retraining)",d8a58427-414a-4a38-b0a0-1797027cf6c3,every token,1048576,1.0000,3.6911
+"Run 5 checkpoint, dense attention (no retraining)",d8a58427-414a-4a38-b0a0-1797027cf6c3,"document from its start, position < 2048",832335,0.7938,3.6220
+"Run 5 checkpoint, dense attention (no retraining)",d8a58427-414a-4a38-b0a0-1797027cf6c3,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9326
+"Run 5 checkpoint, dense attention (no retraining)",d8a58427-414a-4a38-b0a0-1797027cf6c3,position 2048 or later,112262,0.1071,3.9804
+"Dense stripped checkpoint, tile selection, 32-key blocks, 512 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,every token,1048576,1.0000,3.6454
+"Dense stripped checkpoint, tile selection, 32-key blocks, 512 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,"document from its start, position < 2048",832335,0.7938,3.5797
+"Dense stripped checkpoint, tile selection, 32-key blocks, 512 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.8809
+"Dense stripped checkpoint, tile selection, 32-key blocks, 512 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,position 2048 or later,112262,0.1071,3.9141
+"Dense stripped checkpoint, windowed tiles, 32-key blocks, 512 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,every token,1048576,1.0000,3.6131
+"Dense stripped checkpoint, windowed tiles, 32-key blocks, 512 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,"document from its start, position < 2048",832335,0.7938,3.5702
+"Dense stripped checkpoint, windowed tiles, 32-key blocks, 512 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.8609
+"Dense stripped checkpoint, windowed tiles, 32-key blocks, 512 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,position 2048 or later,112262,0.1071,3.7013
+"Dense stripped checkpoint, windowed tiles, 32-key blocks, 2816 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,every token,1048576,1.0000,3.5873
+"Dense stripped checkpoint, windowed tiles, 32-key blocks, 2816 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,"document from its start, position < 2048",832335,0.7938,3.5541
+"Dense stripped checkpoint, windowed tiles, 32-key blocks, 2816 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.8310
+"Dense stripped checkpoint, windowed tiles, 32-key blocks, 2816 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,position 2048 or later,112262,0.1071,3.6082
+"Dense stripped checkpoint, windowed tiles, 32-key blocks, 1024 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,every token,1048576,1.0000,3.5915
+"Dense stripped checkpoint, windowed tiles, 32-key blocks, 1024 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,"document from its start, position < 2048",832335,0.7938,3.5552
+"Dense stripped checkpoint, windowed tiles, 32-key blocks, 1024 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.8336
+"Dense stripped checkpoint, windowed tiles, 32-key blocks, 1024 keys per tile",337449e0-1b7d-41e4-9ea9-192f870a7ebb,position 2048 or later,112262,0.1071,3.6365
+"Run 2 checkpoint, dense attention (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6273
+"Run 2 checkpoint, dense attention (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5568
+"Run 2 checkpoint, dense attention (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9270
+"Run 2 checkpoint, dense attention (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.8720
+"Run 2 checkpoint, all 128 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6273
+"Run 2 checkpoint, all 128 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5569
+"Run 2 checkpoint, all 128 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9269
+"Run 2 checkpoint, all 128 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.8720
+"Run 2 checkpoint, all 128 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6176
+"Run 2 checkpoint, all 128 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5563
+"Run 2 checkpoint, all 128 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9251
+"Run 2 checkpoint, all 128 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.7873
+"Run 2 checkpoint, union of top 16 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.8449
+"Run 2 checkpoint, union of top 16 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.7201
+"Run 2 checkpoint, union of top 16 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,4.1576
+"Run 2 checkpoint, union of top 16 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,4.4804
+"Run 2 checkpoint, union of top 16 dims, rounds, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.8442
+"Run 2 checkpoint, union of top 16 dims, rounds, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.7201
+"Run 2 checkpoint, union of top 16 dims, rounds, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,4.1576
+"Run 2 checkpoint, union of top 16 dims, rounds, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,4.4744
+"Run 2 checkpoint, union of top 16 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.8628
+"Run 2 checkpoint, union of top 16 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.7216
+"Run 2 checkpoint, union of top 16 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,4.1622
+"Run 2 checkpoint, union of top 16 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,4.6327
+"Run 2 checkpoint, union of top 32 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6422
+"Run 2 checkpoint, union of top 32 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5744
+"Run 2 checkpoint, union of top 32 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9448
+"Run 2 checkpoint, union of top 32 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.8644
+"Run 2 checkpoint, union of top 32 dims, rounds, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6421
+"Run 2 checkpoint, union of top 32 dims, rounds, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5744
+"Run 2 checkpoint, union of top 32 dims, rounds, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9448
+"Run 2 checkpoint, union of top 32 dims, rounds, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.8635
+"Run 2 checkpoint, union of top 32 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6532
+"Run 2 checkpoint, union of top 32 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5751
+"Run 2 checkpoint, union of top 32 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9471
+"Run 2 checkpoint, union of top 32 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.9605
+"Run 2 checkpoint, union of top 64 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6179
+"Run 2 checkpoint, union of top 64 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5565
+"Run 2 checkpoint, union of top 64 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9254
+"Run 2 checkpoint, union of top 64 dims, one pass, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.7882
+"Run 2 checkpoint, union of top 64 dims, rounds, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6179
+"Run 2 checkpoint, union of top 64 dims, rounds, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5565
+"Run 2 checkpoint, union of top 64 dims, rounds, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9254
+"Run 2 checkpoint, union of top 64 dims, rounds, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.7882
+"Run 2 checkpoint, union of top 64 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6276
+"Run 2 checkpoint, union of top 64 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5571
+"Run 2 checkpoint, union of top 64 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9272
+"Run 2 checkpoint, union of top 64 dims, all keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.8729
+"Run 2 checkpoint, union of top 16 dims, exact softmax, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6166
+"Run 2 checkpoint, union of top 16 dims, exact softmax, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5562
+"Run 2 checkpoint, union of top 16 dims, exact softmax, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9248
+"Run 2 checkpoint, union of top 16 dims, exact softmax, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.7792
+"Run 2 checkpoint, union of top 32 dims, exact softmax, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6174
+"Run 2 checkpoint, union of top 32 dims, exact softmax, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5562
+"Run 2 checkpoint, union of top 32 dims, exact softmax, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9250
+"Run 2 checkpoint, union of top 32 dims, exact softmax, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.7860
+"Run 2 checkpoint, SparQ top 16 dims, exact softmax, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,every token,1048576,1.0000,3.6147
+"Run 2 checkpoint, SparQ top 16 dims, exact softmax, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"document from its start, position < 2048",832335,0.7938,3.5560
+"Run 2 checkpoint, SparQ top 16 dims, exact softmax, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,"row starts mid-document (no BOS), position < 2048",103979,0.0992,3.9242
+"Run 2 checkpoint, SparQ top 16 dims, exact softmax, 1024 keys (no retraining)",150ce19e-9b78-4df5-9b85-dd9dcdf77e2c,position 2048 or later,112262,0.1071,3.7633

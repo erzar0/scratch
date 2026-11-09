@@ -1,0 +1,49 @@
+shape,version,kernel,ms
+stage 1,"Fast tournament: |q| channel order, K transposed",_order,0.0290
+stage 1,"Fast tournament: |q| channel order, K transposed","other (fills, transpose, key copies)",0.0477
+stage 1,"Fast tournament: |q| channel order, K transposed",_rounds,0.4930
+stage 1,"Fast tournament: |q| channel order, K transposed",_redo,0.0225
+stage 1,"Fast tournament: |q| channel order, K transposed",_bits,0.0133
+stage 1,"Fast tournament: |q| channel order, K transposed",total,0.6056
+stage 1,"Contiguous channel blocks, same rounds kernels",_windows,0.1080
+stage 1,"Contiguous channel blocks, same rounds kernels","other (fills, transpose, key copies)",0.0474
+stage 1,"Contiguous channel blocks, same rounds kernels",_rounds,0.5155
+stage 1,"Contiguous channel blocks, same rounds kernels",_redo,0.0207
+stage 1,"Contiguous channel blocks, same rounds kernels",_bits,0.0131
+stage 1,"Contiguous channel blocks, same rounds kernels",total,0.7048
+stage 2,"Fast tournament: |q| channel order, K transposed",_order,0.0562
+stage 2,"Fast tournament: |q| channel order, K transposed","other (fills, transpose, key copies)",0.0877
+stage 2,"Fast tournament: |q| channel order, K transposed",_rounds,1.3952
+stage 2,"Fast tournament: |q| channel order, K transposed",_redo,0.0353
+stage 2,"Fast tournament: |q| channel order, K transposed",_bits,0.0256
+stage 2,"Fast tournament: |q| channel order, K transposed",total,1.6001
+stage 2,"Contiguous channel blocks, same rounds kernels",_windows,0.2079
+stage 2,"Contiguous channel blocks, same rounds kernels","other (fills, transpose, key copies)",0.0871
+stage 2,"Contiguous channel blocks, same rounds kernels",_rounds,1.3655
+stage 2,"Contiguous channel blocks, same rounds kernels",_redo,0.0265
+stage 2,"Contiguous channel blocks, same rounds kernels",_bits,0.0232
+stage 2,"Contiguous channel blocks, same rounds kernels",total,1.7101
+stage 3,"Fast tournament: |q| channel order, K transposed",_order,0.0825
+stage 3,"Fast tournament: |q| channel order, K transposed","other (fills, transpose, key copies)",0.1284
+stage 3,"Fast tournament: |q| channel order, K transposed",_rounds,2.3116
+stage 3,"Fast tournament: |q| channel order, K transposed",_redo,0.0413
+stage 3,"Fast tournament: |q| channel order, K transposed",_bits,0.0406
+stage 3,"Fast tournament: |q| channel order, K transposed",total,2.6043
+stage 3,"Contiguous channel blocks, same rounds kernels",_windows,0.3177
+stage 3,"Contiguous channel blocks, same rounds kernels","other (fills, transpose, key copies)",0.1322
+stage 3,"Contiguous channel blocks, same rounds kernels",_rounds,2.2414
+stage 3,"Contiguous channel blocks, same rounds kernels",_redo,0.0294
+stage 3,"Contiguous channel blocks, same rounds kernels",_bits,0.0361
+stage 3,"Contiguous channel blocks, same rounds kernels",total,2.7568
+validation,"Fast tournament: |q| channel order, K transposed",_order,0.1085
+validation,"Fast tournament: |q| channel order, K transposed","other (fills, transpose, key copies)",0.3231
+validation,"Fast tournament: |q| channel order, K transposed",_rounds,6.6406
+validation,"Fast tournament: |q| channel order, K transposed",_redo,0.0451
+validation,"Fast tournament: |q| channel order, K transposed",_bits,0.1547
+validation,"Fast tournament: |q| channel order, K transposed",total,7.2720
+validation,"Contiguous channel blocks, same rounds kernels",_windows,0.4287
+validation,"Contiguous channel blocks, same rounds kernels","other (fills, transpose, key copies)",0.3297
+validation,"Contiguous channel blocks, same rounds kernels",_rounds,6.7316
+validation,"Contiguous channel blocks, same rounds kernels",_redo,0.0398
+validation,"Contiguous channel blocks, same rounds kernels",_bits,0.1594
+validation,"Contiguous channel blocks, same rounds kernels",total,7.6892

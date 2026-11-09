@@ -1,0 +1,21 @@
+shape,method,score kernel ms,select kernel ms,total ms,ns per scored key,shared with torch top 64
+stage 1,"Current tournament (halving, 16 channels per round)",,,0.5825,0.1509,0.858907
+stage 1,Exact top 64 per block (torch),,,2.9926,0.7754,1.000000
+stage 1,Exact top 64 per block (two Triton kernels),0.0429,0.1163,0.1701,0.0441,1.000000
+stage 2,"Current tournament (halving, 16 channels per round)",,,1.5731,0.1520,0.865771
+stage 2,Exact top 64 per block (torch),,,6.6421,0.6417,1.000000
+stage 2,Exact top 64 per block (two Triton kernels),0.1067,0.2699,0.3900,0.0377,1.000000
+stage 3,"Current tournament (halving, 16 channels per round)",,,2.4371,0.1487,0.868483
+stage 3,Exact top 64 per block (torch),,,10.8300,0.6609,1.000000
+stage 3,Exact top 64 per block (two Triton kernels),0.1805,0.4199,0.6161,0.0376,1.000000
+validation,"Current tournament (halving, 16 channels per round)",,,6.7200,0.1496,0.891301
+validation,Exact top 64 per block (torch),,,18.3753,0.4091,1.000000
+validation,Exact top 64 per block (two Triton kernels),0.4565,1.1266,1.6461,0.0366,1.000000
+"one 8K document, last 2048 queries","Current tournament (halving, 16 channels per round)",,,11.4784,0.1303,0.949363
+"one 8K document, last 2048 queries",Exact top 64 per block (torch),,,14.5540,0.1652,1.000000
+"one 8K document, last 2048 queries",Exact top 64 per block (two Triton kernels),0.7293,1.5232,2.2704,0.0258,1.000000
+"one 32K document, last 2048 queries","Current tournament (halving, 16 channels per round)",,,47.7702,0.1225,0.947172
+"one 32K document, last 2048 queries",Exact top 64 per block (torch),,,59.9350,0.1536,1.000000
+"one 32K document, last 2048 queries",Exact top 64 per block (two Triton kernels),3.1242,6.5323,9.7041,0.0249,1.000000
+"one 128K document, last 2048 queries","Current tournament (halving, 16 channels per round)",,,194.2945,0.1216,
+"one 128K document, last 2048 queries",Exact top 64 per block (two Triton kernels),16.0531,31.2485,47.5897,0.0298,

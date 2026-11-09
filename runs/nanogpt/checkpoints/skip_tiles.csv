@@ -1,0 +1,1201 @@
+method,n,doc,layer,head,tiles computed,mass kept
+"Dense, document-causal",2048,0,0,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,0,0,1.0,0.598484218120575
+Top 2 key tiles of 128 per query tile,2048,0,0,0,0.22794117647058823,0.5623320937156677
+Top 4 key tiles of 128 per query tile,2048,0,0,0,0.4264705882352941,0.7401193380355835
+Top 8 key tiles of 128 per query tile,2048,0,0,0,0.7352941176470589,0.9152519702911377
+"Dense, document-causal",8192,0,0,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,0,0,1.0,0.5054890513420105
+Top 2 key tiles of 128 per query tile,8192,0,0,0,0.061057692307692306,0.318906307220459
+Top 4 key tiles of 128 per query tile,8192,0,0,0,0.1201923076923077,0.44440051913261414
+Top 8 key tiles of 128 per query tile,8192,0,0,0,0.2326923076923077,0.6060415506362915
+"Dense, document-causal",2048,0,0,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,0,1,1.0,0.643582284450531
+Top 2 key tiles of 128 per query tile,2048,0,0,1,0.22794117647058823,0.49325162172317505
+Top 4 key tiles of 128 per query tile,2048,0,0,1,0.4264705882352941,0.6879544258117676
+Top 8 key tiles of 128 per query tile,2048,0,0,1,0.7352941176470589,0.8817676305770874
+"Dense, document-causal",8192,0,0,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,0,1,1.0,0.5715741515159607
+Top 2 key tiles of 128 per query tile,8192,0,0,1,0.061057692307692306,0.23811212182044983
+Top 4 key tiles of 128 per query tile,8192,0,0,1,0.1201923076923077,0.36069896817207336
+Top 8 key tiles of 128 per query tile,8192,0,0,1,0.2326923076923077,0.5157703757286072
+"Dense, document-causal",2048,0,0,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,0,2,1.0,0.7217676043510437
+Top 2 key tiles of 128 per query tile,2048,0,0,2,0.22794117647058823,0.689967691898346
+Top 4 key tiles of 128 per query tile,2048,0,0,2,0.4264705882352941,0.8247567415237427
+Top 8 key tiles of 128 per query tile,2048,0,0,2,0.7352941176470589,0.9417853951454163
+"Dense, document-causal",8192,0,0,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,0,2,1.0,0.5935238003730774
+Top 2 key tiles of 128 per query tile,8192,0,0,2,0.061057692307692306,0.4057237207889557
+Top 4 key tiles of 128 per query tile,8192,0,0,2,0.1201923076923077,0.5112296938896179
+Top 8 key tiles of 128 per query tile,8192,0,0,2,0.2326923076923077,0.6435795426368713
+"Dense, document-causal",2048,0,0,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,0,3,1.0,0.5023536086082458
+Top 2 key tiles of 128 per query tile,2048,0,0,3,0.22794117647058823,0.565054178237915
+Top 4 key tiles of 128 per query tile,2048,0,0,3,0.4264705882352941,0.7968267202377319
+Top 8 key tiles of 128 per query tile,2048,0,0,3,0.7352941176470589,0.9455021023750305
+"Dense, document-causal",8192,0,0,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,0,3,0.979326923076923,0.4364200234413147
+Top 2 key tiles of 128 per query tile,8192,0,0,3,0.061057692307692306,0.3258417248725891
+Top 4 key tiles of 128 per query tile,8192,0,0,3,0.1201923076923077,0.4878759980201721
+Top 8 key tiles of 128 per query tile,8192,0,0,3,0.2326923076923077,0.662046492099762
+"Dense, document-causal",2048,0,0,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,0,4,1.0,0.8773767352104187
+Top 2 key tiles of 128 per query tile,2048,0,0,4,0.22794117647058823,0.8718330264091492
+Top 4 key tiles of 128 per query tile,2048,0,0,4,0.4264705882352941,0.9286850094795227
+Top 8 key tiles of 128 per query tile,2048,0,0,4,0.7352941176470589,0.9736194610595703
+"Dense, document-causal",8192,0,0,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,0,4,1.0,0.7138145565986633
+Top 2 key tiles of 128 per query tile,8192,0,0,4,0.061057692307692306,0.5214824080467224
+Top 4 key tiles of 128 per query tile,8192,0,0,4,0.1201923076923077,0.620974063873291
+Top 8 key tiles of 128 per query tile,8192,0,0,4,0.2326923076923077,0.7228697538375854
+"Dense, document-causal",2048,0,0,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,0,5,1.0,0.7237153649330139
+Top 2 key tiles of 128 per query tile,2048,0,0,5,0.22794117647058823,0.5751340389251709
+Top 4 key tiles of 128 per query tile,2048,0,0,5,0.4264705882352941,0.7337697148323059
+Top 8 key tiles of 128 per query tile,2048,0,0,5,0.7352941176470589,0.9055036306381226
+"Dense, document-causal",8192,0,0,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,0,5,1.0,0.5921063423156738
+Top 2 key tiles of 128 per query tile,8192,0,0,5,0.061057692307692306,0.2778996527194977
+Top 4 key tiles of 128 per query tile,8192,0,0,5,0.1201923076923077,0.3960171043872833
+Top 8 key tiles of 128 per query tile,8192,0,0,5,0.2326923076923077,0.5586541891098022
+"Dense, document-causal",2048,0,1,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,1,0,1.0,0.6499850749969482
+Top 2 key tiles of 128 per query tile,2048,0,1,0,0.22794117647058823,0.6998783349990845
+Top 4 key tiles of 128 per query tile,2048,0,1,0,0.4264705882352941,0.8440593481063843
+Top 8 key tiles of 128 per query tile,2048,0,1,0,0.7352941176470589,0.9564525485038757
+"Dense, document-causal",8192,0,1,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,1,0,0.9836538461538461,0.5374560952186584
+Top 2 key tiles of 128 per query tile,8192,0,1,0,0.061057692307692306,0.41439443826675415
+Top 4 key tiles of 128 per query tile,8192,0,1,0,0.1201923076923077,0.5435209274291992
+Top 8 key tiles of 128 per query tile,8192,0,1,0,0.2326923076923077,0.6979120969772339
+"Dense, document-causal",2048,0,1,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,1,1,1.0,0.7222316265106201
+Top 2 key tiles of 128 per query tile,2048,0,1,1,0.22794117647058823,0.6888564229011536
+Top 4 key tiles of 128 per query tile,2048,0,1,1,0.4264705882352941,0.8237167596817017
+Top 8 key tiles of 128 per query tile,2048,0,1,1,0.7352941176470589,0.9375535249710083
+"Dense, document-causal",8192,0,1,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,1,1,1.0,0.5635294318199158
+Top 2 key tiles of 128 per query tile,8192,0,1,1,0.061057692307692306,0.4163002669811249
+Top 4 key tiles of 128 per query tile,8192,0,1,1,0.1201923076923077,0.5265218615531921
+Top 8 key tiles of 128 per query tile,8192,0,1,1,0.2326923076923077,0.6566916704177856
+"Dense, document-causal",2048,0,1,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,1,2,1.0,0.9709985852241516
+Top 2 key tiles of 128 per query tile,2048,0,1,2,0.22794117647058823,0.9540367722511292
+Top 4 key tiles of 128 per query tile,2048,0,1,2,0.4264705882352941,0.9725518822669983
+Top 8 key tiles of 128 per query tile,2048,0,1,2,0.7352941176470589,0.989592969417572
+"Dense, document-causal",8192,0,1,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,1,2,1.0,0.8848651647567749
+Top 2 key tiles of 128 per query tile,8192,0,1,2,0.061057692307692306,0.7558640241622925
+Top 4 key tiles of 128 per query tile,8192,0,1,2,0.1201923076923077,0.7940884828567505
+Top 8 key tiles of 128 per query tile,8192,0,1,2,0.2326923076923077,0.848726749420166
+"Dense, document-causal",2048,0,1,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,1,3,1.0,0.884838342666626
+Top 2 key tiles of 128 per query tile,2048,0,1,3,0.22794117647058823,0.5975335240364075
+Top 4 key tiles of 128 per query tile,2048,0,1,3,0.4264705882352941,0.7720897793769836
+Top 8 key tiles of 128 per query tile,2048,0,1,3,0.7352941176470589,0.9103623032569885
+"Dense, document-causal",8192,0,1,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,1,3,1.0,0.7546063661575317
+Top 2 key tiles of 128 per query tile,8192,0,1,3,0.061057692307692306,0.39082345366477966
+Top 4 key tiles of 128 per query tile,8192,0,1,3,0.1201923076923077,0.5125686526298523
+Top 8 key tiles of 128 per query tile,8192,0,1,3,0.2326923076923077,0.6265208721160889
+"Dense, document-causal",2048,0,1,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,1,4,1.0,0.7606268525123596
+Top 2 key tiles of 128 per query tile,2048,0,1,4,0.22794117647058823,0.47493934631347656
+Top 4 key tiles of 128 per query tile,2048,0,1,4,0.4264705882352941,0.6591507792472839
+Top 8 key tiles of 128 per query tile,2048,0,1,4,0.7352941176470589,0.8814500570297241
+"Dense, document-causal",8192,0,1,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,1,4,1.0,0.619966447353363
+Top 2 key tiles of 128 per query tile,8192,0,1,4,0.061057692307692306,0.2610919177532196
+Top 4 key tiles of 128 per query tile,8192,0,1,4,0.1201923076923077,0.3688957691192627
+Top 8 key tiles of 128 per query tile,8192,0,1,4,0.2326923076923077,0.5314788818359375
+"Dense, document-causal",2048,0,1,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,1,5,1.0,0.9650235772132874
+Top 2 key tiles of 128 per query tile,2048,0,1,5,0.22794117647058823,0.9239016175270081
+Top 4 key tiles of 128 per query tile,2048,0,1,5,0.4264705882352941,0.9505808353424072
+Top 8 key tiles of 128 per query tile,2048,0,1,5,0.7352941176470589,0.9812211990356445
+"Dense, document-causal",8192,0,1,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,1,5,1.0,0.8869771361351013
+Top 2 key tiles of 128 per query tile,8192,0,1,5,0.061057692307692306,0.6942464113235474
+Top 4 key tiles of 128 per query tile,8192,0,1,5,0.1201923076923077,0.7335579991340637
+Top 8 key tiles of 128 per query tile,8192,0,1,5,0.2326923076923077,0.7893854975700378
+"Dense, document-causal",2048,0,2,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,2,0,1.0,0.8205413222312927
+Top 2 key tiles of 128 per query tile,2048,0,2,0,0.22794117647058823,0.6866694092750549
+Top 4 key tiles of 128 per query tile,2048,0,2,0,0.4264705882352941,0.8199135065078735
+Top 8 key tiles of 128 per query tile,2048,0,2,0,0.7352941176470589,0.9312437772750854
+"Dense, document-causal",8192,0,2,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,2,0,1.0,0.6864197254180908
+Top 2 key tiles of 128 per query tile,8192,0,2,0,0.061057692307692306,0.4334876537322998
+Top 4 key tiles of 128 per query tile,8192,0,2,0,0.1201923076923077,0.5310923457145691
+Top 8 key tiles of 128 per query tile,8192,0,2,0,0.2326923076923077,0.6517201066017151
+"Dense, document-causal",2048,0,2,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,2,1,1.0,0.8955995440483093
+Top 2 key tiles of 128 per query tile,2048,0,2,1,0.22794117647058823,0.8309354782104492
+Top 4 key tiles of 128 per query tile,2048,0,2,1,0.4264705882352941,0.9047521352767944
+Top 8 key tiles of 128 per query tile,2048,0,2,1,0.7352941176470589,0.9676977396011353
+"Dense, document-causal",8192,0,2,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,2,1,1.0,0.7788217067718506
+Top 2 key tiles of 128 per query tile,8192,0,2,1,0.061057692307692306,0.6192129254341125
+Top 4 key tiles of 128 per query tile,8192,0,2,1,0.1201923076923077,0.6843472123146057
+Top 8 key tiles of 128 per query tile,8192,0,2,1,0.2326923076923077,0.7681369781494141
+"Dense, document-causal",2048,0,2,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,2,2,1.0,0.802696704864502
+Top 2 key tiles of 128 per query tile,2048,0,2,2,0.22794117647058823,0.8547245264053345
+Top 4 key tiles of 128 per query tile,2048,0,2,2,0.4264705882352941,0.9160963296890259
+Top 8 key tiles of 128 per query tile,2048,0,2,2,0.7352941176470589,0.9709810614585876
+"Dense, document-causal",8192,0,2,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,2,2,0.9860576923076924,0.7016630172729492
+Top 2 key tiles of 128 per query tile,8192,0,2,2,0.061057692307692306,0.6205675005912781
+Top 4 key tiles of 128 per query tile,8192,0,2,2,0.1201923076923077,0.7058286666870117
+Top 8 key tiles of 128 per query tile,8192,0,2,2,0.2326923076923077,0.8000197410583496
+"Dense, document-causal",2048,0,2,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,2,3,1.0,0.9396908283233643
+Top 2 key tiles of 128 per query tile,2048,0,2,3,0.22794117647058823,0.920988917350769
+Top 4 key tiles of 128 per query tile,2048,0,2,3,0.4264705882352941,0.9538431167602539
+Top 8 key tiles of 128 per query tile,2048,0,2,3,0.7352941176470589,0.9828066825866699
+"Dense, document-causal",8192,0,2,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,2,3,1.0,0.849074125289917
+Top 2 key tiles of 128 per query tile,8192,0,2,3,0.061057692307692306,0.7218855023384094
+Top 4 key tiles of 128 per query tile,8192,0,2,3,0.1201923076923077,0.7650463581085205
+Top 8 key tiles of 128 per query tile,8192,0,2,3,0.2326923076923077,0.8246512413024902
+"Dense, document-causal",2048,0,2,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,2,4,1.0,0.9671941995620728
+Top 2 key tiles of 128 per query tile,2048,0,2,4,0.22794117647058823,0.9577488899230957
+Top 4 key tiles of 128 per query tile,2048,0,2,4,0.4264705882352941,0.9744331240653992
+Top 8 key tiles of 128 per query tile,2048,0,2,4,0.7352941176470589,0.9900456070899963
+"Dense, document-causal",8192,0,2,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,2,4,0.9980769230769231,0.9123076796531677
+Top 2 key tiles of 128 per query tile,8192,0,2,4,0.061057692307692306,0.8175906538963318
+Top 4 key tiles of 128 per query tile,8192,0,2,4,0.1201923076923077,0.8510136008262634
+Top 8 key tiles of 128 per query tile,8192,0,2,4,0.2326923076923077,0.8935102224349976
+"Dense, document-causal",2048,0,2,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,2,5,1.0,0.7262728810310364
+Top 2 key tiles of 128 per query tile,2048,0,2,5,0.22794117647058823,0.6131964921951294
+Top 4 key tiles of 128 per query tile,2048,0,2,5,0.4264705882352941,0.8054349422454834
+Top 8 key tiles of 128 per query tile,2048,0,2,5,0.7352941176470589,0.96149742603302
+"Dense, document-causal",8192,0,2,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,2,5,0.9995192307692308,0.6447007656097412
+Top 2 key tiles of 128 per query tile,8192,0,2,5,0.061057692307692306,0.4212894141674042
+Top 4 key tiles of 128 per query tile,8192,0,2,5,0.1201923076923077,0.5644277930259705
+Top 8 key tiles of 128 per query tile,8192,0,2,5,0.2326923076923077,0.7245217561721802
+"Dense, document-causal",2048,0,3,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,3,0,1.0,0.7772449851036072
+Top 2 key tiles of 128 per query tile,2048,0,3,0,0.22794117647058823,0.7423579096794128
+Top 4 key tiles of 128 per query tile,2048,0,3,0,0.4264705882352941,0.8932414054870605
+Top 8 key tiles of 128 per query tile,2048,0,3,0,0.7352941176470589,0.9694989323616028
+"Dense, document-causal",8192,0,3,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,3,0,0.9903846153846154,0.6894367933273315
+Top 2 key tiles of 128 per query tile,8192,0,3,0,0.061057692307692306,0.522022008895874
+Top 4 key tiles of 128 per query tile,8192,0,3,0,0.1201923076923077,0.6463837027549744
+Top 8 key tiles of 128 per query tile,8192,0,3,0,0.2326923076923077,0.7561928629875183
+"Dense, document-causal",2048,0,3,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,3,1,1.0,0.7974697947502136
+Top 2 key tiles of 128 per query tile,2048,0,3,1,0.22794117647058823,0.5215007662773132
+Top 4 key tiles of 128 per query tile,2048,0,3,1,0.4264705882352941,0.7153592705726624
+Top 8 key tiles of 128 per query tile,2048,0,3,1,0.7352941176470589,0.892382025718689
+"Dense, document-causal",8192,0,3,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,3,1,1.0,0.7401949763298035
+Top 2 key tiles of 128 per query tile,8192,0,3,1,0.061057692307692306,0.2784727215766907
+Top 4 key tiles of 128 per query tile,8192,0,3,1,0.1201923076923077,0.39097511768341064
+Top 8 key tiles of 128 per query tile,8192,0,3,1,0.2326923076923077,0.5345984101295471
+"Dense, document-causal",2048,0,3,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,3,2,1.0,0.874324381351471
+Top 2 key tiles of 128 per query tile,2048,0,3,2,0.22794117647058823,0.641823947429657
+Top 4 key tiles of 128 per query tile,2048,0,3,2,0.4264705882352941,0.7626949548721313
+Top 8 key tiles of 128 per query tile,2048,0,3,2,0.7352941176470589,0.8994205594062805
+"Dense, document-causal",8192,0,3,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,3,2,1.0,0.6845304369926453
+Top 2 key tiles of 128 per query tile,8192,0,3,2,0.061057692307692306,0.4541269838809967
+Top 4 key tiles of 128 per query tile,8192,0,3,2,0.1201923076923077,0.5634821057319641
+Top 8 key tiles of 128 per query tile,8192,0,3,2,0.2326923076923077,0.698711097240448
+"Dense, document-causal",2048,0,3,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,3,3,1.0,0.7426766157150269
+Top 2 key tiles of 128 per query tile,2048,0,3,3,0.22794117647058823,0.619379460811615
+Top 4 key tiles of 128 per query tile,2048,0,3,3,0.4264705882352941,0.8172414302825928
+Top 8 key tiles of 128 per query tile,2048,0,3,3,0.7352941176470589,0.9404395222663879
+"Dense, document-causal",8192,0,3,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,3,3,1.0,0.553250253200531
+Top 2 key tiles of 128 per query tile,8192,0,3,3,0.061057692307692306,0.34586307406425476
+Top 4 key tiles of 128 per query tile,8192,0,3,3,0.1201923076923077,0.4732130765914917
+Top 8 key tiles of 128 per query tile,8192,0,3,3,0.2326923076923077,0.6148993372917175
+"Dense, document-causal",2048,0,3,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,3,4,1.0,0.6908665895462036
+Top 2 key tiles of 128 per query tile,2048,0,3,4,0.22794117647058823,0.7145260572433472
+Top 4 key tiles of 128 per query tile,2048,0,3,4,0.4264705882352941,0.8476405143737793
+Top 8 key tiles of 128 per query tile,2048,0,3,4,0.7352941176470589,0.9719869494438171
+"Dense, document-causal",8192,0,3,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,3,4,0.9548076923076924,0.644612729549408
+Top 2 key tiles of 128 per query tile,8192,0,3,4,0.061057692307692306,0.5266379117965698
+Top 4 key tiles of 128 per query tile,8192,0,3,4,0.1201923076923077,0.6462390422821045
+Top 8 key tiles of 128 per query tile,8192,0,3,4,0.2326923076923077,0.7885136604309082
+"Dense, document-causal",2048,0,3,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,3,5,1.0,0.8154627680778503
+Top 2 key tiles of 128 per query tile,2048,0,3,5,0.22794117647058823,0.4042116403579712
+Top 4 key tiles of 128 per query tile,2048,0,3,5,0.4264705882352941,0.6430572867393494
+Top 8 key tiles of 128 per query tile,2048,0,3,5,0.7352941176470589,0.8665808439254761
+"Dense, document-causal",8192,0,3,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,3,5,1.0,0.7515342831611633
+Top 2 key tiles of 128 per query tile,8192,0,3,5,0.061057692307692306,0.196161150932312
+Top 4 key tiles of 128 per query tile,8192,0,3,5,0.1201923076923077,0.3210655748844147
+Top 8 key tiles of 128 per query tile,8192,0,3,5,0.2326923076923077,0.4736151695251465
+"Dense, document-causal",2048,0,4,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,4,0,1.0,0.6481004357337952
+Top 2 key tiles of 128 per query tile,2048,0,4,0,0.22794117647058823,0.6352410316467285
+Top 4 key tiles of 128 per query tile,2048,0,4,0,0.4264705882352941,0.777498722076416
+Top 8 key tiles of 128 per query tile,2048,0,4,0,0.7352941176470589,0.9232810139656067
+"Dense, document-causal",8192,0,4,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,4,0,0.9985576923076923,0.5183404684066772
+Top 2 key tiles of 128 per query tile,8192,0,4,0,0.061057692307692306,0.36190247535705566
+Top 4 key tiles of 128 per query tile,8192,0,4,0,0.1201923076923077,0.47343313694000244
+Top 8 key tiles of 128 per query tile,8192,0,4,0,0.2326923076923077,0.6176233887672424
+"Dense, document-causal",2048,0,4,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,4,1,1.0,0.9520778059959412
+Top 2 key tiles of 128 per query tile,2048,0,4,1,0.22794117647058823,0.49095386266708374
+Top 4 key tiles of 128 per query tile,2048,0,4,1,0.4264705882352941,0.614101767539978
+Top 8 key tiles of 128 per query tile,2048,0,4,1,0.7352941176470589,0.807732343673706
+"Dense, document-causal",8192,0,4,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,4,1,1.0,0.8441979289054871
+Top 2 key tiles of 128 per query tile,8192,0,4,1,0.061057692307692306,0.34163057804107666
+Top 4 key tiles of 128 per query tile,8192,0,4,1,0.1201923076923077,0.41855889558792114
+Top 8 key tiles of 128 per query tile,8192,0,4,1,0.2326923076923077,0.5410341024398804
+"Dense, document-causal",2048,0,4,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,4,2,1.0,0.5609361529350281
+Top 2 key tiles of 128 per query tile,2048,0,4,2,0.22794117647058823,0.41986551880836487
+Top 4 key tiles of 128 per query tile,2048,0,4,2,0.4264705882352941,0.6365293860435486
+Top 8 key tiles of 128 per query tile,2048,0,4,2,0.7352941176470589,0.870538592338562
+"Dense, document-causal",8192,0,4,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,4,2,1.0,0.3762761354446411
+Top 2 key tiles of 128 per query tile,8192,0,4,2,0.061057692307692306,0.17615121603012085
+Top 4 key tiles of 128 per query tile,8192,0,4,2,0.1201923076923077,0.2864980399608612
+Top 8 key tiles of 128 per query tile,8192,0,4,2,0.2326923076923077,0.44231879711151123
+"Dense, document-causal",2048,0,4,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,4,3,1.0,0.7737057209014893
+Top 2 key tiles of 128 per query tile,2048,0,4,3,0.22794117647058823,0.5476921796798706
+Top 4 key tiles of 128 per query tile,2048,0,4,3,0.4264705882352941,0.7335670590400696
+Top 8 key tiles of 128 per query tile,2048,0,4,3,0.7352941176470589,0.9076760411262512
+"Dense, document-causal",8192,0,4,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,4,3,1.0,0.6050516366958618
+Top 2 key tiles of 128 per query tile,8192,0,4,3,0.061057692307692306,0.31161320209503174
+Top 4 key tiles of 128 per query tile,8192,0,4,3,0.1201923076923077,0.4357427954673767
+Top 8 key tiles of 128 per query tile,8192,0,4,3,0.2326923076923077,0.5896848440170288
+"Dense, document-causal",2048,0,4,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,4,4,1.0,0.8048570156097412
+Top 2 key tiles of 128 per query tile,2048,0,4,4,0.22794117647058823,0.6644368767738342
+Top 4 key tiles of 128 per query tile,2048,0,4,4,0.4264705882352941,0.7860119938850403
+Top 8 key tiles of 128 per query tile,2048,0,4,4,0.7352941176470589,0.948219358921051
+"Dense, document-causal",8192,0,4,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,4,4,0.9985576923076923,0.6315817832946777
+Top 2 key tiles of 128 per query tile,8192,0,4,4,0.061057692307692306,0.42698127031326294
+Top 4 key tiles of 128 per query tile,8192,0,4,4,0.1201923076923077,0.5366231203079224
+Top 8 key tiles of 128 per query tile,8192,0,4,4,0.2326923076923077,0.6854586601257324
+"Dense, document-causal",2048,0,4,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,4,5,1.0,0.936150312423706
+Top 2 key tiles of 128 per query tile,2048,0,4,5,0.22794117647058823,0.8643422722816467
+Top 4 key tiles of 128 per query tile,2048,0,4,5,0.4264705882352941,0.915939450263977
+Top 8 key tiles of 128 per query tile,2048,0,4,5,0.7352941176470589,0.9648553729057312
+"Dense, document-causal",8192,0,4,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,4,5,1.0,0.8294582366943359
+Top 2 key tiles of 128 per query tile,8192,0,4,5,0.061057692307692306,0.6591964960098267
+Top 4 key tiles of 128 per query tile,8192,0,4,5,0.1201923076923077,0.7123103141784668
+Top 8 key tiles of 128 per query tile,8192,0,4,5,0.2326923076923077,0.7816584706306458
+"Dense, document-causal",2048,0,5,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,5,0,1.0,0.927715003490448
+Top 2 key tiles of 128 per query tile,2048,0,5,0,0.22794117647058823,0.9280135631561279
+Top 4 key tiles of 128 per query tile,2048,0,5,0,0.4264705882352941,0.9625699520111084
+Top 8 key tiles of 128 per query tile,2048,0,5,0,0.7352941176470589,0.9883612394332886
+"Dense, document-causal",8192,0,5,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,5,0,0.9918269230769231,0.8311850428581238
+Top 2 key tiles of 128 per query tile,8192,0,5,0,0.061057692307692306,0.7342737317085266
+Top 4 key tiles of 128 per query tile,8192,0,5,0,0.1201923076923077,0.7758364677429199
+Top 8 key tiles of 128 per query tile,8192,0,5,0,0.2326923076923077,0.839367151260376
+"Dense, document-causal",2048,0,5,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,5,1,1.0,0.8976852893829346
+Top 2 key tiles of 128 per query tile,2048,0,5,1,0.22794117647058823,0.8209240436553955
+Top 4 key tiles of 128 per query tile,2048,0,5,1,0.4264705882352941,0.9027292132377625
+Top 8 key tiles of 128 per query tile,2048,0,5,1,0.7352941176470589,0.9662272930145264
+"Dense, document-causal",8192,0,5,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,5,1,1.0,0.7528023719787598
+Top 2 key tiles of 128 per query tile,8192,0,5,1,0.061057692307692306,0.5957905054092407
+Top 4 key tiles of 128 per query tile,8192,0,5,1,0.1201923076923077,0.6838262677192688
+Top 8 key tiles of 128 per query tile,8192,0,5,1,0.2326923076923077,0.7703614234924316
+"Dense, document-causal",2048,0,5,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,5,2,1.0,0.9522281885147095
+Top 2 key tiles of 128 per query tile,2048,0,5,2,0.22794117647058823,0.9498640894889832
+Top 4 key tiles of 128 per query tile,2048,0,5,2,0.4264705882352941,0.9724817276000977
+Top 8 key tiles of 128 per query tile,2048,0,5,2,0.7352941176470589,0.990355908870697
+"Dense, document-causal",8192,0,5,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,5,2,0.9980769230769231,0.849583625793457
+Top 2 key tiles of 128 per query tile,8192,0,5,2,0.061057692307692306,0.7363328337669373
+Top 4 key tiles of 128 per query tile,8192,0,5,2,0.1201923076923077,0.782866358757019
+Top 8 key tiles of 128 per query tile,8192,0,5,2,0.2326923076923077,0.8461135625839233
+"Dense, document-causal",2048,0,5,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,5,3,1.0,0.7595028281211853
+Top 2 key tiles of 128 per query tile,2048,0,5,3,0.22794117647058823,0.7036287188529968
+Top 4 key tiles of 128 per query tile,2048,0,5,3,0.4264705882352941,0.842785120010376
+Top 8 key tiles of 128 per query tile,2048,0,5,3,0.7352941176470589,0.951291024684906
+"Dense, document-causal",8192,0,5,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,5,3,0.9975961538461539,0.6485817432403564
+Top 2 key tiles of 128 per query tile,8192,0,5,3,0.061057692307692306,0.4690491855144501
+Top 4 key tiles of 128 per query tile,8192,0,5,3,0.1201923076923077,0.5831513404846191
+Top 8 key tiles of 128 per query tile,8192,0,5,3,0.2326923076923077,0.7162911295890808
+"Dense, document-causal",2048,0,5,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,5,4,1.0,0.9483209252357483
+Top 2 key tiles of 128 per query tile,2048,0,5,4,0.22794117647058823,0.8199241161346436
+Top 4 key tiles of 128 per query tile,2048,0,5,4,0.4264705882352941,0.906571626663208
+Top 8 key tiles of 128 per query tile,2048,0,5,4,0.7352941176470589,0.9851595163345337
+"Dense, document-causal",8192,0,5,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,5,4,1.0,0.8413995504379272
+Top 2 key tiles of 128 per query tile,8192,0,5,4,0.061057692307692306,0.6686888337135315
+Top 4 key tiles of 128 per query tile,8192,0,5,4,0.1201923076923077,0.7310332655906677
+Top 8 key tiles of 128 per query tile,8192,0,5,4,0.2326923076923077,0.813745379447937
+"Dense, document-causal",2048,0,5,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,5,5,1.0,0.6456323862075806
+Top 2 key tiles of 128 per query tile,2048,0,5,5,0.22794117647058823,0.6075761318206787
+Top 4 key tiles of 128 per query tile,2048,0,5,5,0.4264705882352941,0.7624233961105347
+Top 8 key tiles of 128 per query tile,2048,0,5,5,0.7352941176470589,0.9152635335922241
+"Dense, document-causal",8192,0,5,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,5,5,1.0,0.49663135409355164
+Top 2 key tiles of 128 per query tile,8192,0,5,5,0.061057692307692306,0.343017041683197
+Top 4 key tiles of 128 per query tile,8192,0,5,5,0.1201923076923077,0.4599820673465729
+Top 8 key tiles of 128 per query tile,8192,0,5,5,0.2326923076923077,0.6063252687454224
+"Dense, document-causal",2048,0,7,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,7,0,1.0,0.7740691900253296
+Top 2 key tiles of 128 per query tile,2048,0,7,0,0.22794117647058823,0.5265395641326904
+Top 4 key tiles of 128 per query tile,2048,0,7,0,0.4264705882352941,0.7399895787239075
+Top 8 key tiles of 128 per query tile,2048,0,7,0,0.7352941176470589,0.9176996350288391
+"Dense, document-causal",8192,0,7,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,7,0,0.9995192307692308,0.6235180497169495
+Top 2 key tiles of 128 per query tile,8192,0,7,0,0.061057692307692306,0.28728729486465454
+Top 4 key tiles of 128 per query tile,8192,0,7,0,0.1201923076923077,0.44605275988578796
+Top 8 key tiles of 128 per query tile,8192,0,7,0,0.2326923076923077,0.5954911112785339
+"Dense, document-causal",2048,0,7,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,7,1,1.0,0.7078389525413513
+Top 2 key tiles of 128 per query tile,2048,0,7,1,0.22794117647058823,0.5623302459716797
+Top 4 key tiles of 128 per query tile,2048,0,7,1,0.4264705882352941,0.7159821391105652
+Top 8 key tiles of 128 per query tile,2048,0,7,1,0.7352941176470589,0.9052702188491821
+"Dense, document-causal",8192,0,7,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,7,1,1.0,0.5162070393562317
+Top 2 key tiles of 128 per query tile,8192,0,7,1,0.061057692307692306,0.31657320261001587
+Top 4 key tiles of 128 per query tile,8192,0,7,1,0.1201923076923077,0.42934101819992065
+Top 8 key tiles of 128 per query tile,8192,0,7,1,0.2326923076923077,0.5774585604667664
+"Dense, document-causal",2048,0,7,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,7,2,1.0,0.9369972348213196
+Top 2 key tiles of 128 per query tile,2048,0,7,2,0.22794117647058823,0.8230572938919067
+Top 4 key tiles of 128 per query tile,2048,0,7,2,0.4264705882352941,0.8899592161178589
+Top 8 key tiles of 128 per query tile,2048,0,7,2,0.7352941176470589,0.9584251046180725
+"Dense, document-causal",8192,0,7,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,7,2,1.0,0.7999572157859802
+Top 2 key tiles of 128 per query tile,8192,0,7,2,0.061057692307692306,0.6219198703765869
+Top 4 key tiles of 128 per query tile,8192,0,7,2,0.1201923076923077,0.6874963641166687
+Top 8 key tiles of 128 per query tile,8192,0,7,2,0.2326923076923077,0.7762690186500549
+"Dense, document-causal",2048,0,7,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,7,3,1.0,0.8937069177627563
+Top 2 key tiles of 128 per query tile,2048,0,7,3,0.22794117647058823,0.910210132598877
+Top 4 key tiles of 128 per query tile,2048,0,7,3,0.4264705882352941,0.9667852520942688
+Top 8 key tiles of 128 per query tile,2048,0,7,3,0.7352941176470589,0.9899240136146545
+"Dense, document-causal",8192,0,7,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,7,3,0.9841346153846153,0.7966889142990112
+Top 2 key tiles of 128 per query tile,8192,0,7,3,0.061057692307692306,0.7080504298210144
+Top 4 key tiles of 128 per query tile,8192,0,7,3,0.1201923076923077,0.7826072573661804
+Top 8 key tiles of 128 per query tile,8192,0,7,3,0.2326923076923077,0.8561514616012573
+"Dense, document-causal",2048,0,7,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,7,4,1.0,0.823310911655426
+Top 2 key tiles of 128 per query tile,2048,0,7,4,0.22794117647058823,0.8107341527938843
+Top 4 key tiles of 128 per query tile,2048,0,7,4,0.4264705882352941,0.9046400785446167
+Top 8 key tiles of 128 per query tile,2048,0,7,4,0.7352941176470589,0.9759277701377869
+"Dense, document-causal",8192,0,7,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,7,4,0.9504807692307692,0.6791462898254395
+Top 2 key tiles of 128 per query tile,8192,0,7,4,0.061057692307692306,0.5488116145133972
+Top 4 key tiles of 128 per query tile,8192,0,7,4,0.1201923076923077,0.6365019679069519
+Top 8 key tiles of 128 per query tile,8192,0,7,4,0.2326923076923077,0.743542492389679
+"Dense, document-causal",2048,0,7,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,7,5,1.0,0.5306630730628967
+Top 2 key tiles of 128 per query tile,2048,0,7,5,0.22794117647058823,0.4242761433124542
+Top 4 key tiles of 128 per query tile,2048,0,7,5,0.4264705882352941,0.6399483680725098
+Top 8 key tiles of 128 per query tile,2048,0,7,5,0.7352941176470589,0.8634722232818604
+"Dense, document-causal",8192,0,7,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,7,5,1.0,0.38855066895484924
+Top 2 key tiles of 128 per query tile,8192,0,7,5,0.061057692307692306,0.19891908764839172
+Top 4 key tiles of 128 per query tile,8192,0,7,5,0.1201923076923077,0.3214307129383087
+Top 8 key tiles of 128 per query tile,8192,0,7,5,0.2326923076923077,0.4829542636871338
+"Dense, document-causal",2048,0,8,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,8,0,1.0,0.6815971732139587
+Top 2 key tiles of 128 per query tile,2048,0,8,0,0.22794117647058823,0.6045617461204529
+Top 4 key tiles of 128 per query tile,2048,0,8,0,0.4264705882352941,0.7683616280555725
+Top 8 key tiles of 128 per query tile,2048,0,8,0,0.7352941176470589,0.9279140830039978
+"Dense, document-causal",8192,0,8,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,8,0,0.9514423076923076,0.5451267957687378
+Top 2 key tiles of 128 per query tile,8192,0,8,0,0.061057692307692306,0.33974575996398926
+Top 4 key tiles of 128 per query tile,8192,0,8,0,0.1201923076923077,0.47857528924942017
+Top 8 key tiles of 128 per query tile,8192,0,8,0,0.2326923076923077,0.6624137163162231
+"Dense, document-causal",2048,0,8,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,8,1,1.0,0.7807451486587524
+Top 2 key tiles of 128 per query tile,2048,0,8,1,0.22794117647058823,0.6207398772239685
+Top 4 key tiles of 128 per query tile,2048,0,8,1,0.4264705882352941,0.7629298567771912
+Top 8 key tiles of 128 per query tile,2048,0,8,1,0.7352941176470589,0.9125924706459045
+"Dense, document-causal",8192,0,8,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,8,1,0.9774038461538461,0.5978164076805115
+Top 2 key tiles of 128 per query tile,8192,0,8,1,0.061057692307692306,0.3794555068016052
+Top 4 key tiles of 128 per query tile,8192,0,8,1,0.1201923076923077,0.4940890669822693
+Top 8 key tiles of 128 per query tile,8192,0,8,1,0.2326923076923077,0.6515789031982422
+"Dense, document-causal",2048,0,8,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,8,2,1.0,0.5460362434387207
+Top 2 key tiles of 128 per query tile,2048,0,8,2,0.22794117647058823,0.5093668103218079
+Top 4 key tiles of 128 per query tile,2048,0,8,2,0.4264705882352941,0.6943771839141846
+Top 8 key tiles of 128 per query tile,2048,0,8,2,0.7352941176470589,0.8964060544967651
+"Dense, document-causal",8192,0,8,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,8,2,0.9798076923076923,0.475860059261322
+Top 2 key tiles of 128 per query tile,8192,0,8,2,0.061057692307692306,0.329457551240921
+Top 4 key tiles of 128 per query tile,8192,0,8,2,0.1201923076923077,0.4598442018032074
+Top 8 key tiles of 128 per query tile,8192,0,8,2,0.2326923076923077,0.6280452013015747
+"Dense, document-causal",2048,0,8,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,8,3,1.0,0.8191821575164795
+Top 2 key tiles of 128 per query tile,2048,0,8,3,0.22794117647058823,0.6486193537712097
+Top 4 key tiles of 128 per query tile,2048,0,8,3,0.4264705882352941,0.8046610355377197
+Top 8 key tiles of 128 per query tile,2048,0,8,3,0.7352941176470589,0.9316981434822083
+"Dense, document-causal",8192,0,8,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,8,3,0.9966346153846154,0.6230252385139465
+Top 2 key tiles of 128 per query tile,8192,0,8,3,0.061057692307692306,0.3888450860977173
+Top 4 key tiles of 128 per query tile,8192,0,8,3,0.1201923076923077,0.5063167214393616
+Top 8 key tiles of 128 per query tile,8192,0,8,3,0.2326923076923077,0.657848060131073
+"Dense, document-causal",2048,0,8,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,8,4,1.0,0.5674031972885132
+Top 2 key tiles of 128 per query tile,2048,0,8,4,0.22794117647058823,0.48624187707901
+Top 4 key tiles of 128 per query tile,2048,0,8,4,0.4264705882352941,0.6899242401123047
+Top 8 key tiles of 128 per query tile,2048,0,8,4,0.7352941176470589,0.8834723234176636
+"Dense, document-causal",8192,0,8,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,8,4,0.9990384615384615,0.4396336078643799
+Top 2 key tiles of 128 per query tile,8192,0,8,4,0.061057692307692306,0.2436130940914154
+Top 4 key tiles of 128 per query tile,8192,0,8,4,0.1201923076923077,0.36055731773376465
+Top 8 key tiles of 128 per query tile,8192,0,8,4,0.2326923076923077,0.5142644643783569
+"Dense, document-causal",2048,0,8,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,8,5,1.0,0.7043746113777161
+Top 2 key tiles of 128 per query tile,2048,0,8,5,0.22794117647058823,0.5414164662361145
+Top 4 key tiles of 128 per query tile,2048,0,8,5,0.4264705882352941,0.7049282789230347
+Top 8 key tiles of 128 per query tile,2048,0,8,5,0.7352941176470589,0.8928055763244629
+"Dense, document-causal",8192,0,8,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,8,5,1.0,0.5225347876548767
+Top 2 key tiles of 128 per query tile,8192,0,8,5,0.061057692307692306,0.3024795651435852
+Top 4 key tiles of 128 per query tile,8192,0,8,5,0.1201923076923077,0.41444969177246094
+Top 8 key tiles of 128 per query tile,8192,0,8,5,0.2326923076923077,0.5764413475990295
+"Dense, document-causal",2048,0,9,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,9,0,1.0,0.609957218170166
+Top 2 key tiles of 128 per query tile,2048,0,9,0,0.22794117647058823,0.5123807191848755
+Top 4 key tiles of 128 per query tile,2048,0,9,0,0.4264705882352941,0.7364082932472229
+Top 8 key tiles of 128 per query tile,2048,0,9,0,0.7352941176470589,0.9206527471542358
+"Dense, document-causal",8192,0,9,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,9,0,0.9980769230769231,0.5273134112358093
+Top 2 key tiles of 128 per query tile,8192,0,9,0,0.061057692307692306,0.31716188788414
+Top 4 key tiles of 128 per query tile,8192,0,9,0,0.1201923076923077,0.46325480937957764
+Top 8 key tiles of 128 per query tile,8192,0,9,0,0.2326923076923077,0.6327723264694214
+"Dense, document-causal",2048,0,9,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,9,1,1.0,0.4833511412143707
+Top 2 key tiles of 128 per query tile,2048,0,9,1,0.22794117647058823,0.4774448871612549
+Top 4 key tiles of 128 per query tile,2048,0,9,1,0.4264705882352941,0.6820548176765442
+Top 8 key tiles of 128 per query tile,2048,0,9,1,0.7352941176470589,0.8855484127998352
+"Dense, document-causal",8192,0,9,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,9,1,1.0,0.39695823192596436
+Top 2 key tiles of 128 per query tile,8192,0,9,1,0.061057692307692306,0.2536819279193878
+Top 4 key tiles of 128 per query tile,8192,0,9,1,0.1201923076923077,0.3870126008987427
+Top 8 key tiles of 128 per query tile,8192,0,9,1,0.2326923076923077,0.5335250496864319
+"Dense, document-causal",2048,0,9,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,9,2,1.0,0.6623650789260864
+Top 2 key tiles of 128 per query tile,2048,0,9,2,0.22794117647058823,0.4988998770713806
+Top 4 key tiles of 128 per query tile,2048,0,9,2,0.4264705882352941,0.6812384128570557
+Top 8 key tiles of 128 per query tile,2048,0,9,2,0.7352941176470589,0.8950607776641846
+"Dense, document-causal",8192,0,9,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,9,2,0.9995192307692308,0.5028733611106873
+Top 2 key tiles of 128 per query tile,8192,0,9,2,0.061057692307692306,0.2759906053543091
+Top 4 key tiles of 128 per query tile,8192,0,9,2,0.1201923076923077,0.4032135009765625
+Top 8 key tiles of 128 per query tile,8192,0,9,2,0.2326923076923077,0.5743816494941711
+"Dense, document-causal",2048,0,9,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,9,3,1.0,0.7356376051902771
+Top 2 key tiles of 128 per query tile,2048,0,9,3,0.22794117647058823,0.47900012135505676
+Top 4 key tiles of 128 per query tile,2048,0,9,3,0.4264705882352941,0.6888311505317688
+Top 8 key tiles of 128 per query tile,2048,0,9,3,0.7352941176470589,0.8723646402359009
+"Dense, document-causal",8192,0,9,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,9,3,0.9923076923076923,0.5191977024078369
+Top 2 key tiles of 128 per query tile,8192,0,9,3,0.061057692307692306,0.27863189578056335
+Top 4 key tiles of 128 per query tile,8192,0,9,3,0.1201923076923077,0.4196818768978119
+Top 8 key tiles of 128 per query tile,8192,0,9,3,0.2326923076923077,0.5884443521499634
+"Dense, document-causal",2048,0,9,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,9,4,1.0,0.7783685922622681
+Top 2 key tiles of 128 per query tile,2048,0,9,4,0.22794117647058823,0.5561429262161255
+Top 4 key tiles of 128 per query tile,2048,0,9,4,0.4264705882352941,0.7405303716659546
+Top 8 key tiles of 128 per query tile,2048,0,9,4,0.7352941176470589,0.8877869844436646
+"Dense, document-causal",8192,0,9,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,9,4,0.9985576923076923,0.580518364906311
+Top 2 key tiles of 128 per query tile,8192,0,9,4,0.061057692307692306,0.33710917830467224
+Top 4 key tiles of 128 per query tile,8192,0,9,4,0.1201923076923077,0.4569350779056549
+Top 8 key tiles of 128 per query tile,8192,0,9,4,0.2326923076923077,0.6100203990936279
+"Dense, document-causal",2048,0,9,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,9,5,1.0,0.6339473724365234
+Top 2 key tiles of 128 per query tile,2048,0,9,5,0.22794117647058823,0.567821741104126
+Top 4 key tiles of 128 per query tile,2048,0,9,5,0.4264705882352941,0.7584596276283264
+Top 8 key tiles of 128 per query tile,2048,0,9,5,0.7352941176470589,0.9184600114822388
+"Dense, document-causal",8192,0,9,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,9,5,0.9985576923076923,0.49493715167045593
+Top 2 key tiles of 128 per query tile,8192,0,9,5,0.061057692307692306,0.31556612253189087
+Top 4 key tiles of 128 per query tile,8192,0,9,5,0.1201923076923077,0.4397261440753937
+Top 8 key tiles of 128 per query tile,8192,0,9,5,0.2326923076923077,0.5934118628501892
+"Dense, document-causal",2048,0,10,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,10,0,1.0,0.6935681104660034
+Top 2 key tiles of 128 per query tile,2048,0,10,0,0.22794117647058823,0.47628089785575867
+Top 4 key tiles of 128 per query tile,2048,0,10,0,0.4264705882352941,0.6564017534255981
+Top 8 key tiles of 128 per query tile,2048,0,10,0,0.7352941176470589,0.8558799624443054
+"Dense, document-causal",8192,0,10,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,10,0,1.0,0.5857982635498047
+Top 2 key tiles of 128 per query tile,8192,0,10,0,0.061057692307692306,0.21730083227157593
+Top 4 key tiles of 128 per query tile,8192,0,10,0,0.1201923076923077,0.33014047145843506
+Top 8 key tiles of 128 per query tile,8192,0,10,0,0.2326923076923077,0.4996570944786072
+"Dense, document-causal",2048,0,10,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,10,1,1.0,0.6615273356437683
+Top 2 key tiles of 128 per query tile,2048,0,10,1,0.22794117647058823,0.46599334478378296
+Top 4 key tiles of 128 per query tile,2048,0,10,1,0.4264705882352941,0.6586353182792664
+Top 8 key tiles of 128 per query tile,2048,0,10,1,0.7352941176470589,0.8706218004226685
+"Dense, document-causal",8192,0,10,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,10,1,1.0,0.5376286506652832
+Top 2 key tiles of 128 per query tile,8192,0,10,1,0.061057692307692306,0.23576027154922485
+Top 4 key tiles of 128 per query tile,8192,0,10,1,0.1201923076923077,0.3434005081653595
+Top 8 key tiles of 128 per query tile,8192,0,10,1,0.2326923076923077,0.4990917444229126
+"Dense, document-causal",2048,0,10,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,10,2,1.0,0.5085479021072388
+Top 2 key tiles of 128 per query tile,2048,0,10,2,0.22794117647058823,0.4748345613479614
+Top 4 key tiles of 128 per query tile,2048,0,10,2,0.4264705882352941,0.6640504598617554
+Top 8 key tiles of 128 per query tile,2048,0,10,2,0.7352941176470589,0.875647783279419
+"Dense, document-causal",8192,0,10,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,10,2,0.9620192307692308,0.42515307664871216
+Top 2 key tiles of 128 per query tile,8192,0,10,2,0.061057692307692306,0.30112481117248535
+Top 4 key tiles of 128 per query tile,8192,0,10,2,0.1201923076923077,0.41555818915367126
+Top 8 key tiles of 128 per query tile,8192,0,10,2,0.2326923076923077,0.5834593176841736
+"Dense, document-causal",2048,0,10,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,10,3,1.0,0.745781421661377
+Top 2 key tiles of 128 per query tile,2048,0,10,3,0.22794117647058823,0.4671165347099304
+Top 4 key tiles of 128 per query tile,2048,0,10,3,0.4264705882352941,0.6899324655532837
+Top 8 key tiles of 128 per query tile,2048,0,10,3,0.7352941176470589,0.890709638595581
+"Dense, document-causal",8192,0,10,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,10,3,1.0,0.6479824781417847
+Top 2 key tiles of 128 per query tile,8192,0,10,3,0.061057692307692306,0.21169865131378174
+Top 4 key tiles of 128 per query tile,8192,0,10,3,0.1201923076923077,0.33264946937561035
+Top 8 key tiles of 128 per query tile,8192,0,10,3,0.2326923076923077,0.48481231927871704
+"Dense, document-causal",2048,0,10,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,10,4,1.0,0.6058549284934998
+Top 2 key tiles of 128 per query tile,2048,0,10,4,0.22794117647058823,0.5184287428855896
+Top 4 key tiles of 128 per query tile,2048,0,10,4,0.4264705882352941,0.6954036951065063
+Top 8 key tiles of 128 per query tile,2048,0,10,4,0.7352941176470589,0.8842752575874329
+"Dense, document-causal",8192,0,10,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,10,4,0.9985576923076923,0.49853724241256714
+Top 2 key tiles of 128 per query tile,8192,0,10,4,0.061057692307692306,0.314044326543808
+Top 4 key tiles of 128 per query tile,8192,0,10,4,0.1201923076923077,0.4223155975341797
+Top 8 key tiles of 128 per query tile,8192,0,10,4,0.2326923076923077,0.570781946182251
+"Dense, document-causal",2048,0,10,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,0,10,5,1.0,0.5904874205589294
+Top 2 key tiles of 128 per query tile,2048,0,10,5,0.22794117647058823,0.47946882247924805
+Top 4 key tiles of 128 per query tile,2048,0,10,5,0.4264705882352941,0.6730472445487976
+Top 8 key tiles of 128 per query tile,2048,0,10,5,0.7352941176470589,0.8797765970230103
+"Dense, document-causal",8192,0,10,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,0,10,5,0.9990384615384615,0.45737287402153015
+Top 2 key tiles of 128 per query tile,8192,0,10,5,0.061057692307692306,0.24118439853191376
+Top 4 key tiles of 128 per query tile,8192,0,10,5,0.1201923076923077,0.3691111207008362
+Top 8 key tiles of 128 per query tile,8192,0,10,5,0.2326923076923077,0.5481406450271606
+"Dense, document-causal",2048,1,0,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,0,0,1.0,0.5308508276939392
+Top 2 key tiles of 128 per query tile,2048,1,0,0,0.22794117647058823,0.5437070727348328
+Top 4 key tiles of 128 per query tile,2048,1,0,0,0.4264705882352941,0.7369495630264282
+Top 8 key tiles of 128 per query tile,2048,1,0,0,0.7352941176470589,0.9281020164489746
+"Dense, document-causal",8192,1,0,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,0,0,0.9995192307692308,0.45588967204093933
+Top 2 key tiles of 128 per query tile,8192,1,0,0,0.061057692307692306,0.30104947090148926
+Top 4 key tiles of 128 per query tile,8192,1,0,0,0.1201923076923077,0.4355096220970154
+Top 8 key tiles of 128 per query tile,8192,1,0,0,0.2326923076923077,0.6169888973236084
+"Dense, document-causal",2048,1,0,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,0,1,1.0,0.6793781518936157
+Top 2 key tiles of 128 per query tile,2048,1,0,1,0.22794117647058823,0.546746551990509
+Top 4 key tiles of 128 per query tile,2048,1,0,1,0.4264705882352941,0.7228309512138367
+Top 8 key tiles of 128 per query tile,2048,1,0,1,0.7352941176470589,0.8974222540855408
+"Dense, document-causal",8192,1,0,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,0,1,1.0,0.5832129716873169
+Top 2 key tiles of 128 per query tile,8192,1,0,1,0.061057692307692306,0.27375248074531555
+Top 4 key tiles of 128 per query tile,8192,1,0,1,0.1201923076923077,0.38631367683410645
+Top 8 key tiles of 128 per query tile,8192,1,0,1,0.2326923076923077,0.5357708930969238
+"Dense, document-causal",2048,1,0,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,0,2,1.0,0.718783974647522
+Top 2 key tiles of 128 per query tile,2048,1,0,2,0.22794117647058823,0.71600741147995
+Top 4 key tiles of 128 per query tile,2048,1,0,2,0.4264705882352941,0.8548211455345154
+Top 8 key tiles of 128 per query tile,2048,1,0,2,0.7352941176470589,0.9611645936965942
+"Dense, document-causal",8192,1,0,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,0,2,1.0,0.6072850823402405
+Top 2 key tiles of 128 per query tile,8192,1,0,2,0.061057692307692306,0.4464619755744934
+Top 4 key tiles of 128 per query tile,8192,1,0,2,0.1201923076923077,0.55466628074646
+Top 8 key tiles of 128 per query tile,8192,1,0,2,0.2326923076923077,0.6855378746986389
+"Dense, document-causal",2048,1,0,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,0,3,0.9779411764705882,0.4439416527748108
+Top 2 key tiles of 128 per query tile,2048,1,0,3,0.22794117647058823,0.509961724281311
+Top 4 key tiles of 128 per query tile,2048,1,0,3,0.4264705882352941,0.7715508937835693
+Top 8 key tiles of 128 per query tile,2048,1,0,3,0.7352941176470589,0.9488126039505005
+"Dense, document-causal",8192,1,0,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,0,3,0.9528846153846153,0.39390644431114197
+Top 2 key tiles of 128 per query tile,8192,1,0,3,0.061057692307692306,0.2707175016403198
+Top 4 key tiles of 128 per query tile,8192,1,0,3,0.1201923076923077,0.44915881752967834
+Top 8 key tiles of 128 per query tile,8192,1,0,3,0.2326923076923077,0.6355159282684326
+"Dense, document-causal",2048,1,0,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,0,4,1.0,0.8559675216674805
+Top 2 key tiles of 128 per query tile,2048,1,0,4,0.22794117647058823,0.8701680898666382
+Top 4 key tiles of 128 per query tile,2048,1,0,4,0.4264705882352941,0.9304955005645752
+Top 8 key tiles of 128 per query tile,2048,1,0,4,0.7352941176470589,0.974509596824646
+"Dense, document-causal",8192,1,0,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,0,4,1.0,0.7011376619338989
+Top 2 key tiles of 128 per query tile,8192,1,0,4,0.061057692307692306,0.5380090475082397
+Top 4 key tiles of 128 per query tile,8192,1,0,4,0.1201923076923077,0.6408482193946838
+Top 8 key tiles of 128 per query tile,8192,1,0,4,0.2326923076923077,0.740078330039978
+"Dense, document-causal",2048,1,0,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,0,5,1.0,0.7321470379829407
+Top 2 key tiles of 128 per query tile,2048,1,0,5,0.22794117647058823,0.7516053915023804
+Top 4 key tiles of 128 per query tile,2048,1,0,5,0.4264705882352941,0.8545520305633545
+Top 8 key tiles of 128 per query tile,2048,1,0,5,0.7352941176470589,0.9450355172157288
+"Dense, document-causal",8192,1,0,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,0,5,1.0,0.5848019123077393
+Top 2 key tiles of 128 per query tile,8192,1,0,5,0.061057692307692306,0.4114949703216553
+Top 4 key tiles of 128 per query tile,8192,1,0,5,0.1201923076923077,0.5160595774650574
+Top 8 key tiles of 128 per query tile,8192,1,0,5,0.2326923076923077,0.6447934508323669
+"Dense, document-causal",2048,1,1,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,1,0,1.0,0.6458673477172852
+Top 2 key tiles of 128 per query tile,2048,1,1,0,0.22794117647058823,0.6919112205505371
+Top 4 key tiles of 128 per query tile,2048,1,1,0,0.4264705882352941,0.8526086807250977
+Top 8 key tiles of 128 per query tile,2048,1,1,0,0.7352941176470589,0.9623005390167236
+"Dense, document-causal",8192,1,1,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,1,0,0.99375,0.5615084171295166
+Top 2 key tiles of 128 per query tile,8192,1,1,0,0.061057692307692306,0.45100194215774536
+Top 4 key tiles of 128 per query tile,8192,1,1,0,0.1201923076923077,0.5793523788452148
+Top 8 key tiles of 128 per query tile,8192,1,1,0,0.2326923076923077,0.717924952507019
+"Dense, document-causal",2048,1,1,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,1,1,1.0,0.6854908466339111
+Top 2 key tiles of 128 per query tile,2048,1,1,1,0.22794117647058823,0.6401112079620361
+Top 4 key tiles of 128 per query tile,2048,1,1,1,0.4264705882352941,0.7922479510307312
+Top 8 key tiles of 128 per query tile,2048,1,1,1,0.7352941176470589,0.931262731552124
+"Dense, document-causal",8192,1,1,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,1,1,1.0,0.5252951979637146
+Top 2 key tiles of 128 per query tile,8192,1,1,1,0.061057692307692306,0.3708232343196869
+Top 4 key tiles of 128 per query tile,8192,1,1,1,0.1201923076923077,0.47878897190093994
+Top 8 key tiles of 128 per query tile,8192,1,1,1,0.2326923076923077,0.6201804876327515
+"Dense, document-causal",2048,1,1,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,1,2,1.0,0.9740656614303589
+Top 2 key tiles of 128 per query tile,2048,1,1,2,0.22794117647058823,0.9615281820297241
+Top 4 key tiles of 128 per query tile,2048,1,1,2,0.4264705882352941,0.9758299589157104
+Top 8 key tiles of 128 per query tile,2048,1,1,2,0.7352941176470589,0.9903525710105896
+"Dense, document-causal",8192,1,1,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,1,2,1.0,0.8877285718917847
+Top 2 key tiles of 128 per query tile,8192,1,1,2,0.061057692307692306,0.7737066745758057
+Top 4 key tiles of 128 per query tile,8192,1,1,2,0.1201923076923077,0.8094592690467834
+Top 8 key tiles of 128 per query tile,8192,1,1,2,0.2326923076923077,0.858431339263916
+"Dense, document-causal",2048,1,1,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,1,3,1.0,0.8987769484519958
+Top 2 key tiles of 128 per query tile,2048,1,1,3,0.22794117647058823,0.5017058849334717
+Top 4 key tiles of 128 per query tile,2048,1,1,3,0.4264705882352941,0.7291355729103088
+Top 8 key tiles of 128 per query tile,2048,1,1,3,0.7352941176470589,0.9211868643760681
+"Dense, document-causal",8192,1,1,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,1,3,1.0,0.7781791687011719
+Top 2 key tiles of 128 per query tile,8192,1,1,3,0.061057692307692306,0.353626549243927
+Top 4 key tiles of 128 per query tile,8192,1,1,3,0.1201923076923077,0.4825371205806732
+Top 8 key tiles of 128 per query tile,8192,1,1,3,0.2326923076923077,0.6235866546630859
+"Dense, document-causal",2048,1,1,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,1,4,1.0,0.6696947813034058
+Top 2 key tiles of 128 per query tile,2048,1,1,4,0.22794117647058823,0.5234163403511047
+Top 4 key tiles of 128 per query tile,2048,1,1,4,0.4264705882352941,0.7067453861236572
+Top 8 key tiles of 128 per query tile,2048,1,1,4,0.7352941176470589,0.9010546207427979
+"Dense, document-causal",8192,1,1,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,1,4,1.0,0.548290491104126
+Top 2 key tiles of 128 per query tile,8192,1,1,4,0.061057692307692306,0.2702961266040802
+Top 4 key tiles of 128 per query tile,8192,1,1,4,0.1201923076923077,0.38700756430625916
+Top 8 key tiles of 128 per query tile,8192,1,1,4,0.2326923076923077,0.5488923192024231
+"Dense, document-causal",2048,1,1,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,1,5,1.0,0.9650375247001648
+Top 2 key tiles of 128 per query tile,2048,1,1,5,0.22794117647058823,0.9267493486404419
+Top 4 key tiles of 128 per query tile,2048,1,1,5,0.4264705882352941,0.9532868266105652
+Top 8 key tiles of 128 per query tile,2048,1,1,5,0.7352941176470589,0.9824431538581848
+"Dense, document-causal",8192,1,1,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,1,5,1.0,0.8899515271186829
+Top 2 key tiles of 128 per query tile,8192,1,1,5,0.061057692307692306,0.7079549431800842
+Top 4 key tiles of 128 per query tile,8192,1,1,5,0.1201923076923077,0.7471953630447388
+Top 8 key tiles of 128 per query tile,8192,1,1,5,0.2326923076923077,0.8019513487815857
+"Dense, document-causal",2048,1,2,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,2,0,1.0,0.7297101020812988
+Top 2 key tiles of 128 per query tile,2048,1,2,0,0.22794117647058823,0.6363826394081116
+Top 4 key tiles of 128 per query tile,2048,1,2,0,0.4264705882352941,0.7719804644584656
+Top 8 key tiles of 128 per query tile,2048,1,2,0,0.7352941176470589,0.9270206689834595
+"Dense, document-causal",8192,1,2,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,2,0,1.0,0.642274022102356
+Top 2 key tiles of 128 per query tile,8192,1,2,0,0.061057692307692306,0.4043852984905243
+Top 4 key tiles of 128 per query tile,8192,1,2,0,0.1201923076923077,0.49923577904701233
+Top 8 key tiles of 128 per query tile,8192,1,2,0,0.2326923076923077,0.6342009902000427
+"Dense, document-causal",2048,1,2,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,2,1,1.0,0.8984492421150208
+Top 2 key tiles of 128 per query tile,2048,1,2,1,0.22794117647058823,0.8413742780685425
+Top 4 key tiles of 128 per query tile,2048,1,2,1,0.4264705882352941,0.9084302186965942
+Top 8 key tiles of 128 per query tile,2048,1,2,1,0.7352941176470589,0.9724060297012329
+"Dense, document-causal",8192,1,2,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,2,1,1.0,0.7716673612594604
+Top 2 key tiles of 128 per query tile,8192,1,2,1,0.061057692307692306,0.6163253784179688
+Top 4 key tiles of 128 per query tile,8192,1,2,1,0.1201923076923077,0.6882228851318359
+Top 8 key tiles of 128 per query tile,8192,1,2,1,0.2326923076923077,0.7785003185272217
+"Dense, document-causal",2048,1,2,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,2,2,1.0,0.7254261374473572
+Top 2 key tiles of 128 per query tile,2048,1,2,2,0.22794117647058823,0.7887976169586182
+Top 4 key tiles of 128 per query tile,2048,1,2,2,0.4264705882352941,0.899457573890686
+Top 8 key tiles of 128 per query tile,2048,1,2,2,0.7352941176470589,0.9656530022621155
+"Dense, document-causal",8192,1,2,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,2,2,0.9855769230769231,0.6385076642036438
+Top 2 key tiles of 128 per query tile,8192,1,2,2,0.061057692307692306,0.5650714635848999
+Top 4 key tiles of 128 per query tile,8192,1,2,2,0.1201923076923077,0.6603695154190063
+Top 8 key tiles of 128 per query tile,8192,1,2,2,0.2326923076923077,0.7603215575218201
+"Dense, document-causal",2048,1,2,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,2,3,1.0,0.9493556022644043
+Top 2 key tiles of 128 per query tile,2048,1,2,3,0.22794117647058823,0.9191910028457642
+Top 4 key tiles of 128 per query tile,2048,1,2,3,0.4264705882352941,0.9508754014968872
+Top 8 key tiles of 128 per query tile,2048,1,2,3,0.7352941176470589,0.982043981552124
+"Dense, document-causal",8192,1,2,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,2,3,1.0,0.8583498001098633
+Top 2 key tiles of 128 per query tile,8192,1,2,3,0.061057692307692306,0.7296382188796997
+Top 4 key tiles of 128 per query tile,8192,1,2,3,0.1201923076923077,0.7765735387802124
+Top 8 key tiles of 128 per query tile,8192,1,2,3,0.2326923076923077,0.8348168134689331
+"Dense, document-causal",2048,1,2,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,2,4,1.0,0.9660118818283081
+Top 2 key tiles of 128 per query tile,2048,1,2,4,0.22794117647058823,0.9610277414321899
+Top 4 key tiles of 128 per query tile,2048,1,2,4,0.4264705882352941,0.9759545922279358
+Top 8 key tiles of 128 per query tile,2048,1,2,4,0.7352941176470589,0.9903614521026611
+"Dense, document-causal",8192,1,2,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,2,4,0.99375,0.8895252346992493
+Top 2 key tiles of 128 per query tile,8192,1,2,4,0.061057692307692306,0.787114679813385
+Top 4 key tiles of 128 per query tile,8192,1,2,4,0.1201923076923077,0.8284387588500977
+Top 8 key tiles of 128 per query tile,8192,1,2,4,0.2326923076923077,0.8768198490142822
+"Dense, document-causal",2048,1,2,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,2,5,1.0,0.6960948705673218
+Top 2 key tiles of 128 per query tile,2048,1,2,5,0.22794117647058823,0.6747864484786987
+Top 4 key tiles of 128 per query tile,2048,1,2,5,0.4264705882352941,0.8541614413261414
+Top 8 key tiles of 128 per query tile,2048,1,2,5,0.7352941176470589,0.971132218837738
+"Dense, document-causal",8192,1,2,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,2,5,0.9918269230769231,0.6553511619567871
+Top 2 key tiles of 128 per query tile,8192,1,2,5,0.061057692307692306,0.5222856998443604
+Top 4 key tiles of 128 per query tile,8192,1,2,5,0.1201923076923077,0.6635797619819641
+Top 8 key tiles of 128 per query tile,8192,1,2,5,0.2326923076923077,0.7858717441558838
+"Dense, document-causal",2048,1,3,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,3,0,1.0,0.8552255630493164
+Top 2 key tiles of 128 per query tile,2048,1,3,0,0.22794117647058823,0.7878644466400146
+Top 4 key tiles of 128 per query tile,2048,1,3,0,0.4264705882352941,0.9209492802619934
+Top 8 key tiles of 128 per query tile,2048,1,3,0,0.7352941176470589,0.9774439930915833
+"Dense, document-causal",8192,1,3,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,3,0,0.9980769230769231,0.7641608715057373
+Top 2 key tiles of 128 per query tile,8192,1,3,0,0.061057692307692306,0.5829508900642395
+Top 4 key tiles of 128 per query tile,8192,1,3,0,0.1201923076923077,0.6953097581863403
+Top 8 key tiles of 128 per query tile,8192,1,3,0,0.2326923076923077,0.7898916006088257
+"Dense, document-causal",2048,1,3,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,3,1,1.0,0.8525862693786621
+Top 2 key tiles of 128 per query tile,2048,1,3,1,0.22794117647058823,0.4783390760421753
+Top 4 key tiles of 128 per query tile,2048,1,3,1,0.4264705882352941,0.6789599657058716
+Top 8 key tiles of 128 per query tile,2048,1,3,1,0.7352941176470589,0.8983098268508911
+"Dense, document-causal",8192,1,3,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,3,1,1.0,0.7332276701927185
+Top 2 key tiles of 128 per query tile,8192,1,3,1,0.061057692307692306,0.2745107412338257
+Top 4 key tiles of 128 per query tile,8192,1,3,1,0.1201923076923077,0.38832297921180725
+Top 8 key tiles of 128 per query tile,8192,1,3,1,0.2326923076923077,0.5392370223999023
+"Dense, document-causal",2048,1,3,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,3,2,1.0,0.8916266560554504
+Top 2 key tiles of 128 per query tile,2048,1,3,2,0.22794117647058823,0.7246899604797363
+Top 4 key tiles of 128 per query tile,2048,1,3,2,0.4264705882352941,0.819597601890564
+Top 8 key tiles of 128 per query tile,2048,1,3,2,0.7352941176470589,0.9212765693664551
+"Dense, document-causal",8192,1,3,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,3,2,0.9923076923076923,0.7346878051757812
+Top 2 key tiles of 128 per query tile,8192,1,3,2,0.061057692307692306,0.5329804420471191
+Top 4 key tiles of 128 per query tile,8192,1,3,2,0.1201923076923077,0.6294348835945129
+Top 8 key tiles of 128 per query tile,8192,1,3,2,0.2326923076923077,0.7497749924659729
+"Dense, document-causal",2048,1,3,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,3,3,1.0,0.7770875692367554
+Top 2 key tiles of 128 per query tile,2048,1,3,3,0.22794117647058823,0.6134816408157349
+Top 4 key tiles of 128 per query tile,2048,1,3,3,0.4264705882352941,0.8121849298477173
+Top 8 key tiles of 128 per query tile,2048,1,3,3,0.7352941176470589,0.9391472935676575
+"Dense, document-causal",8192,1,3,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,3,3,1.0,0.5897652506828308
+Top 2 key tiles of 128 per query tile,8192,1,3,3,0.061057692307692306,0.3564704358577728
+Top 4 key tiles of 128 per query tile,8192,1,3,3,0.1201923076923077,0.4871404767036438
+Top 8 key tiles of 128 per query tile,8192,1,3,3,0.2326923076923077,0.6334871053695679
+"Dense, document-causal",2048,1,3,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,3,4,1.0,0.6996334791183472
+Top 2 key tiles of 128 per query tile,2048,1,3,4,0.22794117647058823,0.7184534072875977
+Top 4 key tiles of 128 per query tile,2048,1,3,4,0.4264705882352941,0.8546434640884399
+Top 8 key tiles of 128 per query tile,2048,1,3,4,0.7352941176470589,0.9771482348442078
+"Dense, document-causal",8192,1,3,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,3,4,0.9903846153846154,0.6981534957885742
+Top 2 key tiles of 128 per query tile,8192,1,3,4,0.061057692307692306,0.5880104899406433
+Top 4 key tiles of 128 per query tile,8192,1,3,4,0.1201923076923077,0.7091841697692871
+Top 8 key tiles of 128 per query tile,8192,1,3,4,0.2326923076923077,0.8374356031417847
+"Dense, document-causal",2048,1,3,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,3,5,1.0,0.836272656917572
+Top 2 key tiles of 128 per query tile,2048,1,3,5,0.22794117647058823,0.40627554059028625
+Top 4 key tiles of 128 per query tile,2048,1,3,5,0.4264705882352941,0.6184307336807251
+Top 8 key tiles of 128 per query tile,2048,1,3,5,0.7352941176470589,0.8721001744270325
+"Dense, document-causal",8192,1,3,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,3,5,1.0,0.704292893409729
+Top 2 key tiles of 128 per query tile,8192,1,3,5,0.061057692307692306,0.21258464455604553
+Top 4 key tiles of 128 per query tile,8192,1,3,5,0.1201923076923077,0.34597545862197876
+Top 8 key tiles of 128 per query tile,8192,1,3,5,0.2326923076923077,0.5125908851623535
+"Dense, document-causal",2048,1,4,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,4,0,1.0,0.5678431987762451
+Top 2 key tiles of 128 per query tile,2048,1,4,0,0.22794117647058823,0.5330107808113098
+Top 4 key tiles of 128 per query tile,2048,1,4,0,0.4264705882352941,0.7239567637443542
+Top 8 key tiles of 128 per query tile,2048,1,4,0,0.7352941176470589,0.9085817337036133
+"Dense, document-causal",8192,1,4,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,4,0,0.9995192307692308,0.43141669034957886
+Top 2 key tiles of 128 per query tile,8192,1,4,0,0.061057692307692306,0.3203072249889374
+Top 4 key tiles of 128 per query tile,8192,1,4,0,0.1201923076923077,0.43834829330444336
+Top 8 key tiles of 128 per query tile,8192,1,4,0,0.2326923076923077,0.5903069972991943
+"Dense, document-causal",2048,1,4,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,4,1,1.0,0.8704630136489868
+Top 2 key tiles of 128 per query tile,2048,1,4,1,0.22794117647058823,0.8768354654312134
+Top 4 key tiles of 128 per query tile,2048,1,4,1,0.4264705882352941,0.9248547554016113
+Top 8 key tiles of 128 per query tile,2048,1,4,1,0.7352941176470589,0.9718383550643921
+"Dense, document-causal",8192,1,4,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,4,1,0.9961538461538462,0.7661110758781433
+Top 2 key tiles of 128 per query tile,8192,1,4,1,0.061057692307692306,0.6385458707809448
+Top 4 key tiles of 128 per query tile,8192,1,4,1,0.1201923076923077,0.7056940793991089
+Top 8 key tiles of 128 per query tile,8192,1,4,1,0.2326923076923077,0.794252872467041
+"Dense, document-causal",2048,1,4,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,4,2,1.0,0.4706282317638397
+Top 2 key tiles of 128 per query tile,2048,1,4,2,0.22794117647058823,0.3887806534767151
+Top 4 key tiles of 128 per query tile,2048,1,4,2,0.4264705882352941,0.6031768321990967
+Top 8 key tiles of 128 per query tile,2048,1,4,2,0.7352941176470589,0.847953736782074
+"Dense, document-causal",8192,1,4,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,4,2,1.0,0.314757764339447
+Top 2 key tiles of 128 per query tile,8192,1,4,2,0.061057692307692306,0.15897296369075775
+Top 4 key tiles of 128 per query tile,8192,1,4,2,0.1201923076923077,0.271065890789032
+Top 8 key tiles of 128 per query tile,8192,1,4,2,0.2326923076923077,0.4358561336994171
+"Dense, document-causal",2048,1,4,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,4,3,1.0,0.7765389680862427
+Top 2 key tiles of 128 per query tile,2048,1,4,3,0.22794117647058823,0.5570645928382874
+Top 4 key tiles of 128 per query tile,2048,1,4,3,0.4264705882352941,0.7251324653625488
+Top 8 key tiles of 128 per query tile,2048,1,4,3,0.7352941176470589,0.9116264581680298
+"Dense, document-causal",8192,1,4,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,4,3,1.0,0.6498833894729614
+Top 2 key tiles of 128 per query tile,8192,1,4,3,0.061057692307692306,0.3804222345352173
+Top 4 key tiles of 128 per query tile,8192,1,4,3,0.1201923076923077,0.5013436675071716
+Top 8 key tiles of 128 per query tile,8192,1,4,3,0.2326923076923077,0.6416174173355103
+"Dense, document-causal",2048,1,4,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,4,4,1.0,0.8631953597068787
+Top 2 key tiles of 128 per query tile,2048,1,4,4,0.22794117647058823,0.6114884614944458
+Top 4 key tiles of 128 per query tile,2048,1,4,4,0.4264705882352941,0.8287135362625122
+Top 8 key tiles of 128 per query tile,2048,1,4,4,0.7352941176470589,0.9694458842277527
+"Dense, document-causal",8192,1,4,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,4,4,0.9990384615384615,0.6836158633232117
+Top 2 key tiles of 128 per query tile,8192,1,4,4,0.061057692307692306,0.421042799949646
+Top 4 key tiles of 128 per query tile,8192,1,4,4,0.1201923076923077,0.5523650646209717
+Top 8 key tiles of 128 per query tile,8192,1,4,4,0.2326923076923077,0.6932640075683594
+"Dense, document-causal",2048,1,4,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,4,5,1.0,0.9338367581367493
+Top 2 key tiles of 128 per query tile,2048,1,4,5,0.22794117647058823,0.8390507698059082
+Top 4 key tiles of 128 per query tile,2048,1,4,5,0.4264705882352941,0.9011381268501282
+Top 8 key tiles of 128 per query tile,2048,1,4,5,0.7352941176470589,0.9561036825180054
+"Dense, document-causal",8192,1,4,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,4,5,1.0,0.8187268376350403
+Top 2 key tiles of 128 per query tile,8192,1,4,5,0.061057692307692306,0.6285933256149292
+Top 4 key tiles of 128 per query tile,8192,1,4,5,0.1201923076923077,0.6836686730384827
+Top 8 key tiles of 128 per query tile,8192,1,4,5,0.2326923076923077,0.7613206505775452
+"Dense, document-causal",2048,1,5,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,5,0,1.0,0.890576183795929
+Top 2 key tiles of 128 per query tile,2048,1,5,0,0.22794117647058823,0.9112789630889893
+Top 4 key tiles of 128 per query tile,2048,1,5,0,0.4264705882352941,0.9546074867248535
+Top 8 key tiles of 128 per query tile,2048,1,5,0,0.7352941176470589,0.9842256307601929
+"Dense, document-causal",8192,1,5,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,5,0,0.9932692307692308,0.7900981903076172
+Top 2 key tiles of 128 per query tile,8192,1,5,0,0.061057692307692306,0.6774451732635498
+Top 4 key tiles of 128 per query tile,8192,1,5,0,0.1201923076923077,0.754935622215271
+Top 8 key tiles of 128 per query tile,8192,1,5,0,0.2326923076923077,0.8344149589538574
+"Dense, document-causal",2048,1,5,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,5,1,1.0,0.9210277795791626
+Top 2 key tiles of 128 per query tile,2048,1,5,1,0.22794117647058823,0.8463970422744751
+Top 4 key tiles of 128 per query tile,2048,1,5,1,0.4264705882352941,0.9169458150863647
+Top 8 key tiles of 128 per query tile,2048,1,5,1,0.7352941176470589,0.9697558879852295
+"Dense, document-causal",8192,1,5,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,5,1,0.9980769230769231,0.767670214176178
+Top 2 key tiles of 128 per query tile,8192,1,5,1,0.061057692307692306,0.6015335917472839
+Top 4 key tiles of 128 per query tile,8192,1,5,1,0.1201923076923077,0.6845177412033081
+Top 8 key tiles of 128 per query tile,8192,1,5,1,0.2326923076923077,0.7720685601234436
+"Dense, document-causal",2048,1,5,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,5,2,1.0,0.9419487714767456
+Top 2 key tiles of 128 per query tile,2048,1,5,2,0.22794117647058823,0.9510617256164551
+Top 4 key tiles of 128 per query tile,2048,1,5,2,0.4264705882352941,0.9716342687606812
+Top 8 key tiles of 128 per query tile,2048,1,5,2,0.7352941176470589,0.9887630939483643
+"Dense, document-causal",8192,1,5,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,5,2,0.9966346153846154,0.8502100706100464
+Top 2 key tiles of 128 per query tile,8192,1,5,2,0.061057692307692306,0.7512168884277344
+Top 4 key tiles of 128 per query tile,8192,1,5,2,0.1201923076923077,0.7970951199531555
+Top 8 key tiles of 128 per query tile,8192,1,5,2,0.2326923076923077,0.8645917773246765
+"Dense, document-causal",2048,1,5,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,5,3,1.0,0.7504383325576782
+Top 2 key tiles of 128 per query tile,2048,1,5,3,0.22794117647058823,0.7269988656044006
+Top 4 key tiles of 128 per query tile,2048,1,5,3,0.4264705882352941,0.870564341545105
+Top 8 key tiles of 128 per query tile,2048,1,5,3,0.7352941176470589,0.9632834792137146
+"Dense, document-causal",8192,1,5,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,5,3,0.9966346153846154,0.682528555393219
+Top 2 key tiles of 128 per query tile,8192,1,5,3,0.061057692307692306,0.5397109985351562
+Top 4 key tiles of 128 per query tile,8192,1,5,3,0.1201923076923077,0.6651074290275574
+Top 8 key tiles of 128 per query tile,8192,1,5,3,0.2326923076923077,0.7804938554763794
+"Dense, document-causal",2048,1,5,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,5,4,1.0,0.938396155834198
+Top 2 key tiles of 128 per query tile,2048,1,5,4,0.22794117647058823,0.8394679427146912
+Top 4 key tiles of 128 per query tile,2048,1,5,4,0.4264705882352941,0.911522388458252
+Top 8 key tiles of 128 per query tile,2048,1,5,4,0.7352941176470589,0.9778515100479126
+"Dense, document-causal",8192,1,5,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,5,4,0.9995192307692308,0.8194584846496582
+Top 2 key tiles of 128 per query tile,8192,1,5,4,0.061057692307692306,0.6614894866943359
+Top 4 key tiles of 128 per query tile,8192,1,5,4,0.1201923076923077,0.725614607334137
+Top 8 key tiles of 128 per query tile,8192,1,5,4,0.2326923076923077,0.8048198223114014
+"Dense, document-causal",2048,1,5,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,5,5,1.0,0.5978932976722717
+Top 2 key tiles of 128 per query tile,2048,1,5,5,0.22794117647058823,0.6126585602760315
+Top 4 key tiles of 128 per query tile,2048,1,5,5,0.4264705882352941,0.786641538143158
+Top 8 key tiles of 128 per query tile,2048,1,5,5,0.7352941176470589,0.9288498163223267
+"Dense, document-causal",8192,1,5,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,5,5,1.0,0.4690673351287842
+Top 2 key tiles of 128 per query tile,8192,1,5,5,0.061057692307692306,0.36621516942977905
+Top 4 key tiles of 128 per query tile,8192,1,5,5,0.1201923076923077,0.4807140529155731
+Top 8 key tiles of 128 per query tile,8192,1,5,5,0.2326923076923077,0.6162590980529785
+"Dense, document-causal",2048,1,7,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,7,0,1.0,0.7309283018112183
+Top 2 key tiles of 128 per query tile,2048,1,7,0,0.22794117647058823,0.6037049889564514
+Top 4 key tiles of 128 per query tile,2048,1,7,0,0.4264705882352941,0.7834950685501099
+Top 8 key tiles of 128 per query tile,2048,1,7,0,0.7352941176470589,0.9304875135421753
+"Dense, document-causal",8192,1,7,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,7,0,0.9995192307692308,0.6234439611434937
+Top 2 key tiles of 128 per query tile,8192,1,7,0,0.061057692307692306,0.43707534670829773
+Top 4 key tiles of 128 per query tile,8192,1,7,0,0.1201923076923077,0.5754512548446655
+Top 8 key tiles of 128 per query tile,8192,1,7,0,0.2326923076923077,0.708969235420227
+"Dense, document-causal",2048,1,7,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,7,1,1.0,0.6592255234718323
+Top 2 key tiles of 128 per query tile,2048,1,7,1,0.22794117647058823,0.5729115605354309
+Top 4 key tiles of 128 per query tile,2048,1,7,1,0.4264705882352941,0.7407190799713135
+Top 8 key tiles of 128 per query tile,2048,1,7,1,0.7352941176470589,0.903842031955719
+"Dense, document-causal",8192,1,7,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,7,1,1.0,0.5175827741622925
+Top 2 key tiles of 128 per query tile,8192,1,7,1,0.061057692307692306,0.3378722071647644
+Top 4 key tiles of 128 per query tile,8192,1,7,1,0.1201923076923077,0.45934435725212097
+Top 8 key tiles of 128 per query tile,8192,1,7,1,0.2326923076923077,0.6138910055160522
+"Dense, document-causal",2048,1,7,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,7,2,1.0,0.9599324464797974
+Top 2 key tiles of 128 per query tile,2048,1,7,2,0.22794117647058823,0.8873481154441833
+Top 4 key tiles of 128 per query tile,2048,1,7,2,0.4264705882352941,0.9323739409446716
+Top 8 key tiles of 128 per query tile,2048,1,7,2,0.7352941176470589,0.9725095629692078
+"Dense, document-causal",8192,1,7,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,7,2,0.9985576923076923,0.8231825828552246
+Top 2 key tiles of 128 per query tile,8192,1,7,2,0.061057692307692306,0.6680620312690735
+Top 4 key tiles of 128 per query tile,8192,1,7,2,0.1201923076923077,0.7274215221405029
+Top 8 key tiles of 128 per query tile,8192,1,7,2,0.2326923076923077,0.8021126985549927
+"Dense, document-causal",2048,1,7,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,7,3,0.9264705882352942,0.9021658301353455
+Top 2 key tiles of 128 per query tile,2048,1,7,3,0.22794117647058823,0.9461469054222107
+Top 4 key tiles of 128 per query tile,2048,1,7,3,0.4264705882352941,0.9816451072692871
+Top 8 key tiles of 128 per query tile,2048,1,7,3,0.7352941176470589,0.9943712949752808
+"Dense, document-causal",8192,1,7,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,7,3,0.86875,0.8236895799636841
+Top 2 key tiles of 128 per query tile,8192,1,7,3,0.061057692307692306,0.7384181022644043
+Top 4 key tiles of 128 per query tile,8192,1,7,3,0.1201923076923077,0.8397960066795349
+Top 8 key tiles of 128 per query tile,8192,1,7,3,0.2326923076923077,0.9082620739936829
+"Dense, document-causal",2048,1,7,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,7,4,1.0,0.8958512544631958
+Top 2 key tiles of 128 per query tile,2048,1,7,4,0.22794117647058823,0.9040239453315735
+Top 4 key tiles of 128 per query tile,2048,1,7,4,0.4264705882352941,0.9519708752632141
+Top 8 key tiles of 128 per query tile,2048,1,7,4,0.7352941176470589,0.9836771488189697
+"Dense, document-causal",8192,1,7,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,7,4,0.9331730769230769,0.785959780216217
+Top 2 key tiles of 128 per query tile,8192,1,7,4,0.061057692307692306,0.6825518608093262
+Top 4 key tiles of 128 per query tile,8192,1,7,4,0.1201923076923077,0.7506529092788696
+Top 8 key tiles of 128 per query tile,8192,1,7,4,0.2326923076923077,0.8346094489097595
+"Dense, document-causal",2048,1,7,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,7,5,1.0,0.48377805948257446
+Top 2 key tiles of 128 per query tile,2048,1,7,5,0.22794117647058823,0.381184458732605
+Top 4 key tiles of 128 per query tile,2048,1,7,5,0.4264705882352941,0.6109849214553833
+Top 8 key tiles of 128 per query tile,2048,1,7,5,0.7352941176470589,0.8577642440795898
+"Dense, document-causal",8192,1,7,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,7,5,1.0,0.3348240852355957
+Top 2 key tiles of 128 per query tile,8192,1,7,5,0.061057692307692306,0.17389428615570068
+Top 4 key tiles of 128 per query tile,8192,1,7,5,0.1201923076923077,0.3034834861755371
+Top 8 key tiles of 128 per query tile,8192,1,7,5,0.2326923076923077,0.47467949986457825
+"Dense, document-causal",2048,1,8,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,8,0,0.9852941176470589,0.754023015499115
+Top 2 key tiles of 128 per query tile,2048,1,8,0,0.22794117647058823,0.7012133598327637
+Top 4 key tiles of 128 per query tile,2048,1,8,0,0.4264705882352941,0.8561001420021057
+Top 8 key tiles of 128 per query tile,2048,1,8,0,0.7352941176470589,0.9713491797447205
+"Dense, document-causal",8192,1,8,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,8,0,0.8961538461538462,0.6865664720535278
+Top 2 key tiles of 128 per query tile,8192,1,8,0,0.061057692307692306,0.5318321585655212
+Top 4 key tiles of 128 per query tile,8192,1,8,0,0.1201923076923077,0.6585566997528076
+Top 8 key tiles of 128 per query tile,8192,1,8,0,0.2326923076923077,0.7875856161117554
+"Dense, document-causal",2048,1,8,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,8,1,1.0,0.6964673399925232
+Top 2 key tiles of 128 per query tile,2048,1,8,1,0.22794117647058823,0.6045411229133606
+Top 4 key tiles of 128 per query tile,2048,1,8,1,0.4264705882352941,0.7711091041564941
+Top 8 key tiles of 128 per query tile,2048,1,8,1,0.7352941176470589,0.9580385088920593
+"Dense, document-causal",8192,1,8,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,8,1,0.95,0.6357025504112244
+Top 2 key tiles of 128 per query tile,8192,1,8,1,0.061057692307692306,0.4763083755970001
+Top 4 key tiles of 128 per query tile,8192,1,8,1,0.1201923076923077,0.5971429347991943
+Top 8 key tiles of 128 per query tile,8192,1,8,1,0.2326923076923077,0.7436484694480896
+"Dense, document-causal",2048,1,8,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,8,2,1.0,0.5045890808105469
+Top 2 key tiles of 128 per query tile,2048,1,8,2,0.22794117647058823,0.3978196382522583
+Top 4 key tiles of 128 per query tile,2048,1,8,2,0.4264705882352941,0.6359269618988037
+Top 8 key tiles of 128 per query tile,2048,1,8,2,0.7352941176470589,0.8910127282142639
+"Dense, document-causal",8192,1,8,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,8,2,0.9625,0.47055262327194214
+Top 2 key tiles of 128 per query tile,8192,1,8,2,0.061057692307692306,0.28216224908828735
+Top 4 key tiles of 128 per query tile,8192,1,8,2,0.1201923076923077,0.44288375973701477
+Top 8 key tiles of 128 per query tile,8192,1,8,2,0.2326923076923077,0.6341665983200073
+"Dense, document-causal",2048,1,8,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,8,3,1.0,0.8322792053222656
+Top 2 key tiles of 128 per query tile,2048,1,8,3,0.22794117647058823,0.7611405849456787
+Top 4 key tiles of 128 per query tile,2048,1,8,3,0.4264705882352941,0.864361047744751
+Top 8 key tiles of 128 per query tile,2048,1,8,3,0.7352941176470589,0.9678142070770264
+"Dense, document-causal",8192,1,8,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,8,3,0.9764423076923077,0.7165517210960388
+Top 2 key tiles of 128 per query tile,8192,1,8,3,0.061057692307692306,0.5715432167053223
+Top 4 key tiles of 128 per query tile,8192,1,8,3,0.1201923076923077,0.6675977110862732
+Top 8 key tiles of 128 per query tile,8192,1,8,3,0.2326923076923077,0.7853323221206665
+"Dense, document-causal",2048,1,8,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,8,4,1.0,0.5988902449607849
+Top 2 key tiles of 128 per query tile,2048,1,8,4,0.22794117647058823,0.4144800305366516
+Top 4 key tiles of 128 per query tile,2048,1,8,4,0.4264705882352941,0.7178618311882019
+Top 8 key tiles of 128 per query tile,2048,1,8,4,0.7352941176470589,0.9087726473808289
+"Dense, document-causal",8192,1,8,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,8,4,0.9682692307692308,0.5721083283424377
+Top 2 key tiles of 128 per query tile,8192,1,8,4,0.061057692307692306,0.1938580423593521
+Top 4 key tiles of 128 per query tile,8192,1,8,4,0.1201923076923077,0.3551821708679199
+Top 8 key tiles of 128 per query tile,8192,1,8,4,0.2326923076923077,0.5428705215454102
+"Dense, document-causal",2048,1,8,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,8,5,1.0,0.7527251243591309
+Top 2 key tiles of 128 per query tile,2048,1,8,5,0.22794117647058823,0.6293904781341553
+Top 4 key tiles of 128 per query tile,2048,1,8,5,0.4264705882352941,0.7746879458427429
+Top 8 key tiles of 128 per query tile,2048,1,8,5,0.7352941176470589,0.9317047595977783
+"Dense, document-causal",8192,1,8,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,8,5,0.9985576923076923,0.6004522442817688
+Top 2 key tiles of 128 per query tile,8192,1,8,5,0.061057692307692306,0.41495800018310547
+Top 4 key tiles of 128 per query tile,8192,1,8,5,0.1201923076923077,0.5216946601867676
+Top 8 key tiles of 128 per query tile,8192,1,8,5,0.2326923076923077,0.6546908020973206
+"Dense, document-causal",2048,1,9,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,9,0,1.0,0.5063562393188477
+Top 2 key tiles of 128 per query tile,2048,1,9,0,0.22794117647058823,0.4024469256401062
+Top 4 key tiles of 128 per query tile,2048,1,9,0,0.4264705882352941,0.6304031610488892
+Top 8 key tiles of 128 per query tile,2048,1,9,0,0.7352941176470589,0.871424674987793
+"Dense, document-causal",8192,1,9,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,9,0,0.9956730769230769,0.4139687418937683
+Top 2 key tiles of 128 per query tile,8192,1,9,0,0.061057692307692306,0.2377282977104187
+Top 4 key tiles of 128 per query tile,8192,1,9,0,0.1201923076923077,0.38935762643814087
+Top 8 key tiles of 128 per query tile,8192,1,9,0,0.2326923076923077,0.5829845070838928
+"Dense, document-causal",2048,1,9,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,9,1,1.0,0.4729112982749939
+Top 2 key tiles of 128 per query tile,2048,1,9,1,0.22794117647058823,0.3813226521015167
+Top 4 key tiles of 128 per query tile,2048,1,9,1,0.4264705882352941,0.6582843661308289
+Top 8 key tiles of 128 per query tile,2048,1,9,1,0.7352941176470589,0.8809207081794739
+"Dense, document-causal",8192,1,9,1,1.0,1.0000004768371582
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,9,1,1.0,0.37485602498054504
+Top 2 key tiles of 128 per query tile,8192,1,9,1,0.061057692307692306,0.19212961196899414
+Top 4 key tiles of 128 per query tile,8192,1,9,1,0.1201923076923077,0.3518344759941101
+Top 8 key tiles of 128 per query tile,8192,1,9,1,0.2326923076923077,0.5371414422988892
+"Dense, document-causal",2048,1,9,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,9,2,1.0,0.5856297016143799
+Top 2 key tiles of 128 per query tile,2048,1,9,2,0.22794117647058823,0.4813300371170044
+Top 4 key tiles of 128 per query tile,2048,1,9,2,0.4264705882352941,0.6926005482673645
+Top 8 key tiles of 128 per query tile,2048,1,9,2,0.7352941176470589,0.8998231291770935
+"Dense, document-causal",8192,1,9,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,9,2,0.9846153846153847,0.5321931838989258
+Top 2 key tiles of 128 per query tile,8192,1,9,2,0.061057692307692306,0.3469262421131134
+Top 4 key tiles of 128 per query tile,8192,1,9,2,0.1201923076923077,0.49812227487564087
+Top 8 key tiles of 128 per query tile,8192,1,9,2,0.2326923076923077,0.6777450442314148
+"Dense, document-causal",2048,1,9,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,9,3,1.0,0.7897496819496155
+Top 2 key tiles of 128 per query tile,2048,1,9,3,0.22794117647058823,0.46355947852134705
+Top 4 key tiles of 128 per query tile,2048,1,9,3,0.4264705882352941,0.6436104774475098
+Top 8 key tiles of 128 per query tile,2048,1,9,3,0.7352941176470589,0.8477973937988281
+"Dense, document-causal",8192,1,9,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,9,3,0.9923076923076923,0.6035360097885132
+Top 2 key tiles of 128 per query tile,8192,1,9,3,0.061057692307692306,0.3275738060474396
+Top 4 key tiles of 128 per query tile,8192,1,9,3,0.1201923076923077,0.4493883550167084
+Top 8 key tiles of 128 per query tile,8192,1,9,3,0.2326923076923077,0.6211647987365723
+"Dense, document-causal",2048,1,9,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,9,4,0.9926470588235294,0.7665769457817078
+Top 2 key tiles of 128 per query tile,2048,1,9,4,0.22794117647058823,0.5890098214149475
+Top 4 key tiles of 128 per query tile,2048,1,9,4,0.4264705882352941,0.7584619522094727
+Top 8 key tiles of 128 per query tile,2048,1,9,4,0.7352941176470589,0.898670494556427
+"Dense, document-causal",8192,1,9,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,9,4,0.9711538461538461,0.6322218775749207
+Top 2 key tiles of 128 per query tile,8192,1,9,4,0.061057692307692306,0.442666232585907
+Top 4 key tiles of 128 per query tile,8192,1,9,4,0.1201923076923077,0.5661600828170776
+Top 8 key tiles of 128 per query tile,8192,1,9,4,0.2326923076923077,0.7002621293067932
+"Dense, document-causal",2048,1,9,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,9,5,1.0,0.6167636513710022
+Top 2 key tiles of 128 per query tile,2048,1,9,5,0.22794117647058823,0.5279658436775208
+Top 4 key tiles of 128 per query tile,2048,1,9,5,0.4264705882352941,0.7551441788673401
+Top 8 key tiles of 128 per query tile,2048,1,9,5,0.7352941176470589,0.9222767949104309
+"Dense, document-causal",8192,1,9,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,9,5,0.9942307692307693,0.4934329390525818
+Top 2 key tiles of 128 per query tile,8192,1,9,5,0.061057692307692306,0.3162674605846405
+Top 4 key tiles of 128 per query tile,8192,1,9,5,0.1201923076923077,0.46711838245391846
+Top 8 key tiles of 128 per query tile,8192,1,9,5,0.2326923076923077,0.625632643699646
+"Dense, document-causal",2048,1,10,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,10,0,1.0,0.6016794443130493
+Top 2 key tiles of 128 per query tile,2048,1,10,0,0.22794117647058823,0.39551448822021484
+Top 4 key tiles of 128 per query tile,2048,1,10,0,0.4264705882352941,0.6256130337715149
+Top 8 key tiles of 128 per query tile,2048,1,10,0,0.7352941176470589,0.8651668429374695
+"Dense, document-causal",8192,1,10,0,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,10,0,1.0,0.44632700085639954
+Top 2 key tiles of 128 per query tile,8192,1,10,0,0.061057692307692306,0.18742191791534424
+Top 4 key tiles of 128 per query tile,8192,1,10,0,0.1201923076923077,0.32587793469429016
+Top 8 key tiles of 128 per query tile,8192,1,10,0,0.2326923076923077,0.5143992900848389
+"Dense, document-causal",2048,1,10,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,10,1,1.0,0.5676047801971436
+Top 2 key tiles of 128 per query tile,2048,1,10,1,0.22794117647058823,0.38719621300697327
+Top 4 key tiles of 128 per query tile,2048,1,10,1,0.4264705882352941,0.6155099868774414
+Top 8 key tiles of 128 per query tile,2048,1,10,1,0.7352941176470589,0.8610613346099854
+"Dense, document-causal",8192,1,10,1,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,10,1,1.0,0.4137308895587921
+Top 2 key tiles of 128 per query tile,8192,1,10,1,0.061057692307692306,0.19446709752082825
+Top 4 key tiles of 128 per query tile,8192,1,10,1,0.1201923076923077,0.32007554173469543
+Top 8 key tiles of 128 per query tile,8192,1,10,1,0.2326923076923077,0.49097877740859985
+"Dense, document-causal",2048,1,10,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,10,2,1.0,0.48412269353866577
+Top 2 key tiles of 128 per query tile,2048,1,10,2,0.22794117647058823,0.4959610104560852
+Top 4 key tiles of 128 per query tile,2048,1,10,2,0.4264705882352941,0.692925751209259
+Top 8 key tiles of 128 per query tile,2048,1,10,2,0.7352941176470589,0.8958300352096558
+"Dense, document-causal",8192,1,10,2,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,10,2,0.9504807692307692,0.4729963541030884
+Top 2 key tiles of 128 per query tile,8192,1,10,2,0.061057692307692306,0.379708856344223
+Top 4 key tiles of 128 per query tile,8192,1,10,2,0.1201923076923077,0.5198908448219299
+Top 8 key tiles of 128 per query tile,8192,1,10,2,0.2326923076923077,0.6938592791557312
+"Dense, document-causal",2048,1,10,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,10,3,1.0,0.7060978412628174
+Top 2 key tiles of 128 per query tile,2048,1,10,3,0.22794117647058823,0.4012269079685211
+Top 4 key tiles of 128 per query tile,2048,1,10,3,0.4264705882352941,0.635840654373169
+Top 8 key tiles of 128 per query tile,2048,1,10,3,0.7352941176470589,0.866304874420166
+"Dense, document-causal",8192,1,10,3,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,10,3,1.0,0.5328845977783203
+Top 2 key tiles of 128 per query tile,8192,1,10,3,0.061057692307692306,0.23198926448822021
+Top 4 key tiles of 128 per query tile,8192,1,10,3,0.1201923076923077,0.36600595712661743
+Top 8 key tiles of 128 per query tile,8192,1,10,3,0.2326923076923077,0.5328236818313599
+"Dense, document-causal",2048,1,10,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,10,4,1.0,0.48861393332481384
+Top 2 key tiles of 128 per query tile,2048,1,10,4,0.22794117647058823,0.4369567930698395
+Top 4 key tiles of 128 per query tile,2048,1,10,4,0.4264705882352941,0.6545523405075073
+Top 8 key tiles of 128 per query tile,2048,1,10,4,0.7352941176470589,0.8798568248748779
+"Dense, document-causal",8192,1,10,4,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,10,4,1.0,0.40388962626457214
+Top 2 key tiles of 128 per query tile,8192,1,10,4,0.061057692307692306,0.2641837000846863
+Top 4 key tiles of 128 per query tile,8192,1,10,4,0.1201923076923077,0.3960092067718506
+Top 8 key tiles of 128 per query tile,8192,1,10,4,0.2326923076923077,0.5596504807472229
+"Dense, document-causal",2048,1,10,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),2048,1,10,5,1.0,0.4676189422607422
+Top 2 key tiles of 128 per query tile,2048,1,10,5,0.22794117647058823,0.3890390396118164
+Top 4 key tiles of 128 per query tile,2048,1,10,5,0.4264705882352941,0.6239387392997742
+Top 8 key tiles of 128 per query tile,2048,1,10,5,0.7352941176470589,0.8647961616516113
+"Dense, document-causal",8192,1,10,5,1.0,1.0
+Exact top 64 keys per query per 2048-key block (run 2's rule),8192,1,10,5,0.9961538461538462,0.3574407696723938
+Top 2 key tiles of 128 per query tile,8192,1,10,5,0.061057692307692306,0.19625060260295868
+Top 4 key tiles of 128 per query tile,8192,1,10,5,0.1201923076923077,0.3525393009185791
+Top 8 key tiles of 128 per query tile,8192,1,10,5,0.2326923076923077,0.5533561110496521

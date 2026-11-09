@@ -1,34 +1,0 @@
-2026-10-16 13:18:18,378 HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-0.6B-Base/revision/main "HTTP/1.1 200 OK"
-Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:  83%|████████▎ | 258/310 [00:00<00:00, 2572.05it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 2745.93it/s]
-2026-10-16 13:18:19,477 [csa2 transfer] 59.0M trainable params, 1500 steps x 8192 tokens, from Qwen
-2026-10-16 13:19:32,158 [csa2 transfer] step 50: train 0.8183
-2026-10-16 13:20:45,110 [csa2 transfer] step 100: train 0.6637
-2026-10-16 13:21:55,257 [csa2 transfer] step 150: train 0.5649
-2026-10-16 13:23:08,136 [csa2 transfer] step 200: train 0.5268
-2026-10-16 13:24:19,981 [csa2 transfer] step 250: train 0.4786
-2026-10-16 13:25:34,145 [csa2 transfer] step 300: train 0.4380
-2026-10-16 13:26:49,131 [csa2 transfer] step 350: train 0.4073
-2026-10-16 13:28:01,355 [csa2 transfer] step 400: train 0.4052
-2026-10-16 13:29:15,069 [csa2 transfer] step 450: train 0.4241
-2026-10-16 13:30:52,425 [csa2 transfer] step 500: train 0.3681, val 0.3732
-2026-10-16 13:32:03,859 [csa2 transfer] step 550: train 0.3594
-2026-10-16 13:33:15,099 [csa2 transfer] step 600: train 0.3710
-2026-10-16 13:34:27,569 [csa2 transfer] step 650: train 0.3680
-2026-10-16 13:35:40,544 [csa2 transfer] step 700: train 0.3427
-2026-10-16 13:36:53,676 [csa2 transfer] step 750: train 0.3277
-2026-10-16 13:38:06,781 [csa2 transfer] step 800: train 0.3595
-2026-10-16 13:39:20,043 [csa2 transfer] step 850: train 0.3142
-2026-10-16 13:40:34,682 [csa2 transfer] step 900: train 0.3071
-2026-10-16 13:41:48,298 [csa2 transfer] step 950: train 0.3176
-2026-10-16 13:43:27,983 [csa2 transfer] step 1000: train 0.2927, val 0.2998
-2026-10-16 13:44:43,026 [csa2 transfer] step 1050: train 0.2857
-2026-10-16 13:45:56,193 [csa2 transfer] step 1100: train 0.2878
-2026-10-16 13:47:09,395 [csa2 transfer] step 1150: train 0.3389
-2026-10-16 13:48:23,041 [csa2 transfer] step 1200: train 0.2813
-2026-10-16 13:49:35,694 [csa2 transfer] step 1250: train 0.2985
-2026-10-16 13:50:49,153 [csa2 transfer] step 1300: train 0.3005
-2026-10-16 13:52:01,878 [csa2 transfer] step 1350: train 0.3240
-2026-10-16 13:53:13,354 [csa2 transfer] step 1400: train 0.2784
-2026-10-16 13:54:26,991 [csa2 transfer] step 1450: train 0.2824
-2026-10-16 13:56:06,524 [csa2 transfer] step 1500: train 0.2827, val 0.2767
-2026-10-16 13:56:06,759 [csa2 transfer] done in 2267 s

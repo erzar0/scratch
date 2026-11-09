@@ -1,0 +1,19 @@
+shape,version,kernel,ms
+stage 1,"Contiguous channel blocks, K read in place (dropped)",_windows,0.493
+stage 1,"Contiguous channel blocks, K read in place (dropped)","other (fills, transpose, key copies)",0.014
+stage 1,"Contiguous channel blocks, K read in place (dropped)",_rounds,1.385
+stage 1,"Contiguous channel blocks, K read in place (dropped)",_redo,0.021
+stage 1,"Contiguous channel blocks, K read in place (dropped)",_bits,0.013
+stage 1,"Contiguous channel blocks, K read in place (dropped)",total,1.926
+stage 2,"Contiguous channel blocks, K read in place (dropped)",_windows,0.910
+stage 2,"Contiguous channel blocks, K read in place (dropped)","other (fills, transpose, key copies)",0.021
+stage 2,"Contiguous channel blocks, K read in place (dropped)",_rounds,3.510
+stage 2,"Contiguous channel blocks, K read in place (dropped)",_redo,0.031
+stage 2,"Contiguous channel blocks, K read in place (dropped)",_bits,0.023
+stage 2,"Contiguous channel blocks, K read in place (dropped)",total,4.494
+stage 3,"Contiguous channel blocks, K read in place (dropped)",_windows,1.281
+stage 3,"Contiguous channel blocks, K read in place (dropped)","other (fills, transpose, key copies)",0.023
+stage 3,"Contiguous channel blocks, K read in place (dropped)",_rounds,5.243
+stage 3,"Contiguous channel blocks, K read in place (dropped)",_redo,0.033
+stage 3,"Contiguous channel blocks, K read in place (dropped)",_bits,0.033
+stage 3,"Contiguous channel blocks, K read in place (dropped)",total,6.613

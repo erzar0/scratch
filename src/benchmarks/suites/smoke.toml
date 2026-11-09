@@ -1,0 +1,18 @@
+# One length and seed, two budgets: checks the pipeline in minutes.
+name = "smoke"
+
+[latency]
+lengths = [32768]
+budgets = [512, 2048]
+distributions = ["iid"]
+kv_heads = 8
+repeats = 3
+
+[fidelity]
+lengths = [32768]
+budgets = [512, 2048]
+distributions = [
+    "iid", "outlier-channels", "llm-like", "flat", "sharp", "local", "many-needles",
+]
+queries = 32
+seeds = [0]
