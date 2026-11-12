@@ -14,3 +14,21 @@ version,n,cache_mib
 "Run 5: tile selection, 32-key blocks (+ block mean keys)",8192,247.5
 "Run 5: tile selection, 32-key blocks (+ block mean keys)",32768,990.0
 "Run 5: tile selection, 32-key blocks (+ block mean keys)",131072,3960.0
+"CSA2 stripped, learned indexer",8192,2.2
+"CSA2 stripped, learned indexer",32768,7.8
+"CSA2 stripped, learned indexer",131072,30.3
+"CSA2 stripped, exact or tournament picks instead of the indexer",8192,1.8
+"CSA2 stripped, exact or tournament picks instead of the indexer",32768,6.3
+"CSA2 stripped, exact or tournament picks instead of the indexer",131072,24.3
+"CSA2 KV layout in stripped record 91, exact or tournament top 64 entries",8192,5.2
+"CSA2 KV layout in stripped record 91, exact or tournament top 64 entries",32768,9.8
+"CSA2 KV layout in stripped record 91, exact or tournament top 64 entries",131072,27.8
+"CSA2 KV layout in stripped record 91, 1 shared K=V window head",8192,1.8
+"CSA2 KV layout in stripped record 91, 1 shared K=V window head",32768,6.3
+"CSA2 KV layout in stripped record 91, 1 shared K=V window head",131072,24.3
+"CSA2 KV layout in stripped record 91, 2 shared K=V window heads",8192,2.1
+"CSA2 KV layout in stripped record 91, 2 shared K=V window heads",32768,6.6
+"CSA2 KV layout in stripped record 91, 2 shared K=V window heads",131072,24.6
+"CSA2 KV layout in stripped record 91, per-head K=V window",8192,3.4
+"CSA2 KV layout in stripped record 91, per-head K=V window",32768,7.9
+"CSA2 KV layout in stripped record 91, per-head K=V window",131072,25.9

@@ -1,0 +1,120 @@
+version,positions,loss
+"CSA2, V4.1-Flash-1017 reference code",positions 0-128,3.71138
+"CSA2, V4.1-Flash-1017 reference code",positions 128-512,3.45376
+"CSA2, V4.1-Flash-1017 reference code",positions 512-1024,3.45229
+"CSA2, V4.1-Flash-1017 reference code",positions 1024-2048,3.47380
+"CSA2, V4.1-Flash-1017 reference code",positions 2048-2560,3.58726
+"CSA2, V4.1-Flash-1017 reference code",positions 2560-4096,3.83399
+"CSA2, V4.1-Flash-1017 reference code",positions 4096-8192,3.85058
+"CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",positions 0-128,3.71390
+"CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",positions 128-512,3.45715
+"CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",positions 512-1024,3.45606
+"CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",positions 1024-2048,3.47787
+"CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",positions 2048-2560,3.59424
+"CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",positions 2560-4096,3.83822
+"CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",positions 4096-8192,3.85491
+"CSA2, our port of the V4.1 report",positions 0-128,3.83738
+"CSA2, our port of the V4.1 report",positions 128-512,3.58179
+"CSA2, our port of the V4.1 report",positions 512-1024,3.61274
+"CSA2, our port of the V4.1 report",positions 1024-2048,3.66143
+"CSA2, our port of the V4.1 report",positions 2048-2560,3.68642
+"CSA2, our port of the V4.1 report",positions 2560-4096,3.85560
+"CSA2, our port of the V4.1 report",positions 4096-8192,3.72809
+"CSA2 KV layout in stripped record 91, exact top 64 entries",positions 0-128,3.77782
+"CSA2 KV layout in stripped record 91, exact top 64 entries",positions 128-512,3.51056
+"CSA2 KV layout in stripped record 91, exact top 64 entries",positions 512-1024,3.54890
+"CSA2 KV layout in stripped record 91, exact top 64 entries",positions 1024-2048,3.59064
+"CSA2 KV layout in stripped record 91, exact top 64 entries",positions 2048-2560,3.59422
+"CSA2 KV layout in stripped record 91, exact top 64 entries",positions 2560-4096,3.74368
+"CSA2 KV layout in stripped record 91, exact top 64 entries",positions 4096-8192,3.64564
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",positions 0-128,3.67546
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",positions 128-512,3.43351
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",positions 512-1024,3.47387
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",positions 1024-2048,3.50927
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",positions 2048-2560,3.50674
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",positions 2560-4096,3.65835
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",positions 4096-8192,3.54959
+"CSA2 KV layout in stripped record 91, MQA window, XSA on mean value, tournament top 64 entries",positions 0-128,3.90165
+"CSA2 KV layout in stripped record 91, MQA window, XSA on mean value, tournament top 64 entries",positions 128-512,3.68448
+"CSA2 KV layout in stripped record 91, MQA window, XSA on mean value, tournament top 64 entries",positions 512-1024,3.75287
+"CSA2 KV layout in stripped record 91, MQA window, XSA on mean value, tournament top 64 entries",positions 1024-2048,3.81927
+"CSA2 KV layout in stripped record 91, MQA window, XSA on mean value, tournament top 64 entries",positions 2048-2560,3.83443
+"CSA2 KV layout in stripped record 91, MQA window, XSA on mean value, tournament top 64 entries",positions 2560-4096,3.98470
+"CSA2 KV layout in stripped record 91, MQA window, XSA on mean value, tournament top 64 entries",positions 4096-8192,3.90194
+"CSA2 KV layout in stripped record 91, MQA window, tournament top 64 entries",positions 0-128,3.82877
+"CSA2 KV layout in stripped record 91, MQA window, tournament top 64 entries",positions 128-512,3.61200
+"CSA2 KV layout in stripped record 91, MQA window, tournament top 64 entries",positions 512-1024,3.67497
+"CSA2 KV layout in stripped record 91, MQA window, tournament top 64 entries",positions 1024-2048,3.72683
+"CSA2 KV layout in stripped record 91, MQA window, tournament top 64 entries",positions 2048-2560,3.73347
+"CSA2 KV layout in stripped record 91, MQA window, tournament top 64 entries",positions 2560-4096,3.88499
+"CSA2 KV layout in stripped record 91, MQA window, tournament top 64 entries",positions 4096-8192,3.78302
+"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",positions 0-128,3.74691
+"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",positions 128-512,3.50251
+"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",positions 512-1024,3.52850
+"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",positions 1024-2048,3.57131
+"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",positions 2048-2560,3.57577
+"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",positions 2560-4096,3.73462
+"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",positions 4096-8192,3.61322
+"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",positions 0-128,3.77469
+"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",positions 128-512,3.51644
+"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",positions 512-1024,3.55041
+"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",positions 1024-2048,3.59514
+"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",positions 2048-2560,3.63146
+"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",positions 2560-4096,4.01277
+"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",positions 4096-8192,4.60178
+"CSA2 KV layout in stripped record 91, exact, per-head K=V window",positions 0-128,3.78049
+"CSA2 KV layout in stripped record 91, exact, per-head K=V window",positions 128-512,3.54491
+"CSA2 KV layout in stripped record 91, exact, per-head K=V window",positions 512-1024,3.57829
+"CSA2 KV layout in stripped record 91, exact, per-head K=V window",positions 1024-2048,3.62549
+"CSA2 KV layout in stripped record 91, exact, per-head K=V window",positions 2048-2560,3.69837
+"CSA2 KV layout in stripped record 91, exact, per-head K=V window",positions 2560-4096,4.11018
+"CSA2 KV layout in stripped record 91, exact, per-head K=V window",positions 4096-8192,3.99080
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",positions 0-128,3.67961
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",positions 128-512,3.43074
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",positions 512-1024,3.45941
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",positions 1024-2048,3.48951
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",positions 2048-2560,3.47973
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",positions 2560-4096,3.62465
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",positions 4096-8192,3.48882
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, FP8 entries",positions 0-128,3.67966
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, FP8 entries",positions 128-512,3.43076
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, FP8 entries",positions 512-1024,3.45955
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, FP8 entries",positions 1024-2048,3.48960
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, FP8 entries",positions 2048-2560,3.47999
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, FP8 entries",positions 2560-4096,3.62475
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, FP8 entries",positions 4096-8192,3.48855
+"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",positions 0-128,3.76356
+"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",positions 128-512,3.52004
+"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",positions 512-1024,3.55931
+"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",positions 1024-2048,3.60254
+"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",positions 2048-2560,3.63775
+"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",positions 2560-4096,4.06302
+"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",positions 4096-8192,4.09196
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",positions 0-128,3.74154
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",positions 128-512,3.50500
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",positions 512-1024,3.54845
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",positions 1024-2048,3.59010
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",positions 2048-2560,3.60264
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",positions 2560-4096,3.76721
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",positions 4096-8192,3.72010
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",positions 0-128,3.98800
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",positions 128-512,3.73484
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",positions 512-1024,3.78983
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",positions 1024-2048,3.84514
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",positions 2048-2560,3.96427
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",positions 2560-4096,4.30951
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",positions 4096-8192,4.16114
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",positions 0-128,3.77862
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",positions 128-512,3.53945
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",positions 512-1024,3.56934
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",positions 1024-2048,3.60363
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",positions 2048-2560,3.60837
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",positions 2560-4096,3.74930
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",positions 4096-8192,3.61649
+"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",positions 0-128,3.77971
+"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",positions 128-512,3.54064
+"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",positions 512-1024,3.57971
+"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",positions 1024-2048,3.62748
+"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",positions 2048-2560,3.63746
+"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",positions 2560-4096,3.81402
+"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",positions 4096-8192,3.79589

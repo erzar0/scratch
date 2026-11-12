@@ -84,6 +84,18 @@ def exact_topk(top: int) -> Step:
     return step
 
 
+def summed_query_topk(top: int) -> Step:
+    """Every key scored by the heads' summed query; the top attended. (The nanogpt
+    decode's fused Triton top-k takes one KV head per call: at 8 heads it is slower
+    than this.)"""
+
+    def step(q: Tensor, kv: KV) -> tuple[Tensor, Tensor]:
+        idx = (kv.k @ q.sum(1)[..., None])[..., 0].topk(top, -1).indices
+        return attend(q, kv.k, kv.v, idx), idx
+
+    return step
+
+
 def loki_step(d: int, top: int) -> Step:
     """Loki: keys stored in their PCA basis, the first d channels scored."""
 

@@ -93,6 +93,19 @@ Versions that give the losers a rough weight can beat it.
 |---|---|---|
 | k | 512 (budget) | Keys whose values are read: the k highest exact scores. Kernel: PyTorch. |
 
+### Exact top-k, summed query
+
+Id: `exact-topk/summed-query`.
+
+The pick rule of our record 91 runs that beat CSA2 (src/nanogpt): add the 2 query heads into one query, score every key with it exactly, read the values of the best k.
+Exact top-k adds the two heads' attention after the softmax instead, so one head's sharp peak can outvote the other head.
+Adding the queries first is the same as adding the heads' raw scores.
+
+| Setting | Value | Meaning |
+|---|---|---|
+| k | 512 (budget) | Keys whose values are read: the k highest summed scores. |
+| Kernel | PyTorch | The nanogpt decode has a fused Triton top-k for this rule, but it takes one KV head per call; at 8 KV heads it is slower than PyTorch (measured 2026-11-12, 104 vs 41 µs at 8K keys and k = 128). |
+
 ### SparQ
 
 Id: `sparq`.
@@ -157,6 +170,26 @@ Its projections alone take about 450 µs per step at every length (the same laye
 | heads, dim | 64, 512 | 64 query heads of 512 numbers, all sharing one key per word (DeepSeek-V4-Flash). The indexer has 64 heads of 128. |
 | Projections | full size | Library defaults: 4096 wide, queries through a 1024-wide bottleneck, output in 8 groups of 1024. |
 | Kernel | transformers | As above. Batch = 1 sequence: one new word of one text. |
+
+### DeepSeek-V4.1 CSA2
+
+Id: `deepseek-v4.1/csa2`.
+
+Code: DeepSeek's V4.1-Flash-1017 inference code (`src/deepseek4.1-1017/`); `src/nanogpt/csa2_ref.py` ports it for training.
+One layer like V4.1's last layers: every key is its own card (no squeezing), and it serves as its own value.
+A small learned scorer (the indexer, 2 heads) rates every key for the new word through keys of its own, and the best k are read with the last 128 keys.
+Each head also has a "sink", a score for reading nothing, which lets it put less weight on the keys.
+
+Latency only, for the same reason as DeepSeek-V4 CSA: the scorer and its keys are learned, so with random weights its picks mean nothing on these synthetic keys.
+Not timed: the layer's projections, cache writes, V4.1's 4-bit cache, and its candidate blocks (V4.1's later scoring layers search only 256 blocks of 8 keys that an earlier layer chose).
+
+| Setting | Value | Meaning |
+|---|---|---|
+| keep | 512 (budget) | Keys picked by the indexer. |
+| window | 128 | The 128 most recent keys, always read. |
+| index heads | 2 × 128 | The indexer's heads and their size, as in the DeepSeek-V4 CSA row. |
+| rope | 16 | The output's last 16 numbers are turned back by RoPE (DeepSeek's code). |
+| Kernel | PyTorch | Batch = 8 sequences, one per KV head of the other rows, 2 query heads each. Values are not read: each key is its own value. |
 
 ### Block top-k
 

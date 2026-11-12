@@ -49,6 +49,7 @@ docs/papers/              reference papers (PDF)
   - Block and bracket tournaments end below the budget (above half) unless the length is the budget times a power of two; the suites use only such lengths.
   - Shuffled blocks, growing budget: budget × 1024 ÷ 32768 winners per 1024-key block, so budget × n ÷ 32K keys; not dense on short contexts.
   - DeepSeek-V4 CSA: 128 raw recent keys plus top-budget compressed entries; latency only.
+  - DeepSeek-V4.1 CSA2: 128 recent keys plus the top-budget keys by a random indexer; latency only.
 - Figures are paper-style (7 pt serif, vector PDF + PNG), without titles; each caption (shape, dtype, distribution, repeats or seeds) is in `tables.md`.
 - Every figure lists the versions in registry order, one row each.
 
@@ -58,10 +59,12 @@ docs/papers/              reference papers (PDF)
 |---|---|---|
 | `dense` | Dense | PyTorch |
 | `exact-topk` | Exact top-k | PyTorch |
+| `exact-topk/summed-query` | Exact top-k, summed query | PyTorch |
 | `sparq` | SparQ | Triton |
 | `loki` | Loki | PyTorch |
 | `deepseek-v4/csa` | DeepSeek-V4 CSA | transformers |
 | `deepseek-v4/csa-flash` | DeepSeek-V4 CSA, V4-Flash size | transformers |
+| `deepseek-v4.1/csa2` | DeepSeek-V4.1 CSA2 | PyTorch |
 | `block-topk/flat` | Block top-k | PyTorch |
 | `block-topk/double-indexing-mean` | Double indexing: mean | PyTorch |
 | `block-topk/double-indexing-bound` | Double indexing: bound | PyTorch |

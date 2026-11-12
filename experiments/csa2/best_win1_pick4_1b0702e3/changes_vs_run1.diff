@@ -1,0 +1,20 @@
+--- b/train_tournament_kv_win1_fast.py	2026-11-10 20:52:11.320271126 +0100
++++ b/train_tournament_kv_win1_pick4_fast.py	2026-11-10 20:52:11.554795502 +0100
+@@ -1189,7 +1189,7 @@
+         # attends 16 winners per 1024 keys of its document's prefix (all of its first 16)
+         assert not self.paired
+         # CSA2 KV layout: the group's first layer compresses its input (one K=V
+-        # head, m tokens per entry); even layers pick with their own q, odd reuse
++        # head, m tokens per entry); its first layer picks, the rest reuse
+         layer, (w_kv, w_gate), state, w_win = csa
+         if layer % 4 == 0:
+             state["entries"] = csa2_flex.compress(
+@@ -1202,7 +1202,7 @@
+             yarn.factor1, yarn.factor2,
+         )
+         keys = csa2_flex.rotate(entries, CSA2_M, yarn.factor1, yarn.factor2)
+-        if layer % 2 == 0:
++        if layer % 4 == 0:
+             begin = csa2_flex.starts(seqlens, T)
+             state["picks"] = CSA2_RULE(q[0], keys, begin, CSA2_M, CSA2_TOP)
+         y = csa2_flex.attention(

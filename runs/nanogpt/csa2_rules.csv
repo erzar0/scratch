@@ -1,0 +1,217 @@
+rule,positions,loss
+exact picks every 4 layers (as trained),positions 0-128,3.77862
+exact picks every 4 layers (as trained),positions 128-512,3.53945
+exact picks every 4 layers (as trained),positions 512-1024,3.56934
+exact picks every 4 layers (as trained),positions 1024-2048,3.60363
+exact picks every 4 layers (as trained),positions 2048-2560,3.60837
+exact picks every 4 layers (as trained),positions 2560-4096,3.74930
+exact picks every 4 layers (as trained),positions 4096-8192,3.61649
+exact picks every 4 layers (as trained),all positions,3.61485
+"prefilter keeps 512, then exact",positions 0-128,3.77862
+"prefilter keeps 512, then exact",positions 128-512,3.53945
+"prefilter keeps 512, then exact",positions 512-1024,3.56935
+"prefilter keeps 512, then exact",positions 1024-2048,3.60363
+"prefilter keeps 512, then exact",positions 2048-2560,3.60907
+"prefilter keeps 512, then exact",positions 2560-4096,3.75535
+"prefilter keeps 512, then exact",positions 4096-8192,3.63254
+"prefilter keeps 512, then exact",all positions,3.61566
+"exact picks at layer 0 only, all groups reuse them",positions 0-128,3.77862
+"exact picks at layer 0 only, all groups reuse them",positions 128-512,3.54208
+"exact picks at layer 0 only, all groups reuse them",positions 512-1024,3.58666
+"exact picks at layer 0 only, all groups reuse them",positions 1024-2048,3.62677
+"exact picks at layer 0 only, all groups reuse them",positions 2048-2560,3.62879
+"exact picks at layer 0 only, all groups reuse them",positions 2560-4096,3.76884
+"exact picks at layer 0 only, all groups reuse them",positions 4096-8192,3.63770
+"exact picks at layer 0 only, all groups reuse them",all positions,3.62476
+"exact picks at layers 0, 4; group 3 reuses group 2's",positions 0-128,3.77862
+"exact picks at layers 0, 4; group 3 reuses group 2's",positions 128-512,3.53906
+"exact picks at layers 0, 4; group 3 reuses group 2's",positions 512-1024,3.56831
+"exact picks at layers 0, 4; group 3 reuses group 2's",positions 1024-2048,3.60243
+"exact picks at layers 0, 4; group 3 reuses group 2's",positions 2048-2560,3.60605
+"exact picks at layers 0, 4; group 3 reuses group 2's",positions 2560-4096,3.74645
+"exact picks at layers 0, 4; group 3 reuses group 2's",positions 4096-8192,3.60853
+"exact picks at layers 0, 4; group 3 reuses group 2's",all positions,3.61387
+"exact picks at layers 0, 8; group 2 reuses group 1's",positions 0-128,3.77862
+"exact picks at layers 0, 8; group 2 reuses group 1's",positions 128-512,3.54197
+"exact picks at layers 0, 8; group 2 reuses group 1's",positions 512-1024,3.58576
+"exact picks at layers 0, 8; group 2 reuses group 1's",positions 1024-2048,3.62624
+"exact picks at layers 0, 8; group 2 reuses group 1's",positions 2048-2560,3.62986
+"exact picks at layers 0, 8; group 2 reuses group 1's",positions 2560-4096,3.77015
+"exact picks at layers 0, 8; group 2 reuses group 1's",positions 4096-8192,3.64367
+"exact picks at layers 0, 8; group 2 reuses group 1's",all positions,3.62474
+"block mean key, best 16 blocks of 8 entries",positions 0-128,3.77862
+"block mean key, best 16 blocks of 8 entries",positions 128-512,3.53945
+"block mean key, best 16 blocks of 8 entries",positions 512-1024,3.57365
+"block mean key, best 16 blocks of 8 entries",positions 1024-2048,3.61916
+"block mean key, best 16 blocks of 8 entries",positions 2048-2560,3.62577
+"block mean key, best 16 blocks of 8 entries",positions 2560-4096,3.76959
+"block mean key, best 16 blocks of 8 entries",positions 4096-8192,3.65760
+"block mean key, best 16 blocks of 8 entries",all positions,3.62064
+"block mean key, best 16 blocks of 16 entries",positions 0-128,3.77862
+"block mean key, best 16 blocks of 16 entries",positions 128-512,3.53945
+"block mean key, best 16 blocks of 16 entries",positions 512-1024,3.56935
+"block mean key, best 16 blocks of 16 entries",positions 1024-2048,3.60704
+"block mean key, best 16 blocks of 16 entries",positions 2048-2560,3.61510
+"block mean key, best 16 blocks of 16 entries",positions 2560-4096,3.75874
+"block mean key, best 16 blocks of 16 entries",positions 4096-8192,3.63914
+"block mean key, best 16 blocks of 16 entries",all positions,3.61667
+"block mean key, best 32 blocks of 8 entries",positions 0-128,3.77862
+"block mean key, best 32 blocks of 8 entries",positions 128-512,3.53945
+"block mean key, best 32 blocks of 8 entries",positions 512-1024,3.56935
+"block mean key, best 32 blocks of 8 entries",positions 1024-2048,3.60587
+"block mean key, best 32 blocks of 8 entries",positions 2048-2560,3.61282
+"block mean key, best 32 blocks of 8 entries",positions 2560-4096,3.75505
+"block mean key, best 32 blocks of 8 entries",positions 4096-8192,3.63267
+"block mean key, best 32 blocks of 8 entries",all positions,3.61607
+"block max key, best 16 blocks of 8 entries",positions 0-128,3.77862
+"block max key, best 16 blocks of 8 entries",positions 128-512,3.53945
+"block max key, best 16 blocks of 8 entries",positions 512-1024,3.57472
+"block max key, best 16 blocks of 8 entries",positions 1024-2048,3.62199
+"block max key, best 16 blocks of 8 entries",positions 2048-2560,3.62950
+"block max key, best 16 blocks of 8 entries",positions 2560-4096,3.77660
+"block max key, best 16 blocks of 8 entries",positions 4096-8192,3.67105
+"block max key, best 16 blocks of 8 entries",all positions,3.62211
+"block max key, best 16 blocks of 16 entries",positions 0-128,3.77862
+"block max key, best 16 blocks of 16 entries",positions 128-512,3.53945
+"block max key, best 16 blocks of 16 entries",positions 512-1024,3.56935
+"block max key, best 16 blocks of 16 entries",positions 1024-2048,3.60762
+"block max key, best 16 blocks of 16 entries",positions 2048-2560,3.61573
+"block max key, best 16 blocks of 16 entries",positions 2560-4096,3.76383
+"block max key, best 16 blocks of 16 entries",positions 4096-8192,3.65051
+"block max key, best 16 blocks of 16 entries",all positions,3.61737
+"block max key, best 32 blocks of 8 entries",positions 0-128,3.77862
+"block max key, best 32 blocks of 8 entries",positions 128-512,3.53945
+"block max key, best 32 blocks of 8 entries",positions 512-1024,3.56935
+"block max key, best 32 blocks of 8 entries",positions 1024-2048,3.60623
+"block max key, best 32 blocks of 8 entries",positions 2048-2560,3.61349
+"block max key, best 32 blocks of 8 entries",positions 2560-4096,3.75865
+"block max key, best 32 blocks of 8 entries",positions 4096-8192,3.64095
+"block max key, best 32 blocks of 8 entries",all positions,3.61657
+"block min/max bound, best 16 blocks of 8 entries",positions 0-128,3.77862
+"block min/max bound, best 16 blocks of 8 entries",positions 128-512,3.53945
+"block min/max bound, best 16 blocks of 8 entries",positions 512-1024,3.57232
+"block min/max bound, best 16 blocks of 8 entries",positions 1024-2048,3.61400
+"block min/max bound, best 16 blocks of 8 entries",positions 2048-2560,3.62731
+"block min/max bound, best 16 blocks of 8 entries",positions 2560-4096,3.77041
+"block min/max bound, best 16 blocks of 8 entries",positions 4096-8192,3.65999
+"block min/max bound, best 16 blocks of 8 entries",all positions,3.61981
+"block min/max bound, best 16 blocks of 16 entries",positions 0-128,3.77862
+"block min/max bound, best 16 blocks of 16 entries",positions 128-512,3.53945
+"block min/max bound, best 16 blocks of 16 entries",positions 512-1024,3.56935
+"block min/max bound, best 16 blocks of 16 entries",positions 1024-2048,3.60546
+"block min/max bound, best 16 blocks of 16 entries",positions 2048-2560,3.61436
+"block min/max bound, best 16 blocks of 16 entries",positions 2560-4096,3.75721
+"block min/max bound, best 16 blocks of 16 entries",positions 4096-8192,3.64525
+"block min/max bound, best 16 blocks of 16 entries",all positions,3.61656
+"block min/max bound, best 32 blocks of 8 entries",positions 0-128,3.77862
+"block min/max bound, best 32 blocks of 8 entries",positions 128-512,3.53945
+"block min/max bound, best 32 blocks of 8 entries",positions 512-1024,3.56935
+"block min/max bound, best 32 blocks of 8 entries",positions 1024-2048,3.60454
+"block min/max bound, best 32 blocks of 8 entries",positions 2048-2560,3.61288
+"block min/max bound, best 32 blocks of 8 entries",positions 2560-4096,3.75262
+"block min/max bound, best 32 blocks of 8 entries",positions 4096-8192,3.63460
+"block min/max bound, best 32 blocks of 8 entries",all positions,3.61584
+"block mean + std, best 16 blocks of 8 entries",positions 0-128,3.77862
+"block mean + std, best 16 blocks of 8 entries",positions 128-512,3.53945
+"block mean + std, best 16 blocks of 8 entries",positions 512-1024,3.57182
+"block mean + std, best 16 blocks of 8 entries",positions 1024-2048,3.61338
+"block mean + std, best 16 blocks of 8 entries",positions 2048-2560,3.62461
+"block mean + std, best 16 blocks of 8 entries",positions 2560-4096,3.76584
+"block mean + std, best 16 blocks of 8 entries",positions 4096-8192,3.65386
+"block mean + std, best 16 blocks of 8 entries",all positions,3.61913
+"block mean + std, best 16 blocks of 16 entries",positions 0-128,3.77862
+"block mean + std, best 16 blocks of 16 entries",positions 128-512,3.53945
+"block mean + std, best 16 blocks of 16 entries",positions 512-1024,3.56935
+"block mean + std, best 16 blocks of 16 entries",positions 1024-2048,3.60549
+"block mean + std, best 16 blocks of 16 entries",positions 2048-2560,3.61445
+"block mean + std, best 16 blocks of 16 entries",positions 2560-4096,3.75395
+"block mean + std, best 16 blocks of 16 entries",positions 4096-8192,3.63877
+"block mean + std, best 16 blocks of 16 entries",all positions,3.61621
+"block mean + std, best 32 blocks of 8 entries",positions 0-128,3.77862
+"block mean + std, best 32 blocks of 8 entries",positions 128-512,3.53945
+"block mean + std, best 32 blocks of 8 entries",positions 512-1024,3.56935
+"block mean + std, best 32 blocks of 8 entries",positions 1024-2048,3.60519
+"block mean + std, best 32 blocks of 8 entries",positions 2048-2560,3.61175
+"block mean + std, best 32 blocks of 8 entries",positions 2560-4096,3.75188
+"block mean + std, best 32 blocks of 8 entries",positions 4096-8192,3.63115
+"block mean + std, best 32 blocks of 8 entries",all positions,3.61575
+"block mean + std, best 32 blocks of 8 entries, picks at layers 0, 4",positions 0-128,3.77862
+"block mean + std, best 32 blocks of 8 entries, picks at layers 0, 4",positions 128-512,3.53906
+"block mean + std, best 32 blocks of 8 entries, picks at layers 0, 4",positions 512-1024,3.56831
+"block mean + std, best 32 blocks of 8 entries, picks at layers 0, 4",positions 1024-2048,3.60396
+"block mean + std, best 32 blocks of 8 entries, picks at layers 0, 4",positions 2048-2560,3.60957
+"block mean + std, best 32 blocks of 8 entries, picks at layers 0, 4",positions 2560-4096,3.74852
+"block mean + std, best 32 blocks of 8 entries, picks at layers 0, 4",positions 4096-8192,3.62322
+"block mean + std, best 32 blocks of 8 entries, picks at layers 0, 4",all positions,3.61476
+"block mean + std, best 64 blocks of 8 entries",positions 0-128,3.77862
+"block mean + std, best 64 blocks of 8 entries",positions 128-512,3.53945
+"block mean + std, best 64 blocks of 8 entries",positions 512-1024,3.56935
+"block mean + std, best 64 blocks of 8 entries",positions 1024-2048,3.60363
+"block mean + std, best 64 blocks of 8 entries",positions 2048-2560,3.60875
+"block mean + std, best 64 blocks of 8 entries",positions 2560-4096,3.74951
+"block mean + std, best 64 blocks of 8 entries",positions 4096-8192,3.61959
+"block mean + std, best 64 blocks of 8 entries",all positions,3.61497
+"block mean key, best 64 blocks of 8 entries",positions 0-128,3.77862
+"block mean key, best 64 blocks of 8 entries",positions 128-512,3.53945
+"block mean key, best 64 blocks of 8 entries",positions 512-1024,3.56935
+"block mean key, best 64 blocks of 8 entries",positions 1024-2048,3.60363
+"block mean key, best 64 blocks of 8 entries",positions 2048-2560,3.60875
+"block mean key, best 64 blocks of 8 entries",positions 2560-4096,3.74997
+"block mean key, best 64 blocks of 8 entries",positions 4096-8192,3.62020
+"block mean key, best 64 blocks of 8 entries",all positions,3.61501
+"block min/max bound, best 64 blocks of 8 entries",positions 0-128,3.77862
+"block min/max bound, best 64 blocks of 8 entries",positions 128-512,3.53945
+"block min/max bound, best 64 blocks of 8 entries",positions 512-1024,3.56935
+"block min/max bound, best 64 blocks of 8 entries",positions 1024-2048,3.60363
+"block min/max bound, best 64 blocks of 8 entries",positions 2048-2560,3.60892
+"block min/max bound, best 64 blocks of 8 entries",positions 2560-4096,3.74895
+"block min/max bound, best 64 blocks of 8 entries",positions 4096-8192,3.62342
+"block min/max bound, best 64 blocks of 8 entries",all positions,3.61507
+"block mean + std, best 64 blocks of 8 entries, picks at layers 0, 4",positions 0-128,3.77862
+"block mean + std, best 64 blocks of 8 entries, picks at layers 0, 4",positions 128-512,3.53906
+"block mean + std, best 64 blocks of 8 entries, picks at layers 0, 4",positions 512-1024,3.56831
+"block mean + std, best 64 blocks of 8 entries, picks at layers 0, 4",positions 1024-2048,3.60244
+"block mean + std, best 64 blocks of 8 entries, picks at layers 0, 4",positions 2048-2560,3.60626
+"block mean + std, best 64 blocks of 8 entries, picks at layers 0, 4",positions 2560-4096,3.74646
+"block mean + std, best 64 blocks of 8 entries, picks at layers 0, 4",positions 4096-8192,3.61159
+"block mean + std, best 64 blocks of 8 entries, picks at layers 0, 4",all positions,3.61398
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4",positions 0-128,3.77862
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4",positions 128-512,3.53906
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4",positions 512-1024,3.56831
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4",positions 1024-2048,3.60244
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4",positions 2048-2560,3.60617
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4",positions 2560-4096,3.74714
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4",positions 4096-8192,3.61195
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4",all positions,3.61402
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 pick keys",positions 0-128,3.77862
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 pick keys",positions 128-512,3.53904
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 pick keys",positions 512-1024,3.56836
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 pick keys",positions 1024-2048,3.60251
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 pick keys",positions 2048-2560,3.60614
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 pick keys",positions 2560-4096,3.74614
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 pick keys",positions 4096-8192,3.60894
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 pick keys",all positions,3.61389
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 pick keys",positions 0-128,3.77862
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 pick keys",positions 128-512,3.53904
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 pick keys",positions 512-1024,3.56836
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 pick keys",positions 1024-2048,3.60251
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 pick keys",positions 2048-2560,3.60643
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 pick keys",positions 2560-4096,3.74717
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 pick keys",positions 4096-8192,3.61128
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 pick keys",all positions,3.61402
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 entries",positions 0-128,3.77869
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 entries",positions 128-512,3.53915
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 entries",positions 512-1024,3.56862
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 entries",positions 1024-2048,3.60256
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 entries",positions 2048-2560,3.60603
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 entries",positions 2560-4096,3.74587
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 entries",positions 4096-8192,3.60901
+"exact picks at layers 0, 4; group 3 reuses group 2's, FP8 entries",all positions,3.61399
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 entries",positions 0-128,3.77869
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 entries",positions 128-512,3.53915
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 entries",positions 512-1024,3.56863
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 entries",positions 1024-2048,3.60255
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 entries",positions 2048-2560,3.60633
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 entries",positions 2560-4096,3.74681
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 entries",positions 4096-8192,3.61169
+"block mean key, best 64 blocks of 8 entries, picks at layers 0, 4, FP8 entries",all positions,3.61413

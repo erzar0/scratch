@@ -1,0 +1,433 @@
+version,stage,row,ms
+"CSA2 stripped, learned indexer",1,"Profiled step, wall clock (profiler syncs inflate it)",901.742842
+"CSA2 stripped, learned indexer",1,GPU busy (all kernels),507.94246300000145
+"CSA2 stripped, learned indexer",1,"Profiled step, GPU idle (wall clock minus kernels)",393.80037899999854
+"CSA2 stripped, learned indexer",1,"Inside the model call (forward, most of backward), all kernels",433.5706810000014
+"CSA2 stripped, learned indexer",1,"Inside loss.backward(), all kernels",46.59940899999721
+"CSA2 stripped, learned indexer",1,"Optimizer step, all kernels",27.72937900000287
+"CSA2 stripped, learned indexer",1,"Attention, flex",0.0
+"CSA2 stripped, learned indexer",1,Picks and top-k,6.2885660000004195
+"CSA2 stripped, learned indexer",1,Matrix multiplies,195.65717200000142
+"CSA2 stripped, learned indexer",1,"Optimizer, Newton-Schulz kernels",12.845654000000795
+"CSA2 stripped, learned indexer",1,"MLP up projection + ReLU squared, one fused kernel",130.74098300000048
+"CSA2 stripped, learned indexer",1,"Loss, fused cross-entropy kernel",4.152379000000059
+"CSA2 stripped, learned indexer",1,"Q, K norm and RoPE kernels",0.0
+"CSA2 stripped, learned indexer",1,Memory copies and fills,0.8509769999994564
+"CSA2 stripped, learned indexer",1,"Gather, scatter and index kernels",52.852778999999856
+"CSA2 stripped, learned indexer",1,Other fused elementwise and reductions,82.59597800000101
+"CSA2 stripped, learned indexer",1,Eager PyTorch elementwise kernels,18.378713999997906
+"CSA2 stripped, learned indexer",1,Other kernels,3.5792610000000495
+"CSA2 stripped, learned indexer",2,"Profiled step, wall clock (profiler syncs inflate it)",1200.0996050000003
+"CSA2 stripped, learned indexer",2,GPU busy (all kernels),926.5521230000031
+"CSA2 stripped, learned indexer",2,"Profiled step, GPU idle (wall clock minus kernels)",273.5474819999972
+"CSA2 stripped, learned indexer",2,"Inside the model call (forward, most of backward), all kernels",855.6745630000005
+"CSA2 stripped, learned indexer",2,"Inside loss.backward(), all kernels",43.27528200000004
+"CSA2 stripped, learned indexer",2,"Optimizer step, all kernels",27.554033000002732
+"CSA2 stripped, learned indexer",2,"Attention, flex",0.0
+"CSA2 stripped, learned indexer",2,Picks and top-k,9.530858000001517
+"CSA2 stripped, learned indexer",2,Matrix multiplies,378.67968900000307
+"CSA2 stripped, learned indexer",2,"Optimizer, Newton-Schulz kernels",12.808993999999249
+"CSA2 stripped, learned indexer",2,"MLP up projection + ReLU squared, one fused kernel",253.62000700000073
+"CSA2 stripped, learned indexer",2,"Loss, fused cross-entropy kernel",8.064018999999847
+"CSA2 stripped, learned indexer",2,"Q, K norm and RoPE kernels",0.0
+"CSA2 stripped, learned indexer",2,Memory copies and fills,1.1064189999987784
+"CSA2 stripped, learned indexer",2,"Gather, scatter and index kernels",103.38064499999979
+"CSA2 stripped, learned indexer",2,Other fused elementwise and reductions,132.7948289999994
+"CSA2 stripped, learned indexer",2,Eager PyTorch elementwise kernels,19.755230000001916
+"CSA2 stripped, learned indexer",2,Other kernels,6.811432999998819
+"CSA2 stripped, learned indexer",3,"Profiled step, wall clock (profiler syncs inflate it)",1679.4396160000001
+"CSA2 stripped, learned indexer",3,GPU busy (all kernels),1395.1667890000106
+"CSA2 stripped, learned indexer",3,"Profiled step, GPU idle (wall clock minus kernels)",284.27282699998955
+"CSA2 stripped, learned indexer",3,"Inside the model call (forward, most of backward), all kernels",1320.7473680000028
+"CSA2 stripped, learned indexer",3,"Inside loss.backward(), all kernels",46.89418600000287
+"CSA2 stripped, learned indexer",3,"Optimizer step, all kernels",27.46439000000502
+"CSA2 stripped, learned indexer",3,"Attention, flex",0.0
+"CSA2 stripped, learned indexer",3,Picks and top-k,23.158736000002424
+"CSA2 stripped, learned indexer",3,Matrix multiplies,597.5010119999972
+"CSA2 stripped, learned indexer",3,"Optimizer, Newton-Schulz kernels",12.74342600000347
+"CSA2 stripped, learned indexer",3,"MLP up projection + ReLU squared, one fused kernel",370.29044799999906
+"CSA2 stripped, learned indexer",3,"Loss, fused cross-entropy kernel",12.135207000000126
+"CSA2 stripped, learned indexer",3,"Q, K norm and RoPE kernels",0.0
+"CSA2 stripped, learned indexer",3,Memory copies and fills,1.3123249999957862
+"CSA2 stripped, learned indexer",3,"Gather, scatter and index kernels",162.0648760000001
+"CSA2 stripped, learned indexer",3,Other fused elementwise and reductions,185.00768500000595
+"CSA2 stripped, learned indexer",3,Eager PyTorch elementwise kernels,21.048523000004558
+"CSA2 stripped, learned indexer",3,Other kernels,9.904551000001854
+"CSA2 stripped, tournament top 64 instead of the indexer",1,"Profiled step, wall clock (profiler syncs inflate it)",841.481338
+"CSA2 stripped, tournament top 64 instead of the indexer",1,GPU busy (all kernels),508.1270950000041
+"CSA2 stripped, tournament top 64 instead of the indexer",1,"Profiled step, GPU idle (wall clock minus kernels)",333.35424299999596
+"CSA2 stripped, tournament top 64 instead of the indexer",1,"Inside the model call (forward, most of backward), all kernels",435.9779690000018
+"CSA2 stripped, tournament top 64 instead of the indexer",1,"Inside loss.backward(), all kernels",45.38290900000188
+"CSA2 stripped, tournament top 64 instead of the indexer",1,"Optimizer step, all kernels",26.72184800000035
+"CSA2 stripped, tournament top 64 instead of the indexer",1,"Attention, flex",0.0
+"CSA2 stripped, tournament top 64 instead of the indexer",1,Picks and top-k,7.958754000000212
+"CSA2 stripped, tournament top 64 instead of the indexer",1,Matrix multiplies,182.84350300000023
+"CSA2 stripped, tournament top 64 instead of the indexer",1,"Optimizer, Newton-Schulz kernels",12.219078000000446
+"CSA2 stripped, tournament top 64 instead of the indexer",1,"MLP up projection + ReLU squared, one fused kernel",129.34676099999984
+"CSA2 stripped, tournament top 64 instead of the indexer",1,"Loss, fused cross-entropy kernel",4.079611000000237
+"CSA2 stripped, tournament top 64 instead of the indexer",1,"Q, K norm and RoPE kernels",0.0
+"CSA2 stripped, tournament top 64 instead of the indexer",1,Memory copies and fills,0.6475540000012766
+"CSA2 stripped, tournament top 64 instead of the indexer",1,"Gather, scatter and index kernels",68.27748100000015
+"CSA2 stripped, tournament top 64 instead of the indexer",1,Other fused elementwise and reductions,82.4758940000004
+"CSA2 stripped, tournament top 64 instead of the indexer",1,Eager PyTorch elementwise kernels,17.16941900000153
+"CSA2 stripped, tournament top 64 instead of the indexer",1,Other kernels,3.1090399999997844
+"CSA2 stripped, tournament top 64 instead of the indexer",2,"Profiled step, wall clock (profiler syncs inflate it)",1245.703481
+"CSA2 stripped, tournament top 64 instead of the indexer",2,GPU busy (all kernels),943.882417000001
+"CSA2 stripped, tournament top 64 instead of the indexer",2,"Profiled step, GPU idle (wall clock minus kernels)",301.82106399999896
+"CSA2 stripped, tournament top 64 instead of the indexer",2,"Inside the model call (forward, most of backward), all kernels",874.2320910000049
+"CSA2 stripped, tournament top 64 instead of the indexer",2,"Inside loss.backward(), all kernels",42.360177999998605
+"CSA2 stripped, tournament top 64 instead of the indexer",2,"Optimizer step, all kernels",27.241861999997404
+"CSA2 stripped, tournament top 64 instead of the indexer",2,"Attention, flex",0.0
+"CSA2 stripped, tournament top 64 instead of the indexer",2,Picks and top-k,18.781684000000237
+"CSA2 stripped, tournament top 64 instead of the indexer",2,Matrix multiplies,344.9406950000007
+"CSA2 stripped, tournament top 64 instead of the indexer",2,"Optimizer, Newton-Schulz kernels",12.445154999996536
+"CSA2 stripped, tournament top 64 instead of the indexer",2,"MLP up projection + ReLU squared, one fused kernel",254.8784690000006
+"CSA2 stripped, tournament top 64 instead of the indexer",2,"Loss, fused cross-entropy kernel",8.226865999999951
+"CSA2 stripped, tournament top 64 instead of the indexer",2,"Q, K norm and RoPE kernels",0.0
+"CSA2 stripped, tournament top 64 instead of the indexer",2,Memory copies and fills,0.7408439999988263
+"CSA2 stripped, tournament top 64 instead of the indexer",2,"Gather, scatter and index kernels",145.0175089999994
+"CSA2 stripped, tournament top 64 instead of the indexer",2,Other fused elementwise and reductions,134.8432950000053
+"CSA2 stripped, tournament top 64 instead of the indexer",2,Eager PyTorch elementwise kernels,17.758251999999697
+"CSA2 stripped, tournament top 64 instead of the indexer",2,Other kernels,6.249647999999864
+"CSA2 stripped, tournament top 64 instead of the indexer",3,"Profiled step, wall clock (profiler syncs inflate it)",1574.171517
+"CSA2 stripped, tournament top 64 instead of the indexer",3,GPU busy (all kernels),1367.399223000003
+"CSA2 stripped, tournament top 64 instead of the indexer",3,"Profiled step, GPU idle (wall clock minus kernels)",206.77229399999692
+"CSA2 stripped, tournament top 64 instead of the indexer",3,"Inside the model call (forward, most of backward), all kernels",1295.077518
+"CSA2 stripped, tournament top 64 instead of the indexer",3,"Inside loss.backward(), all kernels",45.55191700000022
+"CSA2 stripped, tournament top 64 instead of the indexer",3,"Optimizer step, all kernels",26.70740200000303
+"CSA2 stripped, tournament top 64 instead of the indexer",3,"Attention, flex",0.0
+"CSA2 stripped, tournament top 64 instead of the indexer",3,Picks and top-k,27.125903999997906
+"CSA2 stripped, tournament top 64 instead of the indexer",3,Matrix multiplies,518.849617000004
+"CSA2 stripped, tournament top 64 instead of the indexer",3,"Optimizer, Newton-Schulz kernels",12.23971600000211
+"CSA2 stripped, tournament top 64 instead of the indexer",3,"MLP up projection + ReLU squared, one fused kernel",370.11978300000055
+"CSA2 stripped, tournament top 64 instead of the indexer",3,"Loss, fused cross-entropy kernel",12.01068899999967
+"CSA2 stripped, tournament top 64 instead of the indexer",3,"Q, K norm and RoPE kernels",0.0
+"CSA2 stripped, tournament top 64 instead of the indexer",3,Memory copies and fills,0.9271179999961575
+"CSA2 stripped, tournament top 64 instead of the indexer",3,"Gather, scatter and index kernels",211.34553999999832
+"CSA2 stripped, tournament top 64 instead of the indexer",3,Other fused elementwise and reductions,187.05067200000107
+"CSA2 stripped, tournament top 64 instead of the indexer",3,Eager PyTorch elementwise kernels,18.06147300000341
+"CSA2 stripped, tournament top 64 instead of the indexer",3,Other kernels,9.668710999999957
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,"Profiled step, wall clock (profiler syncs inflate it)",606.515702
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,GPU busy (all kernels),344.28541900000056
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,"Profiled step, GPU idle (wall clock minus kernels)",262.2302829999995
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,"Inside the model call (forward, most of backward), all kernels",280.72146600000195
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,"Inside loss.backward(), all kernels",41.013156999999545
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,"Optimizer step, all kernels",22.510772999999347
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,"Attention, flex",31.380792000000575
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,Picks and top-k,1.2506659999998246
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,Matrix multiplies,102.46476400000157
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,"Optimizer, Newton-Schulz kernels",7.275730999999563
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,"MLP up projection + ReLU squared, one fused kernel",130.70225299999987
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,"Loss, fused cross-entropy kernel",4.134918000000012
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,"Q, K norm and RoPE kernels",2.240993000000406
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,Memory copies and fills,0.9409009999991513
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,"Gather, scatter and index kernels",5.855195999999565
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,Other fused elementwise and reductions,37.019025000000696
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,Eager PyTorch elementwise kernels,17.842988999999445
+"CSA2 KV layout in stripped record 91, exact top 64 entries",1,Other kernels,3.177190999999917
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,"Profiled step, wall clock (profiler syncs inflate it)",760.184943
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,GPU busy (all kernels),613.0064389999983
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,"Profiled step, GPU idle (wall clock minus kernels)",147.17850400000168
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,"Inside the model call (forward, most of backward), all kernels",554.963014
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,"Inside loss.backward(), all kernels",35.06564299999827
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,"Optimizer step, all kernels",22.92739399999997
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,"Attention, flex",62.85852799999976
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,Picks and top-k,4.172393000000098
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,Matrix multiplies,186.76879599999958
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,"Optimizer, Newton-Schulz kernels",7.364194000000018
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,"MLP up projection + ReLU squared, one fused kernel",257.0085209999997
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,"Loss, fused cross-entropy kernel",8.21675700000005
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,"Q, K norm and RoPE kernels",3.3984440000009273
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,Memory copies and fills,1.090912999998939
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,"Gather, scatter and index kernels",11.506547000000104
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,Other fused elementwise and reductions,45.669692000000325
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,Eager PyTorch elementwise kernels,18.577992999998582
+"CSA2 KV layout in stripped record 91, exact top 64 entries",2,Other kernels,6.373661000000281
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,"Profiled step, wall clock (profiler syncs inflate it)",1013.542358
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,GPU busy (all kernels),870.5622500000036
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,"Profiled step, GPU idle (wall clock minus kernels)",142.98010799999645
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,"Inside the model call (forward, most of backward), all kernels",812.5621900000032
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,"Inside loss.backward(), all kernels",35.180609999999476
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,"Optimizer step, all kernels",22.75548800000071
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,"Attention, flex",89.29070100000033
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,Picks and top-k,5.925192999999881
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,Matrix multiplies,270.6288439999995
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,"Optimizer, Newton-Schulz kernels",7.32367600000021
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,"MLP up projection + ReLU squared, one fused kernel",374.4509170000002
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,"Loss, fused cross-entropy kernel",12.091598999999915
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,"Q, K norm and RoPE kernels",7.728727999999781
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,Memory copies and fills,1.3958270000006374
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,"Gather, scatter and index kernels",17.30072500000095
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,Other fused elementwise and reductions,55.949253000000844
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,Eager PyTorch elementwise kernels,19.05103700000095
+"CSA2 KV layout in stripped record 91, exact top 64 entries",3,Other kernels,9.425750000000443
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,"Profiled step, wall clock (profiler syncs inflate it)",552.445449
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,GPU busy (all kernels),354.2494730000006
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,"Profiled step, GPU idle (wall clock minus kernels)",198.19597599999946
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,"Inside the model call (forward, most of backward), all kernels",290.3164030000007
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,"Inside loss.backward(), all kernels",41.299195000000225
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,"Optimizer step, all kernels",22.591401999999654
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,"Attention, flex",31.375669999999662
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,Picks and top-k,10.812252000000031
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,Matrix multiplies,102.56125399999969
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,"Optimizer, Newton-Schulz kernels",7.271702000000048
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,"MLP up projection + ReLU squared, one fused kernel",130.53573699999984
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,"Loss, fused cross-entropy kernel",4.1781820000000485
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,"Q, K norm and RoPE kernels",2.2441310000001202
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,Memory copies and fills,0.9708740000001681
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,"Gather, scatter and index kernels",5.873439999999796
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,Other fused elementwise and reductions,37.217881000000595
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,Eager PyTorch elementwise kernels,18.030864000000523
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",1,Other kernels,3.177486000000059
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,"Profiled step, wall clock (profiler syncs inflate it)",772.021136
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,GPU busy (all kernels),642.5673490000042
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,"Profiled step, GPU idle (wall clock minus kernels)",129.4537869999957
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,"Inside the model call (forward, most of backward), all kernels",583.8188610000038
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,"Inside loss.backward(), all kernels",35.36643900000067
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,"Optimizer step, all kernels",23.31691399999976
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,"Attention, flex",63.967986999999994
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,Picks and top-k,23.966031000000527
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,Matrix multiplies,189.83260700000147
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,"Optimizer, Newton-Schulz kernels",7.485595999999787
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,"MLP up projection + ReLU squared, one fused kernel",261.20179300000103
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,"Loss, fused cross-entropy kernel",8.414222999999998
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,"Q, K norm and RoPE kernels",3.452479999999898
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,Memory copies and fills,1.1435959999996252
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,"Gather, scatter and index kernels",11.657708999999624
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,Other fused elementwise and reductions,46.105003000001126
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,Eager PyTorch elementwise kernels,18.960554000001263
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",2,Other kernels,6.379769999999921
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,"Profiled step, wall clock (profiler syncs inflate it)",1023.6785010000001
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,GPU busy (all kernels),901.8955900000014
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,"Profiled step, GPU idle (wall clock minus kernels)",121.78291099999865
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,"Inside the model call (forward, most of backward), all kernels",843.3905849999995
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,"Inside loss.backward(), all kernels",35.08249500000195
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,"Optimizer step, all kernels",23.36222199999995
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,"Attention, flex",89.39789400000012
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,Picks and top-k,36.363796000000704
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,Matrix multiplies,271.2616410000003
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,"Optimizer, Newton-Schulz kernels",7.326592000000063
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,"MLP up projection + ReLU squared, one fused kernel",374.25442900000087
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,"Loss, fused cross-entropy kernel",12.201002000000262
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,"Q, K norm and RoPE kernels",7.83112400000005
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,Memory copies and fills,1.400724999999888
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,"Gather, scatter and index kernels",17.295433999999823
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,Other fused elementwise and reductions,55.98764699999876
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,Eager PyTorch elementwise kernels,19.180334000000872
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",3,Other kernels,9.394971999999754
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,"Profiled step, wall clock (profiler syncs inflate it)",768.609337
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,GPU busy (all kernels),368.21313699999763
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,"Profiled step, GPU idle (wall clock minus kernels)",400.39620000000235
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,"Inside the model call (forward, most of backward), all kernels",302.3879199999968
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,"Inside loss.backward(), all kernels",42.35144900000034
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,"Optimizer step, all kernels",23.431054000000355
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,"Attention, flex",38.1994589999998
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,Picks and top-k,2.300095999999563
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,Matrix multiplies,107.7077750000009
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,"Optimizer, Newton-Schulz kernels",7.496762000000221
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,"MLP up projection + ReLU squared, one fused kernel",134.7968770000008
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,"Loss, fused cross-entropy kernel",4.30079900000005
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,"Q, K norm and RoPE kernels",2.372827000000084
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,Memory copies and fills,0.9001719999993265
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,"Gather, scatter and index kernels",6.536953999999187
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,Other fused elementwise and reductions,41.84598799999682
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,Eager PyTorch elementwise kernels,18.49588700000073
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",1,Other kernels,3.259541000000112
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,"Profiled step, wall clock (profiler syncs inflate it)",788.873738
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,GPU busy (all kernels),640.9062739999998
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,"Profiled step, GPU idle (wall clock minus kernels)",147.96746400000018
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,"Inside the model call (forward, most of backward), all kernels",583.2587589999986
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,"Inside loss.backward(), all kernels",34.80622600000023
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,"Optimizer step, all kernels",22.790720000001137
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,"Attention, flex",78.85951099999961
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,Picks and top-k,5.7617569999993385
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,Matrix multiplies,189.87737800000056
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,"Optimizer, Newton-Schulz kernels",7.364844000000623
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,"MLP up projection + ReLU squared, one fused kernel",256.01167299999975
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,"Loss, fused cross-entropy kernel",8.156547000000021
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,"Q, K norm and RoPE kernels",3.6159289999996274
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,Memory copies and fills,1.0751839999999628
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,"Gather, scatter and index kernels",12.03420099999919
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,Other fused elementwise and reductions,53.40437200000057
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,Eager PyTorch elementwise kernels,18.368031000000805
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",2,Other kernels,6.376846999999862
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,"Profiled step, wall clock (profiler syncs inflate it)",1048.4305259999999
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,GPU busy (all kernels),909.3812079999987
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,"Profiled step, GPU idle (wall clock minus kernels)",139.04931800000122
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,"Inside the model call (forward, most of backward), all kernels",851.4915569999974
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,"Inside loss.backward(), all kernels",35.2485670000011
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,"Optimizer step, all kernels",22.579595999999672
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,"Attention, flex",111.55153600000023
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,Picks and top-k,7.938698000000732
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,Matrix multiplies,274.35321799999986
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,"Optimizer, Newton-Schulz kernels",7.288829999999842
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,"MLP up projection + ReLU squared, one fused kernel",372.06950400000136
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,"Loss, fused cross-entropy kernel",12.076611000000026
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,"Q, K norm and RoPE kernels",7.958194999999821
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,Memory copies and fills,1.4099660000006518
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,"Gather, scatter and index kernels",17.777202000000297
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,Other fused elementwise and reductions,68.77609099999692
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,Eager PyTorch elementwise kernels,18.759294999998755
+"CSA2 KV layout in stripped record 91, routed channels, exact top 64",3,Other kernels,9.42206200000008
+"CSA2, V4.1-Flash-1017 reference code",1,"Profiled step, wall clock (profiler syncs inflate it)",894.385849
+"CSA2, V4.1-Flash-1017 reference code",1,GPU busy (all kernels),377.9378779999984
+"CSA2, V4.1-Flash-1017 reference code",1,"Profiled step, GPU idle (wall clock minus kernels)",516.4479710000016
+"CSA2, V4.1-Flash-1017 reference code",1,"Inside the model call (forward, most of backward), all kernels",302.7632779999996
+"CSA2, V4.1-Flash-1017 reference code",1,"Inside loss.backward(), all kernels",48.30346500000004
+"CSA2, V4.1-Flash-1017 reference code",1,"Optimizer step, all kernels",26.829853999998885
+"CSA2, V4.1-Flash-1017 reference code",1,"Attention, flex",46.35246900000011
+"CSA2, V4.1-Flash-1017 reference code",1,Picks and top-k,4.976665000001092
+"CSA2, V4.1-Flash-1017 reference code",1,Matrix multiplies,98.61889299999939
+"CSA2, V4.1-Flash-1017 reference code",1,"Optimizer, Newton-Schulz kernels",12.208920000000624
+"CSA2, V4.1-Flash-1017 reference code",1,"MLP up projection + ReLU squared, one fused kernel",130.67670500000037
+"CSA2, V4.1-Flash-1017 reference code",1,"Loss, fused cross-entropy kernel",4.120209999999949
+"CSA2, V4.1-Flash-1017 reference code",1,"Q, K norm and RoPE kernels",0.0
+"CSA2, V4.1-Flash-1017 reference code",1,Memory copies and fills,1.9651479999987986
+"CSA2, V4.1-Flash-1017 reference code",1,"Gather, scatter and index kernels",10.135880999999287
+"CSA2, V4.1-Flash-1017 reference code",1,Other fused elementwise and reductions,38.56004800000048
+"CSA2, V4.1-Flash-1017 reference code",1,Eager PyTorch elementwise kernels,26.188844999999276
+"CSA2, V4.1-Flash-1017 reference code",1,Other kernels,4.134093999999046
+"CSA2, V4.1-Flash-1017 reference code",2,"Profiled step, wall clock (profiler syncs inflate it)",1257.2979610000002
+"CSA2, V4.1-Flash-1017 reference code",2,GPU busy (all kernels),667.0466089999971
+"CSA2, V4.1-Flash-1017 reference code",2,"Profiled step, GPU idle (wall clock minus kernels)",590.2513520000031
+"CSA2, V4.1-Flash-1017 reference code",2,"Inside the model call (forward, most of backward), all kernels",594.3510939999937
+"CSA2, V4.1-Flash-1017 reference code",2,"Inside loss.backward(), all kernels",45.780197000002865
+"CSA2, V4.1-Flash-1017 reference code",2,"Optimizer step, all kernels",26.863254000000655
+"CSA2, V4.1-Flash-1017 reference code",2,"Attention, flex",88.61957299999901
+"CSA2, V4.1-Flash-1017 reference code",2,Picks and top-k,10.594391999998573
+"CSA2, V4.1-Flash-1017 reference code",2,Matrix multiplies,173.5598580000029
+"CSA2, V4.1-Flash-1017 reference code",2,"Optimizer, Newton-Schulz kernels",12.218466999999713
+"CSA2, V4.1-Flash-1017 reference code",2,"MLP up projection + ReLU squared, one fused kernel",254.7642929999998
+"CSA2, V4.1-Flash-1017 reference code",2,"Loss, fused cross-entropy kernel",8.08787300000005
+"CSA2, V4.1-Flash-1017 reference code",2,"Q, K norm and RoPE kernels",0.0
+"CSA2, V4.1-Flash-1017 reference code",2,Memory copies and fills,3.510831000001145
+"CSA2, V4.1-Flash-1017 reference code",2,"Gather, scatter and index kernels",19.779664000000274
+"CSA2, V4.1-Flash-1017 reference code",2,Other fused elementwise and reductions,46.61591099999735
+"CSA2, V4.1-Flash-1017 reference code",2,Eager PyTorch elementwise kernels,39.89848199999976
+"CSA2, V4.1-Flash-1017 reference code",2,Other kernels,9.397264999998658
+"CSA2, V4.1-Flash-1017 reference code",3,"Profiled step, wall clock (profiler syncs inflate it)",1510.039121
+"CSA2, V4.1-Flash-1017 reference code",3,GPU busy (all kernels),948.3407400000183
+"CSA2, V4.1-Flash-1017 reference code",3,"Profiled step, GPU idle (wall clock minus kernels)",561.6983809999817
+"CSA2, V4.1-Flash-1017 reference code",3,"Inside the model call (forward, most of backward), all kernels",866.8143160000094
+"CSA2, V4.1-Flash-1017 reference code",3,"Inside loss.backward(), all kernels",54.5852800000037
+"CSA2, V4.1-Flash-1017 reference code",3,"Optimizer step, all kernels",26.882649000004864
+"CSA2, V4.1-Flash-1017 reference code",3,"Attention, flex",115.95000099999938
+"CSA2, V4.1-Flash-1017 reference code",3,Picks and top-k,15.572241999997056
+"CSA2, V4.1-Flash-1017 reference code",3,Matrix multiplies,259.2448930000067
+"CSA2, V4.1-Flash-1017 reference code",3,"Optimizer, Newton-Schulz kernels",12.21894500000053
+"CSA2, V4.1-Flash-1017 reference code",3,"MLP up projection + ReLU squared, one fused kernel",374.05400800000035
+"CSA2, V4.1-Flash-1017 reference code",3,"Loss, fused cross-entropy kernel",12.038499000000114
+"CSA2, V4.1-Flash-1017 reference code",3,"Q, K norm and RoPE kernels",0.0
+"CSA2, V4.1-Flash-1017 reference code",3,Memory copies and fills,5.257934999995376
+"CSA2, V4.1-Flash-1017 reference code",3,"Gather, scatter and index kernels",30.376598000001785
+"CSA2, V4.1-Flash-1017 reference code",3,Other fused elementwise and reductions,57.99499400001406
+"CSA2, V4.1-Flash-1017 reference code",3,Eager PyTorch elementwise kernels,51.57176300000288
+"CSA2, V4.1-Flash-1017 reference code",3,Other kernels,14.060862000000032
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,"Profiled step, wall clock (profiler syncs inflate it)",1037.394089
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,GPU busy (all kernels),435.1066030000021
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,"Profiled step, GPU idle (wall clock minus kernels)",602.2874859999978
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,"Inside the model call (forward, most of backward), all kernels",349.63017900000045
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,"Inside loss.backward(), all kernels",53.015798000001425
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,"Optimizer step, all kernels",32.41761800000013
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,"Attention, flex",50.01391199999928
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,Picks and top-k,5.183534000000778
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,Matrix multiplies,112.27744800000141
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,"Optimizer, Newton-Schulz kernels",14.612915000001435
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,"MLP up projection + ReLU squared, one fused kernel",141.23700400000007
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,"Loss, fused cross-entropy kernel",4.48777699999982
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,"Q, K norm and RoPE kernels",0.0
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,Memory copies and fills,2.1688629999992957
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,"Gather, scatter and index kernels",11.079825999998796
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,Other fused elementwise and reductions,42.353558999999564
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,Eager PyTorch elementwise kernels,43.03240100000169
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",1,Other kernels,8.659363999999988
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,"Profiled step, wall clock (profiler syncs inflate it)",1118.599768
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,GPU busy (all kernels),779.1999759999953
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,"Profiled step, GPU idle (wall clock minus kernels)",339.3997920000047
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,"Inside the model call (forward, most of backward), all kernels",705.7879079999934
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,"Inside loss.backward(), all kernels",46.463856999999294
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,"Optimizer step, all kernels",26.892948000002768
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,"Attention, flex",88.97154099999902
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,Picks and top-k,18.11883800000015
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,Matrix multiplies,186.342296999999
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,"Optimizer, Newton-Schulz kernels",12.214407000001753
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,"MLP up projection + ReLU squared, one fused kernel",257.733424999999
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,"Loss, fused cross-entropy kernel",8.605437000000085
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,"Q, K norm and RoPE kernels",0.0
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,Memory copies and fills,7.8372120000020615
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,"Gather, scatter and index kernels",24.339875999998725
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,Other fused elementwise and reductions,46.93667799999602
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,Eager PyTorch elementwise kernels,103.95516600000028
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",2,Other kernels,24.145098999999313
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,"Profiled step, wall clock (profiler syncs inflate it)",1462.539317
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,GPU busy (all kernels),1114.770917000007
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,"Profiled step, GPU idle (wall clock minus kernels)",347.7683999999929
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,"Inside the model call (forward, most of backward), all kernels",1030.3564620000006
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,"Inside loss.backward(), all kernels",56.69790200000352
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,"Optimizer step, all kernels",27.648262000003363
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,"Attention, flex",118.8237300000001
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,Picks and top-k,24.6991910000011
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,Matrix multiplies,278.7215139999978
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,"Optimizer, Newton-Schulz kernels",12.25442700000084
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,"MLP up projection + ReLU squared, one fused kernel",386.92462100000006
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,"Loss, fused cross-entropy kernel",12.299909000000364
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,"Q, K norm and RoPE kernels",0.0
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,Memory copies and fills,10.13750700000352
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,"Gather, scatter and index kernels",36.18641399999876
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,Other fused elementwise and reductions,58.988934999999344
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,Eager PyTorch elementwise kernels,140.614953000006
+"CSA2, V4.1-Flash-1017 reference code, 4096-query indexer chunks",3,Other kernels,35.11971599999928
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,"Profiled step, wall clock (profiler syncs inflate it)",719.6941140000001
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,GPU busy (all kernels),339.96768099999684
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,"Profiled step, GPU idle (wall clock minus kernels)",379.7264330000033
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,"Inside the model call (forward, most of backward), all kernels",276.4898559999974
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,"Inside loss.backward(), all kernels",40.74669899999927
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,"Optimizer step, all kernels",22.690425000000396
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,"Attention, flex",31.522124999999495
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,Picks and top-k,0.774517000000098
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,Matrix multiplies,99.60317399999936
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,"Optimizer, Newton-Schulz kernels",7.290092000000063
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,"MLP up projection + ReLU squared, one fused kernel",131.1791289999987
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,"Loss, fused cross-entropy kernel",4.124127000000197
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,"Q, K norm and RoPE kernels",1.8353719999999467
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,Memory copies and fills,0.8358909999996631
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,"Gather, scatter and index kernels",5.75641699999928
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,Other fused elementwise and reductions,36.71719500000011
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,Eager PyTorch elementwise kernels,17.343858000000097
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",1,Other kernels,2.9857839999998417
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,"Profiled step, wall clock (profiler syncs inflate it)",728.9335680000002
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,GPU busy (all kernels),596.2573430000023
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,"Profiled step, GPU idle (wall clock minus kernels)",132.67622499999788
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,"Inside the model call (forward, most of backward), all kernels",539.3847760000019
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,"Inside loss.backward(), all kernels",34.08847400000045
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,"Optimizer step, all kernels",22.732476000000023
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,"Attention, flex",62.3498549999999
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,Picks and top-k,2.5767820000000174
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,Matrix multiplies,175.40496000000118
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,"Optimizer, Newton-Schulz kernels",7.306839999999735
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,"MLP up projection + ReLU squared, one fused kernel",255.16504100000023
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,"Loss, fused cross-entropy kernel",8.076427000000164
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,"Q, K norm and RoPE kernels",4.158342999999804
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,Memory copies and fills,1.0325479999998097
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,"Gather, scatter and index kernels",11.184153999999914
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,Other fused elementwise and reductions,45.37992300000099
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,Eager PyTorch elementwise kernels,17.60990599999995
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",2,Other kernels,6.012564000000473
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,"Profiled step, wall clock (profiler syncs inflate it)",961.5462040000001
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,GPU busy (all kernels),855.5189459999976
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,"Profiled step, GPU idle (wall clock minus kernels)",106.02725800000246
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,"Inside the model call (forward, most of backward), all kernels",797.9291669999998
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,"Inside loss.backward(), all kernels",34.76218899999879
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,"Optimizer step, all kernels",22.75658499999903
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,"Attention, flex",89.41917399999933
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,Picks and top-k,3.6143770000000988
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,Matrix multiplies,259.70106299999964
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,"Optimizer, Newton-Schulz kernels",7.332301999999676
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,"MLP up projection + ReLU squared, one fused kernel",375.2495650000002
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,"Loss, fused cross-entropy kernel",12.03726099999986
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,"Q, K norm and RoPE kernels",6.994982999999941
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,Memory copies and fills,1.407593999999957
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,"Gather, scatter and index kernels",17.085020000000466
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,Other fused elementwise and reductions,55.24954699999778
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,Eager PyTorch elementwise kernels,18.366473000000468
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",3,Other kernels,9.06158700000029

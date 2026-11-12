@@ -1,0 +1,541 @@
+version,part,n,us_per_token
+"CSA2, learned indexer",Picks,4096,25.6
+"CSA2, learned indexer",Attention,4096,31.74
+"CSA2, learned indexer",Picks + attention,4096,54.27
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks,4096,21.5
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Attention,4096,32.77
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks + attention,4096,51.2
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,4096,54.27
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,4096,32.77
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,4096,83.97
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks,4096,15.36
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Attention,4096,32.77
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,4096,45.06
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks,4096,9.22
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Attention,4096,32.77
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks + attention,4096,38.91
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks,4096,20.48
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Attention,4096,32.77
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks + attention,4096,50.18
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,4096,37.89
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,4096,32.77
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,4096,67.58
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,4096,46.08
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,4096,32.77
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,4096,75.78
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,4096,37.89
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,4096,32.77
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,4096,67.58
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,4096,46.08
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,4096,32.77
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,4096,75.78
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,4096,39.94
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,4096,32.77
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,4096,68.61
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,4096,47.1
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,4096,32.77
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,4096,76.8
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,4096,39.94
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,4096,32.77
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,4096,68.61
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,4096,47.1
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,4096,32.77
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,4096,76.8
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,4096,26.62
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,4096,32.77
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,4096,56.32
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,4096,27.65
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,4096,32.77
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,4096,57.34
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,4096,14.34
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,4096,31.74
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,4096,44.03
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,4096,25.6
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,4096,31.74
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,4096,54.27
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,4096,45.06
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,4096,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,4096,74.75
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,4096,44.03
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,4096,28.67
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,4096,71.68
+"CSA2, learned indexer",Picks,8192,27.65
+"CSA2, learned indexer",Attention,8192,31.74
+"CSA2, learned indexer",Picks + attention,8192,56.32
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks,8192,28.67
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Attention,8192,32.77
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks + attention,8192,57.34
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,8192,58.37
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,8192,32.77
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,8192,88.06
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks,8192,19.97
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Attention,8192,32.77
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,8192,49.15
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks,8192,11.26
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Attention,8192,32.77
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks + attention,8192,40.96
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks,8192,21.5
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Attention,8192,32.77
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks + attention,8192,51.2
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,8192,38.91
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,8192,32.77
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,8192,68.61
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,8192,47.1
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,8192,32.77
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,8192,76.8
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,8192,38.91
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,8192,32.77
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,8192,68.61
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,8192,46.08
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,8192,32.77
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,8192,75.78
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,8192,39.94
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,8192,32.77
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,8192,69.63
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,8192,48.13
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,8192,32.77
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,8192,77.82
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,8192,39.94
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,8192,32.77
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,8192,69.63
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,8192,48.13
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,8192,32.77
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,8192,77.82
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,8192,27.65
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,8192,32.77
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,8192,56.32
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,8192,27.65
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,8192,32.77
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,8192,57.34
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,8192,17.41
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,8192,31.74
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,8192,47.1
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,8192,26.62
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,8192,31.74
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,8192,55.3
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,8192,51.2
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,8192,30.72
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,8192,79.87
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,8192,49.15
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,8192,28.67
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,8192,75.78
+"CSA2, learned indexer",Picks,16384,37.89
+"CSA2, learned indexer",Attention,16384,31.74
+"CSA2, learned indexer",Picks + attention,16384,67.58
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks,16384,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Attention,16384,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks + attention,16384,62.46
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,16384,61.44
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,16384,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,16384,91.14
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks,16384,23.55
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Attention,16384,33.79
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,16384,53.25
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks,16384,13.31
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Attention,16384,33.79
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks + attention,16384,44.03
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks,16384,23.55
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Attention,16384,33.79
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks + attention,16384,53.25
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,16384,40.96
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,16384,33.79
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,16384,69.63
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,16384,47.1
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,16384,33.79
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,16384,76.8
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,16384,40.96
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,16384,33.79
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,16384,69.63
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,16384,47.1
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,16384,33.79
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,16384,76.8
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,16384,43.01
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,16384,33.79
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,16384,72.7
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,16384,49.15
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,16384,33.79
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,16384,78.85
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,16384,43.01
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,16384,33.79
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,16384,72.7
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,16384,50.18
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,16384,33.79
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,16384,78.85
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,16384,28.67
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,16384,33.79
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,16384,57.34
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,16384,29.7
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,16384,33.79
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,16384,59.39
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,16384,20.48
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,16384,32.77
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,16384,49.15
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,16384,27.65
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,16384,31.74
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,16384,56.32
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,16384,59.39
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,16384,30.72
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,16384,87.04
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,16384,56.32
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,16384,28.67
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,16384,80.9
+"CSA2, learned indexer",Picks,32768,47.1
+"CSA2, learned indexer",Attention,32768,31.74
+"CSA2, learned indexer",Picks + attention,32768,77.82
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks,32768,43.01
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Attention,32768,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks + attention,32768,72.7
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,32768,71.68
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,32768,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,32768,103.42
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks,32768,29.7
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Attention,32768,33.79
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,32768,59.39
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks,32768,17.41
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Attention,32768,33.79
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks + attention,32768,46.08
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks,32768,26.62
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Attention,32768,33.79
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks + attention,32768,57.34
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,32768,49.15
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,32768,33.79
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,32768,78.85
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,32768,49.15
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,32768,33.79
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,32768,78.85
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,32768,48.13
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,32768,33.79
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,32768,77.82
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,32768,49.15
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,32768,33.79
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,32768,78.85
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,32768,50.18
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,32768,33.79
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,32768,79.87
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,32768,52.22
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,32768,33.79
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,32768,81.92
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,32768,51.2
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,32768,33.79
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,32768,80.9
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,32768,52.22
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,32768,33.79
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,32768,80.9
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,32768,33.79
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,32768,33.79
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,32768,63.49
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,32768,35.84
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,32768,33.79
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,32768,64.51
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,32768,26.62
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,32768,31.74
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,32768,54.27
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,32768,31.74
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,32768,31.74
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,32768,60.42
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,32768,70.66
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,32768,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,32768,99.33
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,32768,70.66
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,32768,29.7
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,32768,94.21
+"CSA2, learned indexer",Picks,65536,54.27
+"CSA2, learned indexer",Attention,65536,30.72
+"CSA2, learned indexer",Picks + attention,65536,84.99
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks,65536,55.3
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Attention,65536,32.77
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks + attention,65536,84.99
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,65536,77.82
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,65536,32.77
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,65536,106.5
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks,65536,37.89
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Attention,65536,32.77
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,65536,67.58
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks,65536,20.48
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Attention,65536,32.77
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks + attention,65536,50.18
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks,65536,27.65
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Attention,65536,32.77
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks + attention,65536,57.34
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,65536,54.27
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,65536,32.77
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,65536,82.94
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,65536,56.32
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,65536,32.77
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,65536,84.99
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,65536,54.27
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,65536,32.77
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,65536,83.97
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,65536,55.3
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,65536,32.77
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,65536,84.99
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,65536,57.34
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,65536,32.77
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,65536,87.04
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,65536,58.37
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,65536,32.77
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,65536,87.04
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,65536,58.37
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,65536,32.77
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,65536,87.04
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,65536,58.37
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,65536,32.77
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,65536,88.06
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,65536,37.89
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,65536,32.77
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,65536,66.56
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,65536,39.94
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,65536,32.77
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,65536,69.63
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,65536,29.7
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,65536,32.77
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,65536,58.37
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,65536,35.84
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,65536,32.77
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,65536,64.51
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,65536,87.04
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,65536,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,65536,115.71
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,65536,84.99
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,65536,29.7
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,65536,109.57
+"CSA2, learned indexer",Picks,131072,71.68
+"CSA2, learned indexer",Attention,131072,31.74
+"CSA2, learned indexer",Picks + attention,131072,102.4
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks,131072,74.75
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Attention,131072,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks + attention,131072,104.45
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,131072,76.8
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,131072,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,131072,106.5
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks,131072,51.2
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Attention,131072,33.79
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,131072,80.9
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks,131072,27.65
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Attention,131072,33.79
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks + attention,131072,57.34
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks,131072,28.67
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Attention,131072,33.79
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks + attention,131072,57.34
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,131072,58.37
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,131072,33.79
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,131072,88.06
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,131072,62.46
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,131072,33.79
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,131072,92.16
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,131072,58.37
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,131072,33.79
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,131072,87.04
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,131072,62.46
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,131072,33.79
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,131072,92.16
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,131072,63.49
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,131072,33.79
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,131072,92.16
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,131072,66.56
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,131072,33.79
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,131072,95.23
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,131072,63.49
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,131072,33.79
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,131072,92.16
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,131072,65.54
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,131072,33.79
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,131072,95.23
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,131072,40.96
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,131072,33.79
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,131072,69.63
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,131072,44.03
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,131072,33.79
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,131072,72.7
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,131072,37.89
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,131072,32.77
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,131072,66.56
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,131072,37.89
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,131072,32.77
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,131072,66.56
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,131072,130.05
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,131072,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,131072,159.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,131072,115.71
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,131072,29.7
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,131072,139.26
+"CSA2, learned indexer",Picks,262144,95.23
+"CSA2, learned indexer",Attention,262144,31.74
+"CSA2, learned indexer",Picks + attention,262144,124.93
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks,262144,118.78
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Attention,262144,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks + attention,262144,148.48
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,262144,93.18
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,262144,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,262144,123.9
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks,262144,80.9
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Attention,262144,33.79
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,262144,110.59
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks,262144,41.98
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Attention,262144,33.79
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks + attention,262144,71.68
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks,262144,33.79
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Attention,262144,33.79
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks + attention,262144,63.49
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,262144,68.61
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,262144,33.79
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,262144,97.28
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,262144,66.56
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,262144,33.79
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,262144,96.26
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,262144,68.61
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,262144,33.79
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,262144,97.28
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,262144,65.54
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,262144,33.79
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,262144,95.23
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,262144,78.85
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,262144,33.79
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,262144,108.54
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,262144,71.68
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,262144,33.79
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,262144,100.35
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,262144,78.85
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,262144,33.79
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,262144,108.54
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,262144,70.66
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,262144,33.79
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,262144,100.35
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,262144,47.1
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,262144,33.79
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,262144,75.78
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,262144,53.25
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,262144,33.79
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,262144,82.94
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,262144,54.27
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,262144,32.77
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,262144,82.94
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,262144,43.01
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,262144,32.77
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,262144,72.7
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,262144,138.24
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,262144,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,262144,162.82
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,262144,108.54
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,262144,29.7
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,262144,135.17
+"CSA2, learned indexer",Picks,524288,136.19
+"CSA2, learned indexer",Attention,524288,31.74
+"CSA2, learned indexer",Picks + attention,524288,165.89
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks,524288,204.8
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Attention,524288,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks + attention,524288,233.47
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,524288,125.95
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,524288,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,524288,155.65
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks,524288,138.24
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Attention,524288,33.79
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,524288,167.94
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks,524288,71.68
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Attention,524288,33.79
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks + attention,524288,101.38
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks,524288,45.06
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Attention,524288,33.79
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks + attention,524288,74.75
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,524288,79.87
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,524288,33.79
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,524288,109.57
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,524288,76.8
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,524288,33.79
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,524288,106.5
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,524288,79.87
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,524288,33.79
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,524288,109.57
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,524288,76.8
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,524288,33.79
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,524288,106.5
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,524288,98.3
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,524288,33.79
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,524288,126.98
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,524288,87.04
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,524288,33.79
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,524288,115.71
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,524288,98.3
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,524288,33.79
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,524288,126.98
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,524288,87.04
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,524288,33.79
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,524288,115.71
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,524288,55.3
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,524288,33.79
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,524288,84.99
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,524288,67.58
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,524288,33.79
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,524288,96.26
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,524288,87.04
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,524288,32.77
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,524288,114.69
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,524288,47.1
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,524288,32.77
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,524288,75.78
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,524288,201.73
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,524288,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,524288,226.3
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,524288,150.53
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,524288,29.7
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,524288,174.08
+"CSA2, learned indexer",Picks,1048576,242.69
+"CSA2, learned indexer",Attention,1048576,31.74
+"CSA2, learned indexer",Picks + attention,1048576,274.94
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks,1048576,373.76
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Attention,1048576,32.77
+"Ours, exact, picks every 4 layers, 1 shared K=V window head (run 7)",Picks + attention,1048576,404.48
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,1048576,193.54
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,1048576,32.77
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,1048576,222.72
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks,1048576,258.05
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Attention,1048576,32.77
+"Ours, exact, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,1048576,289.79
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks,1048576,133.12
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Attention,1048576,32.77
+"Ours, exact, picks at layer 0 only, 1 shared K=V window head",Picks + attention,1048576,163.84
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks,1048576,68.61
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Attention,1048576,32.77
+"Ours, prefilter keeps 512, picks at layer 0 only, 1 shared K=V window head",Picks + attention,1048576,97.28
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,1048576,101.38
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,1048576,32.77
+"Ours, block mean, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,1048576,130.05
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,1048576,88.06
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,1048576,32.77
+"Ours, block mean, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,1048576,116.74
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,1048576,101.38
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,1048576,32.77
+"Ours, block max, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,1048576,130.05
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,1048576,88.06
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,1048576,32.77
+"Ours, block max, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,1048576,116.74
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,1048576,136.19
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,1048576,32.77
+"Ours, block minmax, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,1048576,165.89
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,1048576,106.5
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,1048576,32.77
+"Ours, block minmax, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,1048576,134.14
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks,1048576,137.22
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Attention,1048576,32.77
+"Ours, block meanstd, 64 blocks of 8, picks every 4 layers, 1 shared K=V window head",Picks + attention,1048576,165.89
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks,1048576,106.5
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Attention,1048576,32.77
+"Ours, block meanstd, 64 blocks of 16, picks every 4 layers, 1 shared K=V window head",Picks + attention,1048576,134.14
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,1048576,69.63
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,1048576,32.77
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,1048576,98.3
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks,1048576,93.18
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Attention,1048576,32.77
+"Ours, block meanstd, 64 blocks of 8, picks at layers 0, 4, 1 shared K=V window head",Picks + attention,1048576,121.86
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,1048576,161.79
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,1048576,31.74
+"Ours, exact, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,1048576,189.44
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks,1048576,55.3
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Attention,1048576,31.74
+"Ours, block mean, 64 blocks of 8, picks at layers 0, 4, FP8 entries, 1 shared K=V window head",Picks + attention,1048576,83.97
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,1048576,316.42
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,1048576,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,1048576,345.09
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,1048576,221.18
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,1048576,29.7
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,1048576,247.81

@@ -25,7 +25,13 @@ packages = ["src/attention", "src/benchmarks", "src/common", "src/nanogpt"]
 [tool.ruff]
 line-length = 88
 src = ["src", "tests"]
-extend-exclude = ["archive"]
+extend-exclude = [
+    "archive",
+    # generated: rebuilt by experiments/csa2/a/make_src.sh and b/make_kv_script.py
+    "experiments/csa2/a/csa2_src",
+    "experiments/csa2/b/train_tournament_kv*.py",
+    "experiments/csa2/b/*triton_kernels.py",
+]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "B", "UP"]

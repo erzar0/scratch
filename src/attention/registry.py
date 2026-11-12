@@ -18,12 +18,14 @@ from typing import Any
 from attention import fast_pytorch as fp
 from attention.bandit import BoundBandit
 from attention.block_topk import BlockTopK
+from attention.csa2_reference import Csa2Reference
 from attention.deepseek_csa import LibraryCsa, LibraryCsaFlash
 from attention.dense import dense
 from attention.exact_topk import ExactTopK
 from attention.harness import Chunk, Method, Outcome
 from attention.loki import Loki
 from attention.sparq import SparQ
+from attention.summed_query import SummedQueryTopK
 from attention.tournament.blocks import BlockTournament
 from attention.tournament.blocks_then_global import HybridTournament
 from attention.tournament.channel_groups import GroupOrder
@@ -188,6 +190,13 @@ def versions(keep: int = KEEP) -> dict[str, Version]:
             fp.exact_topk(keep),
         ),
         Version(
+            "exact-topk/summed-query",
+            "Exact top-k, summed query",
+            "PyTorch",
+            SummedQueryTopK(keep),
+            fp.summed_query_topk(keep),
+        ),
+        Version(
             "sparq",
             "SparQ",
             "Triton",
@@ -204,6 +213,13 @@ def versions(keep: int = KEEP) -> dict[str, Version]:
             "transformers",
             None,
             LibraryCsaFlash(keep),
+        ),
+        Version(
+            "deepseek-v4.1/csa2",
+            "DeepSeek-V4.1 CSA2",
+            "PyTorch",
+            None,
+            Csa2Reference(keep),
         ),
         Version("block-topk/flat", "Block top-k", "PyTorch", flat, fp.block_topk(flat)),
         Version(

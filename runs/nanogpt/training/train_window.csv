@@ -1,0 +1,11 @@
+stage,version,ms,peak_mib
+stage 1,record 91 own K V (6 heads),4.37,201
+stage 1,1 shared K=V window head,3.83,205
+stage 1,"1 shared K=V window head, read in place (GQA)",3.63,108
+stage 1,2 shared K=V window heads,3.94,210
+stage 1,per-head K=V window,4.51,227
+stage 3,record 91 own K V (6 heads),13.27,652
+stage 3,1 shared K=V window head,11.57,664
+stage 3,"1 shared K=V window head, read in place (GQA)",10.98,364
+stage 3,2 shared K=V window heads,11.91,677
+stage 3,per-head K=V window,13.67,726

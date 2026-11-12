@@ -10,10 +10,12 @@ latency.png: Decode-step latency on NVIDIA GeForce RTX 4070 Ti SUPER: median of 
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 36 (36–36) | 116 (116–116) | 227 (226–227) | 443 (443–443) | 873 (872–873) |
 | Exact top-k | PyTorch | 109 (109–109) | 154 (154–155) | 225 (225–225) | 365 (365–365) | 631 (631–632) |
+| Exact top-k, summed query | PyTorch | 87 (85–92) | 123 (119–129) | 208 (201–221) | 301 (300–336) | 563 (526–584) |
 | SparQ | Triton | 97 (97–97) | 126 (126–126) | 137 (113–155) | 145 (145–145) | 288 (288–288) |
 | Loki | PyTorch | 105 (105–105) | 147 (147–147) | 153 (152–154) | 223 (223–224) | 387 (387–388) |
 | DeepSeek-V4 CSA | transformers | 334 (330–336) | 500 (499–503) | 809 (808–810) | 1642 (1640–1646) | 3085 (3080–3087) |
 | DeepSeek-V4 CSA, V4-Flash size | transformers | 747 (746–1014) | 893 (892–1312) | 1164 (1162–1558) | 1732 (1731–1734) | 2893 (2892–3037) |
+| DeepSeek-V4.1 CSA2 | PyTorch | 110 (110–114) | 168 (165–191) | 221 (216–221) | 376 (374–377) | 646 (641–714) |
 | Block top-k | PyTorch | 93 (92–95) | 103 (102–104) | 129 (127–132) | 176 (171–177) | 255 (252–265) |
 | Double indexing: mean | PyTorch | 150 (134–157) | 139 (120–148) | 131 (129–152) | 136 (124–141) | 128 (128–133) |
 | Double indexing: bound | PyTorch | 148 (130–174) | 144 (138–158) | 157 (135–159) | 135 (131–141) | 138 (137–144) |
@@ -37,10 +39,12 @@ latency.png: Decode-step latency on NVIDIA GeForce RTX 4070 Ti SUPER: median of 
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 36 (36–36) | 116 (116–116) | 226 (226–226) | 443 (443–443) | 873 (873–874) |
 | Exact top-k | PyTorch | 111 (110–111) | 156 (156–156) | 225 (225–226) | 365 (364–365) | 632 (631–633) |
+| Exact top-k, summed query | PyTorch | 87 (84–91) | 117 (117–118) | 191 (190–192) | 306 (305–308) | 555 (546–614) |
 | SparQ | Triton | 95 (95–95) | 121 (121–121) | 114 (112–115) | 143 (142–145) | 289 (288–289) |
 | Loki | PyTorch | 108 (108–108) | 150 (150–150) | 154 (152–155) | 223 (223–224) | 388 (388–389) |
 | DeepSeek-V4 CSA | transformers | 335 (332–336) | 501 (500–505) | 825 (820–827) | 1645 (1643–1648) | 3085 (3082–3087) |
 | DeepSeek-V4 CSA, V4-Flash size | transformers | 748 (747–1060) | 894 (893–1011) | 1165 (1161–1167) | 1731 (1729–1852) | 2897 (2891–2904) |
+| DeepSeek-V4.1 CSA2 | PyTorch | 110 (110–111) | 162 (162–178) | 239 (215–247) | 362 (355–377) | 631 (627–634) |
 | Block top-k | PyTorch | 95 (93–113) | 102 (101–104) | 127 (126–128) | 186 (185–194) | 263 (261–265) |
 | Double indexing: mean | PyTorch | 119 (117–133) | 119 (118–134) | 120 (120–133) | 125 (123–138) | 194 (148–203) |
 | Double indexing: bound | PyTorch | 143 (124–172) | 166 (148–189) | 160 (149–182) | 142 (137–155) | 142 (140–171) |
@@ -60,7 +64,7 @@ latency.png: Decode-step latency on NVIDIA GeForce RTX 4070 Ti SUPER: median of 
 
 ### fidelity: output error relative to dense, budget 512, mean ± SE
 
-fidelity.png: Output error against dense attention, |o − o_dense| / |o_dense| per head: mean over 128 decode queries, ± SE over 10 seeds. 8 KV heads × 2 query heads, head dim 128; every sparse version gives exact attention to about 512 keys and runs as its float32 PyTorch emulation, which selects the same keys as its kernel (tests/test_registry.py). On iid data attention is near uniform, so no 512 keys come close to dense. Panels: iid: iid Gaussian q, k, v; Outlier channels: 4 outlier channels in q and k; LLM-like: outlier channels, 4 sink keys and 4 needle keys per query. docs/methods.md explains each row's version and its settings; n/a: a version this benchmark does not run.
+fidelity.png: Output error against dense attention, |o − o_dense| / |o_dense| per head: mean over 128 decode queries, ± SE over 10 seeds. 8 KV heads × 2 query heads, head dim 128; every sparse version gives exact attention to about 512 keys and runs as its float32 PyTorch emulation, which selects the same keys as its kernel (tests/attention/test_registry.py). On iid data attention is near uniform, so no 512 keys come close to dense. Panels: iid: iid Gaussian q, k, v; Outlier channels: 4 outlier channels in q and k; LLM-like: outlier channels, 4 sink keys and 4 needle keys per query. docs/methods.md explains each row's version and its settings; n/a: a version this benchmark does not run.
 
 #### iid
 
@@ -68,6 +72,7 @@ fidelity.png: Output error against dense attention, |o − o_dense| / |o_dense| 
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 |
 | Exact top-k | PyTorch | 2.65 ± 0.006 | 4.12 ± 0.012 | 6.18 ± 0.017 | 9.13 ± 0.028 | 13.3 ± 0.035 |
+| Exact top-k, summed query | PyTorch | 2.7 ± 0.0063 | 4.11 ± 0.011 | 6.03 ± 0.016 | 8.74 ± 0.027 | 12.5 ± 0.032 |
 | SparQ | Triton | 3.18 ± 0.0073 | 4.87 ± 0.013 | 7.22 ± 0.02 | 10.6 ± 0.033 | 15.4 ± 0.038 |
 | Loki | PyTorch | 3.43 ± 0.0079 | 5.16 ± 0.016 | 7.53 ± 0.019 | 10.9 ± 0.034 | 15.6 ± 0.042 |
 | Block top-k | PyTorch | 3.52 ± 0.0083 | 5.26 ± 0.016 | 7.65 ± 0.02 | 11.1 ± 0.036 | 15.9 ± 0.042 |
@@ -93,6 +98,7 @@ fidelity.png: Output error against dense attention, |o − o_dense| / |o_dense| 
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 |
 | Exact top-k | PyTorch | 1.06 ± 0.0072 | 1.75 ± 0.008 | 2.82 ± 0.019 | 4.48 ± 0.022 | 7.12 ± 0.053 |
+| Exact top-k, summed query | PyTorch | 1.51 ± 0.0075 | 2.3 ± 0.0055 | 3.37 ± 0.012 | 4.86 ± 0.021 | 6.94 ± 0.03 |
 | SparQ | Triton | 1.14 ± 0.0079 | 1.82 ± 0.0077 | 2.79 ± 0.018 | 4.21 ± 0.021 | 6.36 ± 0.035 |
 | Loki | PyTorch | 1.22 ± 0.0084 | 2.02 ± 0.011 | 3.25 ± 0.024 | 5.12 ± 0.028 | 7.95 ± 0.048 |
 | Block top-k | PyTorch | 2.59 ± 0.0077 | 3.82 ± 0.0078 | 5.52 ± 0.014 | 7.86 ± 0.037 | 11.2 ± 0.045 |
@@ -118,6 +124,7 @@ fidelity.png: Output error against dense attention, |o − o_dense| / |o_dense| 
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 |
 | Exact top-k | PyTorch | 0.0173 ± 0.00056 | 0.0378 ± 0.0012 | 0.079 ± 0.0024 | 0.154 ± 0.0036 | 0.328 ± 0.015 |
+| Exact top-k, summed query | PyTorch | 0.0319 ± 0.00098 | 0.0625 ± 0.0021 | 0.124 ± 0.0035 | 0.227 ± 0.0074 | 0.48 ± 0.026 |
 | SparQ | Triton | 0.0217 ± 0.00067 | 0.0453 ± 0.0013 | 0.0913 ± 0.0027 | 0.174 ± 0.0041 | 0.364 ± 0.017 |
 | Loki | PyTorch | 0.0191 ± 0.00062 | 0.0416 ± 0.0013 | 0.087 ± 0.0027 | 0.171 ± 0.0045 | 0.371 ± 0.018 |
 | Block top-k | PyTorch | 0.173 ± 0.0048 | 0.243 ± 0.0052 | 0.364 ± 0.0059 | 0.582 ± 0.012 | 1.02 ± 0.034 |
@@ -139,7 +146,7 @@ fidelity.png: Output error against dense attention, |o − o_dense| / |o_dense| 
 
 ### fidelity-harder: output error relative to dense, budget 512, mean ± SE
 
-fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_dense| per head: mean over 128 decode queries, ± SE over 10 seeds. 8 KV heads × 2 query heads, head dim 128; every sparse version gives exact attention to about 512 keys and runs as its float32 PyTorch emulation, which selects the same keys as its kernel (tests/test_registry.py). On Flat data attention is near uniform, so no 512 keys come close to dense. Panels: Flat: LLM-like with q × 0.5 (softer attention); Sharp: LLM-like with q × 2 (sharper attention); Local: LLM-like with neighbouring keys alike: noise averaged over 16 positions, needles as runs of 16 keys; Many needles: LLM-like with 64 needle keys per query. docs/methods.md explains each row's version and its settings; n/a: a version this benchmark does not run.
+fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_dense| per head: mean over 128 decode queries, ± SE over 10 seeds. 8 KV heads × 2 query heads, head dim 128; every sparse version gives exact attention to about 512 keys and runs as its float32 PyTorch emulation, which selects the same keys as its kernel (tests/attention/test_registry.py). On Flat data attention is near uniform, so no 512 keys come close to dense. Panels: Flat: LLM-like with q × 0.5 (softer attention); Sharp: LLM-like with q × 2 (sharper attention); Local: LLM-like with neighbouring keys alike: noise averaged over 16 positions, needles as runs of 16 keys; Many needles: LLM-like with 64 needle keys per query. docs/methods.md explains each row's version and its settings; n/a: a version this benchmark does not run.
 
 #### Flat
 
@@ -147,6 +154,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 |
 | Exact top-k | PyTorch | 0.851 ± 0.026 | 1.77 ± 0.042 | 3.49 ± 0.076 | 6.51 ± 0.086 | 12.4 ± 0.39 |
+| Exact top-k, summed query | PyTorch | 0.92 ± 0.028 | 1.88 ± 0.046 | 3.62 ± 0.079 | 6.59 ± 0.088 | 12.1 ± 0.39 |
 | SparQ | Triton | 0.914 ± 0.029 | 1.9 ± 0.048 | 3.76 ± 0.085 | 7.08 ± 0.1 | 13.6 ± 0.45 |
 | Loki | PyTorch | 0.872 ± 0.027 | 1.82 ± 0.044 | 3.58 ± 0.08 | 6.71 ± 0.091 | 12.8 ± 0.42 |
 | Block top-k | PyTorch | 1.88 ± 0.029 | 3.51 ± 0.062 | 6.57 ± 0.11 | 12 ± 0.13 | 22.3 ± 0.58 |
@@ -172,6 +180,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 |
 | Exact top-k | PyTorch | 1.5e-05 ± 1.3e-06 | 4.65e-05 ± 4.7e-06 | 0.000135 ± 1.6e-05 | 0.000267 ± 2.7e-05 | 0.000711 ± 7.3e-05 |
+| Exact top-k, summed query | PyTorch | 0.00219 ± 0.00023 | 0.00343 ± 0.00017 | 0.00517 ± 0.00045 | 0.00697 ± 0.00076 | 0.0118 ± 0.001 |
 | SparQ | Triton | 6e-05 ± 8.6e-06 | 0.000267 ± 0.00012 | 0.000504 ± 9.4e-05 | 0.000814 ± 0.00013 | 0.00244 ± 0.00016 |
 | Loki | PyTorch | 2.82e-05 ± 1.6e-06 | 0.000108 ± 1.3e-05 | 0.000584 ± 0.00021 | 0.00206 ± 0.00027 | 0.00707 ± 0.00095 |
 | Block top-k | PyTorch | 0.0978 ± 0.0051 | 0.135 ± 0.0055 | 0.189 ± 0.0029 | 0.29 ± 0.0049 | 0.4 ± 0.0048 |
@@ -197,6 +206,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 |
 | Exact top-k | PyTorch | 0.000162 ± 7.6e-06 | 0.00103 ± 5.7e-05 | 0.00341 ± 0.00022 | 0.00913 ± 0.00028 | 0.0216 ± 0.0011 |
+| Exact top-k, summed query | PyTorch | 0.00705 ± 0.00037 | 0.0165 ± 0.0011 | 0.0258 ± 0.0018 | 0.0418 ± 0.0014 | 0.0676 ± 0.0032 |
 | SparQ | Triton | 0.000961 ± 8.2e-05 | 0.00324 ± 0.00019 | 0.00779 ± 0.00056 | 0.0162 ± 0.00053 | 0.0329 ± 0.0016 |
 | Loki | PyTorch | 0.00028 ± 1.3e-05 | 0.00185 ± 0.00011 | 0.00562 ± 0.00039 | 0.0138 ± 0.00042 | 0.0325 ± 0.0016 |
 | Block top-k | PyTorch | 0.0364 ± 0.0016 | 0.0551 ± 0.0024 | 0.0878 ± 0.0055 | 0.127 ± 0.0025 | 0.187 ± 0.0049 |
@@ -222,6 +232,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 |
 | Exact top-k | PyTorch | 0.0702 ± 0.0022 | 0.0777 ± 0.0015 | 0.0861 ± 0.0014 | 0.0983 ± 0.0015 | 0.12 ± 0.0031 |
+| Exact top-k, summed query | PyTorch | 0.135 ± 0.0034 | 0.141 ± 0.0015 | 0.15 ± 0.0026 | 0.161 ± 0.0032 | 0.188 ± 0.0033 |
 | SparQ | Triton | 0.0845 ± 0.0024 | 0.0927 ± 0.0016 | 0.103 ± 0.0016 | 0.116 ± 0.0018 | 0.142 ± 0.0035 |
 | Loki | PyTorch | 0.0821 ± 0.0023 | 0.0897 ± 0.0016 | 0.0984 ± 0.0015 | 0.111 ± 0.0017 | 0.136 ± 0.0036 |
 | Block top-k | PyTorch | 0.995 ± 0.022 | 1.2 ± 0.02 | 1.32 ± 0.022 | 1.4 ± 0.018 | 1.41 ± 0.044 |
@@ -249,6 +260,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 4.4e-10 | 1 ± 3.3e-10 | 1 ± 3.6e-10 | 1 ± 2.8e-10 | 1 ± 3.2e-10 |
 | Exact top-k | PyTorch | 0.228 ± 0.00015 | 0.142 ± 8.7e-05 | 0.0879 ± 7.4e-05 | 0.0537 ± 5e-05 | 0.0325 ± 2.9e-05 |
+| Exact top-k, summed query | PyTorch | 0.205 ± 0.00015 | 0.125 ± 0.00011 | 0.0745 ± 8.1e-05 | 0.044 ± 5.4e-05 | 0.0257 ± 3.3e-05 |
 | SparQ | Triton | 0.168 ± 0.00015 | 0.0992 ± 7.7e-05 | 0.0579 ± 6.6e-05 | 0.0335 ± 4.1e-05 | 0.0193 ± 2.5e-05 |
 | Loki | PyTorch | 0.129 ± 0.00011 | 0.0711 ± 6.5e-05 | 0.0388 ± 4.5e-05 | 0.0211 ± 2.3e-05 | 0.0115 ± 1e-05 |
 | Block top-k | PyTorch | 0.12 ± 6.7e-05 | 0.0659 ± 4.1e-05 | 0.0361 ± 1.7e-05 | 0.0197 ± 1.4e-05 | 0.0107 ± 8e-06 |
@@ -274,6 +286,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 2.4e-10 | 1 ± 3.2e-10 | 1 ± 3.7e-10 | 1 ± 3.5e-10 | 1 ± 3.6e-10 |
 | Exact top-k | PyTorch | 0.548 ± 0.0015 | 0.443 ± 0.0011 | 0.353 ± 0.0016 | 0.28 ± 0.0012 | 0.219 ± 0.0011 |
+| Exact top-k, summed query | PyTorch | 0.442 ± 0.0015 | 0.344 ± 0.00079 | 0.263 ± 0.0013 | 0.2 ± 0.001 | 0.15 ± 0.0011 |
 | SparQ | Triton | 0.518 ± 0.0015 | 0.414 ± 0.0011 | 0.327 ± 0.0016 | 0.258 ± 0.0011 | 0.201 ± 0.001 |
 | Loki | PyTorch | 0.518 ± 0.0015 | 0.415 ± 0.0011 | 0.328 ± 0.0016 | 0.259 ± 0.0012 | 0.201 ± 0.0011 |
 | Block top-k | PyTorch | 0.222 ± 0.00076 | 0.144 ± 0.00049 | 0.0929 ± 0.00045 | 0.0602 ± 0.0004 | 0.038 ± 0.00029 |
@@ -299,6 +312,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 9.5e-10 | 1 ± 7.2e-10 | 1 ± 1.1e-09 | 1 ± 2.1e-09 | 1 ± 5.3e-09 |
 | Exact top-k | PyTorch | 0.984 ± 0.00051 | 0.968 ± 0.00093 | 0.94 ± 0.0016 | 0.899 ± 0.0017 | 0.829 ± 0.0062 |
+| Exact top-k, summed query | PyTorch | 0.975 ± 0.00082 | 0.955 ± 0.0014 | 0.924 ± 0.0019 | 0.88 ± 0.0021 | 0.807 ± 0.0069 |
 | SparQ | Triton | 0.981 ± 0.00059 | 0.962 ± 0.001 | 0.933 ± 0.0017 | 0.89 ± 0.0018 | 0.82 ± 0.0064 |
 | Loki | PyTorch | 0.983 ± 0.00056 | 0.965 ± 0.001 | 0.936 ± 0.0017 | 0.894 ± 0.0018 | 0.823 ± 0.0064 |
 | Block top-k | PyTorch | 0.898 ± 0.0019 | 0.866 ± 0.0021 | 0.821 ± 0.0015 | 0.749 ± 0.0019 | 0.657 ± 0.0051 |
@@ -324,6 +338,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 4.5e-10 | 1 ± 3.6e-10 | 1 ± 4.8e-10 | 1 ± 5.3e-10 | 1 ± 2.7e-10 |
 | Exact top-k | PyTorch | 0.602 ± 0.0091 | 0.44 ± 0.0073 | 0.3 ± 0.006 | 0.203 ± 0.0032 | 0.127 ± 0.0068 |
+| Exact top-k, summed query | PyTorch | 0.591 ± 0.0094 | 0.43 ± 0.0075 | 0.291 ± 0.0061 | 0.195 ± 0.0033 | 0.121 ± 0.0069 |
 | SparQ | Triton | 0.586 ± 0.0093 | 0.425 ± 0.0075 | 0.288 ± 0.006 | 0.194 ± 0.0033 | 0.121 ± 0.0068 |
 | Loki | PyTorch | 0.599 ± 0.0092 | 0.437 ± 0.0074 | 0.297 ± 0.006 | 0.2 ± 0.0032 | 0.125 ± 0.0069 |
 | Block top-k | PyTorch | 0.396 ± 0.0043 | 0.274 ± 0.0041 | 0.176 ± 0.0034 | 0.109 ± 0.0017 | 0.0631 ± 0.0035 |
@@ -349,6 +364,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 6.6e-10 | 1 ± 5.4e-10 | 1 ± 5.4e-10 | 1 ± 5.5e-10 | 1 ± 1.2e-09 |
 | Exact top-k | PyTorch | 1 ± 1.2e-06 | 1 ± 4.4e-06 | 1 ± 1.5e-05 | 1 ± 2.4e-05 | 0.999 ± 6.3e-05 |
+| Exact top-k, summed query | PyTorch | 0.999 ± 0.00015 | 0.998 ± 9.7e-05 | 0.997 ± 0.00021 | 0.996 ± 0.00043 | 0.993 ± 0.00039 |
 | SparQ | Triton | 1 ± 5.1e-06 | 1 ± 6.4e-05 | 1 ± 4.7e-05 | 0.999 ± 8.5e-05 | 0.998 ± 9.3e-05 |
 | Loki | PyTorch | 1 ± 1.6e-06 | 1 ± 8.1e-06 | 1 ± 0.00015 | 0.999 ± 0.00016 | 0.995 ± 0.0007 |
 | Block top-k | PyTorch | 0.956 ± 0.0021 | 0.939 ± 0.0024 | 0.915 ± 0.0011 | 0.868 ± 0.0022 | 0.816 ± 0.002 |
@@ -374,6 +390,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 6e-10 | 1 ± 4e-10 | 1 ± 9.5e-10 | 1 ± 1.5e-09 | 1 ± 3.8e-09 |
 | Exact top-k | PyTorch | 1 ± 7.4e-06 | 0.999 ± 5.5e-05 | 0.997 ± 0.0002 | 0.992 ± 0.00024 | 0.981 ± 0.00087 |
+| Exact top-k, summed query | PyTorch | 0.996 ± 0.00023 | 0.99 ± 0.00069 | 0.984 ± 0.0011 | 0.973 ± 0.00079 | 0.956 ± 0.0019 |
 | SparQ | Triton | 0.999 ± 4.9e-05 | 0.997 ± 0.00014 | 0.994 ± 0.00042 | 0.986 ± 0.00039 | 0.973 ± 0.0012 |
 | Loki | PyTorch | 1 ± 1.2e-05 | 0.998 ± 9.6e-05 | 0.995 ± 0.00032 | 0.988 ± 0.00033 | 0.974 ± 0.0012 |
 | Block top-k | PyTorch | 0.982 ± 0.00074 | 0.974 ± 0.001 | 0.958 ± 0.0024 | 0.94 ± 0.0011 | 0.912 ± 0.002 |
@@ -399,6 +416,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 5.3e-10 | 1 ± 5.2e-10 | 1 ± 4.4e-10 | 1 ± 1e-09 | 1 ± 2.8e-09 |
 | Exact top-k | PyTorch | 0.941 ± 0.0017 | 0.936 ± 0.0011 | 0.93 ± 0.001 | 0.922 ± 0.00095 | 0.909 ± 0.002 |
+| Exact top-k, summed query | PyTorch | 0.911 ± 0.002 | 0.908 ± 0.001 | 0.904 ± 0.0013 | 0.897 ± 0.0013 | 0.885 ± 0.002 |
 | SparQ | Triton | 0.932 ± 0.0019 | 0.927 ± 0.0011 | 0.921 ± 0.0011 | 0.913 ± 0.001 | 0.899 ± 0.0021 |
 | Loki | PyTorch | 0.934 ± 0.0017 | 0.93 ± 0.0012 | 0.924 ± 0.0011 | 0.916 ± 0.001 | 0.903 ± 0.0021 |
 | Block top-k | PyTorch | 0.537 ± 0.0094 | 0.46 ± 0.0078 | 0.426 ± 0.0074 | 0.412 ± 0.0062 | 0.428 ± 0.013 |
@@ -426,6 +444,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
 | Exact top-k | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
+| Exact top-k, summed query | PyTorch | 0.817 ± 0.00051 | 0.745 ± 0.00073 | 0.672 ± 0.00097 | 0.601 ± 0.0012 | 0.535 ± 0.0011 |
 | SparQ | Triton | 0.665 ± 0.00075 | 0.587 ± 0.0004 | 0.521 ± 0.00067 | 0.464 ± 0.00059 | 0.415 ± 0.0006 |
 | Loki | PyTorch | 0.38 ± 0.00072 | 0.283 ± 0.00065 | 0.21 ± 0.00041 | 0.158 ± 0.00045 | 0.119 ± 0.00034 |
 | Block top-k | PyTorch | 0.329 ± 0.00062 | 0.244 ± 0.00036 | 0.183 ± 0.00018 | 0.138 ± 0.00036 | 0.104 ± 0.00031 |
@@ -451,6 +470,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
 | Exact top-k | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
+| Exact top-k, summed query | PyTorch | 0.753 ± 0.0024 | 0.718 ± 0.0019 | 0.678 ± 0.0023 | 0.644 ± 0.0013 | 0.604 ± 0.0029 |
 | SparQ | Triton | 0.975 ± 0.00036 | 0.967 ± 0.00064 | 0.961 ± 0.00053 | 0.957 ± 0.0004 | 0.952 ± 0.00032 |
 | Loki | PyTorch | 0.973 ± 0.00045 | 0.962 ± 0.00046 | 0.951 ± 0.00059 | 0.941 ± 0.0005 | 0.929 ± 0.00046 |
 | Block top-k | PyTorch | 0.316 ± 0.00068 | 0.244 ± 0.0008 | 0.19 ± 0.00045 | 0.148 ± 0.00031 | 0.115 ± 0.00047 |
@@ -476,6 +496,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
 | Exact top-k | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
+| Exact top-k, summed query | PyTorch | 0.952 ± 0.0024 | 0.926 ± 0.0031 | 0.899 ± 0.0032 | 0.872 ± 0.0033 | 0.833 ± 0.0075 |
 | SparQ | Triton | 0.988 ± 0.00067 | 0.975 ± 0.0015 | 0.96 ± 0.0015 | 0.945 ± 0.0021 | 0.92 ± 0.0046 |
 | Loki | PyTorch | 0.999 ± 9.9e-05 | 0.997 ± 0.00027 | 0.993 ± 0.00024 | 0.985 ± 0.00045 | 0.972 ± 0.0018 |
 | Block top-k | PyTorch | 0.418 ± 0.00096 | 0.35 ± 0.0022 | 0.29 ± 0.0019 | 0.238 ± 0.0013 | 0.193 ± 0.0016 |
@@ -501,6 +522,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
 | Exact top-k | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
+| Exact top-k, summed query | PyTorch | 0.984 ± 0.0011 | 0.974 ± 0.0014 | 0.962 ± 0.0014 | 0.943 ± 0.0023 | 0.911 ± 0.0055 |
 | SparQ | Triton | 0.995 ± 0.00045 | 0.986 ± 0.0012 | 0.976 ± 0.0011 | 0.965 ± 0.0018 | 0.946 ± 0.0047 |
 | Loki | PyTorch | 1 ± 6.8e-06 | 1 ± 4.2e-05 | 0.999 ± 6e-05 | 0.998 ± 0.00013 | 0.996 ± 0.00043 |
 | Block top-k | PyTorch | 0.465 ± 0.0013 | 0.402 ± 0.002 | 0.345 ± 0.0018 | 0.286 ± 0.0016 | 0.235 ± 0.0018 |
@@ -526,6 +548,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
 | Exact top-k | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
+| Exact top-k, summed query | PyTorch | 0.948 ± 0.0026 | 0.918 ± 0.0035 | 0.886 ± 0.0034 | 0.852 ± 0.0038 | 0.796 ± 0.0093 |
 | SparQ | Triton | 0.985 ± 0.00066 | 0.97 ± 0.0016 | 0.952 ± 0.0016 | 0.932 ± 0.002 | 0.901 ± 0.0043 |
 | Loki | PyTorch | 0.991 ± 0.00062 | 0.979 ± 0.0011 | 0.96 ± 0.0014 | 0.93 ± 0.0015 | 0.9 ± 0.0027 |
 | Block top-k | PyTorch | 0.402 ± 0.001 | 0.33 ± 0.0024 | 0.269 ± 0.002 | 0.217 ± 0.0011 | 0.171 ± 0.0018 |
@@ -551,6 +574,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
 | Exact top-k | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
+| Exact top-k, summed query | PyTorch | 0.964 ± 0.0012 | 0.947 ± 0.0019 | 0.941 ± 0.0015 | 0.94 ± 0.0016 | 0.923 ± 0.0033 |
 | SparQ | Triton | 0.993 ± 0.00025 | 0.99 ± 0.00047 | 0.987 ± 0.00059 | 0.984 ± 0.00073 | 0.975 ± 0.001 |
 | Loki | PyTorch | 0.999 ± 5.3e-05 | 0.996 ± 0.00028 | 0.992 ± 0.00042 | 0.986 ± 0.0004 | 0.97 ± 0.0012 |
 | Block top-k | PyTorch | 0.888 ± 0.0024 | 0.874 ± 0.0023 | 0.862 ± 0.0024 | 0.855 ± 0.0016 | 0.842 ± 0.0014 |
@@ -576,6 +600,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
 | Exact top-k | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
+| Exact top-k, summed query | PyTorch | 0.756 ± 0.0034 | 0.766 ± 0.0036 | 0.771 ± 0.0014 | 0.78 ± 0.0016 | 0.781 ± 0.0019 |
 | SparQ | Triton | 0.946 ± 0.0011 | 0.94 ± 0.0013 | 0.936 ± 0.00081 | 0.936 ± 0.00081 | 0.933 ± 0.002 |
 | Loki | PyTorch | 0.968 ± 0.00096 | 0.967 ± 0.00078 | 0.967 ± 0.00092 | 0.966 ± 0.0011 | 0.963 ± 0.0018 |
 | Block top-k | PyTorch | 0.324 ± 0.0043 | 0.292 ± 0.0037 | 0.28 ± 0.0041 | 0.275 ± 0.0031 | 0.284 ± 0.0083 |
@@ -603,6 +628,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
 | Exact top-k | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
+| Exact top-k, summed query | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
 | SparQ | Triton | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Loki | PyTorch | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Block top-k | PyTorch | 0.188 ± 6.6e-07 | 0.156 ± 2e-07 | 0.141 ± 6.8e-08 | 0.133 ± 3e-08 | 0.129 ± 8.3e-09 |
@@ -628,6 +654,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
 | Exact top-k | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
+| Exact top-k, summed query | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
 | SparQ | Triton | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Loki | PyTorch | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Block top-k | PyTorch | 0.188 ± 6.3e-07 | 0.156 ± 2.3e-07 | 0.141 ± 4e-08 | 0.133 ± 1.7e-08 | 0.129 ± 7.6e-09 |
@@ -653,6 +680,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
 | Exact top-k | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
+| Exact top-k, summed query | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
 | SparQ | Triton | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Loki | PyTorch | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Block top-k | PyTorch | 0.188 ± 7e-07 | 0.156 ± 1.5e-07 | 0.141 ± 6.5e-08 | 0.133 ± 1.4e-08 | 0.129 ± 4.9e-09 |
@@ -678,6 +706,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
 | Exact top-k | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
+| Exact top-k, summed query | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
 | SparQ | Triton | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Loki | PyTorch | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Block top-k | PyTorch | 0.188 ± 6.8e-07 | 0.156 ± 1.2e-07 | 0.141 ± 7.9e-08 | 0.133 ± 1.6e-08 | 0.129 ± 4.6e-09 |
@@ -703,6 +732,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
 | Exact top-k | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
+| Exact top-k, summed query | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
 | SparQ | Triton | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Loki | PyTorch | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Block top-k | PyTorch | 0.188 ± 6.5e-07 | 0.156 ± 1.5e-07 | 0.141 ± 5.5e-08 | 0.133 ± 1.4e-08 | 0.129 ± 5.1e-09 |
@@ -728,6 +758,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
 | Exact top-k | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
+| Exact top-k, summed query | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
 | SparQ | Triton | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Loki | PyTorch | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Block top-k | PyTorch | 0.188 ± 2.7e-07 | 0.156 ± 1.6e-07 | 0.141 ± 5e-08 | 0.133 ± 1.8e-08 | 0.129 ± 4.9e-09 |
@@ -753,6 +784,7 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 | 1 ± 0 |
 | Exact top-k | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
+| Exact top-k, summed query | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
 | SparQ | Triton | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Loki | PyTorch | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Block top-k | PyTorch | 0.188 ± 2.3e-07 | 0.156 ± 1.1e-07 | 0.141 ± 4.2e-08 | 0.133 ± 9.9e-09 | 0.129 ± 4.2e-09 |
@@ -782,10 +814,12 @@ budget.png: Every version at each budget, the number of keys attended exactly: l
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 226 (226–226) | 226 (226–226) | 226 (226–226) | 226 (226–226) | 226 (226–226) |
 | Exact top-k | PyTorch | 200 (200–201) | 213 (212–213) | 225 (225–226) | 254 (254–255) | 318 (318–319) |
+| Exact top-k, summed query | PyTorch | 167 (166–185) | 177 (177–179) | 191 (190–192) | 222 (220–224) | 281 (280–281) |
 | SparQ | Triton | 107 (104–110) | 115 (111–125) | 114 (112–115) | 117 (115–118) | 134 (119–140) |
 | Loki | PyTorch | 129 (127–130) | 142 (140–142) | 154 (152–155) | 181 (180–181) | 235 (235–236) |
 | DeepSeek-V4 CSA | transformers | 812 (809–815) | 821 (819–823) | 825 (820–827) | 823 (821–829) | 826 (823–829) |
 | DeepSeek-V4 CSA, V4-Flash size | transformers | 1151 (1148–1153) | 1159 (1157–1293) | 1165 (1161–1167) | 1163 (1161–1252) | 1159 (1158–1470) |
+| DeepSeek-V4.1 CSA2 | PyTorch | 203 (203–228) | 220 (211–233) | 239 (215–247) | 230 (230–238) | 255 (255–255) |
 | Block top-k | PyTorch | 104 (104–105) | 112 (111–115) | 127 (126–128) | 164 (162–169) | 221 (213–223) |
 | Double indexing: mean | PyTorch | 97 (95–100) | 103 (103–104) | 120 (120–133) | 161 (160–162) | 225 (222–238) |
 | Double indexing: bound | PyTorch | 114 (112–149) | 135 (125–159) | 160 (149–182) | 195 (166–205) | 231 (229–236) |
@@ -809,10 +843,12 @@ budget.png: Every version at each budget, the number of keys attended exactly: l
 |---|---|---:|---:|---:|---:|---:|
 | Dense | PyTorch | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 | 0 ± 0 |
 | Exact top-k | PyTorch | 0.128 ± 0.003 | 0.101 ± 0.0027 | 0.079 ± 0.0024 | 0.0613 ± 0.002 | 0.0452 ± 0.0015 |
+| Exact top-k, summed query | PyTorch | 0.197 ± 0.0044 | 0.158 ± 0.0039 | 0.124 ± 0.0035 | 0.104 ± 0.0031 | 0.0854 ± 0.0025 |
 | SparQ | Triton | 0.153 ± 0.0033 | 0.119 ± 0.003 | 0.0913 ± 0.0027 | 0.0698 ± 0.0022 | 0.0512 ± 0.0017 |
 | Loki | PyTorch | 0.146 ± 0.0035 | 0.112 ± 0.0031 | 0.087 ± 0.0027 | 0.0682 ± 0.0023 | 0.0512 ± 0.0018 |
 | DeepSeek-V4 CSA | transformers | not run | not run | not run | not run | not run |
 | DeepSeek-V4 CSA, V4-Flash size | transformers | not run | not run | not run | not run | not run |
+| DeepSeek-V4.1 CSA2 | PyTorch | not run | not run | not run | not run | not run |
 | Block top-k | PyTorch | 0.757 ± 0.0076 | 0.526 ± 0.0061 | 0.364 ± 0.0059 | 0.255 ± 0.0039 | 0.177 ± 0.004 |
 | Double indexing: mean | PyTorch | 1.59 ± 0.016 | 1.49 ± 0.013 | 1.34 ± 0.0093 | 1.11 ± 0.007 | 0.766 ± 0.0045 |
 | Double indexing: bound | PyTorch | 1.7 ± 0.015 | 1.52 ± 0.015 | 1.28 ± 0.013 | 0.957 ± 0.013 | 0.582 ± 0.0065 |

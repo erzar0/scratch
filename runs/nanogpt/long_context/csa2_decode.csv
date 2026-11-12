@@ -1,0 +1,53 @@
+version,n,ms_per_token
+"Dense, FlashAttention 2, all n keys",8192,0.6860800087451935
+"Dense stripped, FlashAttention 2 windows 768 / 2560",8192,0.19251199811697006
+"CSA2 stripped, learned indexer, Triton",8192,0.12083200365304947
+"CSA2 KV layout in stripped record 91, exact top 64 entries, Triton",8192,0.14233599603176117
+"CSA2 KV layout in stripped record 91, MQA window, exact top 64 entries, Triton",8192,0.1382399946451187
+"CSA2 KV layout in stripped record 91, MQA window, prefilter keep 512, Triton",8192,0.187391996383667
+"CSA2 KV layout in stripped record 91, MQA window, prefilter keep 2048, Triton",8192,0.13312000036239624
+"CSA2 KV layout in stripped record 91, MQA window, prefilter keep 8192, Triton",8192,0.13312000036239624
+"CSA2 stripped, learned indexer, PyTorch",8192,0.34508800506591797
+"CSA2 stripped, exact picks instead of the indexer, PyTorch",8192,0.3051519989967346
+"CSA2 stripped, tournament picks instead of the indexer, PyTorch",8192,1.1253759860992432
+"CSA2 KV layout in stripped record 91, exact top 64 entries, PyTorch",8192,0.4782080054283142
+"CSA2 KV layout in stripped record 91, tournament top 64 entries, PyTorch",8192,1.2953599691390991
+"Dense, FlashAttention 2, all n keys",32768,2.303999960422516
+"Dense stripped, FlashAttention 2 windows 768 / 2560",32768,0.19251199811697006
+"CSA2 stripped, learned indexer, Triton",32768,0.12800000607967377
+"CSA2 KV layout in stripped record 91, exact top 64 entries, Triton",32768,0.15667200088500977
+"CSA2 KV layout in stripped record 91, MQA window, exact top 64 entries, Triton",32768,0.15360000729560852
+"CSA2 KV layout in stripped record 91, MQA window, prefilter keep 512, Triton",32768,0.20582400262355804
+"CSA2 KV layout in stripped record 91, MQA window, prefilter keep 2048, Triton",32768,0.2088959962129593
+"CSA2 KV layout in stripped record 91, MQA window, prefilter keep 8192, Triton",32768,0.15360000729560852
+"CSA2 stripped, learned indexer, PyTorch",32768,0.6000639796257019
+"CSA2 stripped, exact picks instead of the indexer, PyTorch",32768,0.4259839951992035
+"CSA2 stripped, tournament picks instead of the indexer, PyTorch",32768,1.679360032081604
+"CSA2 KV layout in stripped record 91, exact top 64 entries, PyTorch",32768,0.5928959846496582
+"CSA2 KV layout in stripped record 91, tournament top 64 entries, PyTorch",32768,1.8585599660873413
+"Dense, FlashAttention 2, all n keys",131072,7.167999744415283
+"Dense stripped, FlashAttention 2 windows 768 / 2560",131072,0.19251199811697006
+"CSA2 stripped, learned indexer, Triton",131072,0.17510400712490082
+"CSA2 KV layout in stripped record 91, exact top 64 entries, Triton",131072,0.19353599846363068
+"CSA2 KV layout in stripped record 91, MQA window, exact top 64 entries, Triton",131072,0.19046400487422943
+"CSA2 KV layout in stripped record 91, MQA window, prefilter keep 512, Triton",131072,0.21503999829292297
+"CSA2 KV layout in stripped record 91, MQA window, prefilter keep 2048, Triton",131072,0.2181120067834854
+"CSA2 KV layout in stripped record 91, MQA window, prefilter keep 8192, Triton",131072,0.2314240038394928
+"CSA2 stripped, learned indexer, PyTorch",131072,0.48025599122047424
+"CSA2 stripped, exact picks instead of the indexer, PyTorch",131072,0.5703679919242859
+"CSA2 stripped, tournament picks instead of the indexer, PyTorch",131072,2.2906880378723145
+"CSA2 KV layout in stripped record 91, exact top 64 entries, PyTorch",131072,0.7464960217475891
+"CSA2 KV layout in stripped record 91, tournament top 64 entries, PyTorch",131072,2.481152057647705
+"Dense, FlashAttention 2, all n keys",524288,26.588159799575806
+"Dense stripped, FlashAttention 2 windows 768 / 2560",524288,0.19251199811697006
+"CSA2 stripped, learned indexer, Triton",524288,0.3246079981327057
+"CSA2 KV layout in stripped record 91, exact top 64 entries, Triton",524288,0.37376001477241516
+"CSA2 KV layout in stripped record 91, MQA window, exact top 64 entries, Triton",524288,0.37273600697517395
+"CSA2 KV layout in stripped record 91, MQA window, prefilter keep 512, Triton",524288,0.2908160090446472
+"CSA2 KV layout in stripped record 91, MQA window, prefilter keep 2048, Triton",524288,0.2949120104312897
+"CSA2 KV layout in stripped record 91, MQA window, prefilter keep 8192, Triton",524288,0.3123199939727783
+"CSA2 stripped, learned indexer, PyTorch",524288,0.7065600156784058
+"CSA2 stripped, exact picks instead of the indexer, PyTorch",524288,1.8206720352172852
+"CSA2 stripped, tournament picks instead of the indexer, PyTorch",524288,2.7207679748535156
+"CSA2 KV layout in stripped record 91, exact top 64 entries, PyTorch",524288,2.0060160160064697
+"CSA2 KV layout in stripped record 91, tournament top 64 entries, PyTorch",524288,2.8938241004943848

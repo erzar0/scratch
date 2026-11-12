@@ -1,0 +1,109 @@
+version,part,n,us_per_token
+"CSA2, learned indexer",Picks,4096,25.6
+"CSA2, learned indexer",Attention,4096,31.74
+"CSA2, learned indexer",Picks + attention,4096,54.27
+"CSA2, picks every 4 layers",Picks,4096,16.38
+"CSA2, picks every 4 layers",Attention,4096,31.74
+"CSA2, picks every 4 layers",Picks + attention,4096,45.06
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,4096,55.3
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,4096,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,4096,86.02
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,4096,23.55
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,4096,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,4096,53.25
+"CSA2, learned indexer",Picks,8192,27.65
+"CSA2, learned indexer",Attention,8192,31.74
+"CSA2, learned indexer",Picks + attention,8192,57.34
+"CSA2, picks every 4 layers",Picks,8192,19.46
+"CSA2, picks every 4 layers",Attention,8192,31.74
+"CSA2, picks every 4 layers",Picks + attention,8192,47.1
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,8192,58.37
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,8192,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,8192,89.09
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,8192,27.65
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,8192,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,8192,56.32
+"CSA2, learned indexer",Picks,16384,37.89
+"CSA2, learned indexer",Attention,16384,31.74
+"CSA2, learned indexer",Picks + attention,16384,66.56
+"CSA2, picks every 4 layers",Picks,16384,24.58
+"CSA2, picks every 4 layers",Attention,16384,31.74
+"CSA2, picks every 4 layers",Picks + attention,16384,53.25
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,16384,61.44
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,16384,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,16384,92.16
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,16384,31.74
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,16384,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,16384,61.44
+"CSA2, learned indexer",Picks,32768,47.1
+"CSA2, learned indexer",Attention,32768,31.74
+"CSA2, learned indexer",Picks + attention,32768,77.82
+"CSA2, picks every 4 layers",Picks,32768,30.72
+"CSA2, picks every 4 layers",Attention,32768,31.74
+"CSA2, picks every 4 layers",Picks + attention,32768,60.42
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,32768,72.7
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,32768,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,32768,101.38
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,32768,41.98
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,32768,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,32768,72.7
+"CSA2, learned indexer",Picks,65536,52.22
+"CSA2, learned indexer",Attention,65536,31.74
+"CSA2, learned indexer",Picks + attention,65536,82.94
+"CSA2, picks every 4 layers",Picks,65536,35.84
+"CSA2, picks every 4 layers",Attention,65536,31.74
+"CSA2, picks every 4 layers",Picks + attention,65536,64.51
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,65536,76.8
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,65536,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,65536,105.47
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,65536,53.25
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,65536,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,65536,83.97
+"CSA2, learned indexer",Picks,131072,71.68
+"CSA2, learned indexer",Attention,131072,31.74
+"CSA2, learned indexer",Picks + attention,131072,103.42
+"CSA2, picks every 4 layers",Picks,131072,48.13
+"CSA2, picks every 4 layers",Attention,131072,31.74
+"CSA2, picks every 4 layers",Picks + attention,131072,78.85
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,131072,77.82
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,131072,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,131072,107.52
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,131072,74.75
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,131072,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,131072,103.42
+"CSA2, learned indexer",Picks,262144,96.26
+"CSA2, learned indexer",Attention,262144,31.74
+"CSA2, learned indexer",Picks + attention,262144,124.93
+"CSA2, picks every 4 layers",Picks,262144,68.61
+"CSA2, picks every 4 layers",Attention,262144,31.74
+"CSA2, picks every 4 layers",Picks + attention,262144,97.28
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,262144,95.23
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,262144,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,262144,123.9
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,262144,117.76
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,262144,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,262144,147.46
+"CSA2, learned indexer",Picks,524288,135.17
+"CSA2, learned indexer",Attention,524288,31.74
+"CSA2, learned indexer",Picks + attention,524288,164.86
+"CSA2, picks every 4 layers",Picks,524288,101.38
+"CSA2, picks every 4 layers",Attention,524288,31.74
+"CSA2, picks every 4 layers",Picks + attention,524288,129.02
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,524288,126.98
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,524288,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,524288,154.62
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,524288,202.75
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,524288,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,524288,231.42
+"CSA2, learned indexer",Picks,1048576,242.69
+"CSA2, learned indexer",Attention,1048576,31.74
+"CSA2, learned indexer",Picks + attention,1048576,275.46
+"CSA2, picks every 4 layers",Picks,1048576,179.2
+"CSA2, picks every 4 layers",Attention,1048576,31.74
+"CSA2, picks every 4 layers",Picks + attention,1048576,208.9
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,1048576,193.54
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,1048576,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,1048576,222.21
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,1048576,363.52
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,1048576,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,1048576,395.26

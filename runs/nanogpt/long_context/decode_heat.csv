@@ -1,0 +1,487 @@
+version,part,n,us_per_token
+"CSA2, learned indexer",Picks,4096,25.6
+"CSA2, learned indexer",Attention,4096,31.74
+"CSA2, learned indexer",Picks + attention,4096,54.27
+"CSA2, picks every 4 layers",Picks,4096,16.38
+"CSA2, picks every 4 layers",Attention,4096,31.74
+"CSA2, picks every 4 layers",Picks + attention,4096,45.06
+"Ours, exact",Picks,4096,33.79
+"Ours, exact",Attention,4096,38.91
+"Ours, exact",Picks + attention,4096,69.63
+"Ours, prefilter keeps 512",Picks,4096,88.06
+"Ours, prefilter keeps 512",Attention,4096,38.91
+"Ours, prefilter keeps 512",Picks + attention,4096,124.93
+"Ours, exact, picks every 4 layers",Picks,4096,22.53
+"Ours, exact, picks every 4 layers",Attention,4096,38.91
+"Ours, exact, picks every 4 layers",Picks + attention,4096,58.37
+"Ours, routed 2 of 6 blocks",Picks,4096,26.62
+"Ours, routed 2 of 6 blocks",Attention,4096,38.91
+"Ours, routed 2 of 6 blocks",Picks + attention,4096,62.46
+"Ours, routed, picks every 4 layers",Picks,4096,17.41
+"Ours, routed, picks every 4 layers",Attention,4096,38.91
+"Ours, routed, picks every 4 layers",Picks + attention,4096,53.25
+"Ours, routed, block-major",Picks,4096,25.6
+"Ours, routed, block-major",Attention,4096,39.94
+"Ours, routed, block-major",Picks + attention,4096,62.46
+"Ours, routed, block-major, picks every 4 layers",Picks,4096,16.38
+"Ours, routed, block-major, picks every 4 layers",Attention,4096,39.94
+"Ours, routed, block-major, picks every 4 layers",Picks + attention,4096,52.22
+"Ours, exact, 1 shared K=V window head",Picks,4096,33.79
+"Ours, exact, 1 shared K=V window head",Attention,4096,33.79
+"Ours, exact, 1 shared K=V window head",Picks + attention,4096,64.51
+"Ours, exact, 2 shared K=V window heads",Picks,4096,33.79
+"Ours, exact, 2 shared K=V window heads",Attention,4096,33.79
+"Ours, exact, 2 shared K=V window heads",Picks + attention,4096,65.54
+"Ours, exact, per-head K=V window",Picks,4096,33.79
+"Ours, exact, per-head K=V window",Attention,4096,36.86
+"Ours, exact, per-head K=V window",Picks + attention,4096,67.58
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks,4096,89.09
+"Ours, prefilter keeps 512, 1 shared K=V window head",Attention,4096,33.79
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks + attention,4096,119.81
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,4096,55.3
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,4096,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,4096,86.02
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,4096,23.55
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,4096,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,4096,53.25
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks,4096,16.38
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Attention,4096,35.84
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks + attention,4096,48.13
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks,4096,16.38
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Attention,4096,35.84
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks + attention,4096,49.15
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks,4096,16.38
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Attention,4096,37.89
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks + attention,4096,51.2
+"CSA2, learned indexer",Picks,8192,27.65
+"CSA2, learned indexer",Attention,8192,31.74
+"CSA2, learned indexer",Picks + attention,8192,57.34
+"CSA2, picks every 4 layers",Picks,8192,19.46
+"CSA2, picks every 4 layers",Attention,8192,31.74
+"CSA2, picks every 4 layers",Picks + attention,8192,47.1
+"Ours, exact",Picks,8192,40.96
+"Ours, exact",Attention,8192,39.94
+"Ours, exact",Picks + attention,8192,76.8
+"Ours, prefilter keeps 512",Picks,8192,95.23
+"Ours, prefilter keeps 512",Attention,8192,39.94
+"Ours, prefilter keeps 512",Picks + attention,8192,132.1
+"Ours, exact, picks every 4 layers",Picks,8192,27.65
+"Ours, exact, picks every 4 layers",Attention,8192,39.94
+"Ours, exact, picks every 4 layers",Picks + attention,8192,63.49
+"Ours, routed 2 of 6 blocks",Picks,8192,29.7
+"Ours, routed 2 of 6 blocks",Attention,8192,39.94
+"Ours, routed 2 of 6 blocks",Picks + attention,8192,65.54
+"Ours, routed, picks every 4 layers",Picks,8192,18.43
+"Ours, routed, picks every 4 layers",Attention,8192,39.94
+"Ours, routed, picks every 4 layers",Picks + attention,8192,55.3
+"Ours, routed, block-major",Picks,8192,28.67
+"Ours, routed, block-major",Attention,8192,39.94
+"Ours, routed, block-major",Picks + attention,8192,65.54
+"Ours, routed, block-major, picks every 4 layers",Picks,8192,18.43
+"Ours, routed, block-major, picks every 4 layers",Attention,8192,39.94
+"Ours, routed, block-major, picks every 4 layers",Picks + attention,8192,55.3
+"Ours, exact, 1 shared K=V window head",Picks,8192,40.96
+"Ours, exact, 1 shared K=V window head",Attention,8192,33.79
+"Ours, exact, 1 shared K=V window head",Picks + attention,8192,70.66
+"Ours, exact, 2 shared K=V window heads",Picks,8192,40.96
+"Ours, exact, 2 shared K=V window heads",Attention,8192,34.82
+"Ours, exact, 2 shared K=V window heads",Picks + attention,8192,72.7
+"Ours, exact, per-head K=V window",Picks,8192,40.96
+"Ours, exact, per-head K=V window",Attention,8192,36.86
+"Ours, exact, per-head K=V window",Picks + attention,8192,74.75
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks,8192,95.23
+"Ours, prefilter keeps 512, 1 shared K=V window head",Attention,8192,33.79
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks + attention,8192,125.95
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,8192,58.37
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,8192,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,8192,89.09
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,8192,27.65
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,8192,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,8192,56.32
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks,8192,18.43
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Attention,8192,35.84
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks + attention,8192,50.18
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks,8192,18.43
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Attention,8192,36.86
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks + attention,8192,51.2
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks,8192,18.43
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Attention,8192,37.89
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks + attention,8192,53.25
+"CSA2, learned indexer",Picks,16384,37.89
+"CSA2, learned indexer",Attention,16384,31.74
+"CSA2, learned indexer",Picks + attention,16384,66.56
+"CSA2, picks every 4 layers",Picks,16384,24.58
+"CSA2, picks every 4 layers",Attention,16384,31.74
+"CSA2, picks every 4 layers",Picks + attention,16384,53.25
+"Ours, exact",Picks,16384,46.08
+"Ours, exact",Attention,16384,39.94
+"Ours, exact",Picks + attention,16384,80.9
+"Ours, prefilter keeps 512",Picks,16384,99.33
+"Ours, prefilter keeps 512",Attention,16384,38.91
+"Ours, prefilter keeps 512",Picks + attention,16384,134.14
+"Ours, exact, picks every 4 layers",Picks,16384,31.74
+"Ours, exact, picks every 4 layers",Attention,16384,38.91
+"Ours, exact, picks every 4 layers",Picks + attention,16384,66.56
+"Ours, routed 2 of 6 blocks",Picks,16384,41.98
+"Ours, routed 2 of 6 blocks",Attention,16384,39.94
+"Ours, routed 2 of 6 blocks",Picks + attention,16384,77.82
+"Ours, routed, picks every 4 layers",Picks,16384,26.62
+"Ours, routed, picks every 4 layers",Attention,16384,39.94
+"Ours, routed, picks every 4 layers",Picks + attention,16384,62.46
+"Ours, routed, block-major",Picks,16384,39.94
+"Ours, routed, block-major",Attention,16384,39.94
+"Ours, routed, block-major",Picks + attention,16384,76.8
+"Ours, routed, block-major, picks every 4 layers",Picks,16384,24.58
+"Ours, routed, block-major, picks every 4 layers",Attention,16384,39.94
+"Ours, routed, block-major, picks every 4 layers",Picks + attention,16384,62.46
+"Ours, exact, 1 shared K=V window head",Picks,16384,47.1
+"Ours, exact, 1 shared K=V window head",Attention,16384,33.79
+"Ours, exact, 1 shared K=V window head",Picks + attention,16384,76.8
+"Ours, exact, 2 shared K=V window heads",Picks,16384,47.1
+"Ours, exact, 2 shared K=V window heads",Attention,16384,34.82
+"Ours, exact, 2 shared K=V window heads",Picks + attention,16384,78.85
+"Ours, exact, per-head K=V window",Picks,16384,46.08
+"Ours, exact, per-head K=V window",Attention,16384,35.84
+"Ours, exact, per-head K=V window",Picks + attention,16384,79.87
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks,16384,99.33
+"Ours, prefilter keeps 512, 1 shared K=V window head",Attention,16384,33.79
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks + attention,16384,130.05
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,16384,61.44
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,16384,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,16384,92.16
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,16384,31.74
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,16384,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,16384,61.44
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks,16384,25.6
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Attention,16384,35.84
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks + attention,16384,57.34
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks,16384,24.58
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Attention,16384,35.84
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks + attention,16384,57.34
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks,16384,24.58
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Attention,16384,37.89
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks + attention,16384,59.39
+"CSA2, learned indexer",Picks,32768,47.1
+"CSA2, learned indexer",Attention,32768,31.74
+"CSA2, learned indexer",Picks + attention,32768,77.82
+"CSA2, picks every 4 layers",Picks,32768,30.72
+"CSA2, picks every 4 layers",Attention,32768,31.74
+"CSA2, picks every 4 layers",Picks + attention,32768,60.42
+"Ours, exact",Picks,32768,62.46
+"Ours, exact",Attention,32768,39.94
+"Ours, exact",Picks + attention,32768,95.23
+"Ours, prefilter keeps 512",Picks,32768,117.76
+"Ours, prefilter keeps 512",Attention,32768,38.91
+"Ours, prefilter keeps 512",Picks + attention,32768,151.55
+"Ours, exact, picks every 4 layers",Picks,32768,41.98
+"Ours, exact, picks every 4 layers",Attention,32768,39.94
+"Ours, exact, picks every 4 layers",Picks + attention,32768,75.78
+"Ours, routed 2 of 6 blocks",Picks,32768,52.22
+"Ours, routed 2 of 6 blocks",Attention,32768,39.94
+"Ours, routed 2 of 6 blocks",Picks + attention,32768,86.02
+"Ours, routed, picks every 4 layers",Picks,32768,33.79
+"Ours, routed, picks every 4 layers",Attention,32768,39.94
+"Ours, routed, picks every 4 layers",Picks + attention,32768,67.58
+"Ours, routed, block-major",Picks,32768,51.2
+"Ours, routed, block-major",Attention,32768,40.96
+"Ours, routed, block-major",Picks + attention,32768,88.06
+"Ours, routed, block-major, picks every 4 layers",Picks,32768,32.77
+"Ours, routed, block-major, picks every 4 layers",Attention,32768,40.96
+"Ours, routed, block-major, picks every 4 layers",Picks + attention,32768,68.61
+"Ours, exact, 1 shared K=V window head",Picks,32768,62.46
+"Ours, exact, 1 shared K=V window head",Attention,32768,33.79
+"Ours, exact, 1 shared K=V window head",Picks + attention,32768,93.18
+"Ours, exact, 2 shared K=V window heads",Picks,32768,62.46
+"Ours, exact, 2 shared K=V window heads",Attention,32768,35.84
+"Ours, exact, 2 shared K=V window heads",Picks + attention,32768,93.18
+"Ours, exact, per-head K=V window",Picks,32768,62.46
+"Ours, exact, per-head K=V window",Attention,32768,36.86
+"Ours, exact, per-head K=V window",Picks + attention,32768,96.26
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks,32768,117.76
+"Ours, prefilter keeps 512, 1 shared K=V window head",Attention,32768,33.79
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks + attention,32768,148.48
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,32768,72.7
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,32768,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,32768,101.38
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,32768,41.98
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,32768,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,32768,72.7
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks,32768,31.74
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Attention,32768,35.84
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks + attention,32768,63.49
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks,32768,32.77
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Attention,32768,36.86
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks + attention,32768,65.54
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks,32768,32.77
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Attention,32768,38.91
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks + attention,32768,67.58
+"CSA2, learned indexer",Picks,65536,52.22
+"CSA2, learned indexer",Attention,65536,31.74
+"CSA2, learned indexer",Picks + attention,65536,82.94
+"CSA2, picks every 4 layers",Picks,65536,35.84
+"CSA2, picks every 4 layers",Attention,65536,31.74
+"CSA2, picks every 4 layers",Picks + attention,65536,64.51
+"Ours, exact",Picks,65536,74.75
+"Ours, exact",Attention,65536,38.91
+"Ours, exact",Picks + attention,65536,107.52
+"Ours, prefilter keeps 512",Picks,65536,123.9
+"Ours, prefilter keeps 512",Attention,65536,38.91
+"Ours, prefilter keeps 512",Picks + attention,65536,154.62
+"Ours, exact, picks every 4 layers",Picks,65536,53.25
+"Ours, exact, picks every 4 layers",Attention,65536,38.91
+"Ours, exact, picks every 4 layers",Picks + attention,65536,88.06
+"Ours, routed 2 of 6 blocks",Picks,65536,62.46
+"Ours, routed 2 of 6 blocks",Attention,65536,38.91
+"Ours, routed 2 of 6 blocks",Picks + attention,65536,94.21
+"Ours, routed, picks every 4 layers",Picks,65536,38.91
+"Ours, routed, picks every 4 layers",Attention,65536,38.91
+"Ours, routed, picks every 4 layers",Picks + attention,65536,72.7
+"Ours, routed, block-major",Picks,65536,61.44
+"Ours, routed, block-major",Attention,65536,39.94
+"Ours, routed, block-major",Picks + attention,65536,96.26
+"Ours, routed, block-major, picks every 4 layers",Picks,65536,37.89
+"Ours, routed, block-major, picks every 4 layers",Attention,65536,39.94
+"Ours, routed, block-major, picks every 4 layers",Picks + attention,65536,72.7
+"Ours, exact, 1 shared K=V window head",Picks,65536,74.75
+"Ours, exact, 1 shared K=V window head",Attention,65536,33.79
+"Ours, exact, 1 shared K=V window head",Picks + attention,65536,105.47
+"Ours, exact, 2 shared K=V window heads",Picks,65536,74.75
+"Ours, exact, 2 shared K=V window heads",Attention,65536,34.82
+"Ours, exact, 2 shared K=V window heads",Picks + attention,65536,104.45
+"Ours, exact, per-head K=V window",Picks,65536,74.75
+"Ours, exact, per-head K=V window",Attention,65536,35.84
+"Ours, exact, per-head K=V window",Picks + attention,65536,106.5
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks,65536,123.9
+"Ours, prefilter keeps 512, 1 shared K=V window head",Attention,65536,33.79
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks + attention,65536,153.09
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,65536,76.8
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,65536,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,65536,105.47
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,65536,53.25
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,65536,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,65536,83.97
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks,65536,37.89
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Attention,65536,35.84
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks + attention,65536,69.63
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks,65536,37.89
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Attention,65536,36.86
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks + attention,65536,70.66
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks,65536,37.89
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Attention,65536,37.89
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks + attention,65536,71.68
+"CSA2, learned indexer",Picks,131072,71.68
+"CSA2, learned indexer",Attention,131072,31.74
+"CSA2, learned indexer",Picks + attention,131072,103.42
+"CSA2, picks every 4 layers",Picks,131072,48.13
+"CSA2, picks every 4 layers",Attention,131072,31.74
+"CSA2, picks every 4 layers",Picks + attention,131072,78.85
+"Ours, exact",Picks,131072,97.28
+"Ours, exact",Attention,131072,39.94
+"Ours, exact",Picks + attention,131072,131.07
+"Ours, prefilter keeps 512",Picks,131072,125.95
+"Ours, prefilter keeps 512",Attention,131072,38.91
+"Ours, prefilter keeps 512",Picks + attention,131072,154.62
+"Ours, exact, picks every 4 layers",Picks,131072,74.75
+"Ours, exact, picks every 4 layers",Attention,131072,39.94
+"Ours, exact, picks every 4 layers",Picks + attention,131072,108.54
+"Ours, routed 2 of 6 blocks",Picks,131072,79.87
+"Ours, routed 2 of 6 blocks",Attention,131072,39.94
+"Ours, routed 2 of 6 blocks",Picks + attention,131072,112.64
+"Ours, routed, picks every 4 layers",Picks,131072,50.18
+"Ours, routed, picks every 4 layers",Attention,131072,39.94
+"Ours, routed, picks every 4 layers",Picks + attention,131072,84.99
+"Ours, routed, block-major",Picks,131072,77.82
+"Ours, routed, block-major",Attention,131072,40.96
+"Ours, routed, block-major",Picks + attention,131072,111.62
+"Ours, routed, block-major, picks every 4 layers",Picks,131072,49.15
+"Ours, routed, block-major, picks every 4 layers",Attention,131072,40.96
+"Ours, routed, block-major, picks every 4 layers",Picks + attention,131072,83.97
+"Ours, exact, 1 shared K=V window head",Picks,131072,97.28
+"Ours, exact, 1 shared K=V window head",Attention,131072,34.82
+"Ours, exact, 1 shared K=V window head",Picks + attention,131072,126.98
+"Ours, exact, 2 shared K=V window heads",Picks,131072,98.3
+"Ours, exact, 2 shared K=V window heads",Attention,131072,34.82
+"Ours, exact, 2 shared K=V window heads",Picks + attention,131072,128.0
+"Ours, exact, per-head K=V window",Picks,131072,97.28
+"Ours, exact, per-head K=V window",Attention,131072,36.86
+"Ours, exact, per-head K=V window",Picks + attention,131072,129.02
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks,131072,125.95
+"Ours, prefilter keeps 512, 1 shared K=V window head",Attention,131072,33.79
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks + attention,131072,154.11
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,131072,77.82
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,131072,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,131072,107.52
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,131072,74.75
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,131072,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,131072,103.42
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks,131072,49.15
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Attention,131072,36.86
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks + attention,131072,79.87
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks,131072,49.15
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Attention,131072,36.86
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks + attention,131072,80.9
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks,131072,49.15
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Attention,131072,38.91
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks + attention,131072,81.92
+"CSA2, learned indexer",Picks,262144,96.26
+"CSA2, learned indexer",Attention,262144,31.74
+"CSA2, learned indexer",Picks + attention,262144,124.93
+"CSA2, picks every 4 layers",Picks,262144,68.61
+"CSA2, picks every 4 layers",Attention,262144,31.74
+"CSA2, picks every 4 layers",Picks + attention,262144,97.28
+"Ours, exact",Picks,262144,148.48
+"Ours, exact",Attention,262144,38.91
+"Ours, exact",Picks + attention,262144,180.22
+"Ours, prefilter keeps 512",Picks,262144,154.62
+"Ours, prefilter keeps 512",Attention,262144,38.91
+"Ours, prefilter keeps 512",Picks + attention,262144,187.39
+"Ours, exact, picks every 4 layers",Picks,262144,117.76
+"Ours, exact, picks every 4 layers",Attention,262144,38.91
+"Ours, exact, picks every 4 layers",Picks + attention,262144,150.53
+"Ours, routed 2 of 6 blocks",Picks,262144,109.57
+"Ours, routed 2 of 6 blocks",Attention,262144,38.91
+"Ours, routed 2 of 6 blocks",Picks + attention,262144,142.34
+"Ours, routed, picks every 4 layers",Picks,262144,74.75
+"Ours, routed, picks every 4 layers",Attention,262144,38.91
+"Ours, routed, picks every 4 layers",Picks + attention,262144,107.52
+"Ours, routed, block-major",Picks,262144,102.4
+"Ours, routed, block-major",Attention,262144,39.94
+"Ours, routed, block-major",Picks + attention,262144,135.17
+"Ours, routed, block-major, picks every 4 layers",Picks,262144,66.56
+"Ours, routed, block-major, picks every 4 layers",Attention,262144,39.94
+"Ours, routed, block-major, picks every 4 layers",Picks + attention,262144,101.38
+"Ours, exact, 1 shared K=V window head",Picks,262144,148.48
+"Ours, exact, 1 shared K=V window head",Attention,262144,33.79
+"Ours, exact, 1 shared K=V window head",Picks + attention,262144,178.18
+"Ours, exact, 2 shared K=V window heads",Picks,262144,148.48
+"Ours, exact, 2 shared K=V window heads",Attention,262144,34.82
+"Ours, exact, 2 shared K=V window heads",Picks + attention,262144,178.18
+"Ours, exact, per-head K=V window",Picks,262144,148.48
+"Ours, exact, per-head K=V window",Attention,262144,35.84
+"Ours, exact, per-head K=V window",Picks + attention,262144,179.2
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks,262144,154.62
+"Ours, prefilter keeps 512, 1 shared K=V window head",Attention,262144,33.79
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks + attention,262144,183.81
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,262144,95.23
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,262144,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,262144,123.9
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,262144,117.76
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,262144,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,262144,147.46
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks,262144,66.56
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Attention,262144,35.84
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks + attention,262144,97.28
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks,262144,67.58
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Attention,262144,36.86
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks + attention,262144,98.3
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks,262144,66.56
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Attention,262144,37.89
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks + attention,262144,99.33
+"CSA2, learned indexer",Picks,524288,135.17
+"CSA2, learned indexer",Attention,524288,31.74
+"CSA2, learned indexer",Picks + attention,524288,164.86
+"CSA2, picks every 4 layers",Picks,524288,101.38
+"CSA2, picks every 4 layers",Attention,524288,31.74
+"CSA2, picks every 4 layers",Picks + attention,524288,129.02
+"Ours, exact",Picks,524288,280.58
+"Ours, exact",Attention,524288,38.91
+"Ours, exact",Picks + attention,524288,310.27
+"Ours, prefilter keeps 512",Picks,524288,202.75
+"Ours, prefilter keeps 512",Attention,524288,38.91
+"Ours, prefilter keeps 512",Picks + attention,524288,234.5
+"Ours, exact, picks every 4 layers",Picks,524288,202.75
+"Ours, exact, picks every 4 layers",Attention,524288,38.91
+"Ours, exact, picks every 4 layers",Picks + attention,524288,234.5
+"Ours, routed 2 of 6 blocks",Picks,524288,168.96
+"Ours, routed 2 of 6 blocks",Attention,524288,38.91
+"Ours, routed 2 of 6 blocks",Picks + attention,524288,200.7
+"Ours, routed, picks every 4 layers",Picks,524288,117.76
+"Ours, routed, picks every 4 layers",Attention,524288,38.91
+"Ours, routed, picks every 4 layers",Picks + attention,524288,149.5
+"Ours, routed, block-major",Picks,524288,143.36
+"Ours, routed, block-major",Attention,524288,39.94
+"Ours, routed, block-major",Picks + attention,524288,177.15
+"Ours, routed, block-major, picks every 4 layers",Picks,524288,99.33
+"Ours, routed, block-major, picks every 4 layers",Attention,524288,40.45
+"Ours, routed, block-major, picks every 4 layers",Picks + attention,524288,132.1
+"Ours, exact, 1 shared K=V window head",Picks,524288,280.58
+"Ours, exact, 1 shared K=V window head",Attention,524288,33.79
+"Ours, exact, 1 shared K=V window head",Picks + attention,524288,308.22
+"Ours, exact, 2 shared K=V window heads",Picks,524288,279.55
+"Ours, exact, 2 shared K=V window heads",Attention,524288,33.79
+"Ours, exact, 2 shared K=V window heads",Picks + attention,524288,308.22
+"Ours, exact, per-head K=V window",Picks,524288,279.55
+"Ours, exact, per-head K=V window",Attention,524288,36.86
+"Ours, exact, per-head K=V window",Picks + attention,524288,309.25
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks,524288,202.75
+"Ours, prefilter keeps 512, 1 shared K=V window head",Attention,524288,33.79
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks + attention,524288,231.42
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,524288,126.98
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,524288,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,524288,154.62
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,524288,202.75
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,524288,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,524288,231.42
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks,524288,99.33
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Attention,524288,35.84
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks + attention,524288,129.02
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks,524288,99.33
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Attention,524288,35.84
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks + attention,524288,130.05
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks,524288,99.33
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Attention,524288,38.91
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks + attention,524288,131.07
+"CSA2, learned indexer",Picks,1048576,242.69
+"CSA2, learned indexer",Attention,1048576,31.74
+"CSA2, learned indexer",Picks + attention,1048576,275.46
+"CSA2, picks every 4 layers",Picks,1048576,179.2
+"CSA2, picks every 4 layers",Attention,1048576,31.74
+"CSA2, picks every 4 layers",Picks + attention,1048576,208.9
+"Ours, exact",Picks,1048576,569.34
+"Ours, exact",Attention,1048576,38.91
+"Ours, exact",Picks + attention,1048576,603.14
+"Ours, prefilter keeps 512",Picks,1048576,310.27
+"Ours, prefilter keeps 512",Attention,1048576,38.91
+"Ours, prefilter keeps 512",Picks + attention,1048576,340.99
+"Ours, exact, picks every 4 layers",Picks,1048576,363.52
+"Ours, exact, picks every 4 layers",Attention,1048576,38.91
+"Ours, exact, picks every 4 layers",Picks + attention,1048576,396.29
+"Ours, routed 2 of 6 blocks",Picks,1048576,291.84
+"Ours, routed 2 of 6 blocks",Attention,1048576,38.91
+"Ours, routed 2 of 6 blocks",Picks + attention,1048576,324.61
+"Ours, routed, picks every 4 layers",Picks,1048576,207.87
+"Ours, routed, picks every 4 layers",Attention,1048576,38.91
+"Ours, routed, picks every 4 layers",Picks + attention,1048576,239.62
+"Ours, routed, block-major",Picks,1048576,256.0
+"Ours, routed, block-major",Attention,1048576,39.94
+"Ours, routed, block-major",Picks + attention,1048576,292.86
+"Ours, routed, block-major, picks every 4 layers",Picks,1048576,176.13
+"Ours, routed, block-major, picks every 4 layers",Attention,1048576,39.94
+"Ours, routed, block-major, picks every 4 layers",Picks + attention,1048576,211.97
+"Ours, exact, 1 shared K=V window head",Picks,1048576,569.34
+"Ours, exact, 1 shared K=V window head",Attention,1048576,33.79
+"Ours, exact, 1 shared K=V window head",Picks + attention,1048576,601.09
+"Ours, exact, 2 shared K=V window heads",Picks,1048576,569.34
+"Ours, exact, 2 shared K=V window heads",Attention,1048576,34.82
+"Ours, exact, 2 shared K=V window heads",Picks + attention,1048576,601.09
+"Ours, exact, per-head K=V window",Picks,1048576,568.32
+"Ours, exact, per-head K=V window",Attention,1048576,35.84
+"Ours, exact, per-head K=V window",Picks + attention,1048576,601.09
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks,1048576,311.3
+"Ours, prefilter keeps 512, 1 shared K=V window head",Attention,1048576,33.79
+"Ours, prefilter keeps 512, 1 shared K=V window head",Picks + attention,1048576,339.97
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks,1048576,193.54
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Attention,1048576,33.79
+"Ours, prefilter keeps 512, picks every 4 layers, 1 shared K=V window head",Picks + attention,1048576,222.21
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks,1048576,363.52
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Attention,1048576,33.79
+"Ours, exact, picks every 4 layers, 1 shared K=V window head",Picks + attention,1048576,395.26
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks,1048576,176.13
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Attention,1048576,35.84
+"Ours, routed, block-major, picks every 4 layers, 1 shared K=V window head",Picks + attention,1048576,208.9
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks,1048576,176.13
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Attention,1048576,36.86
+"Ours, routed, block-major, picks every 4 layers, 2 shared K=V window heads",Picks + attention,1048576,208.9
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks,1048576,176.13
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Attention,1048576,37.89
+"Ours, routed, block-major, picks every 4 layers, per-head K=V window",Picks + attention,1048576,210.94

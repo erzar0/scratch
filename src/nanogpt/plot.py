@@ -8,20 +8,22 @@ and the final checkpoints' validation loss by token group
 
 Same data, schedule and token count in every run: 10000 steps in 3 stages of
 2048, 4096 and 6144-token rows, then 160 extension steps.
-Stripped: record 91 without value embeddings into V, XSA, attention gates, DC and
-paired heads, all left out of the CSA2 and tournament runs. Long documents: cut at the
-row length instead of 896 / 2048 tokens. Tournament: nanogpt/tournament.py; fast
-tournament: nanogpt/tournament_fast.py, same output, faster kernels; keys at 32K =
-keys each query reads at 32K context. Writes runs/nanogpt/training/training_curves,
+Stripped: record 91 without value embeddings into V, XSA, attention gates, DC and paired
+heads, all left out of the CSA2 and tournament runs. Long documents: cut at the row
+length instead of 896 / 2048 tokens. Tournament: nanogpt/tournament.py; fast tournament:
+nanogpt/tournament_fast.py, same output, faster kernels; keys at 32K = keys each query
+reads at 32K context. Writes runs/nanogpt/training/training_curves, csa2_curves,
 training_final, val_groups, attention_cost and, when their CSVs exist, coarse_rounds,
 real_qk, skip_tiles, skip_tiles_mass, skip_blocks_mass_2048, skip_blocks_mass_8192,
-skip_blocks_work, tile_scores_2048, tile_scores_8192, cutoff_timing,
-tile_select_speed, tile_select_long_time, tile_select_long_memory, window_speed_time,
-window_speed_memory, kv_cache, union_speed, decode_speed, select_methods,
-select_in_kernel, topk_two_kernel, topk_passes, topk_warps, topk_versions,
-topk_budget_time, topk_budget_memory, step_profile and step_profile_tiles (.png),
-each in its topic folder: runs/nanogpt/training, checkpoints, selection_speed,
-long_context, settings.
+skip_blocks_work, tile_scores_2048, tile_scores_8192, cutoff_timing, tile_select_speed,
+tile_select_long_time, tile_select_long_memory, window_speed_time, window_speed_memory,
+kv_cache, union_speed, decode_speed, csa2_decode, csa2_scoreboard, csa2_positions,
+csa2_rules, csa2_profile,
+select_methods, select_in_kernel, topk_two_kernel, topk_passes, topk_warps,
+topk_versions, topk_budget_time, topk_budget_memory, step_profile and
+step_profile_tiles (.png), each
+in its topic folder: runs/nanogpt/training, checkpoints, selection_speed, long_context,
+settings.
 """
 
 import re
@@ -29,11 +31,13 @@ import textwrap
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+import numpy as np
 import polars as pl
 from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 from matplotlib.lines import Line2D
 from matplotlib.ticker import FuncFormatter, LogLocator
+from matplotlib.transforms import blended_transform_factory
 
 from common import style
 
@@ -86,12 +90,90 @@ MODELS = {  # name -> seed -> run id
     "CSA2 stripped, long documents, PyTorch": {
         "1": "8f1e55cd-1745-4f49-a7cc-0e251587424f",
     },
+    "CSA2 stripped, exact picks instead of the indexer, PyTorch": {
+        "1": "0f11b05b-3223-46e7-a964-3122b9c698fa",
+    },
+    "CSA2 stripped, tournament picks instead of the indexer, PyTorch": {
+        "1": "36a3dd14-5e7f-4801-978d-1bda924c3781",
+    },
+    "CSA2 KV layout in stripped record 91, exact top 64 entries, flex attention": {
+        "1": "5f0cf619-be55-44ea-ad17-e182a1b0858a",
+    },
+    "CSA2 KV layout in stripped record 91, tournament top 64 entries, flex attention": {
+        "1": "f7f5027f-86ca-47c3-8fc0-4b4c0447ba95",
+    },
+    "CSA2 KV layout in stripped record 91, MQA window, tournament top 64 entries, "
+    "flex attention": {
+        "1": "17d3ab72-460c-4128-8655-e2cc8a5a6745",
+    },
+}
+LAYOUT = "CSA2 KV layout in stripped record 91"
+MODELS |= {  # 24 h plan (2026-11-10): CSA2's K=V window, picks every 4 layers, routing
+    f"{LAYOUT}, exact, 1 shared K=V window head": {
+        "1": "d3c62030-839b-46fa-9cc3-4434d250d0fd"
+    },
+    f"{LAYOUT}, exact, 2 shared K=V window heads": {
+        "1": "a5c3510a-b8ee-4ed4-a36c-fb2d28d59cba"
+    },
+    f"{LAYOUT}, exact, per-head K=V window": {
+        "1": "3f7b047d-2d9b-4349-ac8c-d42aa50ea257"
+    },
+    f"{LAYOUT}, exact, picks every 4 layers": {
+        "1": "be093c56-fd99-48c5-adc6-59a8421f8d2c"
+    },
+    f"{LAYOUT}, routed 2 of 6 blocks, picks every 4 layers": {
+        "1": "40c90993-6932-4f96-bd05-74cae7ca6cbc"
+    },
+    f"{LAYOUT}, routed, picks every 4 layers, 1 shared K=V window head": {
+        "1": "7fbb74fb-5f88-45be-be3c-fe4aaf590e59",
+        "2": "0677f733-6c4d-4227-93d3-230ee74e41e8",
+    },
+    f"{LAYOUT}, exact, picks every 4 layers, 1 shared K=V window head": {
+        "1": "1b0702e3-0cc6-43cb-8fc1-a133899b90d0"
+    },
 }
 OLD = "Tournament stripped, 512 keys at 32K, blocks of 1024, 8 channels per round"
 CSA2 = "CSA2 stripped, PyTorch"
 # seed 1, default documents; 7 colors: old tournament and CSA2 left out
 CURVES = [m for m in list(MODELS)[:9] if m not in (OLD, CSA2)]
-COLORS = ("#eda100", "#eb6834", "#1baf7a", "#2a78d6", "#e87ba4", "#6250d6", "#008300")
+# CSA2 goal, seed 1: baselines, CSA2 with our picks, CSA2's KV layout in record 91
+B_EXACT = f"{LAYOUT}, exact top 64 entries, flex attention"
+CSA2_CURVES = [
+    "Dense stripped, FlashAttention 2",
+    CSA2,
+    "CSA2 stripped, exact picks instead of the indexer, PyTorch",
+    "CSA2 stripped, tournament picks instead of the indexer, PyTorch",
+    B_EXACT,
+    f"{LAYOUT}, tournament top 64 entries, flex attention",
+    f"{LAYOUT}, MQA window, tournament top 64 entries, flex attention",
+]
+# 24 h plan: window options, then pick options (exact picks every 2 = B exact)
+WINDOW_CURVES = [
+    CSA2,
+    B_EXACT,
+    *(
+        f"{LAYOUT}, exact, {w}"
+        for w in (
+            "1 shared K=V window head",
+            "2 shared K=V window heads",
+            "per-head K=V window",
+        )
+    ),
+]
+PICK_CURVES = [CSA2, B_EXACT, *(f"{LAYOUT}, {p}" for p in (
+    "exact, picks every 4 layers", "routed 2 of 6 blocks, picks every 4 layers",
+    "routed, picks every 4 layers, 1 shared K=V window head",
+    "exact, picks every 4 layers, 1 shared K=V window head"))]  # fmt: skip
+COLORS = (
+    "#eda100",
+    "#eb6834",
+    "#1baf7a",
+    "#2a78d6",
+    "#e87ba4",
+    "#6250d6",
+    "#008300",
+    "#8c5a2b",
+)
 # slots 4, 2, 3, 1, 5, 7, 6
 MARKERS = {"1": "o", "2": "s", "random": "^"}
 
@@ -107,11 +189,11 @@ def val_losses(run: str) -> list[tuple[int, float, float]]:
     return [(int(step), float(loss), int(ms) / 3.6e6) for step, loss, ms in found]
 
 
-def curves() -> None:
-    """Validation loss per training hour (validation excluded), seed 1; step 0
-    (10.8 in every run) left out."""
+def curves(names: list[str] = CURVES, out: str = "training_curves") -> None:
+    """Validation loss per training hour (validation excluded), seed 1, one line
+    per name; step 0 (10.8 in every run) left out."""
     fig, ax = plt.subplots(figsize=(5.5, 2.2), layout="constrained")
-    for name, color in zip(CURVES, COLORS, strict=True):
+    for name, color in zip(names, COLORS[: len(names)], strict=True):
         points = val_losses(MODELS[name]["1"])[1:]
         if points:
             _, losses, hours = zip(*points, strict=True)
@@ -119,7 +201,7 @@ def curves() -> None:
     ax.set(xlabel="training time (hours)", ylabel="validation loss", ylim=(3.4, 6.0))
     ax.set_xlim(0, None)
     ax.legend(loc="upper right", handlelength=1.5)
-    style.save(fig, TRAINING / "training_curves")
+    style.save(fig, TRAINING / out)
 
 
 def dot_panel(
@@ -274,17 +356,19 @@ def dot_rows(
     xlabel: str,
     name: Path,
     log: bool = False,
+    lines: tuple[float, ...] = (),
 ) -> None:
     """A dot panel: one row per label (rows: label -> filter), one dot per value of
-    the series column, the mean of value over the rest (log x axis if log); legend
-    below; saved as name.png."""
+    the series column, the mean of value over the rest (log x axis if log); a
+    vertical line at each of lines (the first solid, the rest dotted); legend below;
+    saved as name.png."""
     fig, ax = row_figure(list(rows))
     keys = table[series].unique(maintain_order=True).to_list()
     # lengths are ordered: one-hue ramp; anything else: categorical slots 1, 2, 3, ...
     colors = (
         style.ramp(len(keys))
-        if series in ("n", "shape")
-        else [COLORS[i] for i in (3, 1, 2, 0)][: len(keys)]
+        if series in ("n", "shape", "positions")
+        else [COLORS[i] for i in (3, 1, 2, 0, 4, 5, 6, 7)][: len(keys)]
     )
     for key, color in zip(keys, colors, strict=True):
         means = [
@@ -304,6 +388,8 @@ def dot_rows(
             mew=0.4,
             label=label,
         )
+    for i, x in enumerate(lines):
+        ax.axvline(x, color=style.MUTED, lw=0.6, ls="-" if i == 0 else ":", zorder=0)
     ax.set(xlabel=xlabel, xscale="log" if log else "linear")
     if log:  # plain numbers at 1, 2, 5 x 10^k: readable over one or two decades
         ax.xaxis.set_major_locator(LogLocator(subs=(1.0, 2.0, 5.0)))
@@ -505,6 +591,175 @@ def decode_speed() -> None:
     }
     xlabel = "time per decode step, one layer, batch 1 (ms)"
     dot_rows(table, rows, "ms_per_call", "n", xlabel, SPEED / "decode_speed", log=True)
+
+
+def csa2_decode() -> None:
+    """One decode token's attention through all 10 attention layers (batch 1, CUDA
+    graph, L2 flushed): CSA2 and our picks in CSA2's KV layout (PyTorch and Triton)
+    vs FlashAttention 2 dense (experiments/csa2/bench/decode_csa2.py)."""
+    table = pl.read_csv(LONG / "csa2_decode.csv")
+    rows = {
+        v: pl.col("version") == v for v in table["version"].unique(maintain_order=True)
+    }
+    xlabel = "time per decode token, all 10 attention layers, batch 1 (ms)"
+    dot_rows(table, rows, "ms_per_token", "n", xlabel, LONG / "csa2_decode", log=True)
+
+
+CSA2_REF_DECODE = "CSA2, V4.1 reference layout (TensorRT-LLM decode)"
+
+
+def decode_heat(name: str = "decode_heat", base: str = "CSA2, learned indexer") -> None:
+    """Decode time per token (10 attention layers, batch 1, Triton) by part and
+    context, CSA2 vs our pick rules (experiments/csa2/bench/decode_heat.py; name
+    decode_block: bench/decode_block.py): cells in microseconds, color = time
+    relative to the base version's in the same part and context (blue faster, red
+    slower, log scale)."""
+    from matplotlib.colors import LinearSegmentedColormap
+
+    table = pl.read_csv(LONG / f"{name}.csv")
+    versions = table["version"].unique(maintain_order=True).to_list()
+    lengths = sorted(table["n"].unique().to_list())
+    parts = table["part"].unique(maintain_order=True).to_list()
+    cmap = LinearSegmentedColormap.from_list("vs", ["#2a78d6", "#f0efec", "#e34948"])
+    fig, axes = plt.subplots(
+        len(parts),
+        1,
+        figsize=(7.5, len(parts) * (0.3 + 0.12 * len(versions))),
+        layout="constrained",
+    )
+    for ax, part in zip(axes, parts, strict=True):
+        grid = table.filter(pl.col("part") == part).pivot(
+            "n", index="version", values="us_per_token"
+        )
+        us = grid.select([str(n) for n in lengths]).to_numpy()
+        ratio = us / us[versions.index(base)]
+        image = ax.imshow(np.log2(ratio), cmap=cmap, vmin=-2, vmax=2, aspect="auto")
+        for (r, c), value in np.ndenumerate(us):
+            dark = abs(np.log2(ratio[r, c])) > 1.2
+            ax.text(c, r, f"{value:.0f}", ha="center", va="center", fontsize=6,
+                    color=style.SURFACE if dark else style.INK)  # fmt: skip
+        ax.set_yticks(range(len(versions)), grid["version"].to_list())
+        ax.set_xticks(
+            range(len(lengths)),
+            [f"{n // 1024}K" if n < 2**20 else f"{n // 2**20}M" for n in lengths]
+            if ax is axes[-1]
+            else [],
+        )
+        ax.tick_params(length=0)
+        ax.set_title(f"{part}, microseconds per decode token", loc="left")
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+    axes[-1].set_xlabel("context (tokens)")
+    bar = fig.colorbar(image, ax=axes, shrink=0.5, pad=0.02, ticks=[-2, -1, 0, 1, 2])
+    bar.ax.set_yticklabels(["0.25x", "0.5x", "1x = CSA2", "2x", "4x"])
+    bar.set_label(f"time relative to {base}")
+    bar.outline.set_visible(False)
+    style.save(fig, LONG / name)
+
+
+def train_window() -> None:
+    """One layer's window build + csa2_flex.attention, forward and backward, at
+    stage 1 and 3 row lengths: record 91's own K, V vs CSA2's K=V windows
+    (experiments/csa2/bench/train_window.py)."""
+    table = pl.read_csv(TRAINING / "train_window.csv")
+    rows = {
+        v: pl.col("version") == v for v in table["version"].unique(maintain_order=True)
+    }
+    xlabel = "one layer's window + attention, forward and backward (ms)"
+    dot_rows(table, rows, "ms", "stage", xlabel, TRAINING / "train_window")
+
+
+def csa2_scoreboard() -> None:
+    """Each version against the baseline (the CSV's first version) on every stat
+    that must not get worse, as the ratio to it (experiments/csa2/scoreboard.py):
+    one row per version, three panels (loss, training time and memory; KV cache at
+    8K-512K tokens; decode time at 8K-512K tokens)."""
+    table = pl.read_csv(OUT / "csa2_scoreboard.csv")
+    base = table["version"][0]
+    table = table.filter(pl.col("version") != base)
+    long = f"{LAYOUT}, "
+    table = table.with_columns(pl.col("version").str.replace(long, "", literal=True))
+    names = table["version"].unique(maintain_order=True).to_list()
+    stat = pl.col("stat")
+    parts = {
+        "loss, training": ~stat.str.contains("KV cache|Decode"),
+        "KV cache (MiB)": stat.str.contains("KV cache"),
+        "decode (us per token)": stat.str.contains("Decode"),
+    }
+    fig, axes = panels(names, 3, gap=0.15, below=1.2)
+    for ax, (title, match) in zip(axes, parts.items(), strict=True):
+        part = table.filter(match)
+        stats = part["stat"].unique(maintain_order=True).to_list()
+        colors = style.ramp(len(stats)) if "(" in title else COLORS[: len(stats)]
+        for key, color in zip(stats, colors, strict=True):
+            ratio = [part.filter((stat == key) & (pl.col("version") == n))["ratio"]
+                     for n in names]  # fmt: skip
+            ax.plot([r.item() if len(r) else np.nan for r in ratio], range(len(names)),
+                    "o", color=color, ms=3, mec=style.SURFACE, mew=0.4,
+                    label=re.sub(r".* at (\S+) tokens.*", r"\1 tokens",
+                                 key.split(" (")[0]))  # fmt: skip
+        ax.axvline(1, color=style.INK, lw=0.5)
+        ax.set(xlabel=title, ylim=(len(names) - 0.5, -0.5))
+        ax.grid(axis="x", color=style.GRID, lw=0.4)
+        for side in ("left", "right", "top"):
+            ax.spines[side].set_visible(False)
+        legend_top = blended_transform_factory(ax.transAxes, fig.transFigure)
+        ax.legend(loc="upper left", bbox_to_anchor=(0, 0.8 / fig.get_figheight()),
+                  bbox_transform=legend_top, frameon=False, handletextpad=0.1,
+                  borderaxespad=0, fontsize=6)  # fmt: skip
+    fig.text(0.01, 0.01, f"ratio to {base} (below 1 = better); no dot = not"
+             " measured", fontsize=6)  # fmt: skip
+    for row in range(1, len(names), 2):
+        for ax in axes:
+            ax.axhspan(row - 0.5, row + 0.5, color=style.BAND, lw=0, zorder=0)
+    style.save(fig, OUT / "csa2_scoreboard")
+
+
+def csa2_positions() -> None:
+    """Validation loss by position, one row per version (CSA2 first): record 91
+    validation rows of 8192 tokens; training documents end by 2048
+    (experiments/csa2/scoreboard.py, from eval/rule_eval.py)."""
+    table = pl.read_csv(OUT / "csa2_positions.csv").with_columns(
+        pl.col("version").str.replace(f"{LAYOUT}, ", "", literal=True)
+    )
+    rows = {
+        v: pl.col("version") == v for v in table["version"].unique(maintain_order=True)
+    }
+    xlabel = "validation loss at these positions (exact picks; CSA2: its indexer)"
+    dot_rows(table, rows, "loss", "positions", xlabel, OUT / "csa2_positions")
+
+
+def csa2_rules() -> None:
+    """Run 7's validation loss under each eval rule minus exact picks (its first
+    row) on the same tokens, no retraining: picks shared across groups, block
+    prefilter (experiments/csa2/scoreboard.py). Bins the gate checks: all positions
+    (at most +0.005) and each bin past 2048 (at most +0.01, dotted line)."""
+    table = pl.read_csv(OUT / "csa2_rules.csv")
+    exact = table["rule"][0]
+    base = table.filter(pl.col("rule") == exact).select("positions", exact="loss")
+    table = (
+        table.filter(pl.col("rule") != exact)
+        .join(base, on="positions")
+        .with_columns(change=pl.col("loss") - pl.col("exact"))
+        .filter(pl.col("positions").str.contains("all|-(2560|4096|8192)$"))
+        .rename({"positions": "bin"})
+    )
+    rows = {r: pl.col("rule") == r for r in table["rule"].unique(maintain_order=True)}
+    xlabel = "run 7 validation loss minus exact picks (dotted: gate per bin)"
+    dot_rows(table, rows, "change", "bin", xlabel, OUT / "csa2_rules", lines=(0, 0.01))
+
+
+def csa2_profile() -> None:
+    """Where a training step's time goes in each CSA2 version: ms per step by phase
+    and by part (kernel name rules), the mean of one profiled step per stage
+    (torch.profiler; experiments/csa2/make_profile_script.py, profile_parts.py).
+    Parts a version does not run are left out (log axis)."""
+    table = pl.read_csv(TRAINING / "csa2_profile.csv").filter(  # kernels only
+        ~pl.col("row").str.starts_with("Profiled step")
+    )
+    rows = {r: pl.col("row") == r for r in table["row"].unique(maintain_order=True)}
+    xlabel = "time per training step, mean of one step per stage (ms)"
+    dot_rows(table, rows, "ms", "version", xlabel, TRAINING / "csa2_profile", log=True)
 
 
 def cutoff_timing() -> None:
@@ -853,7 +1108,12 @@ def attention_cost() -> None:
 if __name__ == "__main__":
     style.apply()
     curves()
+    curves(CSA2_CURVES, "csa2_curves")
+    curves(WINDOW_CURVES, "csa2_window_curves")
+    curves(PICK_CURVES, "csa2_pick_curves")
     finals()
+    csa2_positions()
+    csa2_rules()
     groups()
     attention_cost()
     for extra, csv in (
@@ -875,6 +1135,12 @@ if __name__ == "__main__":
         (kv_cache, LONG / "kv_cache"),
         (union_speed, SPEED / "union_speed"),
         (decode_speed, SPEED / "decode_speed"),
+        (csa2_decode, LONG / "csa2_decode"),
+        (decode_heat, LONG / "decode_heat"),
+        (lambda: decode_heat("decode_block", CSA2_REF_DECODE), LONG / "decode_block"),
+        (train_window, TRAINING / "train_window"),
+        (csa2_scoreboard, OUT / "csa2_scoreboard"),
+        (csa2_profile, TRAINING / "csa2_profile"),
         (long_scaling, LONG / "long_scaling"),
         (step_profile, TRAINING / "step_profile"),
         (step_profile_tiles, TRAINING / "step_profile"),
