@@ -13,8 +13,33 @@ echo "=== Step 1: Checking GPU & Hardware Environment ==="
 nvidia-smi --query-gpu=name,memory.total,driver_version,utilization.memory --format=csv,noheader || true
 df -h .
 
-echo "=== Step 2: Installing Dependencies ==="
-pip install -q -U "huggingface_hub[cli]" hf_transfer gguf torch polars orjson wandb
+echo "=== Step 2: Setting up Environment & Installing Dependencies ==="
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+
+if ! command -v uv &> /dev/null; then
+    echo "Installing uv package manager..."
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+fi
+
+if command -v uv &> /dev/null; then
+    if [ ! -d ".venv" ]; then
+        echo "Creating virtual environment .venv with uv..."
+        uv venv .venv
+    fi
+    # shellcheck disable=SC1091
+    source .venv/bin/activate
+    echo "Installing dependencies via uv pip..."
+    uv pip install -q -U "huggingface_hub[cli]" hf_transfer gguf torch polars orjson wandb
+elif command -v pip &> /dev/null; then
+    pip install -q -U "huggingface_hub[cli]" hf_transfer gguf torch polars orjson wandb
+elif python3 -m pip --version &> /dev/null; then
+    python3 -m pip install -q -U "huggingface_hub[cli]" hf_transfer gguf torch polars orjson wandb
+else
+    echo "Neither uv nor pip found; installing python3-pip..."
+    sudo apt-get update -qq && sudo apt-get install -y -qq python3-pip python3-venv
+    python3 -m pip install -q -U "huggingface_hub[cli]" hf_transfer gguf torch polars orjson wandb
+fi
 
 # Prompt for Weights & Biases key if --wandb is passed and not already exported
 if [[ "$*" == *"--wandb"* ]] && [ -z "${WANDB_API_KEY:-}" ]; then
@@ -40,8 +65,13 @@ echo "=== Step 3: Fast Parallel Download of IQ1_M GGUF Shards ==="
 export HF_HUB_ENABLE_HF_TRANSFER=1
 mkdir -p "$MODEL_DIR"
 
+HF_CLI="huggingface-cli"
+if [ -f ".venv/bin/huggingface-cli" ]; then
+    HF_CLI=".venv/bin/huggingface-cli"
+fi
+
 # Download 5 backbone shards + shared Engram table
-huggingface-cli download "$MODEL_REPO" \
+"$HF_CLI" download "$MODEL_REPO" \
     --include "*IQ1_M*" "$ENGRAM_FILE" \
     --local-dir "$MODEL_DIR" \
     --local-dir-use-symlinks False
@@ -57,8 +87,13 @@ fi
 cd - > /dev/null
 
 echo "=== Step 5: Running Attention Comparison with Extensive Logging & Artifacts ==="
+PYTHON_BIN="python3"
+if [ -f ".venv/bin/python" ]; then
+    PYTHON_BIN=".venv/bin/python"
+fi
+
 # Forward any CLI flags passed to this script (e.g. --wandb, --verbose)
-python3 test_iq1m_h200.py \
+"$PYTHON_BIN" test_iq1m_h200.py \
     --model-dir "$MODEL_DIR" \
     --output-dir "$OUTPUT_DIR" \
     "$@"
