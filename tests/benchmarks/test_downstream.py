@@ -2,14 +2,20 @@
 
 from pathlib import Path
 
+import torch
 from eval_downstream_h200 import (
     ReasoningQuestion,
     extract_boxed_answer,
     extract_mcq_answer,
     parse_thinking_and_answer,
-    run_passkey_suite,
-    run_perplexity_suite,
-    run_reasoning_suite,
+    run_comparative_passkey_suite,
+    run_comparative_perplexity_suite,
+    run_comparative_reasoning_suite,
+)
+from test_iq1m_h200 import (
+    BenchmarkConfig,
+    DeepSeekStandardAttention,
+    ParameterFreeAttention,
 )
 
 
@@ -60,53 +66,77 @@ def test_parse_thinking_and_answer() -> None:
     assert answer == "The remainder is \\boxed{0}."
 
 
-def test_run_reasoning_suite_mock() -> None:
-    """Verify mock execution of reasoning benchmark."""
+def test_run_comparative_reasoning_suite_mock() -> None:
+    """Verify comparative reasoning evaluation across both models."""
     # Arrange
+    device = torch.device("cpu")
+    dtype = torch.float32
+    cfg = BenchmarkConfig(device=device, dtype=dtype)
+    ds_att = DeepSeekStandardAttention(device=device, dtype=dtype)
+    pf_att = ParameterFreeAttention(device=device, dtype=dtype)
     questions = [
         ReasoningQuestion(
             id="test_q1",
             benchmark="AIME25",
-            question="Compute 2+2.",
+            question="Find positive integer n such that n=55.",
             ground_truth="55",
         )
     ]
     dummy_path = Path("/tmp/dummy_cli")
 
     # Act
-    results = run_reasoning_suite(
-        dummy_path, dummy_path, questions, ngl=0, reasoning_effort=50, mock=True
+    results = run_comparative_reasoning_suite(
+        ds_att,
+        pf_att,
+        cfg,
+        dummy_path,
+        dummy_path,
+        questions,
+        ngl=0,
+        reasoning_effort=50,
+        mock=True,
     )
 
     # Assert
     assert len(results) == 1
     assert results[0].question_id == "test_q1"
-    assert results[0].is_correct is True
+    assert results[0].token_cossim > 0.0
+    assert results[0].speedup > 0.0
 
 
-def test_run_passkey_suite_mock() -> None:
-    """Verify mock execution of long-context passkey retrieval."""
+def test_run_comparative_passkey_suite() -> None:
+    """Verify comparative passkey retrieval across both models."""
     # Arrange
-    dummy_path = Path("/tmp/dummy_cli")
+    device = torch.device("cpu")
+    dtype = torch.float32
+    cfg = BenchmarkConfig(device=device, dtype=dtype)
+    ds_att = DeepSeekStandardAttention(device=device, dtype=dtype)
+    pf_att = ParameterFreeAttention(device=device, dtype=dtype)
 
     # Act
-    results = run_passkey_suite(
-        dummy_path, dummy_path, contexts=[1024], ngl=0, mock=True
-    )
+    results = run_comparative_passkey_suite(ds_att, pf_att, cfg, contexts=[512])
 
     # Assert
     assert len(results) == 1
-    assert results[0].success is True
+    assert results[0].ds_found is True
+    assert results[0].pf_found is True
+    assert results[0].speedup > 0.0
 
 
-def test_run_perplexity_suite_mock(tmp_path: Path) -> None:
-    """Verify mock execution of wikitext perplexity calculation."""
+def test_run_comparative_perplexity_suite() -> None:
+    """Verify comparative perplexity calculation on both models."""
     # Arrange
-    dummy_path = Path("/tmp/dummy_ppl")
+    device = torch.device("cpu")
+    dtype = torch.float32
+    cfg = BenchmarkConfig(device=device, dtype=dtype)
+    ds_att = DeepSeekStandardAttention(device=device, dtype=dtype)
+    pf_att = ParameterFreeAttention(device=device, dtype=dtype)
 
     # Act
-    res = run_perplexity_suite(dummy_path, dummy_path, tmp_path, ngl=0, mock=True)
+    row = run_comparative_perplexity_suite(ds_att, pf_att, cfg, context_length=512)
 
     # Assert
-    assert res.dataset == "wikitext-2"
-    assert res.perplexity > 0.0
+    assert row.dataset == "wikitext-2"
+    assert row.ds_perplexity > 0.0
+    assert row.pf_perplexity > 0.0
+    assert row.speedup > 0.0
