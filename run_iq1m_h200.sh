@@ -102,16 +102,36 @@ echo "=== Step 5: Running Attention Comparison with Extensive Logging & Artifact
     --output-dir "$OUTPUT_DIR" \
     "$@"
 
-echo "=== Step 6: (Optional) Llama.cpp End-to-End Benchmark ==="
-if command -v llama-bench &> /dev/null; then
-    echo "Running llama-bench with full VRAM offloading (-ngl 99 on H200)..."
-    llama-bench -m "$MODEL_DIR/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ1_M-00001-of-00006.gguf" \
+echo "=== Step 6: Llama.cpp End-to-End Benchmark & Real Generation ==="
+if [[ "$*" == *"--llamacpp"* ]] || command -v llama-bench &> /dev/null; then
+    LLAMA_DIR="./llama.cpp"
+    if ! command -v llama-bench &> /dev/null && [ ! -f "$LLAMA_DIR/build/bin/llama-bench" ]; then
+        echo "Building llama.cpp with CUDA support for H200..."
+        if [ ! -d "$LLAMA_DIR" ]; then
+            git clone --depth 1 https://github.com/ggml-org/llama.cpp "$LLAMA_DIR"
+        fi
+        cmake -B "$LLAMA_DIR/build" -S "$LLAMA_DIR" -DGGML_CUDA=ON -DCMAKE_BUILD_TYPE=Release
+        cmake --build "$LLAMA_DIR/build" --config Release -j"$(nproc)"
+    fi
+
+    BENCH_BIN="llama-bench"
+    CLI_BIN="llama-cli"
+    if [ -f "$LLAMA_DIR/build/bin/llama-bench" ]; then
+        BENCH_BIN="$LLAMA_DIR/build/bin/llama-bench"
+        CLI_BIN="$LLAMA_DIR/build/bin/llama-cli"
+    fi
+
+    echo "Running llama-bench on NVIDIA H200 (100% offload, -ngl 99)..."
+    "$BENCH_BIN" -m "$MODEL_DIR/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ1_M-00001-of-00006.gguf" \
         -ngl 99 -p 512,2048 -n 128 -b 1
+
+    echo "Running end-to-end token generation (reasoning effort 50)..."
+    "$CLI_BIN" -m "$MODEL_DIR/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ1_M-00001-of-00006.gguf" \
+        -ngl 99 --reasoning on --reasoning-effort 50 \
+        -p "Compare parameter-free sparse attention with DeepSeek CSA2 in 1M context LLMs." \
+        -n 128
 else
-    echo "llama-bench binary not in PATH. To run full end-to-end inference:"
-    echo "  git clone https://github.com/ggml-org/llama.cpp && cd llama.cpp"
-    echo "  cmake -B build -DGGML_CUDA=ON && cmake --build build --config Release -j"
-    echo "  ./build/bin/llama-cli -m $MODEL_DIR/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ1_M-00001-of-00006.gguf -ngl 99 -p 'Explain quantum computing' -n 128"
+    echo "Pass --llamacpp to automatically build llama.cpp and run end-to-end generation on H200."
 fi
 
 echo "=== Benchmark Complete ==="
