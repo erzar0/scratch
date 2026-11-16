@@ -56,10 +56,12 @@ if [[ "$*" == *"--wandb"* ]] && [ -z "${WANDB_API_KEY:-}" ]; then
         read -r -s -p "Enter W&B API Key (or press Enter to run offline): " input_key
         echo ""
         echo "=================================================="
-        if [ -n "$input_key" ]; then
-            export WANDB_API_KEY="$input_key"
+        clean_key=$(echo "$input_key" | tr -d '[:space:]')
+        if [ -n "$clean_key" ]; then
+            export WANDB_API_KEY="$clean_key"
             echo "W&B API key configured for this session."
         else
+            unset WANDB_API_KEY || true
             echo "No key entered; proceeding in offline mode."
         fi
     fi

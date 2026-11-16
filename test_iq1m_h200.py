@@ -124,6 +124,58 @@ class BenchmarkRow:
 
 
 @dataclass(frozen=True)
+class NiahRow:
+    """Needle-In-A-Haystack retrieval metric at a given sequence depth."""
+
+    context_length: int
+    depth_pct: int
+    ds_needle_found: bool
+    pf_needle_found: bool
+    ds_rank: int
+    pf_rank: int
+
+
+@dataclass(frozen=True)
+class HeadDiversityRow:
+    """Multi-head output diversity and effective matrix rank."""
+
+    context_length: int
+    ds_mean_pairwise_sim: float
+    pf_mean_pairwise_sim: float
+    sim_delta: float
+    ds_effective_rank: float
+    pf_effective_rank: float
+
+
+@dataclass(frozen=True)
+class PrefillRow:
+    """Prompt prefill indexing and block-mean throughput metrics."""
+
+    prompt_length: int
+    ds_latency_ms: float
+    pf_latency_ms: float
+    speedup: float
+    ds_throughput_ktok_s: float
+    pf_throughput_ktok_s: float
+    ds_peak_vram_mb: float
+    pf_peak_vram_mb: float
+
+
+@dataclass(frozen=True)
+class TopKSweepRow:
+    """Top-K sparsity budget trade-off metrics."""
+
+    context_length: int
+    top_k: int
+    ds_latency_us: float
+    pf_latency_us: float
+    speedup: float
+    pf_needle_recall: float
+    pf_top128_recall: float
+    pf_output_error: float
+
+
+@dataclass(frozen=True)
 class BenchmarkConfig:
     """Configuration settings for running context benchmarks."""
 
@@ -195,6 +247,13 @@ class WandbTracker:
             logger.warning("wandb requested but python package not installed.")
             return
 
+        # Clean key from environment
+        env_key = os.environ.get("WANDB_API_KEY", "").strip()
+        if env_key:
+            os.environ["WANDB_API_KEY"] = env_key
+        else:
+            os.environ.pop("WANDB_API_KEY", None)
+
         # Prompt for key if missing in interactive terminal
         if not os.environ.get("WANDB_API_KEY") and sys.stdin.isatty():
             try:
@@ -212,29 +271,23 @@ class WandbTracker:
             except (EOFError, KeyboardInterrupt):
                 pass
 
+        has_key = bool(os.environ.get("WANDB_API_KEY"))
+        resolved_mode = mode
+        if mode == "auto":
+            resolved_mode = "online" if has_key else "offline"
+
+        if resolved_mode == "offline":
+            logger.info("Initializing Weights & Biases in offline mode...")
+        else:
+            logger.info("Initializing Weights & Biases in online mode...")
+
         try:
-            has_key = bool(os.environ.get("WANDB_API_KEY"))
-            resolved_mode = mode
-            if mode == "auto":
-                resolved_mode = "online" if has_key else "offline"
-
-            if resolved_mode == "offline":
-                logger.info(
-                    "WANDB_API_KEY not found; logging in offline mode "
-                    "(artifacts saved locally)."
-                )
-            else:
-                logger.info("Initializing Weights & Biases in online mode...")
-
             wandb.init(
                 project=project,
                 entity=entity,
                 name=run_name,
                 config=config,
                 mode=resolved_mode,
-                anonymous="allow"
-                if resolved_mode == "online" and not has_key
-                else None,
             )
             self.active = True
             logger.info(
@@ -242,7 +295,22 @@ class WandbTracker:
                 resolved_mode,
             )
         except Exception as exc:  # noqa: BLE001
-            logger.error("Failed to initialize wandb: %s", exc)
+            logger.warning(
+                "Failed to initialize wandb in %s mode: %s. Falling back to offline.",
+                resolved_mode,
+                exc,
+            )
+            try:
+                wandb.init(
+                    project=project,
+                    name=run_name,
+                    config=config,
+                    mode="offline",
+                )
+                self.active = True
+                logger.info("Weights & Biases logging active in offline mode.")
+            except Exception as exc_offline:  # noqa: BLE001
+                logger.error("Failed to initialize wandb offline: %s", exc_offline)
 
     def log_metrics(self, row: BenchmarkRow) -> None:
         """Log per-context metrics to wandb.
@@ -273,19 +341,36 @@ class WandbTracker:
             }
         )
 
-    def finish(self, summary_df: pl.DataFrame) -> None:
+    def log_dataframe_table(self, table_name: str, df: pl.DataFrame) -> None:
+        """Log a Polars DataFrame as a wandb.Table.
+
+        Args:
+            table_name: Target wandb table key.
+            df: Polars DataFrame to log.
+        """
+        if not self.active:
+            return
+        try:
+            w_table = wandb.Table(columns=df.columns, data=df.rows())
+            wandb.log({table_name: w_table})
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("Failed to log wandb table %s: %s", table_name, exc)
+
+    def finish(self, summary_df: pl.DataFrame | None = None) -> None:
         """Upload summary table and finish run.
 
         Args:
-            summary_df: Summary Polars DataFrame.
+            summary_df: Optional summary Polars DataFrame.
         """
         if not self.active:
             return
 
         try:
-            table = wandb.Table(columns=summary_df.columns, data=summary_df.rows())
-            wandb.log({"benchmark_summary_table": table})
+            if summary_df is not None:
+                table = wandb.Table(columns=summary_df.columns, data=summary_df.rows())
+                wandb.log({"benchmark_summary_table": table})
             wandb.finish()
+            logger.info("Weights & Biases run closed successfully.")
         except Exception as exc:  # noqa: BLE001
             logger.error("Error finalizing wandb: %s", exc)
 
@@ -329,6 +414,7 @@ class DeepSeekStandardAttention(torch.nn.Module):
         kv_cache: torch.Tensor,
         window_kv: torch.Tensor,
         return_indices: bool = False,
+        top_k: int = INDEX_TOPK,
     ) -> torch.Tensor | tuple[torch.Tensor, torch.Tensor]:
         """Execute one decode step with standard DeepSeek CSA2.
 
@@ -339,6 +425,7 @@ class DeepSeekStandardAttention(torch.nn.Module):
             kv_cache: Cached compressed KV entries of shape [N_entries, HEAD_DIM].
             window_kv: Recent window KV entries of shape [WINDOW_SIZE, HEAD_DIM].
             return_indices: Whether to also return selected KV indices.
+            top_k: Number of candidate entries to retrieve.
 
         Returns:
             Output tensor or tuple of (output tensor, selected index tensor).
@@ -347,7 +434,7 @@ class DeepSeekStandardAttention(torch.nn.Module):
         idx_scores = torch.matmul(q_idx, index_k_cache.mT) * self.scale
         agg_scores = idx_scores.sum(dim=0)
 
-        k_val = min(INDEX_TOPK, agg_scores.shape[-1])
+        k_val = min(top_k, agg_scores.shape[-1])
         topk_indices = torch.topk(agg_scores, k=k_val, dim=-1).indices
         gathered_kv = kv_cache[topk_indices]
 
@@ -362,6 +449,18 @@ class DeepSeekStandardAttention(torch.nn.Module):
         if return_indices:
             return out, topk_indices
         return out
+
+    @torch.no_grad()
+    def prefill_step(self, x: torch.Tensor) -> torch.Tensor:
+        """Compute index keys for prompt sequence tokens.
+
+        Args:
+            x: Hidden states tensor of shape [seq_len, DIM].
+
+        Returns:
+            Projected index keys tensor.
+        """
+        return F.linear(x, self.w_qi)
 
 
 class ParameterFreeAttention(torch.nn.Module):
@@ -396,6 +495,7 @@ class ParameterFreeAttention(torch.nn.Module):
         kv_cache: torch.Tensor,
         window_kv: torch.Tensor,
         return_indices: bool = False,
+        top_k: int = INDEX_TOPK,
     ) -> torch.Tensor | tuple[torch.Tensor, torch.Tensor]:
         """Execute one decode step with parameter-free attention.
 
@@ -405,6 +505,7 @@ class ParameterFreeAttention(torch.nn.Module):
             kv_cache: Cached KV entries of shape [N_entries, HEAD_DIM].
             window_kv: Recent window KV entries of shape [WINDOW_SIZE, HEAD_DIM].
             return_indices: Whether to also return selected KV indices.
+            top_k: Number of candidate entries to retrieve.
 
         Returns:
             Output tensor or tuple of (output tensor, selected index tensor).
@@ -412,7 +513,7 @@ class ParameterFreeAttention(torch.nn.Module):
         q_sum = q.sum(dim=1)
 
         n_blocks = block_means.shape[0]
-        n_candidate_blocks = min(INDEX_TOPK // BLOCK_SIZE, n_blocks)
+        n_candidate_blocks = min(top_k // BLOCK_SIZE, n_blocks)
         block_scores = torch.matmul(q_sum, block_means.mT).squeeze(0)
         top_blocks = torch.topk(block_scores, k=n_candidate_blocks, dim=-1).indices
 
@@ -422,7 +523,7 @@ class ParameterFreeAttention(torch.nn.Module):
 
         candidate_scores = torch.matmul(q_sum, candidate_kv.mT).squeeze(0)
         top_entries = torch.topk(
-            candidate_scores, k=min(INDEX_TOPK, candidate_kv.shape[0]), dim=-1
+            candidate_scores, k=min(top_k, candidate_kv.shape[0]), dim=-1
         ).indices
         picked_kv = candidate_kv[top_entries]
         picked_indices = candidate_entry_indices[top_entries]
@@ -435,6 +536,20 @@ class ParameterFreeAttention(torch.nn.Module):
         if return_indices:
             return out, picked_indices
         return out
+
+    @torch.no_grad()
+    def prefill_step(self, kv_cache: torch.Tensor) -> torch.Tensor:
+        """Compute block means for prompt sequence tokens.
+
+        Args:
+            kv_cache: KV cache tensor of shape [seq_len, HEAD_DIM].
+
+        Returns:
+            Block means tensor of shape [seq_len // BLOCK_SIZE, HEAD_DIM].
+        """
+        n_blocks = max(1, kv_cache.shape[0] // BLOCK_SIZE)
+        padded_len = n_blocks * BLOCK_SIZE
+        return kv_cache[:padded_len].view(n_blocks, BLOCK_SIZE, HEAD_DIM).mean(dim=1)
 
 
 def measure_latency_stats(
@@ -782,35 +897,491 @@ def benchmark_context(
 
 
 def save_benchmark_artifacts(
-    rows: list[BenchmarkRow],
+    rows: list[Any],
     metadata: dict[str, Any],
     output_dir: Path,
+    name: str = "context",
 ) -> tuple[Path, Path]:
     """Persist benchmark results as JSON and CSV artifacts.
 
     Args:
-        rows: List of BenchmarkRow dataclasses.
+        rows: List of benchmark dataclasses.
         metadata: System and run configuration metadata.
         output_dir: Directory where artifacts are saved.
+        name: Identifier for the benchmark suite.
 
     Returns:
         Tuple of (json_path, csv_path).
     """
     output_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now(UTC).strftime("%Y%m%d_%H%M%S")
-    json_path = output_dir / f"results_{timestamp}.json"
-    csv_path = output_dir / f"results_{timestamp}.csv"
+    json_path = output_dir / f"results_{name}_{timestamp}.json"
+    csv_path = output_dir / f"results_{name}_{timestamp}.csv"
 
     dict_rows = [asdict(r) for r in rows]
-    payload = {"metadata": metadata, "results": dict_rows}
+    payload = {"benchmark": name, "metadata": metadata, "results": dict_rows}
     dump_json_file(payload, json_path)
 
     df = pl.DataFrame(dict_rows)
     df.write_csv(csv_path)
 
-    logger.info("Saved JSON results to %s", json_path)
-    logger.info("Saved CSV results to %s", csv_path)
+    logger.info("Saved %s JSON results to %s", name, json_path)
+    logger.info("Saved %s CSV results to %s", name, csv_path)
     return json_path, csv_path
+
+
+def compute_head_metrics(out: torch.Tensor) -> tuple[float, float]:
+    """Calculate mean pairwise cosine similarity and effective matrix rank.
+
+    Args:
+        out: Head output tensor of shape [1, N_HEADS, HEAD_DIM].
+
+    Returns:
+        Tuple of (mean_pairwise_similarity, effective_rank).
+    """
+    h = out.squeeze(0).to(torch.float32)
+    h_norm = h / h.norm(dim=-1, keepdim=True).clamp(min=1e-8)
+    cos_sim = torch.mm(h_norm, h_norm.t())
+    eye = torch.eye(h.shape[0], device=h.device, dtype=torch.bool)
+    off_diag = cos_sim[~eye]
+    mean_sim = float(off_diag.mean().item())
+
+    singular_vals = torch.linalg.svdvals(h_norm)
+    p = singular_vals / singular_vals.sum().clamp(min=1e-8)
+    entropy = -torch.sum(p * torch.log(p.clamp(min=1e-12)))
+    effective_rank = float(torch.exp(entropy).item())
+    return mean_sim, effective_rank
+
+
+def run_niah_suite(
+    contexts: list[int],
+    ds_module: DeepSeekStandardAttention,
+    pf_module: ParameterFreeAttention,
+    cfg: BenchmarkConfig,
+) -> list[NiahRow]:
+    """Execute Needle-In-A-Haystack retrieval benchmark across sequence depths.
+
+    Args:
+        contexts: List of context lengths to benchmark.
+        ds_module: Standard attention module.
+        pf_module: Parameter-free attention module.
+        cfg: Benchmark configuration container.
+
+    Returns:
+        List of populated NiahRow instances.
+    """
+    device, dtype = cfg.device, cfg.dtype
+    depth_percentages = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+    rows: list[NiahRow] = []
+
+    print("\n" + "=" * 80)
+    print("NEEDLE-IN-A-HAYSTACK (NIAH) DEPTH RETRIEVAL BENCHMARK")
+    print("=" * 80)
+    print(
+        f"{'Context':>10} | {'Depth':>7} | {'DS Found':>10} | {'PF Found':>10} | "
+        f"{'DS Rank':>9} | {'PF Rank':>9}"
+    )
+    print("-" * 80)
+
+    for ctx in contexts:
+        n_entries = int(ctx * 2.5 / N_LAYERS * 4)
+        n_blocks = max(1, n_entries // BLOCK_SIZE)
+        padded_len = n_blocks * BLOCK_SIZE
+
+        q = torch.randn(1, N_HEADS, HEAD_DIM, device=device, dtype=dtype)
+        x = torch.randn(1, DIM, device=device, dtype=dtype)
+        window_kv = torch.randn(WINDOW_SIZE, HEAD_DIM, device=device, dtype=dtype)
+
+        target_dir = q.sum(dim=1).squeeze(0)
+        target_dir = target_dir / target_dir.norm(dim=-1, keepdim=True)
+        needle_signal = 2.0 * math.sqrt(HEAD_DIM) * target_dir.to(dtype)
+
+        q_idx = F.linear(x, ds_module.w_qi).view(INDEX_N_HEADS, INDEX_HEAD_DIM)
+        q_idx_dir = q_idx.mean(dim=0)
+        q_idx_dir = q_idx_dir / q_idx_dir.norm(dim=-1, keepdim=True)
+        idx_needle_signal = 2.0 * math.sqrt(INDEX_HEAD_DIM) * q_idx_dir.to(dtype)
+
+        for depth in depth_percentages:
+            needle_pos = min(int(n_entries * (depth / 100.0)), n_entries - 1)
+            kv_cache = torch.randn(n_entries, HEAD_DIM, device=device, dtype=dtype)
+            kv_cache[needle_pos] += needle_signal
+
+            index_k = torch.randn(n_entries, INDEX_HEAD_DIM, device=device, dtype=dtype)
+            index_k[needle_pos] += idx_needle_signal
+
+            block_means = (
+                kv_cache[:padded_len].view(n_blocks, BLOCK_SIZE, HEAD_DIM).mean(dim=1)
+            )
+
+            out_ds_res = ds_module.decode_step(
+                q, x, index_k, kv_cache, window_kv, return_indices=True
+            )
+            out_pf_res = pf_module.decode_step(
+                q, block_means, kv_cache, window_kv, return_indices=True
+            )
+            assert isinstance(out_ds_res, tuple) and isinstance(out_pf_res, tuple)
+            _, ds_indices = out_ds_res
+            _, pf_indices = out_pf_res
+
+            ds_picks_set = set(ds_indices.tolist())
+            pf_picks_set = set(pf_indices.tolist())
+
+            ds_found = needle_pos in ds_picks_set
+            pf_found = needle_pos in pf_picks_set
+
+            idx_scores = (torch.matmul(q_idx, index_k.mT) * ds_module.scale).sum(dim=0)
+            ds_rank = int((idx_scores > idx_scores[needle_pos]).sum().item()) + 1
+
+            q_sum = q.sum(dim=1)
+            block_scores = torch.matmul(q_sum, block_means.mT).squeeze(0)
+            needle_block = needle_pos // BLOCK_SIZE
+            pf_rank = (
+                int((block_scores > block_scores[needle_block]).sum().item())
+                * BLOCK_SIZE
+                + 1
+            )
+
+            row = NiahRow(
+                context_length=ctx,
+                depth_pct=depth,
+                ds_needle_found=ds_found,
+                pf_needle_found=pf_found,
+                ds_rank=ds_rank,
+                pf_rank=pf_rank,
+            )
+            rows.append(row)
+
+            ctx_str = (
+                f"{ctx}"
+                if ctx < 1024
+                else (f"{ctx // 1024}K" if ctx < 1048576 else "1M")
+            )
+            print(
+                f"{ctx_str:>10} | {depth:>6}% | "
+                f"{('YES' if ds_found else 'NO'):>10} | "
+                f"{('YES' if pf_found else 'NO'):>10} | "
+                f"{ds_rank:>9} | {pf_rank:>9}"
+            )
+
+        del q, x, window_kv
+        if device.type == "cuda":
+            torch.cuda.empty_cache()
+
+    print("=" * 80 + "\n")
+    return rows
+
+
+def run_heads_suite(
+    contexts: list[int],
+    ds_module: DeepSeekStandardAttention,
+    pf_module: ParameterFreeAttention,
+    cfg: BenchmarkConfig,
+) -> list[HeadDiversityRow]:
+    """Evaluate multi-head output cosine similarity and effective matrix rank.
+
+    Args:
+        contexts: List of context lengths to benchmark.
+        ds_module: Standard attention module.
+        pf_module: Parameter-free attention module.
+        cfg: Benchmark configuration container.
+
+    Returns:
+        List of populated HeadDiversityRow instances.
+    """
+    device, dtype = cfg.device, cfg.dtype
+    rows: list[HeadDiversityRow] = []
+
+    print("\n" + "=" * 88)
+    print("MULTI-HEAD REPRESENTATION DIVERSITY & EFFECTIVE MATRIX RANK")
+    print("=" * 88)
+    print(
+        f"{'Context':>10} | {'DS Head Sim':>12} | {'PF Head Sim':>12} | "
+        f"{'Sim Delta':>10} | {'DS Eff Rank':>12} | {'PF Eff Rank':>12}"
+    )
+    print("-" * 88)
+
+    for ctx in contexts:
+        n_entries = int(ctx * 2.5 / N_LAYERS * 4)
+        n_blocks = max(1, n_entries // BLOCK_SIZE)
+        padded_len = n_blocks * BLOCK_SIZE
+
+        q = torch.randn(1, N_HEADS, HEAD_DIM, device=device, dtype=dtype)
+        x = torch.randn(1, DIM, device=device, dtype=dtype)
+        window_kv = torch.randn(WINDOW_SIZE, HEAD_DIM, device=device, dtype=dtype)
+        kv_cache = torch.randn(n_entries, HEAD_DIM, device=device, dtype=dtype)
+        index_k = torch.randn(n_entries, INDEX_HEAD_DIM, device=device, dtype=dtype)
+        block_means = (
+            kv_cache[:padded_len].view(n_blocks, BLOCK_SIZE, HEAD_DIM).mean(dim=1)
+        )
+
+        out_ds_res = ds_module.decode_step(
+            q, x, index_k, kv_cache, window_kv, return_indices=False
+        )
+        out_pf_res = pf_module.decode_step(
+            q, block_means, kv_cache, window_kv, return_indices=False
+        )
+        assert isinstance(out_ds_res, torch.Tensor) and isinstance(
+            out_pf_res, torch.Tensor
+        )
+
+        ds_sim, ds_rank = compute_head_metrics(out_ds_res)
+        pf_sim, pf_rank = compute_head_metrics(out_pf_res)
+        delta = pf_sim - ds_sim
+
+        row = HeadDiversityRow(
+            context_length=ctx,
+            ds_mean_pairwise_sim=ds_sim,
+            pf_mean_pairwise_sim=pf_sim,
+            sim_delta=delta,
+            ds_effective_rank=ds_rank,
+            pf_effective_rank=pf_rank,
+        )
+        rows.append(row)
+
+        ctx_str = (
+            f"{ctx}" if ctx < 1024 else (f"{ctx // 1024}K" if ctx < 1048576 else "1M")
+        )
+        print(
+            f"{ctx_str:>10} | {ds_sim:>12.4f} | {pf_sim:>12.4f} | "
+            f"{delta:>+10.4f} | {ds_rank:>12.2f} | {pf_rank:>12.2f}"
+        )
+
+        del q, x, window_kv, kv_cache, index_k, block_means
+        if device.type == "cuda":
+            torch.cuda.empty_cache()
+
+    print("=" * 88 + "\n")
+    return rows
+
+
+def run_prefill_suite(
+    prompt_lengths: list[int],
+    ds_module: DeepSeekStandardAttention,
+    pf_module: ParameterFreeAttention,
+    cfg: BenchmarkConfig,
+) -> list[PrefillRow]:
+    """Benchmark prompt prefill indexing throughput and peak VRAM allocation.
+
+    Args:
+        prompt_lengths: List of prompt token counts to benchmark.
+        ds_module: Standard attention module.
+        pf_module: Parameter-free attention module.
+        cfg: Benchmark configuration container.
+
+    Returns:
+        List of populated PrefillRow instances.
+    """
+    device, dtype = cfg.device, cfg.dtype
+    rows: list[PrefillRow] = []
+
+    print("\n" + "=" * 94)
+    print("PREFILL PROMPT ENCODING THROUGHPUT & LATENCY BENCHMARK")
+    print("=" * 94)
+    print(
+        f"{'Prompt':>10} | {'DS Lat (ms)':>12} | {'PF Lat (ms)':>12} | "
+        f"{'Speedup':>9} | {'DS kTok/s':>11} | {'PF kTok/s':>11} | {'PF VRAM':>10}"
+    )
+    print("-" * 94)
+
+    for prompt_len in prompt_lengths:
+        x = torch.randn(prompt_len, DIM, device=device, dtype=dtype)
+        kv_cache = torch.randn(prompt_len, HEAD_DIM, device=device, dtype=dtype)
+
+        warmup = 3 if device.type == "cpu" else 10
+        ds_lat = measure_latency_stats(
+            ds_module.prefill_step,
+            x,
+            device=device,
+            warmup=warmup,
+            repeats=cfg.repeats,
+        )
+        pf_lat = measure_latency_stats(
+            pf_module.prefill_step,
+            kv_cache,
+            device=device,
+            warmup=warmup,
+            repeats=cfg.repeats,
+        )
+
+        ds_ms = ds_lat.median_us / 1000.0
+        pf_ms = pf_lat.median_us / 1000.0
+        speedup = ds_lat.median_us / max(pf_lat.median_us, 1e-6)
+
+        ds_ktoks = (prompt_len / (ds_ms / 1000.0)) / 1000.0
+        pf_ktoks = (prompt_len / (pf_ms / 1000.0)) / 1000.0
+
+        if device.type == "cuda":
+            torch.cuda.reset_peak_memory_stats(device)
+            _ = pf_module.prefill_step(kv_cache)
+            pf_peak_mb = torch.cuda.max_memory_allocated(device) / (1024**2)
+
+            torch.cuda.reset_peak_memory_stats(device)
+            _ = ds_module.prefill_step(x)
+            ds_peak_mb = torch.cuda.max_memory_allocated(device) / (1024**2)
+        else:
+            ds_peak_mb = (prompt_len * INDEX_N_HEADS * INDEX_HEAD_DIM * 2) / (1024**2)
+            pf_peak_mb = (prompt_len // BLOCK_SIZE * HEAD_DIM * 2) / (1024**2)
+
+        row = PrefillRow(
+            prompt_length=prompt_len,
+            ds_latency_ms=ds_ms,
+            pf_latency_ms=pf_ms,
+            speedup=speedup,
+            ds_throughput_ktok_s=ds_ktoks,
+            pf_throughput_ktok_s=pf_ktoks,
+            ds_peak_vram_mb=ds_peak_mb,
+            pf_peak_vram_mb=pf_peak_mb,
+        )
+        rows.append(row)
+
+        p_str = f"{prompt_len}" if prompt_len < 1024 else f"{prompt_len // 1024}K"
+        print(
+            f"{p_str:>10} | {ds_ms:>12.3f} | {pf_ms:>12.3f} | {speedup:>8.2f}x | "
+            f"{ds_ktoks:>11.1f} | {pf_ktoks:>11.1f} | {pf_peak_mb:>8.1f} MB"
+        )
+
+        del x, kv_cache
+        if device.type == "cuda":
+            torch.cuda.empty_cache()
+
+    print("=" * 94 + "\n")
+    return rows
+
+
+def run_topk_suite(
+    context_length: int,
+    topk_values: list[int],
+    ds_module: DeepSeekStandardAttention,
+    pf_module: ParameterFreeAttention,
+    cfg: BenchmarkConfig,
+) -> list[TopKSweepRow]:
+    """Benchmark trade-off between top-k sparsity budget, latency, and fidelity.
+
+    Args:
+        context_length: Fixed context length for the sweep.
+        topk_values: List of top-k values to evaluate.
+        ds_module: Standard attention module.
+        pf_module: Parameter-free attention module.
+        cfg: Benchmark configuration container.
+
+    Returns:
+        List of populated TopKSweepRow instances.
+    """
+    device, dtype = cfg.device, cfg.dtype
+    rows: list[TopKSweepRow] = []
+
+    print("\n" + "=" * 94)
+    print(f"TOP-K SPARSITY BUDGET SENSITIVITY SWEEP (Context: {context_length})")
+    print("=" * 94)
+    print(
+        f"{'Top-K':>8} | {'DS Lat (µs)':>12} | {'PF Lat (µs)':>12} | {'Speedup':>9} | "
+        f"{'Needle Rec':>11} | {'Top128 Rec':>11} | {'PF Err':>10}"
+    )
+    print("-" * 94)
+
+    n_entries = int(context_length * 2.5 / N_LAYERS * 4)
+    n_blocks = max(1, n_entries // BLOCK_SIZE)
+    padded_len = n_blocks * BLOCK_SIZE
+
+    q = torch.randn(1, N_HEADS, HEAD_DIM, device=device, dtype=dtype)
+    x = torch.randn(1, DIM, device=device, dtype=dtype)
+    window_kv = torch.randn(WINDOW_SIZE, HEAD_DIM, device=device, dtype=dtype)
+    kv_cache = torch.randn(n_entries, HEAD_DIM, device=device, dtype=dtype)
+
+    target_dir = q.sum(dim=1)
+    target_dir = target_dir / target_dir.norm(dim=-1, keepdim=True)
+    needle_indices = torch.randint(0, n_entries, (cfg.num_needles,), device=device)
+    needle_signal = 2.0 * math.sqrt(HEAD_DIM) * target_dir.to(dtype)
+    kv_cache[needle_indices] += needle_signal
+
+    index_k = torch.randn(n_entries, INDEX_HEAD_DIM, device=device, dtype=dtype)
+    q_idx = F.linear(x, ds_module.w_qi).view(INDEX_N_HEADS, INDEX_HEAD_DIM)
+    q_idx_dir = q_idx.mean(dim=0, keepdim=True)
+    q_idx_dir = q_idx_dir / q_idx_dir.norm(dim=-1, keepdim=True)
+    index_k[needle_indices] += 2.0 * math.sqrt(INDEX_HEAD_DIM) * q_idx_dir.to(dtype)
+
+    block_means = kv_cache[:padded_len].view(n_blocks, BLOCK_SIZE, HEAD_DIM).mean(dim=1)
+
+    all_dense_k = torch.cat([window_kv, kv_cache], dim=0)
+    logits_dense = torch.einsum("bhd,sd->bhs", q, all_dense_k) * (
+        1.0 / math.sqrt(HEAD_DIM)
+    )
+    probs_dense = F.softmax(logits_dense, dim=-1).to(all_dense_k.dtype)
+    out_dense = torch.einsum("bhs,sd->bhd", probs_dense, all_dense_k)
+
+    cache_probs = probs_dense[:, :, WINDOW_SIZE:].mean(dim=1).squeeze(0)
+    dense_top128 = set(
+        torch.topk(cache_probs, k=min(128, n_entries), dim=-1).indices.tolist()
+    )
+    planted_set = set(needle_indices.tolist())
+
+    warmup = 3 if device.type == "cpu" else 10
+    for k_val in topk_values:
+        ds_lat = measure_latency_stats(
+            ds_module.decode_step,
+            q,
+            x,
+            index_k,
+            kv_cache,
+            window_kv,
+            False,
+            k_val,
+            device=device,
+            warmup=warmup,
+            repeats=cfg.repeats,
+        )
+        pf_lat = measure_latency_stats(
+            pf_module.decode_step,
+            q,
+            block_means,
+            kv_cache,
+            window_kv,
+            False,
+            k_val,
+            device=device,
+            warmup=warmup,
+            repeats=cfg.repeats,
+        )
+
+        out_ds_res = ds_module.decode_step(
+            q, x, index_k, kv_cache, window_kv, True, k_val
+        )
+        out_pf_res = pf_module.decode_step(
+            q, block_means, kv_cache, window_kv, True, k_val
+        )
+        assert isinstance(out_ds_res, tuple) and isinstance(out_pf_res, tuple)
+        (
+            _,
+            pf_needle_rec,
+            _,
+            pf_top_rec,
+            _,
+            pf_err,
+        ) = evaluate_retrieval_metrics(
+            out_ds_res, out_pf_res, out_dense, dense_top128, planted_set
+        )
+
+        speedup = ds_lat.median_us / max(pf_lat.median_us, 1e-6)
+        row = TopKSweepRow(
+            context_length=context_length,
+            top_k=k_val,
+            ds_latency_us=ds_lat.median_us,
+            pf_latency_us=pf_lat.median_us,
+            speedup=speedup,
+            pf_needle_recall=pf_needle_rec,
+            pf_top128_recall=pf_top_rec,
+            pf_output_error=pf_err,
+        )
+        rows.append(row)
+
+        print(
+            f"{k_val:>8} | {ds_lat.median_us:>12.1f} | {pf_lat.median_us:>12.1f} | "
+            f"{speedup:>8.2f}x | {pf_needle_rec:>10.1%} | {pf_top_rec:>10.1%} | "
+            f"{pf_err:>10.4f}"
+        )
+
+    print("=" * 94 + "\n")
+    return rows
 
 
 def main() -> None:
@@ -891,6 +1462,21 @@ def main() -> None:
         choices=["auto", "online", "offline", "disabled"],
         help="Wandb run mode: 'auto', 'online', 'offline', or 'disabled'.",
     )
+    parser.add_argument(
+        "--mode",
+        type=str,
+        default="context",
+        choices=["context", "niah", "heads", "prefill", "topk", "all"],
+        help=(
+            "Benchmark suite to execute: "
+            "'context' (context length scaling 512 to 1M), "
+            "'niah' (needle-in-a-haystack depth grid 10% to 100%), "
+            "'heads' (multi-head representation diversity and matrix rank), "
+            "'prefill' (prefill prompt indexing throughput and peak VRAM), "
+            "'topk' (top-k sparsity budget sensitivity sweep), or "
+            "'all' (execute all 5 benchmark suites sequentially)."
+        ),
+    )
     args = parser.parse_args()
 
     setup_logging(args.output_dir, verbose=args.verbose)
@@ -956,52 +1542,102 @@ def main() -> None:
         eval_accuracy=args.eval_accuracy,
     )
 
-    rows: list[BenchmarkRow] = []
-    print("\n" + "=" * 94)
-    print(
-        f"DEEPSEEK-V4.1-FLASH-1017 IQ1_M ATTENTION BENCHMARK on {hw_info['gpu_name']}"
-    )
-    print("=" * 94)
-    print(
-        f"{'Context':>10} | {'DS Lat (µs)':>12} | {'PF Lat (µs)':>12} | {'Speedup':>9} "
-        f"| {'DS Cache':>10} | {'PF Cache':>10} | {'Saved':>7} "
-        f"| {'PF Rec':>8} | {'PF Err':>8}"
-    )
-    print("-" * 94)
+    run_all = args.mode == "all"
+    summary_df: pl.DataFrame | None = None
 
-    for ctx in args.contexts:
-        logger.debug("Starting benchmark for context %d (repeats=%d)...", ctx, repeats)
-        row = benchmark_context(ctx, ds_attention, pf_attention, bench_cfg)
-        rows.append(row)
-        wandb_tracker.log_metrics(row)
-
-        ctx_str = (
-            f"{ctx}" if ctx < 1024 else (f"{ctx // 1024}K" if ctx < 1048576 else "1M")
-        )
-        ds_lat_fmt = f"{row.ds_latency_median_us:.1f}±{row.ds_latency_std_us:.1f}"
-        pf_lat_fmt = f"{row.pf_latency_median_us:.1f}±{row.pf_latency_std_us:.1f}"
-
+    if args.mode == "context" or run_all:
+        rows: list[BenchmarkRow] = []
+        print("\n" + "=" * 94)
         print(
-            f"{ctx_str:>10} | "
-            f"{ds_lat_fmt:>12} | "
-            f"{pf_lat_fmt:>12} | "
-            f"{row.speedup:>8.2f}x | "
-            f"{row.ds_cache_fp8_mib:>8.1f} MB | "
-            f"{row.pf_cache_fp8_mib:>8.1f} MB | "
-            f"{row.cache_saved_pct:>6.1f}% | "
-            f"{row.pf_needle_recall:>7.1%} | "
-            f"{row.pf_output_error:>8.4f}"
+            f"DEEPSEEK-V4.1-FLASH-1017 IQ1_M ATTENTION BENCHMARK on "
+            f"{hw_info['gpu_name']}"
+        )
+        print("=" * 94)
+        print(
+            f"{'Context':>10} | {'DS Lat (µs)':>12} | {'PF Lat (µs)':>12} | "
+            f"{'Speedup':>9} | {'DS Cache':>10} | {'PF Cache':>10} | {'Saved':>7} | "
+            f"{'PF Rec':>8} | {'PF Err':>8}"
+        )
+        print("-" * 94)
+
+        for ctx in args.contexts:
+            logger.debug(
+                "Starting benchmark for context %d (repeats=%d)...", ctx, repeats
+            )
+            row = benchmark_context(ctx, ds_attention, pf_attention, bench_cfg)
+            rows.append(row)
+            wandb_tracker.log_metrics(row)
+
+            ctx_str = (
+                f"{ctx}"
+                if ctx < 1024
+                else (f"{ctx // 1024}K" if ctx < 1048576 else "1M")
+            )
+            ds_lat_fmt = f"{row.ds_latency_median_us:.1f}±{row.ds_latency_std_us:.1f}"
+            pf_lat_fmt = f"{row.pf_latency_median_us:.1f}±{row.pf_latency_std_us:.1f}"
+
+            print(
+                f"{ctx_str:>10} | "
+                f"{ds_lat_fmt:>12} | "
+                f"{pf_lat_fmt:>12} | "
+                f"{row.speedup:>8.2f}x | "
+                f"{row.ds_cache_fp8_mib:>8.1f} MB | "
+                f"{row.pf_cache_fp8_mib:>8.1f} MB | "
+                f"{row.cache_saved_pct:>6.1f}% | "
+                f"{row.pf_needle_recall:>7.1%} | "
+                f"{row.pf_output_error:>8.4f}"
+            )
+
+        print("=" * 94 + "\n")
+        summary_df = pl.DataFrame([asdict(r) for r in rows])
+        wandb_tracker.log_dataframe_table("context_benchmark_table", summary_df)
+        save_benchmark_artifacts(rows, metadata, args.output_dir, name="context")
+
+    if args.mode == "niah" or run_all:
+        niah_ctxs = [
+            c for c in [8192, 32768, 131072, 262144, 1048576] if c in args.contexts
+        ]
+        if not niah_ctxs:
+            niah_ctxs = args.contexts
+        niah_rows = run_niah_suite(niah_ctxs, ds_attention, pf_attention, bench_cfg)
+        niah_df = pl.DataFrame([asdict(r) for r in niah_rows])
+        wandb_tracker.log_dataframe_table("niah_benchmark_table", niah_df)
+        save_benchmark_artifacts(niah_rows, metadata, args.output_dir, name="niah")
+
+    if args.mode == "heads" or run_all:
+        head_ctxs = [
+            c for c in [1024, 8192, 32768, 131072, 524288] if c in args.contexts
+        ]
+        if not head_ctxs:
+            head_ctxs = args.contexts
+        head_rows = run_heads_suite(head_ctxs, ds_attention, pf_attention, bench_cfg)
+        head_df = pl.DataFrame([asdict(r) for r in head_rows])
+        wandb_tracker.log_dataframe_table("head_diversity_table", head_df)
+        save_benchmark_artifacts(head_rows, metadata, args.output_dir, name="heads")
+
+    if args.mode == "prefill" or run_all:
+        prefill_lens = [1024, 4096, 16384, 65536, 131072]
+        prefill_rows = run_prefill_suite(
+            prefill_lens, ds_attention, pf_attention, bench_cfg
+        )
+        prefill_df = pl.DataFrame([asdict(r) for r in prefill_rows])
+        wandb_tracker.log_dataframe_table("prefill_benchmark_table", prefill_df)
+        save_benchmark_artifacts(
+            prefill_rows, metadata, args.output_dir, name="prefill"
         )
 
-    print("=" * 94 + "\n")
+    if args.mode == "topk" or run_all:
+        topk_ctx = max(args.contexts) if args.contexts else 131072
+        topk_values = [64, 128, 256, 512, 1024]
+        topk_rows = run_topk_suite(
+            topk_ctx, topk_values, ds_attention, pf_attention, bench_cfg
+        )
+        topk_df = pl.DataFrame([asdict(r) for r in topk_rows])
+        wandb_tracker.log_dataframe_table("topk_sweep_table", topk_df)
+        save_benchmark_artifacts(topk_rows, metadata, args.output_dir, name="topk")
 
-    summary_df = pl.DataFrame([asdict(r) for r in rows])
     wandb_tracker.finish(summary_df)
-
-    json_path, csv_path = save_benchmark_artifacts(rows, metadata, args.output_dir)
     logger.info("Artifact generation completed.")
-    logger.info("JSON: %s", json_path)
-    logger.info("CSV:  %s", csv_path)
 
 
 if __name__ == "__main__":
