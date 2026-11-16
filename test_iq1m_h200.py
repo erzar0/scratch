@@ -1860,7 +1860,8 @@ def run_audit_suite(model_dir: Path) -> list[GgufTensorAuditRow]:
 def main() -> None:
     """Entry point for the evaluation script."""
     parser = argparse.ArgumentParser(
-        description="Benchmark DeepSeek-V4.1-Flash-1017 IQ1_M attention on GPU or CPU."
+        description="Benchmark DeepSeek-V4.1-Flash-1017 IQ1_M attention on GPU or CPU.",
+        allow_abbrev=False,
     )
     parser.add_argument(
         "--model-dir",
@@ -2017,7 +2018,26 @@ def main() -> None:
         default=10,
         help="Optional chunks forwarded to perplexity evaluation.",
     )
-    args = parser.parse_args()
+    parser.add_argument(
+        "--suite",
+        type=str,
+        default="all",
+        choices=["reasoning", "passkey", "perplexity", "all"],
+        help="Optional suite forwarded to downstream evaluation.",
+    )
+    parser.add_argument(
+        "--reasoning-effort",
+        type=int,
+        default=50,
+        help="Optional reasoning effort forwarded to downstream evaluation.",
+    )
+    parser.add_argument(
+        "--ngl",
+        type=int,
+        default=99,
+        help="Optional GPU layer offload forwarded to downstream evaluation.",
+    )
+    args, _ = parser.parse_known_args()
 
     setup_logging(args.output_dir, verbose=args.verbose)
 

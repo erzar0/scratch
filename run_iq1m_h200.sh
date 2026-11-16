@@ -135,8 +135,6 @@ if [ "$RUN_DOWNSTREAM" = true ]; then
         --model-dir "$MODEL_DIR" \
         --output-dir "$OUTPUT_DIR" \
         --llama-dir "$LLAMA_DIR" \
-        --reasoning-effort 50 \
-        --ngl 99 \
         "$@"
 else
     echo "Pass --reasoning or --llamacpp to run SOTA downstream tasks (AIME25, GPQA-D, MATH-500, Perplexity, Passkey)."

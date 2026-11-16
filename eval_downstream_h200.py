@@ -25,6 +25,7 @@ import logging
 import math
 import os
 import re
+import shutil
 import subprocess
 import sys
 import time
@@ -1054,7 +1055,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description=(
             "Run comparative downstream evaluations on DeepSeek vs Parameter-Free."
-        )
+        ),
+        allow_abbrev=False,
     )
     parser.add_argument(
         "--model-dir",
@@ -1110,6 +1112,26 @@ def main() -> None:
         type=int,
         default=0,
         help="Optional repeats forwarded from test suite.",
+    )
+    parser.add_argument(
+        "--reasoning",
+        action="store_true",
+        help="Run downstream reasoning tasks (AIME25, GPQA-D, MATH-500).",
+    )
+    parser.add_argument(
+        "--llamacpp",
+        action="store_true",
+        help="Run llama.cpp downstream benchmark suite.",
+    )
+    parser.add_argument(
+        "--downstream",
+        action="store_true",
+        help="Run downstream evaluation suite.",
+    )
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        help="Enable debug-level logging.",
     )
     parser.add_argument(
         "--benchmarks",
@@ -1186,13 +1208,40 @@ def main() -> None:
         default="deepseek-v4.1-downstream-eval",
         help="Weights & Biases project name.",
     )
-    args = parser.parse_args()
+    parser.add_argument(
+        "--wandb-entity",
+        type=str,
+        default=None,
+        help="Weights & Biases entity/team name.",
+    )
+    parser.add_argument(
+        "--wandb-run-name",
+        type=str,
+        default=None,
+        help="Weights & Biases custom run name.",
+    )
+    parser.add_argument(
+        "--wandb-mode",
+        type=str,
+        default=None,
+        help="Weights & Biases mode (e.g. online, offline).",
+    )
+    args, unknown = parser.parse_known_args()
+    if unknown:
+        logger.debug("Ignored unhandled command line arguments: %s", unknown)
 
+    log_level = logging.DEBUG if args.verbose else logging.INFO
     logging.basicConfig(
-        level=logging.INFO, format="[%(asctime)s] %(levelname)s: %(message)s"
+        level=log_level, format="[%(asctime)s] %(levelname)s: %(message)s"
     )
     args.output_dir.mkdir(parents=True, exist_ok=True)
     args.data_dir.mkdir(parents=True, exist_ok=True)
+
+    active_suite = args.suite
+    if args.mode in ("reasoning", "passkey", "perplexity", "all"):
+        active_suite = args.mode
+    elif args.reasoning and "--suite" not in sys.argv and "--mode" not in sys.argv:
+        active_suite = "reasoning"
 
     if args.device == "auto":
         dev_str = "cuda:0" if torch.cuda.is_available() else "cpu"
@@ -1210,19 +1259,46 @@ def main() -> None:
     pf_attention = ParameterFreeAttention(device=target_device, dtype=target_dtype)
 
     cli_bin = args.llama_dir / "build" / "bin" / "llama-cli"
+    if not cli_bin.exists():
+        if (args.llama_dir / "llama-cli").exists():
+            cli_bin = args.llama_dir / "llama-cli"
+        else:
+            sys_cli = shutil.which("llama-cli")
+            if sys_cli:
+                cli_bin = Path(sys_cli)
+
     model_shard1 = (
         args.model_dir / "DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ1_M-00001-of-00006.gguf"
     )
+    if not model_shard1.exists():
+        gguf_candidates = sorted(args.model_dir.glob("*00001-of-*.gguf"))
+        if gguf_candidates:
+            model_shard1 = gguf_candidates[0]
+        else:
+            all_gguf = sorted(args.model_dir.glob("*.gguf"))
+            if all_gguf:
+                model_shard1 = all_gguf[0]
 
     wandb_run = None
     if args.wandb and HAS_WANDB:
-        wandb_run = wandb.init(
-            project=args.wandb_project,
-            name=f"downstream_{args.suite}_{datetime.now(UTC).strftime('%Y%m%d_%H%M%S')}",
-            config=vars(args),
+        ts = datetime.now(UTC).strftime("%Y%m%d_%H%M%S")
+        run_name = (
+            args.wandb_run_name
+            if args.wandb_run_name
+            else f"downstream_{active_suite}_{ts}"
         )
+        init_kwargs: dict[str, Any] = {
+            "project": args.wandb_project,
+            "name": run_name,
+            "config": vars(args),
+        }
+        if args.wandb_entity:
+            init_kwargs["entity"] = args.wandb_entity
+        if args.wandb_mode:
+            init_kwargs["mode"] = args.wandb_mode
+        wandb_run = wandb.init(**init_kwargs)
 
-    if args.suite in ("reasoning", "all"):
+    if active_suite in ("reasoning", "all"):
         questions = load_full_suite(args.benchmarks, args.data_dir, limit=args.limit)
         r_rows = run_comparative_reasoning_suite(
             ds_attention,
@@ -1242,7 +1318,7 @@ def main() -> None:
             vals = [[dr[c] for c in cols] for dr in d_rows]
             wandb.log({"reasoning_table": wandb.Table(columns=cols, data=vals)})
 
-    if args.suite in ("passkey", "all"):
+    if active_suite in ("passkey", "all"):
         p_rows = run_comparative_passkey_suite(
             ds_attention,
             pf_attention,
@@ -1257,7 +1333,7 @@ def main() -> None:
             vals = [[dr[c] for c in cols] for dr in d_rows]
             wandb.log({"passkey_table": wandb.Table(columns=cols, data=vals)})
 
-    if args.suite in ("perplexity", "all"):
+    if active_suite in ("perplexity", "all"):
         ppl_row = run_comparative_perplexity_suite(
             ds_attention,
             pf_attention,
