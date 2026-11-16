@@ -1991,6 +1991,32 @@ def main() -> None:
         action="store_true",
         help="Run downstream task evaluations.",
     )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=0,
+        help="Optional limit forwarded to downstream evaluations.",
+    )
+    parser.add_argument(
+        "--depths",
+        type=int,
+        nargs="+",
+        default=[10, 25, 50, 75, 90],
+        help="Optional depths forwarded to passkey evaluation.",
+    )
+    parser.add_argument(
+        "--benchmarks",
+        type=str,
+        nargs="+",
+        default=["all"],
+        help="Optional benchmarks forwarded to downstream evaluation.",
+    )
+    parser.add_argument(
+        "--ppl-chunks",
+        type=int,
+        default=10,
+        help="Optional chunks forwarded to perplexity evaluation.",
+    )
     args = parser.parse_args()
 
     setup_logging(args.output_dir, verbose=args.verbose)
