@@ -1954,6 +1954,16 @@ def main() -> None:
         action="store_true",
         help="Run llama.cpp benchmarks after attention suites.",
     )
+    parser.add_argument(
+        "--reasoning",
+        action="store_true",
+        help="Run downstream reasoning tasks (AIME25, GPQA-D, MATH-500).",
+    )
+    parser.add_argument(
+        "--downstream",
+        action="store_true",
+        help="Run downstream task evaluations.",
+    )
     args = parser.parse_args()
 
     setup_logging(args.output_dir, verbose=args.verbose)

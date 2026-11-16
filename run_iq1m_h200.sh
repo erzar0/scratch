@@ -102,8 +102,13 @@ echo "=== Step 5: Running Attention Comparison with Extensive Logging & Artifact
     --output-dir "$OUTPUT_DIR" \
     "$@"
 
-echo "=== Step 6: Llama.cpp End-to-End Benchmark & Real Generation ==="
-if [[ "$*" == *"--llamacpp"* ]] || command -v llama-bench &> /dev/null; then
+echo "=== Step 6: SOTA Downstream Benchmarks & llama.cpp Reasoning ==="
+RUN_DOWNSTREAM=false
+if [[ "$*" == *"--llamacpp"* ]] || [[ "$*" == *"--reasoning"* ]] || [[ "$*" == *"--downstream"* ]]; then
+    RUN_DOWNSTREAM=true
+fi
+
+if [ "$RUN_DOWNSTREAM" = true ]; then
     LLAMA_DIR="./llama.cpp"
     if ! command -v llama-bench &> /dev/null && [ ! -f "$LLAMA_DIR/build/bin/llama-bench" ]; then
         echo "Building llama.cpp with CUDA support for H200..."
@@ -125,13 +130,22 @@ if [[ "$*" == *"--llamacpp"* ]] || command -v llama-bench &> /dev/null; then
     "$BENCH_BIN" -m "$MODEL_DIR/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ1_M-00001-of-00006.gguf" \
         -ngl 99 -p 512,2048 -n 128 -b 1
 
-    echo "Running end-to-end token generation (reasoning effort 50)..."
-    "$CLI_BIN" -m "$MODEL_DIR/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ1_M-00001-of-00006.gguf" \
-        -ngl 99 --reasoning on --reasoning-effort 50 \
-        -p "Compare parameter-free sparse attention with DeepSeek CSA2 in 1M context LLMs." \
-        -n 128
+    WANDB_FLAG=""
+    if [[ "$*" == *"--wandb"* ]]; then
+        WANDB_FLAG="--wandb"
+    fi
+
+    echo "Running SOTA downstream reasoning evaluations (AIME25, GPQA-D, MATH-500, Passkey, Perplexity)..."
+    "$PYTHON_BIN" eval_downstream_h200.py \
+        --model-dir "$MODEL_DIR" \
+        --output-dir "$OUTPUT_DIR" \
+        --llama-dir "$LLAMA_DIR" \
+        --suite all \
+        --reasoning-effort 50 \
+        --ngl 99 \
+        $WANDB_FLAG
 else
-    echo "Pass --llamacpp to automatically build llama.cpp and run end-to-end generation on H200."
+    echo "Pass --reasoning or --llamacpp to run SOTA downstream tasks (AIME25, GPQA-D, MATH-500, Perplexity, Passkey)."
 fi
 
 echo "=== Benchmark Complete ==="
