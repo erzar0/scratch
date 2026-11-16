@@ -31,10 +31,24 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-import polars as pl
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
+
+def _bootstrap_venv() -> None:
+    """Switch to virtual environment if running under unconfigured python."""
+    for venv_name in [".venv/bin/python", ".env/bin/python"]:
+        cand = Path(__file__).resolve().parent / venv_name
+        if cand.exists() and sys.executable != str(cand):
+            try:
+                import polars  # noqa: F401
+            except ImportError:
+                os.execv(str(cand), [str(cand), *sys.argv])
+
+
+_bootstrap_venv()
+
+import polars as pl  # noqa: E402
+import torch  # noqa: E402
+import torch.nn as nn  # noqa: E402
+import torch.nn.functional as F  # noqa: E402
 
 try:
     import orjson  # type: ignore

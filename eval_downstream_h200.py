@@ -20,10 +20,13 @@ Outputs structured JSON/CSV artifacts and logs tables to Weights & Biases.
 from __future__ import annotations
 
 import argparse
+import csv
 import logging
 import math
+import os
 import re
 import subprocess
+import sys
 import time
 import urllib.request
 from dataclasses import asdict, dataclass
@@ -31,10 +34,30 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-import polars as pl
-import torch
-import torch.nn.functional as F
-from test_iq1m_h200 import (
+
+def _bootstrap_venv() -> None:
+    """Switch to virtual environment if running under unconfigured python."""
+    for venv_name in [".venv/bin/python", ".env/bin/python"]:
+        cand = Path(__file__).resolve().parent / venv_name
+        if cand.exists() and sys.executable != str(cand):
+            try:
+                import polars  # noqa: F401
+            except ImportError:
+                os.execv(str(cand), [str(cand), *sys.argv])
+
+
+_bootstrap_venv()
+
+try:
+    import polars as pl  # noqa: E402
+
+    HAS_POLARS = True
+except ImportError:
+    HAS_POLARS = False
+
+import torch  # noqa: E402
+import torch.nn.functional as F  # noqa: E402
+from test_iq1m_h200 import (  # noqa: E402
     BLOCK_SIZE,
     DIM,
     HEAD_DIM,
@@ -1015,8 +1038,14 @@ def save_results(data: list[Any] | Any, output_dir: Path, name: str) -> None:
         rows = [asdict(data)]
 
     dump_json_file({"timestamp": ts, "results": rows}, json_path)
-    df = pl.DataFrame(rows)
-    df.write_csv(csv_path)
+    if HAS_POLARS and rows:
+        df = pl.DataFrame(rows)
+        df.write_csv(csv_path)
+    elif rows:
+        with open(csv_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+            writer.writeheader()
+            writer.writerows(rows)
     logger.info("Saved %s results to %s and %s", name, json_path, csv_path)
 
 
@@ -1207,14 +1236,11 @@ def main() -> None:
             mock=args.mock,
         )
         save_results(r_rows, args.output_dir, "comparative_reasoning")
-        if wandb_run:
-            wandb.log(
-                {
-                    "reasoning_table": wandb.Table(
-                        dataframe=pl.DataFrame([asdict(r) for r in r_rows]).to_pandas()
-                    )
-                }
-            )
+        if wandb_run and r_rows:
+            d_rows = [asdict(r) for r in r_rows]
+            cols = list(d_rows[0].keys())
+            vals = [[dr[c] for c in cols] for dr in d_rows]
+            wandb.log({"reasoning_table": wandb.Table(columns=cols, data=vals)})
 
     if args.suite in ("passkey", "all"):
         p_rows = run_comparative_passkey_suite(
@@ -1225,14 +1251,11 @@ def main() -> None:
             args.depths,
         )
         save_results(p_rows, args.output_dir, "comparative_passkey")
-        if wandb_run:
-            wandb.log(
-                {
-                    "passkey_table": wandb.Table(
-                        dataframe=pl.DataFrame([asdict(r) for r in p_rows]).to_pandas()
-                    )
-                }
-            )
+        if wandb_run and p_rows:
+            d_rows = [asdict(r) for r in p_rows]
+            cols = list(d_rows[0].keys())
+            vals = [[dr[c] for c in cols] for dr in d_rows]
+            wandb.log({"passkey_table": wandb.Table(columns=cols, data=vals)})
 
     if args.suite in ("perplexity", "all"):
         ppl_row = run_comparative_perplexity_suite(
