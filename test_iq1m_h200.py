@@ -34,6 +34,8 @@ from typing import Any
 
 def _bootstrap_venv() -> None:
     """Switch to virtual environment if running under unconfigured python."""
+    if not sys.argv or sys.argv[0] == "-c":
+        return
     for venv_name in [".venv/bin/python", ".env/bin/python"]:
         cand = Path(__file__).resolve().parent / venv_name
         if cand.exists() and sys.executable != str(cand):

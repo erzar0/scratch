@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import logging
 import math
 import os
@@ -38,6 +39,8 @@ from typing import Any
 
 def _bootstrap_venv() -> None:
     """Switch to virtual environment if running under unconfigured python."""
+    if not sys.argv or sys.argv[0] == "-c":
+        return
     for venv_name in [".venv/bin/python", ".env/bin/python"]:
         cand = Path(__file__).resolve().parent / venv_name
         if cand.exists() and sys.executable != str(cand):
@@ -75,27 +78,51 @@ from test_iq1m_h200 import (  # noqa: E402
 try:
     import orjson  # type: ignore
 
-    def dump_json_file(data: dict[str, Any], path: Path) -> None:
-        """Serialize data to JSON with fast orjson.
-
-        Args:
-            data: Data payload dictionary.
-            path: Target file path.
-        """
-        path.write_bytes(orjson.dumps(data, option=orjson.OPT_INDENT_2))
-
+    HAS_ORJSON = True
 except ImportError:
-    import json
+    HAS_ORJSON = False
 
-    def dump_json_file(data: dict[str, Any], path: Path) -> None:
-        """Serialize data to JSON with standard library json.
 
-        Args:
-            data: Data payload dictionary.
-            path: Target file path.
-        """
+def dump_json_file(data: dict[str, Any], path: Path) -> None:
+    """Serialize data to JSON file.
+
+    Args:
+        data: Data payload dictionary.
+        path: Target file path.
+    """
+    if HAS_ORJSON:
+        path.write_bytes(orjson.dumps(data, option=orjson.OPT_INDENT_2))
+    else:
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2)
+
+
+def serialize_json_line(data: dict[str, Any]) -> str:
+    """Serialize data to a single JSON line string.
+
+    Args:
+        data: Data payload dictionary.
+
+    Returns:
+        JSON string representation.
+    """
+    if HAS_ORJSON:
+        return orjson.dumps(data).decode("utf-8")
+    return json.dumps(data)
+
+
+def deserialize_json_line(line: str) -> dict[str, Any]:
+    """Deserialize a JSON line string into a dictionary.
+
+    Args:
+        line: JSON string to parse.
+
+    Returns:
+        Parsed dictionary.
+    """
+    if HAS_ORJSON:
+        return orjson.loads(line)
+    return json.loads(line)
 
 
 try:
@@ -363,11 +390,15 @@ def parse_thinking_and_answer(raw_text: str) -> tuple[str, str]:
     Returns:
         Tuple of (thinking_trace, final_answer_text).
     """
-    think_match = re.search(r"<think>(.*?)</think>", raw_text, re.DOTALL)
-    if think_match:
-        thinking = think_match.group(1).strip()
-        answer = raw_text[think_match.end() :].strip()
-        return thinking, answer
+    for pattern in [
+        r"<think>(.*?)</think>",
+        r"\[Start thinking\](.*?)\[End thinking\]",
+    ]:
+        think_match = re.search(pattern, raw_text, re.DOTALL | re.IGNORECASE)
+        if think_match:
+            thinking = think_match.group(1).strip()
+            answer = raw_text[think_match.end() :].strip()
+            return thinking, answer
     return "", raw_text.strip()
 
 
@@ -387,11 +418,7 @@ def load_aime25_suite(data_dir: Path, limit: int = 0) -> list[ReasoningQuestion]
         with open(cache_file, encoding="utf-8") as f:
             for line in f:
                 if line.strip():
-                    d = (
-                        orjson.loads(line)
-                        if "orjson" in globals()
-                        else json.loads(line)
-                    )
+                    d = deserialize_json_line(line)
                     questions.append(ReasoningQuestion(**d))
         logger.info("Loaded %d AIME25 problems from local cache.", len(questions))
         return questions[:limit] if limit > 0 else questions
@@ -416,7 +443,7 @@ def load_aime25_suite(data_dir: Path, limit: int = 0) -> list[ReasoningQuestion]
         data_dir.mkdir(parents=True, exist_ok=True)
         with open(cache_file, "w", encoding="utf-8") as f:
             for q in questions:
-                f.write(json.dumps(asdict(q)) + "\n")
+                f.write(serialize_json_line(asdict(q)) + "\n")
         logger.info("Cached %d AIME 2025 problems to %s.", len(questions), cache_file)
         return questions[:limit] if limit > 0 else questions
     except Exception as exc:  # noqa: BLE001
@@ -436,15 +463,11 @@ def load_gpqa_suite(data_dir: Path, limit: int = 0) -> list[ReasoningQuestion]:
     """
     cache_file = data_dir / "gpqa_diamond.jsonl"
     if cache_file.exists():
-        questions: list[ReasoningQuestion] = []
+        questions = []
         with open(cache_file, encoding="utf-8") as f:
             for line in f:
                 if line.strip():
-                    d = (
-                        orjson.loads(line)
-                        if "orjson" in globals()
-                        else json.loads(line)
-                    )
+                    d = deserialize_json_line(line)
                     questions.append(ReasoningQuestion(**d))
         logger.info("Loaded %d GPQA-Diamond problems from local cache.", len(questions))
         return questions[:limit] if limit > 0 else questions
@@ -474,7 +497,7 @@ def load_gpqa_suite(data_dir: Path, limit: int = 0) -> list[ReasoningQuestion]:
         data_dir.mkdir(parents=True, exist_ok=True)
         with open(cache_file, "w", encoding="utf-8") as f:
             for q in questions:
-                f.write(json.dumps(asdict(q)) + "\n")
+                f.write(serialize_json_line(asdict(q)) + "\n")
         logger.info(
             "Cached %d GPQA-Diamond problems to %s.", len(questions), cache_file
         )
@@ -496,15 +519,11 @@ def load_math500_suite(data_dir: Path, limit: int = 0) -> list[ReasoningQuestion
     """
     cache_file = data_dir / "math500.jsonl"
     if cache_file.exists():
-        questions: list[ReasoningQuestion] = []
+        questions = []
         with open(cache_file, encoding="utf-8") as f:
             for line in f:
                 if line.strip():
-                    d = (
-                        orjson.loads(line)
-                        if "orjson" in globals()
-                        else json.loads(line)
-                    )
+                    d = deserialize_json_line(line)
                     questions.append(ReasoningQuestion(**d))
         logger.info("Loaded %d MATH-500 problems from local cache.", len(questions))
         return questions[:limit] if limit > 0 else questions
@@ -530,7 +549,7 @@ def load_math500_suite(data_dir: Path, limit: int = 0) -> list[ReasoningQuestion
         data_dir.mkdir(parents=True, exist_ok=True)
         with open(cache_file, "w", encoding="utf-8") as f:
             for q in questions:
-                f.write(json.dumps(asdict(q)) + "\n")
+                f.write(serialize_json_line(asdict(q)) + "\n")
         logger.info("Cached %d MATH-500 problems to %s.", len(questions), cache_file)
         return questions[:limit] if limit > 0 else questions
     except Exception as exc:  # noqa: BLE001
@@ -620,12 +639,37 @@ def run_llama_inference(
         prompt,
         "--temp",
         "0.2",
+        "--no-conversation",
     ]
 
     start_t = time.perf_counter()
-    res = subprocess.run(cmd, capture_output=True, text=True, check=False)
+    try:
+        res = subprocess.run(
+            cmd,
+            stdin=subprocess.DEVNULL,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=180,
+        )
+        if res.returncode != 0 and (
+            "unknown option" in res.stderr or "unrecognized" in res.stderr
+        ):
+            cmd_fallback = [c for c in cmd if c != "--no-conversation"]
+            res = subprocess.run(
+                cmd_fallback,
+                stdin=subprocess.DEVNULL,
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=180,
+            )
+        out_text = res.stdout if res.stdout else res.stderr
+    except subprocess.TimeoutExpired:
+        logger.warning("llama-cli timed out after 180s on question prompt.")
+        out_text = ""
     elapsed = time.perf_counter() - start_t
-    return res.stdout, elapsed
+    return out_text, elapsed
 
 
 def run_comparative_reasoning_suite(
