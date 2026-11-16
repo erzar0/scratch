@@ -317,7 +317,7 @@ class DeepSeekStandardAttention(torch.nn.Module):
             * 0.02
         )
         self.attn_sink = torch.nn.Parameter(
-            torch.zeros(N_HEADS, device=device, dtype=torch.float32)
+            torch.zeros(N_HEADS, device=device, dtype=dtype)
         )
 
     @torch.no_grad()
@@ -356,7 +356,7 @@ class DeepSeekStandardAttention(torch.nn.Module):
 
         lse = torch.logsumexp(logits, dim=-1)
         sink_weight = torch.sigmoid(lse - self.attn_sink.view(1, -1))
-        probs = F.softmax(logits, dim=-1) * sink_weight.unsqueeze(-1)
+        probs = (F.softmax(logits, dim=-1) * sink_weight.unsqueeze(-1)).to(all_k.dtype)
 
         out = torch.einsum("bhs,sd->bhd", probs, all_k)
         if return_indices:
@@ -429,7 +429,7 @@ class ParameterFreeAttention(torch.nn.Module):
 
         all_k = torch.cat([window_kv, picked_kv], dim=0)
         logits = torch.einsum("bhd,sd->bhs", q, all_k) * self.attn_scale
-        probs = F.softmax(logits, dim=-1)
+        probs = F.softmax(logits, dim=-1).to(all_k.dtype)
 
         out = torch.einsum("bhs,sd->bhd", probs, all_k)
         if return_indices:
@@ -723,7 +723,7 @@ def benchmark_context(
         logits_dense = torch.einsum("bhd,sd->bhs", q, all_dense_k) * (
             1.0 / math.sqrt(HEAD_DIM)
         )
-        probs_dense = F.softmax(logits_dense, dim=-1)
+        probs_dense = F.softmax(logits_dense, dim=-1).to(all_dense_k.dtype)
         out_dense = torch.einsum("bhs,sd->bhd", probs_dense, all_dense_k)
 
         cache_probs = probs_dense[:, :, WINDOW_SIZE:].mean(dim=1).squeeze(0)
