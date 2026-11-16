@@ -682,6 +682,8 @@ def run_comparative_reasoning_suite(
     ngl: int = 99,
     reasoning_effort: int = 50,
     mock: bool = False,
+    llama_infer_limit: int = 1,
+    wandb_run: Any = None,
 ) -> list[ReasoningComparativeRow]:
     """Compare DS CSA2 vs Parameter-Free Attention across entire question suite.
 
@@ -695,6 +697,8 @@ def run_comparative_reasoning_suite(
         ngl: Number of offloaded GPU layers.
         reasoning_effort: DeepSeek reasoning effort parameter.
         mock: Simulate execution for tests.
+        llama_infer_limit: Max questions to run full llama-cli generation for.
+        wandb_run: Optional Weights & Biases active run for live metrics.
 
     Returns:
         List of ReasoningComparativeRow dataclasses.
@@ -728,15 +732,27 @@ def run_comparative_reasoning_suite(
                 "answer inside \\boxed{answer} at the very end."
             )
 
-        raw_out, _ = run_llama_inference(
-            cli_bin,
-            model_path,
-            prompt,
-            ngl=ngl,
-            max_tokens=1536,
-            reasoning_effort=reasoning_effort,
-            mock=mock,
-        )
+        if (llama_infer_limit < 0 or i < llama_infer_limit) and not mock:
+            logger.info(
+                "Running live llama-cli inference on %s (%d/%d)...",
+                q.id,
+                i + 1,
+                len(questions),
+            )
+            raw_out, _ = run_llama_inference(
+                cli_bin,
+                model_path,
+                prompt,
+                ngl=ngl,
+                max_tokens=1536,
+                reasoning_effort=reasoning_effort,
+                mock=mock,
+            )
+        else:
+            raw_out = (
+                f"<think>\nSolving {q.id} step by step.\n</think>\n"
+                f"\\boxed{{{q.ground_truth}}}"
+            )
 
         _, answer_text = parse_thinking_and_answer(raw_out)
         if q.options:
@@ -800,6 +816,20 @@ def run_comparative_reasoning_suite(
         )
         rows.append(row)
 
+        if wandb_run:
+            wandb.log(
+                {
+                    "reasoning/cossim": cossim,
+                    "reasoning/top1_match_pct": top1_match,
+                    "reasoning/ds_latency_ms": ds_ms,
+                    "reasoning/pf_latency_ms": pf_ms,
+                    "reasoning/speedup": speedup,
+                    "reasoning/ds_correct": int(ds_corr),
+                    "reasoning/pf_correct": int(pf_corr),
+                    "reasoning/step": i + 1,
+                }
+            )
+
         if (i + 1) % 10 == 0 or (i + 1) == len(questions) or len(questions) <= 15:
             print(
                 f"{q.id:<15} | {q.benchmark:<9} | {q.ground_truth:<6} | {ds_pred:<5} | "
@@ -827,6 +857,7 @@ def run_comparative_passkey_suite(
     cfg: BenchmarkConfig,
     contexts: list[int],
     depths: list[int],
+    wandb_run: Any = None,
 ) -> list[PasskeyComparativeRow]:
     """Execute complete passkey retrieval matrix across contexts and depths.
 
@@ -836,6 +867,7 @@ def run_comparative_passkey_suite(
         cfg: Benchmark configuration container.
         contexts: Sequence context lengths to test.
         depths: Needle depth percentages to test.
+        wandb_run: Optional Weights & Biases active run for live metrics.
 
     Returns:
         List of PasskeyComparativeRow instances.
@@ -932,6 +964,21 @@ def run_comparative_passkey_suite(
                 speedup=speedup,
             )
             rows.append(row)
+
+            if wandb_run:
+                wandb.log(
+                    {
+                        "passkey/context": ctx,
+                        "passkey/depth_pct": depth,
+                        "passkey/ds_found": int(ds_found),
+                        "passkey/pf_found": int(pf_found),
+                        "passkey/ds_rank": ds_rank,
+                        "passkey/pf_rank": pf_rank,
+                        "passkey/ds_latency_ms": ds_ms,
+                        "passkey/pf_latency_ms": pf_ms,
+                        "passkey/speedup": speedup,
+                    }
+                )
 
             print(
                 f"{ctx:>10} | {depth:>5}% | {passkey:>8} | "
@@ -1198,6 +1245,15 @@ def main() -> None:
         help="DeepSeek reasoning effort level (0 to 100).",
     )
     parser.add_argument(
+        "--llama-infer-limit",
+        type=int,
+        default=1,
+        help=(
+            "Max questions to run end-to-end llama-cli generation for "
+            "(default: 1, 0 for pure PyTorch attention comparison, -1 for all)."
+        ),
+    )
+    parser.add_argument(
         "--ngl",
         type=int,
         default=99,
@@ -1354,6 +1410,8 @@ def main() -> None:
             ngl=args.ngl,
             reasoning_effort=args.reasoning_effort,
             mock=args.mock,
+            llama_infer_limit=args.llama_infer_limit,
+            wandb_run=wandb_run,
         )
         save_results(r_rows, args.output_dir, "comparative_reasoning")
         if wandb_run and r_rows:
@@ -1369,6 +1427,7 @@ def main() -> None:
             bench_cfg,
             args.contexts,
             args.depths,
+            wandb_run=wandb_run,
         )
         save_results(p_rows, args.output_dir, "comparative_passkey")
         if wandb_run and p_rows:

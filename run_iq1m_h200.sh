@@ -126,6 +126,9 @@ if [ "$RUN_DOWNSTREAM" = true ]; then
         CLI_BIN="$LLAMA_DIR/build/bin/llama-cli"
     fi
 
+    # Free any orphaned processes holding GPU memory
+    pkill -9 -f llama-cli 2>/dev/null || true
+
     echo "Running llama-bench on NVIDIA H200 (100% offload, -ngl 99)..."
     "$BENCH_BIN" -m "$MODEL_DIR/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ1_M-00001-of-00006.gguf" \
         -ngl 99 -p 512,2048 -n 128 -b 1
