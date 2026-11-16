@@ -66,8 +66,9 @@ if [[ "$*" == *"--wandb"* ]] && [ -z "${WANDB_API_KEY:-}" ]; then
 fi
 
 echo "=== Step 3: Fast Parallel Download of IQ1_M GGUF Shards ==="
-# hf_transfer maximizes download speeds on Brev 10Gbps+ networking
+# Enable high performance multi-stream download
 export HF_HUB_ENABLE_HF_TRANSFER=1
+export HF_XET_HIGH_PERFORMANCE=1
 mkdir -p "$MODEL_DIR"
 
 "$PYTHON_BIN" - <<EOF
