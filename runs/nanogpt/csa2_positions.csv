@@ -13,6 +13,90 @@ version,positions,loss
 "CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",positions 2048-2560,3.59424
 "CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",positions 2560-4096,3.83822
 "CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",positions 4096-8192,3.85491
+"V4.1 reference, trained with our exact picks",positions 0-128,3.80136
+"V4.1 reference, trained with our exact picks",positions 128-512,3.52331
+"V4.1 reference, trained with our exact picks",positions 512-1024,3.52876
+"V4.1 reference, trained with our exact picks",positions 1024-2048,3.54987
+"V4.1 reference, trained with our exact picks",positions 2048-2560,3.56060
+"V4.1 reference, trained with our exact picks",positions 2560-4096,3.70380
+"V4.1 reference, trained with our exact picks",positions 4096-8192,3.52237
+"V4.1 reference, trained with our exact picks, FP4 entries",positions 0-128,3.80384
+"V4.1 reference, trained with our exact picks, FP4 entries",positions 128-512,3.52627
+"V4.1 reference, trained with our exact picks, FP4 entries",positions 512-1024,3.53198
+"V4.1 reference, trained with our exact picks, FP4 entries",positions 1024-2048,3.55352
+"V4.1 reference, trained with our exact picks, FP4 entries",positions 2048-2560,3.56484
+"V4.1 reference, trained with our exact picks, FP4 entries",positions 2560-4096,3.70781
+"V4.1 reference, trained with our exact picks, FP4 entries",positions 4096-8192,3.52687
+"V4.1 reference, trained with our tournament picks",positions 0-128,3.70153
+"V4.1 reference, trained with our tournament picks",positions 128-512,3.45293
+"V4.1 reference, trained with our tournament picks",positions 512-1024,3.46014
+"V4.1 reference, trained with our tournament picks",positions 1024-2048,3.48064
+"V4.1 reference, trained with our tournament picks",positions 2048-2560,3.50804
+"V4.1 reference, trained with our tournament picks",positions 2560-4096,3.64909
+"V4.1 reference, trained with our tournament picks",positions 4096-8192,3.45158
+"V4.1 reference, trained with our tournament picks, FP4 entries",positions 0-128,3.70359
+"V4.1 reference, trained with our tournament picks, FP4 entries",positions 128-512,3.45585
+"V4.1 reference, trained with our tournament picks, FP4 entries",positions 512-1024,3.46329
+"V4.1 reference, trained with our tournament picks, FP4 entries",positions 1024-2048,3.48410
+"V4.1 reference, trained with our tournament picks, FP4 entries",positions 2048-2560,3.51544
+"V4.1 reference, trained with our tournament picks, FP4 entries",positions 2560-4096,3.65280
+"V4.1 reference, trained with our tournament picks, FP4 entries",positions 4096-8192,3.45657
+"V4.1 reference, trained with our tournament picks, 4-token entries",positions 0-128,3.78791
+"V4.1 reference, trained with our tournament picks, 4-token entries",positions 128-512,3.56066
+"V4.1 reference, trained with our tournament picks, 4-token entries",positions 512-1024,3.60315
+"V4.1 reference, trained with our tournament picks, 4-token entries",positions 1024-2048,3.64876
+"V4.1 reference, trained with our tournament picks, 4-token entries",positions 2048-2560,3.65863
+"V4.1 reference, trained with our tournament picks, 4-token entries",positions 2560-4096,3.84708
+"V4.1 reference, trained with our tournament picks, 4-token entries",positions 4096-8192,3.70804
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means",positions 0-128,3.78962
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means",positions 128-512,3.56296
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means",positions 512-1024,3.60563
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means",positions 1024-2048,3.65128
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means",positions 2048-2560,3.66155
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means",positions 2560-4096,3.85083
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means",positions 4096-8192,3.71178
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",positions 0-128,3.71721
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",positions 128-512,3.49060
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",positions 512-1024,3.52283
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",positions 1024-2048,3.55503
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",positions 2048-2560,3.55248
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",positions 2560-4096,3.68901
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",positions 4096-8192,3.53198
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means",positions 0-128,3.71868
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means",positions 128-512,3.49273
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means",positions 512-1024,3.52467
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means",positions 1024-2048,3.55755
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means",positions 2048-2560,3.55501
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means",positions 2560-4096,3.69018
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means",positions 4096-8192,3.53460
+"Parameter-free V4.1 block, tournament picks",positions 0-128,3.73820
+"Parameter-free V4.1 block, tournament picks",positions 128-512,3.46661
+"Parameter-free V4.1 block, tournament picks",positions 512-1024,3.46027
+"Parameter-free V4.1 block, tournament picks",positions 1024-2048,3.48076
+"Parameter-free V4.1 block, tournament picks",positions 2048-2560,3.47382
+"Parameter-free V4.1 block, tournament picks",positions 2560-4096,3.62106
+"Parameter-free V4.1 block, tournament picks",positions 4096-8192,3.43470
+"Parameter-free V4.1 block, tournament picks, FP4 entries",positions 0-128,3.73950
+"Parameter-free V4.1 block, tournament picks, FP4 entries",positions 128-512,3.46910
+"Parameter-free V4.1 block, tournament picks, FP4 entries",positions 512-1024,3.46321
+"Parameter-free V4.1 block, tournament picks, FP4 entries",positions 1024-2048,3.48473
+"Parameter-free V4.1 block, tournament picks, FP4 entries",positions 2048-2560,3.47656
+"Parameter-free V4.1 block, tournament picks, FP4 entries",positions 2560-4096,3.62569
+"Parameter-free V4.1 block, tournament picks, FP4 entries",positions 4096-8192,3.43969
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",positions 0-128,4.01506
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",positions 128-512,3.74970
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",positions 512-1024,3.77292
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",positions 1024-2048,3.80257
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",positions 2048-2560,3.81093
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",positions 2560-4096,3.99746
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",positions 4096-8192,3.73627
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries",positions 0-128,4.01691
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries",positions 128-512,3.75242
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries",positions 512-1024,3.77608
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries",positions 1024-2048,3.80601
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries",positions 2048-2560,3.81541
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries",positions 2560-4096,4.00145
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries",positions 4096-8192,3.74040
 "CSA2, our port of the V4.1 report",positions 0-128,3.83738
 "CSA2, our port of the V4.1 report",positions 128-512,3.58179
 "CSA2, our port of the V4.1 report",positions 512-1024,3.61274

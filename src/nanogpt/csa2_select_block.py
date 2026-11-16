@@ -34,6 +34,20 @@ def block_scores(qs: Tensor, blocks: Tensor, summary: str) -> Tensor:
     return qs @ blocks.mean(1).T + qs.abs() @ blocks.std(1, correction=0).T
 
 
+def kept_entries(
+    qs: Tensor, keys: Tensor, allowed: Tensor, size: int, keep: int, summary: str
+) -> Tensor:
+    """(Q, E) the allowed entries of each query's `keep` best fully allowed blocks
+    and of its partly allowed ones; keys (E, D) whole blocks, allowed (Q, E)."""
+    inside = allowed.unflatten(-1, (-1, size))
+    full, part = inside.all(-1), inside.any(-1) & ~inside.all(-1)
+    score = block_scores(qs, keys.unflatten(0, (-1, size)), summary)
+    score = score.masked_fill(~full, float("-inf"))
+    best = score.topk(min(keep, score.shape[1]), -1).indices
+    kept = torch.zeros_like(full).scatter(1, best, True) & full | part
+    return kept.repeat_interleave(size, 1) & allowed
+
+
 @torch.library.custom_op("csa2_select_block::block", mutates_args=())
 def picks(
     q: Tensor,
@@ -105,13 +119,7 @@ def _block(
         keys = kv[lo:hi].float()
         keys = torch.cat([keys, keys.new_zeros(hi - lo - len(keys), keys.shape[1])])
         allowed = _allowed(starts, m, a, b, lo, hi)
-        inside = allowed.unflatten(-1, (-1, size))
-        full, part = inside.all(-1), inside.any(-1) & ~inside.all(-1)
-        score = block_scores(qs[a:b], keys.unflatten(0, (-1, size)), summary)
-        score = score.masked_fill(~full, float("-inf"))
-        best = score.topk(min(keep, score.shape[1]), -1).indices
-        kept = torch.zeros_like(full).scatter(1, best, True) & full | part
-        kept = kept.repeat_interleave(size, 1) & allowed
+        kept = kept_entries(qs[a:b], keys, allowed, size, keep, summary)
         exact = (qs[a:b] @ keys.T).masked_fill(~kept, float("-inf"))
         top, index = exact.topk(min(top_k, hi - lo), -1)
         entry[a:b, : top.shape[1]] = index + lo

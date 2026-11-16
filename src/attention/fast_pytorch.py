@@ -18,6 +18,11 @@ import torch.nn.functional as F
 from attention import loki
 from attention.bandit import BoundBandit
 from attention.block_topk import BlockTopK, summary_keys
+from attention.csa2_block_mean import Csa2BlockMean
+from attention.csa2_exact_picks import Csa2ExactPicks
+from attention.csa2_head_max import Csa2HeadMax
+from attention.csa2_parameter_free import Csa2ParameterFree, pool
+from attention.csa2_sketch_picks import Csa2SketchPicks
 from attention.tournament.blocks import BlockTournament
 from attention.tournament.channel_groups import GROUP, GroupOrder, permutation
 from attention.tournament.general import Tournament, halving_rounds, rotation
@@ -92,6 +97,103 @@ def summed_query_topk(top: int) -> Step:
     def step(q: Tensor, kv: KV) -> tuple[Tensor, Tensor]:
         idx = (kv.k @ q.sum(1)[..., None])[..., 0].topk(top, -1).indices
         return attend(q, kv.k, kv.v, idx), idx
+
+    return step
+
+
+def with_window(q: Tensor, kv: KV, picks: Tensor, window: int) -> tuple[Tensor, Tensor]:
+    """Attention over picks (G, M) and the newest `window` keys."""
+    n = kv.k.shape[1]
+    recent = torch.arange(max(n - window, 0), n, device=q.device)
+    idx = torch.cat([picks, recent.expand(picks.shape[0], -1)], 1)
+    return attend(q, kv.k, kv.v, idx), idx
+
+
+def csa2_exact_picks(m: Csa2ExactPicks) -> Step:
+    """Csa2ExactPicks: summed-query scores of the keys before the window."""
+
+    def step(q: Tensor, kv: KV) -> tuple[Tensor, Tensor]:
+        older = max(kv.k.shape[1] - m.window, 0)
+        score = (kv.k[:, :older] @ q.sum(1)[..., None])[..., 0]
+        return with_window(q, kv, score.topk(min(m.keep, older), -1).indices, m.window)
+
+    return step
+
+
+def csa2_head_max(m: Csa2HeadMax) -> Step:
+    """Csa2HeadMax: every head's logits of the keys before the window, max over
+    heads."""
+
+    def step(q: Tensor, kv: KV) -> tuple[Tensor, Tensor]:
+        older = max(kv.k.shape[1] - m.window, 0)
+        score = (kv.k[:, :older] @ q.mT).amax(-1)
+        return with_window(q, kv, score.topk(min(m.keep, older), -1).indices, m.window)
+
+    return step
+
+
+def csa2_sketch_picks(m: Csa2SketchPicks) -> Step:
+    """Csa2SketchPicks: key sketches kept as K is written; the best candidates'
+    keys gathered and scored exactly."""
+
+    def step(q: Tensor, kv: KV) -> tuple[Tensor, Tensor]:
+        n, dim = kv.k.shape[1:]
+        older = max(n - m.window, 0)
+        name = f"{m.sketch}{m.fraction}"
+        axes = kv.once(f"axes-{name}", lambda: m.projection(kv.k))
+        keys = kv.once(f"sketch-{name}", lambda: m.sketch_keys(kv.k, axes))
+        qs = q.sum(1)[:, None]  # (G, 1, D)
+        approx = (m.sketch_query(qs, axes) @ keys[:, :older].mT)[:, 0]
+        cand = approx.topk(min(m.pool * m.keep, older), -1).indices
+        score = (kv.k.gather(1, cand[..., None].expand(-1, -1, dim)) @ qs.mT)[..., 0]
+        picks = cand.gather(1, score.topk(min(m.keep, older), -1).indices)
+        return with_window(q, kv, picks, m.window)
+
+    return step
+
+
+def csa2_block_mean(m: Csa2BlockMean) -> Step:
+    """Csa2BlockMean: block means kept as K is written; the kept blocks' keys
+    gathered and scored."""
+
+    def step(q: Tensor, kv: KV) -> tuple[Tensor, Tensor]:
+        n, dim = kv.k.shape[1:]
+        older = max(n - m.window, 0)
+        means = kv.once(f"{type(m).__name__}{m.block}", lambda: m.means(kv.k))
+        allowed = -(-older // m.block)  # blocks starting before the window
+        qs = q.sum(1)[..., None]
+        top = min(m.pool * m.keep, allowed)
+        blocks = (means[:, :allowed] @ qs)[..., 0].topk(top, -1).indices
+        cand = blocks[..., None] * m.block + torch.arange(m.block, device=q.device)
+        cand = cand.flatten(1)  # (G, top * block)
+        score = (kv.k.gather(1, cand[..., None].expand(-1, -1, dim)) @ qs)[..., 0]
+        score = score.masked_fill(cand >= older, float("-inf"))
+        picks = cand.gather(1, score.topk(min(m.keep, older), -1).indices)
+        return with_window(q, kv, picks, m.window)
+
+    return step
+
+
+def csa2_parameter_free(m: Csa2ParameterFree) -> Step:
+    """Csa2ParameterFree: block means of K and V kept as they are written; the
+    entries before the window scored, the best gathered with the window."""
+
+    def step(q: Tensor, kv: KV) -> tuple[Tensor, Tensor]:
+        n, dim = kv.k.shape[1:]
+        r, newest = m.ratio, max(n - m.window, 0)
+        k_mean, v_mean = kv.once(f"pool{r}", lambda: (pool(kv.k, r), pool(kv.v, r)))
+        allowed = newest // r  # entries ending before the window
+        score = (q.sum(1)[:, None] @ k_mean[:, :allowed].mT)[:, 0]
+        picks = score.topk(min(m.keep, allowed), -1).indices  # (G, M)
+        rows = picks[..., None].expand(-1, -1, dim)
+        k_sel = torch.cat([k_mean.gather(1, rows), kv.k[:, newest:]], 1)
+        v_sel = torch.cat([v_mean.gather(1, rows), kv.v[:, newest:]], 1)
+        out = F.scaled_dot_product_attention(
+            q[:, :, None], k_sel[:, None], v_sel[:, None], enable_gqa=True
+        )
+        keys = (picks[..., None] * r + torch.arange(r, device=q.device)).flatten(1)
+        recent = torch.arange(newest, n, device=q.device).expand(keys.shape[0], -1)
+        return out[:, :, 0], torch.cat([keys, recent], 1)
 
     return step
 

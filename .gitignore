@@ -15,5 +15,8 @@ runs/logs/
 runs/mlflow.db
 runs/mlartifacts/
 runs/tasks/
+runs/benchmarks/iq1m_h200/
+wandb/
+*.log
 archive/**/*.pt
 archive/natural_text/

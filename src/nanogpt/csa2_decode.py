@@ -5,7 +5,9 @@ top64(q, keys, weights): one kernel. Each program scores its block of entries in
 scratch row, then takes their top 64 in one tl.topk (packed score and entry index,
 the lower entry first at ties); the last program of each group of up to 16 merges
 its group's top 64s, and the last group's merger merges the groups' (atomic
-counters, left zero).
+counters, left zero). top > 64 (block-mean picks, top 256 blocks): fewer programs
+per group, so a merge sorts at most 1024. within: only the entries of the given
+blocks of `size` entries scored, read in place (no gather copy).
     CSA2's learned indexer (weights given): sum_h w_h relu(q_h . k) / sqrt(dim);
     ours, exact (no weights): q . k, q the heads' summed query (only its nonzero
     channels read: record 91 pads 96 to 128); blocks > 0: only q's `blocks` aligned
@@ -30,13 +32,14 @@ import torch.nn.functional as F
 import triton
 import triton.language as tl
 from torch import Tensor
+from triton.language.standard import _bitonic_merge_hypercube, _log2
 
 from nanogpt.csa2_select_fast import _sortable
 
 # ruff: noqa: N803  (Triton's convention: upper-case constexpr arguments)
 
 TOP, BINS = 64, 2048  # picks; prefilter bins
-GROUP, GROUPS = 16, 16  # programs per first-level merge; most groups
+GROUP, GROUPS = 16, 16  # programs per first-level merge (top 64); most groups
 PROGRAMS = 128  # scoring programs per call, about
 WARPS = 4  # per attention program (bench/attend_warps.py)
 TILE = 8192  # elements per scoring step: rows = TILE // channels read
@@ -117,6 +120,24 @@ def _first(
 
 
 @triton.jit
+def _merged(ptr, real, N: tl.constexpr, TOP: tl.constexpr):
+    """Top TOP, sorted descending, of the N // TOP runs of TOP at ptr, each sorted
+    descending (the first `real` entries; the rest LEAST): even runs read reversed,
+    then runs paired by bitonic merges (tl.topk without its first log2(TOP) sort
+    stages)."""
+    j = tl.arange(0, N)
+    if N > TOP:
+        j = tl.where(j // TOP % 2 == 0, j ^ (TOP - 1), j)  # even runs ascending
+    x = tl.load(ptr + j, j < real, other=0, cache_modifier=".cg")
+    log_k: tl.constexpr = _log2(TOP)
+    h = tl.reshape(tl.where(j < real, x, LEAST), [2] * _log2(N))
+    for i in tl.static_range(log_k + 1, _log2(N) + 1):
+        h = tl.max(h, axis=_log2(h.numel) - 1 - log_k)
+        h = _bitonic_merge_hypercube(h, log_k, 2 if i < _log2(N) else 1)
+    return tl.reshape(h, [TOP])
+
+
+@triton.jit
 def _finish(
     best,
     cand_ptr,
@@ -141,20 +162,14 @@ def _finish(
     g = p // GP
     size = tl.minimum(blocks - g * GP, GP)
     if tl.atomic_add(count_ptr + 1 + g, 1) == size - 1:
-        j = tl.arange(0, GP * TOP)
-        mine = j < size * TOP
-        x = tl.load(cand_ptr + g * GP * TOP + j, mine, other=0, cache_modifier=".cg")
-        best = tl.topk(tl.where(mine, x, LEAST), TOP)
+        best = _merged(cand_ptr + g * GP * TOP, size * TOP, GP * TOP, TOP)
         tl.store(count_ptr + 1 + g, 0)
         groups = tl.cdiv(blocks, GP)
         if GW > 1:
             tl.store(level_ptr + g * TOP + i, best)
             tl.debug_barrier()
             if tl.atomic_add(count_ptr, 1) == groups - 1:
-                k = tl.arange(0, GW * TOP)
-                real = k < groups * TOP
-                y = tl.load(level_ptr + k, real, other=0, cache_modifier=".cg")
-                best = tl.topk(tl.where(real, y, LEAST), TOP)
+                best = _merged(level_ptr, groups * TOP, GW * TOP, TOP)
                 tl.store(count_ptr, 0)
                 tl.store(pick_ptr + i, 0x7FFFFFFF - (best & 0xFFFFFFFF))
                 if BINS > 0:
@@ -188,6 +203,14 @@ def _major_scores(
 
 
 @triton.jit
+def _entry(ids_ptr, rows, ok, G: tl.constexpr):
+    """Entry of each row: the row (G == 0), or entry ids[r // G] G + r % G."""
+    if G > 0:
+        return tl.load(ids_ptr + rows // G, ok, other=0).to(tl.int32) * G + rows % G
+    return rows
+
+
+@triton.jit
 def _block_top(
     q_ptr,
     w_ptr,
@@ -197,6 +220,7 @@ def _block_top(
     level_ptr,
     count_ptr,
     pick_ptr,
+    ids_ptr,
     N,
     blocks,
     scale,
@@ -210,12 +234,13 @@ def _block_top(
     GW: tl.constexpr,
     KB: tl.constexpr,
     MAJOR: tl.constexpr,
+    G: tl.constexpr,
 ):
     """Program p: entries [p BLOCK, (p + 1) BLOCK) scored on their first C channels
     (KB > 0: on q's top KB 16-channel blocks; H == 0: q . k, else the indexer over H
     heads) SUB rows at a time into score, their packed top TOP in one topk, then
     _finish. MAJOR: keys block-major (D // 16, N, 16), each block's slab read
-    contiguously (KB > 0, H == 0)."""
+    contiguously (KB > 0, H == 0). G > 0: row r is entry ids[r // G] G + r % G."""
     p = tl.program_id(0)
     if KB > 0:
         c = _top_blocks(q_ptr, D, 16, KB)
@@ -227,7 +252,8 @@ def _block_top(
         for s in range(p * BLOCK, p * BLOCK + BLOCK, SUB):
             rows = s + tl.arange(0, SUB)
             ok = rows < N
-            at = k_ptr + rows[:, None].to(tl.int64) * D + c[None, :]
+            entry = _entry(ids_ptr, rows, ok, G)
+            at = k_ptr + entry[:, None].to(tl.int64) * D + c[None, :]
             k = tl.load(at, ok[:, None] & (c < C)[None, :], other=0.0).to(tl.float32)
             if H == 0:
                 score = tl.sum(k * tl.load(q_ptr + c).to(tl.float32)[None, :], 1)
@@ -240,7 +266,8 @@ def _block_top(
             tl.store(score_ptr + rows, tl.where(ok, score, float("-inf")))
     tl.debug_barrier()
     rows = p * BLOCK + tl.arange(0, BLOCK)
-    best = tl.topk(_pack(tl.load(score_ptr + rows), rows), TOP)
+    entry = _entry(ids_ptr, rows, rows < N, G)
+    best = tl.topk(_pack(tl.load(score_ptr + rows), entry), TOP)
     _finish(best, cand_ptr, level_ptr, count_ptr, pick_ptr, pick_ptr, blocks,
             TOP, GP, GW, 0)  # fmt: skip
 
@@ -298,31 +325,31 @@ def _rerank(
             TOP, GP, GW, BINS)  # fmt: skip
 
 
-def _blocks(n: int, least: int) -> tuple[int, int]:
+def _blocks(n: int, least: int, most: int = GROUP * GROUPS) -> tuple[int, int]:
     """Entries per program (a power of 2, at least `least`) for about PROGRAMS
-    programs and at most GROUP * GROUPS, and the programs."""
-    most = GROUP * GROUPS
+    programs and at most `most`, and the programs."""
     block = max(least, triton.next_power_of_2(triton.cdiv(n, min(PROGRAMS, most))))
     return block, triton.cdiv(n, block)
 
 
-def _merge_args(blocks: int, device: torch.device) -> dict:
+def _merge_args(blocks: int, device: torch.device, top: int = TOP) -> dict:
     """_finish's buffers and sizes: candidates, group results, the zeroed counters
-    and histogram (kept per device; each kernel leaves them zero), the picks."""
+    and histogram (kept per device; each kernel leaves them zero), the picks; groups
+    of GROUP TOP // top programs."""
     if device not in _buffers:
         _buffers[device] = (
             torch.zeros(1 + GROUPS, dtype=torch.int32, device=device),
             torch.zeros(BINS, dtype=torch.int32, device=device),
         )
-    gp = min(GROUP, triton.next_power_of_2(blocks))
+    gp = min(GROUP * TOP // top, triton.next_power_of_2(blocks))
     groups = triton.cdiv(blocks, gp)
     assert groups <= GROUPS, blocks
     return {
-        "cand": torch.empty(blocks * TOP, dtype=torch.int64, device=device),
-        "level": torch.empty(groups * TOP, dtype=torch.int64, device=device),
+        "cand": torch.empty(blocks * top, dtype=torch.int64, device=device),
+        "level": torch.empty(groups * top, dtype=torch.int64, device=device),
         "count": _buffers[device][0],
         "hist": _buffers[device][1],
-        "picks": torch.empty(TOP, dtype=torch.int64, device=device),
+        "picks": torch.empty(top, dtype=torch.int64, device=device),
         "GP": gp,
         "GW": triton.next_power_of_2(groups),
     }
@@ -334,18 +361,28 @@ def top64(
     weights: Tensor | None = None,
     width: int = 0,
     blocks: int = 0,
+    top: int = TOP,
+    within: Tensor | None = None,
+    size: int = 8,
 ) -> Tensor:
-    """The 64 best entries of keys (N, D) bf16, as int64 (64,): by q (D,) . k on the
-    first `width` channels (0: all; q zero beyond them) or, blocks > 0, on q's
-    `blocks` aligned 16-channel blocks of largest sum |q| (keys may then be
-    block-major, (D // 16, N, 16)); or by CSA2's indexer when weights (H,) are
-    given, q (H, D)."""
+    """The `top` (a power of 2, at least 64) best entries of keys (N, D) bf16, as
+    int64 (top,): by q (D,) . k on the first `width` channels (0: all; q zero beyond
+    them) or, blocks > 0, on q's `blocks` aligned 16-channel blocks of largest sum
+    |q| (keys may then be block-major, (D // 16, N, 16)); or by CSA2's indexer when
+    weights (H,) are given, q (H, D). within (B,): only the entries of those blocks
+    of `size` entries (at least `top` of them)."""
     major = keys.dim() == 3  # block-major (dim // 16, N, 16)
     assert not major or (blocks > 0 and weights is None)
+    assert top >= TOP and top & (top - 1) == 0
     n, dim = (keys.shape[1], keys.shape[0] * 16) if major else keys.shape
-    sub = max(TOP, TILE // (blocks * 16 or dim))
-    block, programs = _blocks(n, sub)
-    m = _merge_args(programs, keys.device)
+    if within is not None:
+        assert not major and size & (size - 1) == 0
+        n = within.shape[0] * size
+    assert n >= top, (n, top)
+    sub = max(TOP, TILE // (blocks * 16 or dim))  # rows per scoring step
+    least = sub if top == TOP else 2 * top  # top 256: fewer merges (tuned)
+    block, programs = _blocks(n, max(least, sub), GROUP * TOP // top * GROUPS)
+    m = _merge_args(programs, keys.device, top)
     score = torch.empty(programs * block, dtype=torch.float32, device=keys.device)
     _block_top[(programs,)](
         q,
@@ -356,6 +393,7 @@ def top64(
         m["level"],
         m["count"],
         m["picks"],
+        q if within is None else within,
         n,
         programs,
         dim**-0.5,
@@ -363,12 +401,13 @@ def top64(
         D=dim,
         C=width or dim,
         H=0 if weights is None else q.shape[0],
-        TOP=TOP,
+        TOP=top,
         SUB=sub,
         GP=m["GP"],
         GW=m["GW"],
         KB=blocks,
         MAJOR=major,
+        G=0 if within is None else size,
         num_warps=8,
     )
     return m["picks"]

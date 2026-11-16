@@ -1,0 +1,81 @@
+rule,positions,loss
+its learned indexer (as trained),positions 0-128,3.71138
+its learned indexer (as trained),positions 128-512,3.45376
+its learned indexer (as trained),positions 512-1024,3.45229
+its learned indexer (as trained),positions 1024-2048,3.47380
+its learned indexer (as trained),positions 2048-2560,3.58726
+its learned indexer (as trained),positions 2560-4096,3.83399
+its learned indexer (as trained),positions 4096-8192,3.85058
+its learned indexer (as trained),all positions,3.54005
+"its learned indexer, FP4 caches",positions 0-128,3.71390
+"its learned indexer, FP4 caches",positions 128-512,3.45715
+"its learned indexer, FP4 caches",positions 512-1024,3.45606
+"its learned indexer, FP4 caches",positions 1024-2048,3.47787
+"its learned indexer, FP4 caches",positions 2048-2560,3.59424
+"its learned indexer, FP4 caches",positions 2560-4096,3.83822
+"its learned indexer, FP4 caches",positions 4096-8192,3.85491
+"its learned indexer, FP4 caches",all positions,3.54362
+"summed query, exact picks",positions 0-128,3.71138
+"summed query, exact picks",positions 128-512,3.45504
+"summed query, exact picks",positions 512-1024,3.45796
+"summed query, exact picks",positions 1024-2048,3.48187
+"summed query, exact picks",positions 2048-2560,3.57912
+"summed query, exact picks",positions 2560-4096,3.79566
+"summed query, exact picks",positions 4096-8192,3.71093
+"summed query, exact picks",all positions,3.53631
+"summed query, block-mean picks, best 64 blocks of 8",positions 0-128,3.71138
+"summed query, block-mean picks, best 64 blocks of 8",positions 128-512,3.45504
+"summed query, block-mean picks, best 64 blocks of 8",positions 512-1024,3.45842
+"summed query, block-mean picks, best 64 blocks of 8",positions 1024-2048,3.48566
+"summed query, block-mean picks, best 64 blocks of 8",positions 2048-2560,3.59090
+"summed query, block-mean picks, best 64 blocks of 8",positions 2560-4096,3.80913
+"summed query, block-mean picks, best 64 blocks of 8",positions 4096-8192,3.72905
+"summed query, block-mean picks, best 64 blocks of 8",all positions,3.53846
+"summed query, block-mean picks, best 256 blocks of 8",positions 0-128,3.71138
+"summed query, block-mean picks, best 256 blocks of 8",positions 128-512,3.45504
+"summed query, block-mean picks, best 256 blocks of 8",positions 512-1024,3.45797
+"summed query, block-mean picks, best 256 blocks of 8",positions 1024-2048,3.48187
+"summed query, block-mean picks, best 256 blocks of 8",positions 2048-2560,3.57928
+"summed query, block-mean picks, best 256 blocks of 8",positions 2560-4096,3.79630
+"summed query, block-mean picks, best 256 blocks of 8",positions 4096-8192,3.71443
+"summed query, block-mean picks, best 256 blocks of 8",all positions,3.53645
+"its learned indexer, YaRN 4x at eval",positions 0-128,3.74003
+"its learned indexer, YaRN 4x at eval",positions 128-512,3.50343
+"its learned indexer, YaRN 4x at eval",positions 512-1024,3.51133
+"its learned indexer, YaRN 4x at eval",positions 1024-2048,3.54460
+"its learned indexer, YaRN 4x at eval",positions 2048-2560,3.55664
+"its learned indexer, YaRN 4x at eval",positions 2560-4096,3.73459
+"its learned indexer, YaRN 4x at eval",positions 4096-8192,3.57155
+"its learned indexer, YaRN 4x at eval",all positions,3.57077
+"summed query, exact picks, YaRN 4x at eval",positions 0-128,3.74004
+"summed query, exact picks, YaRN 4x at eval",positions 128-512,3.50440
+"summed query, exact picks, YaRN 4x at eval",positions 512-1024,3.51535
+"summed query, exact picks, YaRN 4x at eval",positions 1024-2048,3.54424
+"summed query, exact picks, YaRN 4x at eval",positions 2048-2560,3.54240
+"summed query, exact picks, YaRN 4x at eval",positions 2560-4096,3.68701
+"summed query, exact picks, YaRN 4x at eval",positions 4096-8192,3.47851
+"summed query, exact picks, YaRN 4x at eval",all positions,3.56633
+"summed query, exact picks, FP4 entries",positions 0-128,3.71391
+"summed query, exact picks, FP4 entries",positions 128-512,3.45837
+"summed query, exact picks, FP4 entries",positions 512-1024,3.46159
+"summed query, exact picks, FP4 entries",positions 1024-2048,3.48574
+"summed query, exact picks, FP4 entries",positions 2048-2560,3.58691
+"summed query, exact picks, FP4 entries",positions 2560-4096,3.80325
+"summed query, exact picks, FP4 entries",positions 4096-8192,3.72144
+"summed query, exact picks, FP4 entries",all positions,3.54017
+"summed query, block-mean picks, 64 blocks, FP4 entries",positions 0-128,3.71391
+"summed query, block-mean picks, 64 blocks, FP4 entries",positions 128-512,3.45837
+"summed query, block-mean picks, 64 blocks, FP4 entries",positions 512-1024,3.46195
+"summed query, block-mean picks, 64 blocks, FP4 entries",positions 1024-2048,3.48949
+"summed query, block-mean picks, 64 blocks, FP4 entries",positions 2048-2560,3.59896
+"summed query, block-mean picks, 64 blocks, FP4 entries",positions 2560-4096,3.81750
+"summed query, block-mean picks, 64 blocks, FP4 entries",positions 4096-8192,3.74086
+"summed query, block-mean picks, 64 blocks, FP4 entries",all positions,3.54239
+"summed query, exact picks, 128 per query",positions 0-128,3.71161
+"summed query, exact picks, 128 per query",positions 128-512,3.45658
+"summed query, exact picks, 128 per query",positions 512-1024,3.45858
+"summed query, exact picks, 128 per query",positions 1024-2048,3.48280
+"summed query, exact picks, 128 per query",positions 2048-2560,3.58799
+"summed query, exact picks, 128 per query",positions 2560-4096,3.81955
+"summed query, exact picks, 128 per query",positions 4096-8192,3.76359
+"summed query, exact picks, 128 per query",all positions,3.54019

@@ -119,8 +119,11 @@ FP8 = {f"{k}, FP8 entries, {WINDOWS[1]}": (v, (0, 4), WIN) for k, v in FP8.items
 REF = "CSA2, V4.1 reference layout (TensorRT-LLM decode)"
 
 
-def ref_parts(s: dict) -> dict[str, Callable]:
-    """REF's three timed loops (decode_heat.parts): picks at layers 1, 5, 9."""
+def ref_parts(
+    s: dict, rule: Callable[[dict, int], Tensor] | None = None
+) -> dict[str, Callable]:
+    """REF's three timed loops (decode_heat.parts): picks at layers 1, 5, 9, by its
+    indexer or by rule(s, layer) (bench/decode_ref_picks.py)."""
 
     def attend(i: int, picks: Tensor) -> None:
         main = s["ref_main"][i >= 5]
@@ -129,6 +132,8 @@ def ref_parts(s: dict) -> dict[str, Callable]:
                        s["cos"], s["sin"])  # fmt: skip
 
     def pick(i: int) -> Tensor:
+        if rule is not None:
+            return rule(s, i)
         if i == 1:
             return cd.top64(s["qi"][1], s["ref_index"][0], s["w"][1])
         if i == 5:

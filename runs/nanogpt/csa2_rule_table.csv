@@ -1,0 +1,834 @@
+model,picks,panel,stat,value
+V4.1 reference,its learned indexer,Loss,"Final validation loss (logged, lm_head unclipped)",3.5243
+V4.1 reference,its learned indexer,Loss,"Eval, bf16 caches",3.5215
+V4.1 reference,its learned indexer,Loss,"Eval, FP8 caches",3.5230
+V4.1 reference,its learned indexer,Loss,"Eval, FP4 caches",3.5250
+V4.1 reference,its learned indexer,Loss,Positions 0-128,3.6890
+V4.1 reference,its learned indexer,Loss,Positions 128-512,3.4348
+V4.1 reference,its learned indexer,Loss,Positions 512-1024,3.4343
+V4.1 reference,its learned indexer,Loss,Positions 1024-2048,3.4554
+V4.1 reference,its learned indexer,Loss,Positions 2048-2560,3.5737
+V4.1 reference,its learned indexer,Loss,Positions 2560-4096,3.8213
+V4.1 reference,its learned indexer,Loss,Positions 4096-8192,3.8426
+V4.1 reference,its learned indexer,Change vs trained rule,"All positions, bf16",
+V4.1 reference,its learned indexer,Change vs trained rule,"Worst past 2048, bf16",
+V4.1 reference,its learned indexer,Change vs trained rule,"All positions, FP8",
+V4.1 reference,its learned indexer,Change vs trained rule,"Worst past 2048, FP8",
+V4.1 reference,its learned indexer,Change vs trained rule,"All positions, FP4",
+V4.1 reference,its learned indexer,Change vs trained rule,"Worst past 2048, FP4",
+V4.1 reference,its learned indexer,Training,Training time (h),2.5597
+V4.1 reference,its learned indexer,Training,Peak memory (MiB),7066.0000
+V4.1 reference,its learned indexer,KV cache (MiB),"bf16, 8K",4.0625
+V4.1 reference,its learned indexer,KV cache (MiB),"bf16, 32K",15.3125
+V4.1 reference,its learned indexer,KV cache (MiB),"bf16, 128K",60.3125
+V4.1 reference,its learned indexer,KV cache (MiB),"bf16, 512K",240.3125
+V4.1 reference,its learned indexer,KV cache (MiB),"FP8, 8K",2.0312
+V4.1 reference,its learned indexer,KV cache (MiB),"FP8, 32K",7.6562
+V4.1 reference,its learned indexer,KV cache (MiB),"FP8, 128K",30.1562
+V4.1 reference,its learned indexer,KV cache (MiB),"FP8, 512K",120.1562
+V4.1 reference,its learned indexer,KV cache (MiB),"FP4, 8K",1.2041
+V4.1 reference,its learned indexer,KV cache (MiB),"FP4, 32K",4.3330
+V4.1 reference,its learned indexer,KV cache (MiB),"FP4, 128K",16.8486
+V4.1 reference,its learned indexer,KV cache (MiB),"FP4, 512K",66.9111
+V4.1 reference,its learned indexer,"Decode, bf16 caches (us per token)",4K,75.0700
+V4.1 reference,its learned indexer,"Decode, bf16 caches (us per token)",8K,79.0100
+V4.1 reference,its learned indexer,"Decode, bf16 caches (us per token)",16K,87.5200
+V4.1 reference,its learned indexer,"Decode, bf16 caches (us per token)",32K,95.7400
+V4.1 reference,its learned indexer,"Decode, bf16 caches (us per token)",64K,115.9000
+V4.1 reference,its learned indexer,"Decode, bf16 caches (us per token)",128K,153.3400
+V4.1 reference,its learned indexer,"Decode, bf16 caches (us per token)",256K,159.5800
+V4.1 reference,its learned indexer,"Decode, bf16 caches (us per token)",512K,222.3400
+V4.1 reference,its learned indexer,"Decode, bf16 caches (us per token)",1M,343.6500
+V4.1 reference,its learned indexer,"Decode, FP8 caches (us per token)",4K,73.2200
+V4.1 reference,its learned indexer,"Decode, FP8 caches (us per token)",8K,77.9500
+V4.1 reference,its learned indexer,"Decode, FP8 caches (us per token)",16K,82.1400
+V4.1 reference,its learned indexer,"Decode, FP8 caches (us per token)",32K,93.5000
+V4.1 reference,its learned indexer,"Decode, FP8 caches (us per token)",64K,108.7400
+V4.1 reference,its learned indexer,"Decode, FP8 caches (us per token)",128K,136.8300
+V4.1 reference,its learned indexer,"Decode, FP8 caches (us per token)",256K,133.1800
+V4.1 reference,its learned indexer,"Decode, FP8 caches (us per token)",512K,171.2600
+V4.1 reference,its learned indexer,"Decode, FP8 caches (us per token)",1M,245.1200
+V4.1 reference trained with our tournament picks,tournament (as trained),Loss,"Final validation loss (logged, lm_head unclipped)",3.5035
+V4.1 reference trained with our tournament picks,tournament (as trained),Loss,"Eval, bf16 caches",3.5039
+V4.1 reference trained with our tournament picks,tournament (as trained),Loss,"Eval, FP8 caches",3.5055
+V4.1 reference trained with our tournament picks,tournament (as trained),Loss,"Eval, FP4 caches",3.5070
+V4.1 reference trained with our tournament picks,tournament (as trained),Loss,Positions 0-128,3.6886
+V4.1 reference trained with our tournament picks,tournament (as trained),Loss,Positions 128-512,3.4399
+V4.1 reference trained with our tournament picks,tournament (as trained),Loss,Positions 512-1024,3.4468
+V4.1 reference trained with our tournament picks,tournament (as trained),Loss,Positions 1024-2048,3.4679
+V4.1 reference trained with our tournament picks,tournament (as trained),Loss,Positions 2048-2560,3.4966
+V4.1 reference trained with our tournament picks,tournament (as trained),Loss,Positions 2560-4096,3.6352
+V4.1 reference trained with our tournament picks,tournament (as trained),Loss,Positions 4096-8192,3.4418
+V4.1 reference trained with our tournament picks,tournament (as trained),Change vs trained rule,"All positions, bf16",
+V4.1 reference trained with our tournament picks,tournament (as trained),Change vs trained rule,"Worst past 2048, bf16",
+V4.1 reference trained with our tournament picks,tournament (as trained),Change vs trained rule,"All positions, FP8",
+V4.1 reference trained with our tournament picks,tournament (as trained),Change vs trained rule,"Worst past 2048, FP8",
+V4.1 reference trained with our tournament picks,tournament (as trained),Change vs trained rule,"All positions, FP4",
+V4.1 reference trained with our tournament picks,tournament (as trained),Change vs trained rule,"Worst past 2048, FP4",
+V4.1 reference trained with our tournament picks,tournament (as trained),Training,Training time (h),2.1712
+V4.1 reference trained with our tournament picks,tournament (as trained),Training,Peak memory (MiB),7001.0000
+V4.1 reference trained with our tournament picks,tournament (as trained),KV cache (MiB),"bf16, 8K",3.3125
+V4.1 reference trained with our tournament picks,tournament (as trained),KV cache (MiB),"bf16, 32K",12.3125
+V4.1 reference trained with our tournament picks,tournament (as trained),KV cache (MiB),"bf16, 128K",48.3125
+V4.1 reference trained with our tournament picks,tournament (as trained),KV cache (MiB),"bf16, 512K",192.3125
+V4.1 reference trained with our tournament picks,tournament (as trained),KV cache (MiB),"FP8, 8K",1.6562
+V4.1 reference trained with our tournament picks,tournament (as trained),KV cache (MiB),"FP8, 32K",6.1562
+V4.1 reference trained with our tournament picks,tournament (as trained),KV cache (MiB),"FP8, 128K",24.1562
+V4.1 reference trained with our tournament picks,tournament (as trained),KV cache (MiB),"FP8, 512K",96.1562
+V4.1 reference trained with our tournament picks,tournament (as trained),KV cache (MiB),"FP4, 8K",1.0049
+V4.1 reference trained with our tournament picks,tournament (as trained),KV cache (MiB),"FP4, 32K",3.5361
+V4.1 reference trained with our tournament picks,tournament (as trained),KV cache (MiB),"FP4, 128K",13.6611
+V4.1 reference trained with our tournament picks,tournament (as trained),KV cache (MiB),"FP4, 512K",54.1611
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, bf16 caches (us per token)",4K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, bf16 caches (us per token)",8K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, bf16 caches (us per token)",16K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, bf16 caches (us per token)",32K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, bf16 caches (us per token)",64K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, bf16 caches (us per token)",128K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, bf16 caches (us per token)",256K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, bf16 caches (us per token)",512K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, bf16 caches (us per token)",1M,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, FP8 caches (us per token)",4K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, FP8 caches (us per token)",8K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, FP8 caches (us per token)",16K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, FP8 caches (us per token)",32K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, FP8 caches (us per token)",64K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, FP8 caches (us per token)",128K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, FP8 caches (us per token)",256K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, FP8 caches (us per token)",512K,
+V4.1 reference trained with our tournament picks,tournament (as trained),"Decode, FP8 caches (us per token)",1M,
+V4.1 reference trained with our tournament picks,exact,Loss,"Final validation loss (logged, lm_head unclipped)",3.5035
+V4.1 reference trained with our tournament picks,exact,Loss,"Eval, bf16 caches",3.5025
+V4.1 reference trained with our tournament picks,exact,Loss,"Eval, FP8 caches",3.5041
+V4.1 reference trained with our tournament picks,exact,Loss,"Eval, FP4 caches",3.5056
+V4.1 reference trained with our tournament picks,exact,Loss,Positions 0-128,3.6878
+V4.1 reference trained with our tournament picks,exact,Loss,Positions 128-512,3.4383
+V4.1 reference trained with our tournament picks,exact,Loss,Positions 512-1024,3.4450
+V4.1 reference trained with our tournament picks,exact,Loss,Positions 1024-2048,3.4663
+V4.1 reference trained with our tournament picks,exact,Loss,Positions 2048-2560,3.4977
+V4.1 reference trained with our tournament picks,exact,Loss,Positions 2560-4096,3.6332
+V4.1 reference trained with our tournament picks,exact,Loss,Positions 4096-8192,3.4417
+V4.1 reference trained with our tournament picks,exact,Change vs trained rule,"All positions, bf16",-0.0014
+V4.1 reference trained with our tournament picks,exact,Change vs trained rule,"Worst past 2048, bf16",0.0010
+V4.1 reference trained with our tournament picks,exact,Change vs trained rule,"All positions, FP8",-0.0013
+V4.1 reference trained with our tournament picks,exact,Change vs trained rule,"Worst past 2048, FP8",0.0018
+V4.1 reference trained with our tournament picks,exact,Change vs trained rule,"All positions, FP4",-0.0014
+V4.1 reference trained with our tournament picks,exact,Change vs trained rule,"Worst past 2048, FP4",0.0008
+V4.1 reference trained with our tournament picks,exact,Training,Training time (h),2.1712
+V4.1 reference trained with our tournament picks,exact,Training,Peak memory (MiB),7001.0000
+V4.1 reference trained with our tournament picks,exact,KV cache (MiB),"bf16, 8K",3.3125
+V4.1 reference trained with our tournament picks,exact,KV cache (MiB),"bf16, 32K",12.3125
+V4.1 reference trained with our tournament picks,exact,KV cache (MiB),"bf16, 128K",48.3125
+V4.1 reference trained with our tournament picks,exact,KV cache (MiB),"bf16, 512K",192.3125
+V4.1 reference trained with our tournament picks,exact,KV cache (MiB),"FP8, 8K",1.6562
+V4.1 reference trained with our tournament picks,exact,KV cache (MiB),"FP8, 32K",6.1562
+V4.1 reference trained with our tournament picks,exact,KV cache (MiB),"FP8, 128K",24.1562
+V4.1 reference trained with our tournament picks,exact,KV cache (MiB),"FP8, 512K",96.1562
+V4.1 reference trained with our tournament picks,exact,KV cache (MiB),"FP4, 8K",1.0049
+V4.1 reference trained with our tournament picks,exact,KV cache (MiB),"FP4, 32K",3.5361
+V4.1 reference trained with our tournament picks,exact,KV cache (MiB),"FP4, 128K",13.6611
+V4.1 reference trained with our tournament picks,exact,KV cache (MiB),"FP4, 512K",54.1611
+V4.1 reference trained with our tournament picks,exact,"Decode, bf16 caches (us per token)",4K,53.9200
+V4.1 reference trained with our tournament picks,exact,"Decode, bf16 caches (us per token)",8K,62.4000
+V4.1 reference trained with our tournament picks,exact,"Decode, bf16 caches (us per token)",16K,72.6700
+V4.1 reference trained with our tournament picks,exact,"Decode, bf16 caches (us per token)",32K,88.3500
+V4.1 reference trained with our tournament picks,exact,"Decode, bf16 caches (us per token)",64K,118.8800
+V4.1 reference trained with our tournament picks,exact,"Decode, bf16 caches (us per token)",128K,194.6600
+V4.1 reference trained with our tournament picks,exact,"Decode, bf16 caches (us per token)",256K,407.8600
+V4.1 reference trained with our tournament picks,exact,"Decode, bf16 caches (us per token)",512K,726.8500
+V4.1 reference trained with our tournament picks,exact,"Decode, bf16 caches (us per token)",1M,1428.0000
+V4.1 reference trained with our tournament picks,exact,"Decode, FP8 caches (us per token)",4K,50.1100
+V4.1 reference trained with our tournament picks,exact,"Decode, FP8 caches (us per token)",8K,57.7600
+V4.1 reference trained with our tournament picks,exact,"Decode, FP8 caches (us per token)",16K,64.3200
+V4.1 reference trained with our tournament picks,exact,"Decode, FP8 caches (us per token)",32K,72.7400
+V4.1 reference trained with our tournament picks,exact,"Decode, FP8 caches (us per token)",64K,90.7200
+V4.1 reference trained with our tournament picks,exact,"Decode, FP8 caches (us per token)",128K,126.1800
+V4.1 reference trained with our tournament picks,exact,"Decode, FP8 caches (us per token)",256K,216.3700
+V4.1 reference trained with our tournament picks,exact,"Decode, FP8 caches (us per token)",512K,446.8200
+V4.1 reference trained with our tournament picks,exact,"Decode, FP8 caches (us per token)",1M,887.4200
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Loss,"Final validation loss (logged, lm_head unclipped)",3.5035
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Loss,"Eval, bf16 caches",3.5026
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Loss,"Eval, FP8 caches",3.5042
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Loss,"Eval, FP4 caches",3.5057
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Loss,Positions 0-128,3.6878
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Loss,Positions 128-512,3.4383
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Loss,Positions 512-1024,3.4449
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Loss,Positions 1024-2048,3.4663
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Loss,Positions 2048-2560,3.4975
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Loss,Positions 2560-4096,3.6337
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Loss,Positions 4096-8192,3.4449
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Change vs trained rule,"All positions, bf16",-0.0013
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Change vs trained rule,"Worst past 2048, bf16",0.0031
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Change vs trained rule,"All positions, FP8",-0.0012
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Change vs trained rule,"Worst past 2048, FP8",0.0025
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Change vs trained rule,"All positions, FP4",-0.0013
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Change vs trained rule,"Worst past 2048, FP4",0.0026
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Training,Training time (h),2.1712
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,Training,Peak memory (MiB),7001.0000
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,KV cache (MiB),"bf16, 8K",3.6875
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,KV cache (MiB),"bf16, 32K",13.8125
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,KV cache (MiB),"bf16, 128K",54.3125
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,KV cache (MiB),"bf16, 512K",216.3125
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,KV cache (MiB),"FP8, 8K",1.8438
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,KV cache (MiB),"FP8, 32K",6.9062
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,KV cache (MiB),"FP8, 128K",27.1562
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,KV cache (MiB),"FP8, 512K",108.1562
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,KV cache (MiB),"FP4, 8K",1.1104
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,KV cache (MiB),"FP4, 32K",3.9580
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,KV cache (MiB),"FP4, 128K",15.3486
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,KV cache (MiB),"FP4, 512K",60.9111
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, bf16 caches (us per token)",4K,73.9700
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, bf16 caches (us per token)",8K,83.3900
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, bf16 caches (us per token)",16K,82.5900
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, bf16 caches (us per token)",32K,86.5000
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, bf16 caches (us per token)",64K,91.2300
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, bf16 caches (us per token)",128K,100.4500
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, bf16 caches (us per token)",256K,125.9500
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, bf16 caches (us per token)",512K,168.6400
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, bf16 caches (us per token)",1M,254.3000
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, FP8 caches (us per token)",4K,64.0600
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, FP8 caches (us per token)",8K,74.2400
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, FP8 caches (us per token)",16K,76.9800
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, FP8 caches (us per token)",32K,79.8100
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, FP8 caches (us per token)",64K,83.7900
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, FP8 caches (us per token)",128K,92.0500
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, FP8 caches (us per token)",256K,112.4500
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, FP8 caches (us per token)",512K,141.8900
+V4.1 reference trained with our tournament picks,best 256 blocks of 8,"Decode, FP8 caches (us per token)",1M,195.0700
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Loss,"Final validation loss (logged, lm_head unclipped)",3.5035
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Loss,"Eval, bf16 caches",3.5044
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Loss,"Eval, FP8 caches",3.5059
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Loss,"Eval, FP4 caches",3.5074
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Loss,Positions 0-128,3.6878
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Loss,Positions 128-512,3.4383
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Loss,Positions 512-1024,3.4455
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Loss,Positions 1024-2048,3.4686
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Loss,Positions 2048-2560,3.5028
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Loss,Positions 2560-4096,3.6430
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Loss,Positions 4096-8192,3.4686
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Change vs trained rule,"All positions, bf16",0.0005
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Change vs trained rule,"Worst past 2048, bf16",0.0268
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Change vs trained rule,"All positions, FP8",0.0005
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Change vs trained rule,"Worst past 2048, FP8",0.0249
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Change vs trained rule,"All positions, FP4",0.0004
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Change vs trained rule,"Worst past 2048, FP4",0.0265
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Training,Training time (h),2.1712
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,Training,Peak memory (MiB),7001.0000
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,KV cache (MiB),"bf16, 8K",3.6875
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,KV cache (MiB),"bf16, 32K",13.8125
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,KV cache (MiB),"bf16, 128K",54.3125
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,KV cache (MiB),"bf16, 512K",216.3125
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,KV cache (MiB),"FP8, 8K",1.8438
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,KV cache (MiB),"FP8, 32K",6.9062
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,KV cache (MiB),"FP8, 128K",27.1562
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,KV cache (MiB),"FP8, 512K",108.1562
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,KV cache (MiB),"FP4, 8K",1.1104
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,KV cache (MiB),"FP4, 32K",3.9580
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,KV cache (MiB),"FP4, 128K",15.3486
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,KV cache (MiB),"FP4, 512K",60.9111
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, bf16 caches (us per token)",4K,53.3100
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, bf16 caches (us per token)",8K,58.0200
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, bf16 caches (us per token)",16K,62.8200
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, bf16 caches (us per token)",32K,65.9500
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, bf16 caches (us per token)",64K,75.3300
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, bf16 caches (us per token)",128K,84.4200
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, bf16 caches (us per token)",256K,100.2200
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, bf16 caches (us per token)",512K,130.3400
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, bf16 caches (us per token)",1M,206.1000
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, FP8 caches (us per token)",4K,50.2400
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, FP8 caches (us per token)",8K,54.2700
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, FP8 caches (us per token)",16K,58.4600
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, FP8 caches (us per token)",32K,60.4600
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, FP8 caches (us per token)",64K,68.3200
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, FP8 caches (us per token)",128K,75.8400
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, FP8 caches (us per token)",256K,84.2600
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, FP8 caches (us per token)",512K,101.9800
+V4.1 reference trained with our tournament picks,best 64 blocks of 8,"Decode, FP8 caches (us per token)",1M,137.4200
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Loss,"Final validation loss (logged, lm_head unclipped)",3.5478
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Loss,"Eval, bf16 caches",3.5412
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Loss,"Eval, FP8 caches",3.5426
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Loss,"Eval, FP4 caches",3.5432
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Loss,Positions 0-128,3.6957
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Loss,Positions 128-512,3.4711
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Loss,Positions 512-1024,3.5033
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Loss,Positions 1024-2048,3.5336
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Loss,Positions 2048-2560,3.5272
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Loss,Positions 2560-4096,3.6612
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Loss,Positions 4096-8192,3.5023
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Change vs trained rule,"All positions, bf16",
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Change vs trained rule,"Worst past 2048, bf16",
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Change vs trained rule,"All positions, FP8",
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Change vs trained rule,"Worst past 2048, FP8",
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Change vs trained rule,"All positions, FP4",
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Change vs trained rule,"Worst past 2048, FP4",
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Training,Training time (h),2.0498
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),Training,Peak memory (MiB),6993.0000
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),KV cache (MiB),"bf16, 8K",1.3125
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),KV cache (MiB),"bf16, 32K",4.3125
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),KV cache (MiB),"bf16, 128K",16.3125
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),KV cache (MiB),"bf16, 512K",64.3125
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),KV cache (MiB),"FP8, 8K",0.6562
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),KV cache (MiB),"FP8, 32K",2.1562
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),KV cache (MiB),"FP8, 128K",8.1562
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),KV cache (MiB),"FP8, 512K",32.1562
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),KV cache (MiB),"FP4, 8K",0.4424
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),KV cache (MiB),"FP4, 32K",1.2861
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),KV cache (MiB),"FP4, 128K",4.6611
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),KV cache (MiB),"FP4, 512K",18.1611
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, bf16 caches (us per token)",4K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, bf16 caches (us per token)",8K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, bf16 caches (us per token)",16K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, bf16 caches (us per token)",32K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, bf16 caches (us per token)",64K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, bf16 caches (us per token)",128K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, bf16 caches (us per token)",256K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, bf16 caches (us per token)",512K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, bf16 caches (us per token)",1M,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, FP8 caches (us per token)",4K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, FP8 caches (us per token)",8K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, FP8 caches (us per token)",16K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, FP8 caches (us per token)",32K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, FP8 caches (us per token)",64K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, FP8 caches (us per token)",128K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, FP8 caches (us per token)",256K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, FP8 caches (us per token)",512K,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",tournament (as trained),"Decode, FP8 caches (us per token)",1M,
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Loss,"Final validation loss (logged, lm_head unclipped)",3.5478
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Loss,"Eval, bf16 caches",3.5382
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Loss,"Eval, FP8 caches",3.5397
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Loss,"Eval, FP4 caches",3.5402
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Loss,Positions 0-128,3.6957
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Loss,Positions 128-512,3.4699
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Loss,Positions 512-1024,3.4982
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Loss,Positions 1024-2048,3.5290
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Loss,Positions 2048-2560,3.5220
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Loss,Positions 2560-4096,3.6528
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Loss,Positions 4096-8192,3.4925
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Change vs trained rule,"All positions, bf16",-0.0030
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Change vs trained rule,"Worst past 2048, bf16",-0.0052
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Change vs trained rule,"All positions, FP8",-0.0029
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Change vs trained rule,"Worst past 2048, FP8",-0.0035
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Change vs trained rule,"All positions, FP4",-0.0030
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Change vs trained rule,"Worst past 2048, FP4",-0.0049
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Training,Training time (h),2.0498
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,Training,Peak memory (MiB),6993.0000
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,KV cache (MiB),"bf16, 8K",1.3125
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,KV cache (MiB),"bf16, 32K",4.3125
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,KV cache (MiB),"bf16, 128K",16.3125
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,KV cache (MiB),"bf16, 512K",64.3125
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,KV cache (MiB),"FP8, 8K",0.6562
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,KV cache (MiB),"FP8, 32K",2.1562
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,KV cache (MiB),"FP8, 128K",8.1562
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,KV cache (MiB),"FP8, 512K",32.1562
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,KV cache (MiB),"FP4, 8K",0.4424
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,KV cache (MiB),"FP4, 32K",1.2861
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,KV cache (MiB),"FP4, 128K",4.6611
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,KV cache (MiB),"FP4, 512K",18.1611
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, bf16 caches (us per token)",4K,47.7400
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, bf16 caches (us per token)",8K,52.2200
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, bf16 caches (us per token)",16K,55.7400
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, bf16 caches (us per token)",32K,66.6600
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, bf16 caches (us per token)",64K,78.0500
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, bf16 caches (us per token)",128K,97.4400
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, bf16 caches (us per token)",256K,136.9000
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, bf16 caches (us per token)",512K,218.9800
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, bf16 caches (us per token)",1M,473.7600
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, FP8 caches (us per token)",4K,44.3500
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, FP8 caches (us per token)",8K,47.6500
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, FP8 caches (us per token)",16K,51.2300
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, FP8 caches (us per token)",32K,60.4800
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, FP8 caches (us per token)",64K,66.0500
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, FP8 caches (us per token)",128K,77.3800
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, FP8 caches (us per token)",256K,100.1600
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, FP8 caches (us per token)",512K,145.1500
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",exact,"Decode, FP8 caches (us per token)",1M,253.9800
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Loss,"Final validation loss (logged, lm_head unclipped)",3.5478
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Loss,"Eval, bf16 caches",3.5384
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Loss,"Eval, FP8 caches",3.5398
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Loss,"Eval, FP4 caches",3.5403
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Loss,Positions 0-128,3.6957
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Loss,Positions 128-512,3.4699
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Loss,Positions 512-1024,3.4982
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Loss,Positions 1024-2048,3.5290
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Loss,Positions 2048-2560,3.5218
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Loss,Positions 2560-4096,3.6537
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Loss,Positions 4096-8192,3.4964
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Change vs trained rule,"All positions, bf16",-0.0028
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Change vs trained rule,"Worst past 2048, bf16",-0.0054
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Change vs trained rule,"All positions, FP8",-0.0027
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Change vs trained rule,"Worst past 2048, FP8",-0.0036
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Change vs trained rule,"All positions, FP4",-0.0029
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Change vs trained rule,"Worst past 2048, FP4",-0.0050
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Training,Training time (h),2.0498
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,Training,Peak memory (MiB),6993.0000
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,KV cache (MiB),"bf16, 8K",1.4375
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,KV cache (MiB),"bf16, 32K",4.8125
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,KV cache (MiB),"bf16, 128K",18.3125
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,KV cache (MiB),"bf16, 512K",72.3125
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,KV cache (MiB),"FP8, 8K",0.7188
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,KV cache (MiB),"FP8, 32K",2.4062
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,KV cache (MiB),"FP8, 128K",9.1562
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,KV cache (MiB),"FP8, 512K",36.1562
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,KV cache (MiB),"FP4, 8K",0.4775
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,KV cache (MiB),"FP4, 32K",1.4268
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,KV cache (MiB),"FP4, 128K",5.2236
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,KV cache (MiB),"FP4, 512K",20.4111
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, bf16 caches (us per token)",4K,50.7500
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, bf16 caches (us per token)",8K,51.8100
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, bf16 caches (us per token)",16K,54.1800
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, bf16 caches (us per token)",32K,59.4700
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, bf16 caches (us per token)",64K,63.6600
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, bf16 caches (us per token)",128K,68.0300
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, bf16 caches (us per token)",256K,78.5900
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, bf16 caches (us per token)",512K,89.2200
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, bf16 caches (us per token)",1M,109.2300
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, FP8 caches (us per token)",4K,48.0300
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, FP8 caches (us per token)",8K,49.3100
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, FP8 caches (us per token)",16K,50.7200
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, FP8 caches (us per token)",32K,55.8100
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, FP8 caches (us per token)",64K,59.3300
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, FP8 caches (us per token)",128K,62.4000
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, FP8 caches (us per token)",256K,71.3900
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, FP8 caches (us per token)",512K,77.3100
+"V4.1 reference trained with our tournament picks, 4-token entries, smooth stage switches",best 64 blocks of 8,"Decode, FP8 caches (us per token)",1M,89.1000
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Loss,"Final validation loss (logged, lm_head unclipped)",3.5148
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Loss,"Eval, bf16 caches",3.4882
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Loss,"Eval, FP8 caches",3.4901
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Loss,"Eval, FP4 caches",3.4910
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Loss,Positions 0-128,3.6987
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Loss,Positions 128-512,3.4305
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Loss,Positions 512-1024,3.4234
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Loss,Positions 1024-2048,3.4428
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Loss,Positions 2048-2560,3.4323
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Loss,Positions 2560-4096,3.5771
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Loss,Positions 4096-8192,3.3969
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Change vs trained rule,"All positions, bf16",
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Change vs trained rule,"Worst past 2048, bf16",
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Change vs trained rule,"All positions, FP8",
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Change vs trained rule,"Worst past 2048, FP8",
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Change vs trained rule,"All positions, FP4",
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Change vs trained rule,"Worst past 2048, FP4",
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Training,Training time (h),2.0371
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),Training,Peak memory (MiB),6990.0000
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),KV cache (MiB),"bf16, 8K",3.3125
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),KV cache (MiB),"bf16, 32K",12.3125
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),KV cache (MiB),"bf16, 128K",48.3125
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),KV cache (MiB),"bf16, 512K",192.3125
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),KV cache (MiB),"FP8, 8K",1.6562
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),KV cache (MiB),"FP8, 32K",6.1562
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),KV cache (MiB),"FP8, 128K",24.1562
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),KV cache (MiB),"FP8, 512K",96.1562
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),KV cache (MiB),"FP4, 8K",1.0049
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),KV cache (MiB),"FP4, 32K",3.5361
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),KV cache (MiB),"FP4, 128K",13.6611
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),KV cache (MiB),"FP4, 512K",54.1611
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",4K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",8K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",16K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",32K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",64K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",128K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",256K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",512K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",1M,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",4K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",8K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",16K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",32K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",64K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",128K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",256K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",512K,
+"Parameter-free V4.1 block, trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",1M,
+"Parameter-free V4.1 block, trained with tournament picks",exact,Loss,"Final validation loss (logged, lm_head unclipped)",3.5148
+"Parameter-free V4.1 block, trained with tournament picks",exact,Loss,"Eval, bf16 caches",3.4867
+"Parameter-free V4.1 block, trained with tournament picks",exact,Loss,"Eval, FP8 caches",3.4886
+"Parameter-free V4.1 block, trained with tournament picks",exact,Loss,"Eval, FP4 caches",3.4892
+"Parameter-free V4.1 block, trained with tournament picks",exact,Loss,Positions 0-128,3.6987
+"Parameter-free V4.1 block, trained with tournament picks",exact,Loss,Positions 128-512,3.4290
+"Parameter-free V4.1 block, trained with tournament picks",exact,Loss,Positions 512-1024,3.4208
+"Parameter-free V4.1 block, trained with tournament picks",exact,Loss,Positions 1024-2048,3.4403
+"Parameter-free V4.1 block, trained with tournament picks",exact,Loss,Positions 2048-2560,3.4314
+"Parameter-free V4.1 block, trained with tournament picks",exact,Loss,Positions 2560-4096,3.5770
+"Parameter-free V4.1 block, trained with tournament picks",exact,Loss,Positions 4096-8192,3.3962
+"Parameter-free V4.1 block, trained with tournament picks",exact,Change vs trained rule,"All positions, bf16",-0.0015
+"Parameter-free V4.1 block, trained with tournament picks",exact,Change vs trained rule,"Worst past 2048, bf16",-0.0002
+"Parameter-free V4.1 block, trained with tournament picks",exact,Change vs trained rule,"All positions, FP8",-0.0015
+"Parameter-free V4.1 block, trained with tournament picks",exact,Change vs trained rule,"Worst past 2048, FP8",-0.0002
+"Parameter-free V4.1 block, trained with tournament picks",exact,Change vs trained rule,"All positions, FP4",-0.0018
+"Parameter-free V4.1 block, trained with tournament picks",exact,Change vs trained rule,"Worst past 2048, FP4",-0.0009
+"Parameter-free V4.1 block, trained with tournament picks",exact,Training,Training time (h),2.0371
+"Parameter-free V4.1 block, trained with tournament picks",exact,Training,Peak memory (MiB),6990.0000
+"Parameter-free V4.1 block, trained with tournament picks",exact,KV cache (MiB),"bf16, 8K",3.3125
+"Parameter-free V4.1 block, trained with tournament picks",exact,KV cache (MiB),"bf16, 32K",12.3125
+"Parameter-free V4.1 block, trained with tournament picks",exact,KV cache (MiB),"bf16, 128K",48.3125
+"Parameter-free V4.1 block, trained with tournament picks",exact,KV cache (MiB),"bf16, 512K",192.3125
+"Parameter-free V4.1 block, trained with tournament picks",exact,KV cache (MiB),"FP8, 8K",1.6562
+"Parameter-free V4.1 block, trained with tournament picks",exact,KV cache (MiB),"FP8, 32K",6.1562
+"Parameter-free V4.1 block, trained with tournament picks",exact,KV cache (MiB),"FP8, 128K",24.1562
+"Parameter-free V4.1 block, trained with tournament picks",exact,KV cache (MiB),"FP8, 512K",96.1562
+"Parameter-free V4.1 block, trained with tournament picks",exact,KV cache (MiB),"FP4, 8K",1.0049
+"Parameter-free V4.1 block, trained with tournament picks",exact,KV cache (MiB),"FP4, 32K",3.5361
+"Parameter-free V4.1 block, trained with tournament picks",exact,KV cache (MiB),"FP4, 128K",13.6611
+"Parameter-free V4.1 block, trained with tournament picks",exact,KV cache (MiB),"FP4, 512K",54.1611
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, bf16 caches (us per token)",4K,54.0500
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, bf16 caches (us per token)",8K,61.5000
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, bf16 caches (us per token)",16K,72.1000
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, bf16 caches (us per token)",32K,88.1600
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, bf16 caches (us per token)",64K,117.7900
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, bf16 caches (us per token)",128K,194.2600
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, bf16 caches (us per token)",256K,406.9400
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, bf16 caches (us per token)",512K,729.2200
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, bf16 caches (us per token)",1M,1426.4300
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, FP8 caches (us per token)",4K,50.1100
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, FP8 caches (us per token)",8K,57.2200
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, FP8 caches (us per token)",16K,63.4900
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, FP8 caches (us per token)",32K,72.4500
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, FP8 caches (us per token)",64K,89.3100
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, FP8 caches (us per token)",128K,124.9600
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, FP8 caches (us per token)",256K,216.3500
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, FP8 caches (us per token)",512K,445.7000
+"Parameter-free V4.1 block, trained with tournament picks",exact,"Decode, FP8 caches (us per token)",1M,888.0600
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Loss,"Final validation loss (logged, lm_head unclipped)",3.5148
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Loss,"Eval, bf16 caches",3.4868
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Loss,"Eval, FP8 caches",3.4887
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Loss,"Eval, FP4 caches",3.4893
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Loss,Positions 0-128,3.6987
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Loss,Positions 128-512,3.4290
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Loss,Positions 512-1024,3.4208
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Loss,Positions 1024-2048,3.4403
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Loss,Positions 2048-2560,3.4315
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Loss,Positions 2560-4096,3.5772
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Loss,Positions 4096-8192,3.3979
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Change vs trained rule,"All positions, bf16",-0.0014
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Change vs trained rule,"Worst past 2048, bf16",0.0010
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Change vs trained rule,"All positions, FP8",-0.0014
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Change vs trained rule,"Worst past 2048, FP8",0.0009
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Change vs trained rule,"All positions, FP4",-0.0017
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Change vs trained rule,"Worst past 2048, FP4",-0.0002
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Training,Training time (h),2.0371
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,Training,Peak memory (MiB),6990.0000
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"bf16, 8K",3.6875
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"bf16, 32K",13.8125
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"bf16, 128K",54.3125
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"bf16, 512K",216.3125
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP8, 8K",1.8438
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP8, 32K",6.9062
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP8, 128K",27.1562
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP8, 512K",108.1562
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP4, 8K",1.1104
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP4, 32K",3.9580
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP4, 128K",15.3486
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP4, 512K",60.9111
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",4K,73.7600
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",8K,83.0900
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",16K,81.9500
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",32K,85.6600
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",64K,90.5000
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",128K,99.4900
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",256K,124.8300
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",512K,168.3000
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",1M,254.0200
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",4K,63.6200
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",8K,73.3800
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",16K,76.1000
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",32K,79.6200
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",64K,83.0700
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",128K,91.1700
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",256K,111.7600
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",512K,140.9800
+"Parameter-free V4.1 block, trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",1M,194.1800
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Loss,"Final validation loss (logged, lm_head unclipped)",3.5148
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Loss,"Eval, bf16 caches",3.4885
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Loss,"Eval, FP8 caches",3.4903
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Loss,"Eval, FP4 caches",3.4910
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Loss,Positions 0-128,3.6987
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Loss,Positions 128-512,3.4290
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Loss,Positions 512-1024,3.4209
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Loss,Positions 1024-2048,3.4417
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Loss,Positions 2048-2560,3.4367
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Loss,Positions 2560-4096,3.5862
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Loss,Positions 4096-8192,3.4255
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Change vs trained rule,"All positions, bf16",0.0003
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Change vs trained rule,"Worst past 2048, bf16",0.0286
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Change vs trained rule,"All positions, FP8",0.0002
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Change vs trained rule,"Worst past 2048, FP8",0.0288
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Change vs trained rule,"All positions, FP4",0.0001
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Change vs trained rule,"Worst past 2048, FP4",0.0289
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Training,Training time (h),2.0371
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,Training,Peak memory (MiB),6990.0000
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"bf16, 8K",3.6875
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"bf16, 32K",13.8125
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"bf16, 128K",54.3125
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"bf16, 512K",216.3125
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP8, 8K",1.8438
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP8, 32K",6.9062
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP8, 128K",27.1562
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP8, 512K",108.1562
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP4, 8K",1.1104
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP4, 32K",3.9580
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP4, 128K",15.3486
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP4, 512K",60.9111
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",4K,53.1800
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",8K,57.7900
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",16K,62.3000
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",32K,66.1000
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",64K,73.9200
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",128K,83.3900
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",256K,99.2500
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",512K,129.6300
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",1M,204.9000
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",4K,49.9800
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",8K,53.9500
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",16K,57.8700
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",32K,60.5100
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",64K,67.8100
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",128K,74.9400
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",256K,83.5800
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",512K,100.9000
+"Parameter-free V4.1 block, trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",1M,136.2900
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Loss,"Final validation loss (logged, lm_head unclipped)",3.5148
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Loss,"Eval, bf16 caches",3.5029
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Loss,"Eval, FP8 caches",3.5049
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Loss,"Eval, FP4 caches",3.5052
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Loss,Positions 0-128,3.6987
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Loss,Positions 128-512,3.4348
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Loss,Positions 512-1024,3.4414
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Loss,Positions 1024-2048,3.4718
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Loss,Positions 2048-2560,3.4733
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Loss,Positions 2560-4096,3.6196
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Loss,Positions 4096-8192,3.4682
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Change vs trained rule,"All positions, bf16",0.0147
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Change vs trained rule,"Worst past 2048, bf16",0.0713
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Change vs trained rule,"All positions, FP8",0.0149
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Change vs trained rule,"Worst past 2048, FP8",0.0725
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Change vs trained rule,"All positions, FP4",0.0142
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Change vs trained rule,"Worst past 2048, FP4",0.0698
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Training,Training time (h),2.0371
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",Training,Peak memory (MiB),6990.0000
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",KV cache (MiB),"bf16, 8K",3.6875
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",KV cache (MiB),"bf16, 32K",13.8125
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",KV cache (MiB),"bf16, 128K",54.3125
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",KV cache (MiB),"bf16, 512K",216.3125
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",KV cache (MiB),"FP8, 8K",1.8438
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",KV cache (MiB),"FP8, 32K",6.9062
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",KV cache (MiB),"FP8, 128K",27.1562
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",KV cache (MiB),"FP8, 512K",108.1562
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",KV cache (MiB),"FP4, 8K",1.1104
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",KV cache (MiB),"FP4, 32K",3.9580
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",KV cache (MiB),"FP4, 128K",15.3486
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks",KV cache (MiB),"FP4, 512K",60.9111
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, bf16 caches (us per token)",4K,58.3700
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, bf16 caches (us per token)",8K,66.5600
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, bf16 caches (us per token)",16K,65.5400
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, bf16 caches (us per token)",32K,66.5600
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, bf16 caches (us per token)",64K,71.6800
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, bf16 caches (us per token)",128K,78.8500
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, bf16 caches (us per token)",256K,98.3000
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, bf16 caches (us per token)",512K,133.1200
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, bf16 caches (us per token)",1M,195.5800
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, FP8 caches (us per token)",4K,49.1500
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, FP8 caches (us per token)",8K,58.3700
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, FP8 caches (us per token)",16K,60.4200
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, FP8 caches (us per token)",32K,63.4900
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, FP8 caches (us per token)",64K,65.5400
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, FP8 caches (us per token)",128K,71.6800
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, FP8 caches (us per token)",256K,83.9700
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, FP8 caches (us per token)",512K,106.5000
+"Parameter-free V4.1 block, trained with tournament picks","best 256 blocks of 8, layer 9 reuses layer 5's picks","Decode, FP8 caches (us per token)",1M,145.4100
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Loss,"Final validation loss (logged, lm_head unclipped)",3.8203
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Loss,"Eval, bf16 caches",3.4976
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Loss,"Eval, FP8 caches",3.4993
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Loss,"Eval, FP4 caches",3.5000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Loss,Positions 0-128,3.6976
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Loss,Positions 128-512,3.4404
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Loss,Positions 512-1024,3.4376
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Loss,Positions 1024-2048,3.4514
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Loss,Positions 2048-2560,3.4443
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Loss,Positions 2560-4096,3.6011
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Loss,Positions 4096-8192,3.4120
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Change vs trained rule,"All positions, bf16",
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Change vs trained rule,"Worst past 2048, bf16",
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Change vs trained rule,"All positions, FP8",
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Change vs trained rule,"Worst past 2048, FP8",
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Change vs trained rule,"All positions, FP4",
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Change vs trained rule,"Worst past 2048, FP4",
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Training,Training time (h),2.2249
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),Training,Peak memory (MiB),6990.0000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),KV cache (MiB),"bf16, 8K",3.3125
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),KV cache (MiB),"bf16, 32K",12.3125
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),KV cache (MiB),"bf16, 128K",48.3125
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),KV cache (MiB),"bf16, 512K",192.3125
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),KV cache (MiB),"FP8, 8K",1.6562
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),KV cache (MiB),"FP8, 32K",6.1562
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),KV cache (MiB),"FP8, 128K",24.1562
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),KV cache (MiB),"FP8, 512K",96.1562
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),KV cache (MiB),"FP4, 8K",1.0049
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),KV cache (MiB),"FP4, 32K",3.5361
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),KV cache (MiB),"FP4, 128K",13.6611
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),KV cache (MiB),"FP4, 512K",54.1611
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",4K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",8K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",16K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",32K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",64K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",128K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",256K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",512K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, bf16 caches (us per token)",1M,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",4K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",8K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",16K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",32K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",64K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",128K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",256K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",512K,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",tournament (as trained),"Decode, FP8 caches (us per token)",1M,
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Loss,"Final validation loss (logged, lm_head unclipped)",3.8203
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Loss,"Eval, bf16 caches",3.4954
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Loss,"Eval, FP8 caches",3.4972
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Loss,"Eval, FP4 caches",3.4978
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Loss,Positions 0-128,3.6976
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Loss,Positions 128-512,3.4388
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Loss,Positions 512-1024,3.4342
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Loss,Positions 1024-2048,3.4470
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Loss,Positions 2048-2560,3.4408
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Loss,Positions 2560-4096,3.5994
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Loss,Positions 4096-8192,3.4100
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Change vs trained rule,"All positions, bf16",-0.0022
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Change vs trained rule,"Worst past 2048, bf16",-0.0017
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Change vs trained rule,"All positions, FP8",-0.0021
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Change vs trained rule,"Worst past 2048, FP8",-0.0015
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Change vs trained rule,"All positions, FP4",-0.0021
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Change vs trained rule,"Worst past 2048, FP4",-0.0014
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Training,Training time (h),2.2249
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,Training,Peak memory (MiB),6990.0000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,KV cache (MiB),"bf16, 8K",3.3125
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,KV cache (MiB),"bf16, 32K",12.3125
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,KV cache (MiB),"bf16, 128K",48.3125
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,KV cache (MiB),"bf16, 512K",192.3125
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,KV cache (MiB),"FP8, 8K",1.6562
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,KV cache (MiB),"FP8, 32K",6.1562
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,KV cache (MiB),"FP8, 128K",24.1562
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,KV cache (MiB),"FP8, 512K",96.1562
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,KV cache (MiB),"FP4, 8K",1.0049
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,KV cache (MiB),"FP4, 32K",3.5361
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,KV cache (MiB),"FP4, 128K",13.6611
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,KV cache (MiB),"FP4, 512K",54.1611
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, bf16 caches (us per token)",4K,54.0500
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, bf16 caches (us per token)",8K,61.5000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, bf16 caches (us per token)",16K,72.1000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, bf16 caches (us per token)",32K,88.1600
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, bf16 caches (us per token)",64K,117.7900
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, bf16 caches (us per token)",128K,194.2600
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, bf16 caches (us per token)",256K,406.9400
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, bf16 caches (us per token)",512K,729.2200
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, bf16 caches (us per token)",1M,1426.4300
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, FP8 caches (us per token)",4K,50.1100
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, FP8 caches (us per token)",8K,57.2200
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, FP8 caches (us per token)",16K,63.4900
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, FP8 caches (us per token)",32K,72.4500
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, FP8 caches (us per token)",64K,89.3100
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, FP8 caches (us per token)",128K,124.9600
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, FP8 caches (us per token)",256K,216.3500
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, FP8 caches (us per token)",512K,445.7000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",exact,"Decode, FP8 caches (us per token)",1M,888.0600
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Loss,"Final validation loss (logged, lm_head unclipped)",3.8203
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Loss,"Eval, bf16 caches",3.4956
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Loss,"Eval, FP8 caches",3.4973
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Loss,"Eval, FP4 caches",3.4980
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Loss,Positions 0-128,3.6976
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Loss,Positions 128-512,3.4388
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Loss,Positions 512-1024,3.4342
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Loss,Positions 1024-2048,3.4470
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Loss,Positions 2048-2560,3.4408
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Loss,Positions 2560-4096,3.5994
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Loss,Positions 4096-8192,3.4135
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Change vs trained rule,"All positions, bf16",-0.0020
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Change vs trained rule,"Worst past 2048, bf16",0.0015
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Change vs trained rule,"All positions, FP8",-0.0020
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Change vs trained rule,"Worst past 2048, FP8",0.0007
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Change vs trained rule,"All positions, FP4",-0.0020
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Change vs trained rule,"Worst past 2048, FP4",0.0026
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Training,Training time (h),2.2249
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,Training,Peak memory (MiB),6990.0000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"bf16, 8K",3.6875
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"bf16, 32K",13.8125
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"bf16, 128K",54.3125
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"bf16, 512K",216.3125
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP8, 8K",1.8438
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP8, 32K",6.9062
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP8, 128K",27.1562
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP8, 512K",108.1562
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP4, 8K",1.1104
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP4, 32K",3.9580
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP4, 128K",15.3486
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,KV cache (MiB),"FP4, 512K",60.9111
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",4K,73.7600
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",8K,83.0900
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",16K,81.9500
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",32K,85.6600
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",64K,90.5000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",128K,99.4900
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",256K,124.8300
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",512K,168.3000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, bf16 caches (us per token)",1M,254.0200
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",4K,63.6200
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",8K,73.3800
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",16K,76.1000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",32K,79.6200
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",64K,83.0700
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",128K,91.1700
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",256K,111.7600
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",512K,140.9800
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 256 blocks of 8,"Decode, FP8 caches (us per token)",1M,194.1800
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Loss,"Final validation loss (logged, lm_head unclipped)",3.8203
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Loss,"Eval, bf16 caches",3.4967
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Loss,"Eval, FP8 caches",3.4985
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Loss,"Eval, FP4 caches",3.4991
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Loss,Positions 0-128,3.6976
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Loss,Positions 128-512,3.4388
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Loss,Positions 512-1024,3.4342
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Loss,Positions 1024-2048,3.4488
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Loss,Positions 2048-2560,3.4440
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Loss,Positions 2560-4096,3.6046
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Loss,Positions 4096-8192,3.4295
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Change vs trained rule,"All positions, bf16",-0.0009
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Change vs trained rule,"Worst past 2048, bf16",0.0175
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Change vs trained rule,"All positions, FP8",-0.0009
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Change vs trained rule,"Worst past 2048, FP8",0.0182
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Change vs trained rule,"All positions, FP4",-0.0009
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Change vs trained rule,"Worst past 2048, FP4",0.0190
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Training,Training time (h),2.2249
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,Training,Peak memory (MiB),6990.0000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"bf16, 8K",3.6875
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"bf16, 32K",13.8125
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"bf16, 128K",54.3125
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"bf16, 512K",216.3125
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP8, 8K",1.8438
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP8, 32K",6.9062
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP8, 128K",27.1562
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP8, 512K",108.1562
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP4, 8K",1.1104
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP4, 32K",3.9580
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP4, 128K",15.3486
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,KV cache (MiB),"FP4, 512K",60.9111
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",4K,53.1800
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",8K,57.7900
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",16K,62.3000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",32K,66.1000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",64K,73.9200
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",128K,83.3900
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",256K,99.2500
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",512K,129.6300
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, bf16 caches (us per token)",1M,204.9000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",4K,49.9800
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",8K,53.9500
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",16K,57.8700
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",32K,60.5100
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",64K,67.8100
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",128K,74.9400
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",256K,83.5800
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",512K,100.9000
+"Parameter-free V4.1 block with a fixed sink (ln 128), trained with tournament picks",best 64 blocks of 8,"Decode, FP8 caches (us per token)",1M,136.2900

@@ -1,7 +1,8 @@
 """Fidelity: each version's emulation against dense attention on generated Q/K/V.
 
-Per distribution, length and seed: `queries` decode queries at the last positions,
-each over its causal past, measured as the HF hook measures (harness.measure):
+Per distribution, length and seed: `queries` decode queries at the last positions
+(shape `kv_heads`, `query_heads`, `dim`: default 8, 2, 128), each over its causal
+past, measured as the HF hook measures (harness.measure):
 output error relative to dense, dense attention mass on the picked keys, recall of
 the dense top-128, share of K and V elements read, and 32-byte K sectors read per
 layout relative to reading all of K (NaN for versions that do not count them).
@@ -38,7 +39,8 @@ def measure(
     queries, n = q.shape[2], k.shape[1]
     scaling = q.shape[-1] ** -0.5
     state = harness.Installed(emulation, queries)
-    step = max(1, min(queries, 2**21 // n))  # bounds (G, g, Q, n) memory
+    heads = q.shape[0] * q.shape[1]
+    step = max(1, min(queries, 2**25 // (n * heads)))  # bounds (G, g, Q, n) memory
     positions = torch.arange(n, device=q.device)
     for s in range(0, queries, step):
         e = min(s + step, queries)
@@ -66,7 +68,14 @@ def run(
         for n in config["lengths"]:
             for seed in config["seeds"]:
                 q, k, v = synthetic.qkv(
-                    distribution, n, config["queries"], seed, device=device
+                    distribution,
+                    n,
+                    config["queries"],
+                    seed,
+                    groups=config.get("kv_heads", 8),
+                    size=config.get("query_heads", 2),
+                    dim=config.get("dim", 128),
+                    device=device,
                 )
                 for keep, at in budgets.items():
                     if n < MIN_RATIO * keep:

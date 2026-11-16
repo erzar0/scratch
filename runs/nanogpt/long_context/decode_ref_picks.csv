@@ -1,0 +1,649 @@
+version,part,n,us_per_token
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,4096,45.33
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,4096,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,4096,75.07
+"V4.1 reference layout, summed query, exact picks",Picks,4096,25.49
+"V4.1 reference layout, summed query, exact picks",Attention,4096,31.62
+"V4.1 reference layout, summed query, exact picks",Picks + attention,4096,53.92
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks,4096,24.83
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Attention,4096,31.79
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,4096,53.31
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks,4096,44.93
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Attention,4096,31.71
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,4096,73.97
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,4096,80.8
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,4096,31.78
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,4096,109.46
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,4096,45.92
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,4096,29.73
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,4096,73.22
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks,4096,23.94
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Attention,4096,29.66
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks + attention,4096,50.11
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,4096,23.87
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,4096,29.73
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,4096,50.24
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,4096,37.55
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,4096,29.79
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,4096,64.06
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,4096,65.02
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,4096,29.73
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,4096,91.52
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks,4096,19.55
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Attention,4096,31.95
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks + attention,4096,47.74
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks,4096,22.43
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Attention,4096,31.81
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,4096,50.75
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,4096,78.13
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,4096,31.68
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,4096,105.89
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks,4096,18.66
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Attention,4096,29.41
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks + attention,4096,44.35
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,4096,22.02
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,4096,29.47
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,4096,48.03
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,4096,62.82
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,4096,29.41
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,4096,88.82
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,4096,25.71
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,4096,31.78
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,4096,54.05
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks,4096,24.83
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Attention,4096,31.65
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,4096,53.18
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,4096,80.64
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,4096,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,4096,109.57
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,4096,44.9
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,4096,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,4096,73.76
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,4096,23.95
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,4096,29.7
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,4096,50.11
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,4096,24.0
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,4096,29.79
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,4096,49.98
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,4096,65.18
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,4096,29.7
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,4096,91.55
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,4096,37.47
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,4096,29.7
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,4096,63.62
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,8192,49.6
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,8192,31.58
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,8192,79.01
+"V4.1 reference layout, summed query, exact picks",Picks,8192,34.42
+"V4.1 reference layout, summed query, exact picks",Attention,8192,31.52
+"V4.1 reference layout, summed query, exact picks",Picks + attention,8192,62.4
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks,8192,29.76
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Attention,8192,31.52
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,8192,58.02
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks,8192,55.04
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Attention,8192,31.65
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,8192,83.39
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,8192,86.18
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,8192,31.78
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,8192,114.18
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,8192,50.78
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,8192,29.6
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,8192,77.95
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks,8192,31.3
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Attention,8192,29.74
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks + attention,8192,57.76
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,8192,27.82
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,8192,29.65
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,8192,54.27
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,8192,47.23
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,8192,29.6
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,8192,74.24
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,8192,69.34
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,8192,29.79
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,8192,95.52
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks,8192,24.13
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Attention,8192,31.68
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks + attention,8192,52.22
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks,8192,23.49
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Attention,8192,31.55
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,8192,51.81
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,8192,78.72
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,8192,31.71
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,8192,106.62
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks,8192,21.63
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Attention,8192,29.63
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks + attention,8192,47.65
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,8192,22.85
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,8192,29.66
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,8192,49.31
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,8192,63.42
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,8192,29.46
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,8192,89.15
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,8192,34.21
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,8192,31.42
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,8192,61.5
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks,8192,29.82
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Attention,8192,31.55
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,8192,57.79
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,8192,86.21
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,8192,31.54
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,8192,113.79
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,8192,55.1
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,8192,31.58
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,8192,83.09
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,8192,31.23
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,8192,29.44
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,8192,57.22
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,8192,27.82
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,8192,29.57
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,8192,53.95
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,8192,69.57
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,8192,29.6
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,8192,95.46
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,8192,47.33
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,8192,29.6
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,8192,73.38
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,16384,57.79
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,16384,32.13
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,16384,87.52
+"V4.1 reference layout, summed query, exact picks",Picks,16384,43.87
+"V4.1 reference layout, summed query, exact picks",Attention,16384,32.22
+"V4.1 reference layout, summed query, exact picks",Picks + attention,16384,72.67
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks,16384,34.14
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Attention,16384,32.26
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,16384,62.82
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks,16384,53.47
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Attention,16384,32.06
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,16384,82.59
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,16384,90.75
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,16384,32.06
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,16384,119.62
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,16384,53.94
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,16384,30.27
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,16384,82.14
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks,16384,36.51
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Attention,16384,30.32
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks + attention,16384,64.32
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,16384,31.62
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,16384,30.18
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,16384,58.46
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,16384,49.65
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,16384,30.24
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,16384,76.98
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,16384,70.82
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,16384,30.29
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,16384,98.02
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks,16384,27.02
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Attention,16384,32.1
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks + attention,16384,55.74
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks,16384,25.73
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Attention,16384,32.19
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,16384,54.18
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,16384,81.73
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,16384,32.18
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,16384,109.94
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks,16384,25.18
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Attention,16384,29.76
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks + attention,16384,51.23
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,16384,24.54
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,16384,29.79
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,16384,50.72
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,16384,65.47
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,16384,29.7
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,16384,91.49
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,16384,43.97
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,16384,31.87
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,16384,72.1
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks,16384,34.02
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Attention,16384,32.03
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,16384,62.3
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,16384,90.21
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,16384,31.84
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,16384,118.51
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,16384,53.54
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,16384,31.73
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,16384,81.95
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,16384,36.75
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,16384,29.86
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,16384,63.49
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,16384,31.55
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,16384,29.79
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,16384,57.87
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,16384,70.53
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,16384,29.86
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,16384,96.93
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,16384,49.28
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,16384,29.89
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,16384,76.1
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,32768,66.53
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,32768,32.22
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,32768,95.74
+"V4.1 reference layout, summed query, exact picks",Picks,32768,59.98
+"V4.1 reference layout, summed query, exact picks",Attention,32768,32.19
+"V4.1 reference layout, summed query, exact picks",Picks + attention,32768,88.35
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks,32768,37.6
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Attention,32768,32.29
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,32768,65.95
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks,32768,57.47
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Attention,32768,32.22
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,32768,86.5
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,32768,93.44
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,32768,32.22
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,32768,121.6
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,32768,65.92
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,32768,29.28
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,32768,93.5
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks,32768,46.0
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Attention,32768,29.41
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks + attention,32768,72.74
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,32768,34.24
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,32768,29.34
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,32768,60.46
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,32768,53.15
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,32768,29.25
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,32768,79.81
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,32768,71.84
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,32768,29.18
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,32768,98.02
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks,32768,38.5
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Attention,32768,32.19
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks + attention,32768,66.66
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks,32768,30.75
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Attention,32768,32.26
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,32768,59.47
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,32768,87.42
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,32768,32.13
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,32768,115.73
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks,32768,34.24
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Attention,32768,29.39
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks + attention,32768,60.48
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,32768,29.63
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,32768,29.44
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,32768,55.81
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,32768,71.34
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,32768,29.5
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,32768,97.34
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,32768,60.0
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,32768,32.19
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,32768,88.16
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks,32768,37.63
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Attention,32768,32.35
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,32768,66.1
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,32768,93.82
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,32768,32.45
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,32768,121.63
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,32768,57.66
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,32768,32.51
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,32768,85.66
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,32768,46.46
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,32768,29.55
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,32768,72.45
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,32768,34.4
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,32768,29.57
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,32768,60.51
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,32768,72.29
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,32768,29.6
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,32768,98.14
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,32768,53.44
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,32768,29.62
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,32768,79.62
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,65536,86.27
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,65536,31.82
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,65536,115.9
+"V4.1 reference layout, summed query, exact picks",Picks,65536,90.38
+"V4.1 reference layout, summed query, exact picks",Attention,65536,31.82
+"V4.1 reference layout, summed query, exact picks",Picks + attention,65536,118.88
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks,65536,46.05
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Attention,65536,31.97
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,65536,75.33
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks,65536,62.74
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Attention,65536,31.79
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,65536,91.23
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,65536,102.24
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,65536,31.84
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,65536,131.3
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,65536,81.18
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,65536,29.54
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,65536,108.74
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks,65536,63.98
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Attention,65536,29.57
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks + attention,65536,90.72
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,65536,41.54
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,65536,29.54
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,65536,68.32
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,65536,56.86
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,65536,29.73
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,65536,83.79
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,65536,78.75
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,65536,29.44
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,65536,105.7
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks,65536,49.18
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Attention,65536,31.89
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks + attention,65536,78.05
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks,65536,34.72
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Attention,65536,31.71
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,65536,63.66
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,65536,91.84
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,65536,31.86
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,65536,120.8
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks,65536,39.26
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Attention,65536,29.82
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks + attention,65536,66.05
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,65536,32.77
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,65536,29.82
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,65536,59.33
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,65536,71.22
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,65536,29.73
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,65536,97.41
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,65536,90.18
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,65536,31.54
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,65536,117.79
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks,65536,45.92
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Attention,65536,31.49
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,65536,73.92
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,65536,101.52
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,65536,31.49
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,65536,129.44
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,65536,62.72
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,65536,31.58
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,65536,90.5
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,65536,63.71
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,65536,29.54
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,65536,89.31
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,65536,41.46
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,65536,29.42
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,65536,67.81
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,65536,78.75
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,65536,29.46
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,65536,105.04
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,65536,56.88
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,65536,29.47
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,65536,83.07
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,131072,123.86
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,131072,32.42
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,131072,153.34
+"V4.1 reference layout, summed query, exact picks",Picks,131072,171.58
+"V4.1 reference layout, summed query, exact picks",Attention,131072,32.26
+"V4.1 reference layout, summed query, exact picks",Picks + attention,131072,194.66
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks,131072,55.74
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Attention,131072,32.29
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,131072,84.42
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks,131072,71.58
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Attention,131072,32.22
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,131072,100.45
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,131072,112.45
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,131072,32.29
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,131072,140.26
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,131072,109.6
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,131072,29.57
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,131072,136.83
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks,131072,99.74
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Attention,131072,29.76
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks + attention,131072,126.18
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,131072,48.29
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,131072,29.54
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,131072,75.84
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,131072,65.15
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,131072,29.66
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,131072,92.05
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,131072,88.51
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,131072,29.6
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,131072,115.52
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks,131072,69.06
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Attention,131072,32.48
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks + attention,131072,97.44
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks,131072,39.6
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Attention,131072,32.45
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,131072,68.03
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,131072,95.28
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,131072,32.48
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,131072,123.76
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks,131072,51.12
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Attention,131072,29.49
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks + attention,131072,77.38
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,131072,36.0
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,131072,29.58
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,131072,62.4
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,131072,73.6
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,131072,29.54
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,131072,99.81
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,131072,171.97
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,131072,32.38
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,131072,194.26
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks,131072,55.68
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Attention,131072,32.32
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,131072,83.39
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,131072,111.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,131072,32.38
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,131072,139.26
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,131072,71.81
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,131072,32.35
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,131072,99.49
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,131072,99.49
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,131072,29.6
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,131072,124.96
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,131072,48.62
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,131072,29.5
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,131072,74.94
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,131072,88.42
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,131072,29.47
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,131072,114.72
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,131072,65.06
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,131072,29.5
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,131072,91.17
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,262144,130.82
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,262144,31.97
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,262144,159.58
+"V4.1 reference layout, summed query, exact picks",Picks,262144,380.45
+"V4.1 reference layout, summed query, exact picks",Attention,262144,31.73
+"V4.1 reference layout, summed query, exact picks",Picks + attention,262144,407.86
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks,262144,71.44
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Attention,262144,31.9
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,262144,100.22
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks,262144,97.12
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Attention,262144,32.0
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,262144,125.95
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,262144,126.74
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,262144,31.94
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,262144,154.94
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,262144,106.38
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,262144,29.63
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,262144,133.18
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks,262144,191.23
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Attention,262144,29.7
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks + attention,262144,216.37
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,262144,56.96
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,262144,29.57
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,262144,84.26
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,262144,85.38
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,262144,29.7
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,262144,112.45
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,262144,95.42
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,262144,29.73
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,262144,122.24
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks,262144,108.22
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Attention,262144,31.94
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks + attention,262144,136.9
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks,262144,49.79
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Attention,262144,32.03
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,262144,78.59
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,262144,105.3
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,262144,31.87
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,262144,134.53
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks,262144,73.82
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Attention,262144,29.57
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks + attention,262144,100.16
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,262144,44.35
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,262144,29.47
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,262144,71.39
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,262144,81.71
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,262144,29.57
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,262144,108.61
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,262144,379.55
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,262144,31.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,262144,406.94
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks,262144,71.46
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Attention,262144,31.84
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,262144,99.25
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,262144,125.97
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,262144,31.68
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,262144,153.76
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,262144,96.77
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,262144,31.81
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,262144,124.83
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,262144,191.78
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,262144,29.54
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,262144,216.35
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,262144,56.9
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,262144,29.6
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,262144,83.58
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,262144,95.09
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,262144,29.5
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,262144,121.76
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,262144,85.34
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,262144,29.5
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,262144,111.76
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,524288,193.92
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,524288,32.1
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,524288,222.34
+"V4.1 reference layout, summed query, exact picks",Picks,524288,698.18
+"V4.1 reference layout, summed query, exact picks",Attention,524288,32.0
+"V4.1 reference layout, summed query, exact picks",Picks + attention,524288,726.85
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks,524288,101.34
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Attention,524288,31.9
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,524288,130.34
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks,524288,140.03
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Attention,524288,32.03
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,524288,168.64
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,524288,156.78
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,524288,32.1
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,524288,185.26
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,524288,144.58
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,524288,29.84
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,524288,171.26
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks,524288,421.44
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Attention,524288,29.89
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks + attention,524288,446.82
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,524288,74.77
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,524288,29.89
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,524288,101.98
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,524288,114.53
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,524288,29.92
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,524288,141.89
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,524288,110.46
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,524288,29.95
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,524288,137.44
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks,524288,191.52
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Attention,524288,32.08
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks + attention,524288,218.98
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks,524288,60.67
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Attention,524288,32.22
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,524288,89.22
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,524288,116.45
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,524288,32.16
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,524288,145.33
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks,524288,118.46
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Attention,524288,29.87
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks + attention,524288,145.15
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,524288,50.37
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,524288,29.74
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,524288,77.31
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,524288,91.2
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,524288,29.86
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,524288,118.11
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,524288,700.35
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,524288,31.9
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,524288,729.22
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks,524288,101.62
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Attention,524288,31.81
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,524288,129.63
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,524288,157.1
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,524288,31.87
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,524288,184.82
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,524288,139.87
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,524288,31.86
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,524288,168.3
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,524288,419.81
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,524288,29.79
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,524288,445.7
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,524288,74.54
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,524288,29.7
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,524288,100.9
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,524288,110.66
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,524288,29.7
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,524288,137.15
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,524288,114.22
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,524288,29.76
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,524288,140.98
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,1048576,314.85
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,1048576,31.9
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,1048576,343.65
+"V4.1 reference layout, summed query, exact picks",Picks,1048576,1400.75
+"V4.1 reference layout, summed query, exact picks",Attention,1048576,31.71
+"V4.1 reference layout, summed query, exact picks",Picks + attention,1048576,1428.0
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks,1048576,182.14
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Attention,1048576,31.68
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,1048576,206.1
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks,1048576,228.96
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Attention,1048576,31.78
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,1048576,254.3
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,1048576,236.19
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,1048576,31.81
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,1048576,259.2
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,1048576,218.3
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,1048576,29.66
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,1048576,245.12
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks,1048576,862.9
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Attention,1048576,29.73
+"V4.1 reference layout, summed query, exact picks, FP8 caches",Picks + attention,1048576,887.42
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,1048576,110.14
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,1048576,29.78
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,1048576,137.42
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,1048576,167.78
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,1048576,29.57
+"V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,1048576,195.07
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,1048576,145.36
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,1048576,29.63
+"V4.1 reference layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,1048576,171.97
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks,1048576,446.59
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Attention,1048576,31.87
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks",Picks + attention,1048576,473.76
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks,1048576,80.74
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Attention,1048576,31.81
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,1048576,109.23
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,1048576,135.57
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,1048576,31.71
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,1048576,163.3
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks,1048576,226.46
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Attention,1048576,29.73
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, exact picks, FP8 caches",Picks + attention,1048576,253.98
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,1048576,61.86
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,1048576,29.66
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,1048576,89.1
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,1048576,98.83
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,1048576,29.71
+"V4.1 reference, entries of 4 tokens at layers 1-9, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,1048576,125.3
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,1048576,1399.46
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,1048576,31.62
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,1048576,1426.43
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks,1048576,181.06
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Attention,1048576,31.63
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8",Picks + attention,1048576,204.9
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks,1048576,235.31
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Attention,1048576,31.73
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch",Picks + attention,1048576,258.37
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,1048576,228.99
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,1048576,31.65
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,1048576,254.02
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,1048576,862.66
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,1048576,29.65
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,1048576,888.06
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks,1048576,109.55
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Attention,1048576,29.6
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, FP8 caches",Picks + attention,1048576,136.29
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks,1048576,145.15
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Attention,1048576,29.6
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 64 blocks of 8, one launch, FP8 caches",Picks + attention,1048576,171.22
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,1048576,167.71
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,1048576,29.63
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,1048576,194.18

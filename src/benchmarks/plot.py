@@ -316,6 +316,14 @@ def plus_minus(mean: float, low: float, high: float) -> str:
     return "out of memory" if np.isnan(mean) else f"{mean:.3g} ± {high - mean:.2g}"
 
 
+def shape(config: dict[str, Any]) -> str:
+    """The suite's attention shape, as the benchmarks read it (defaults: standard)."""
+    return (
+        f"{config.get('kv_heads', 8)} KV heads × {config.get('query_heads', 2)} query"
+        f" heads, head dim {config.get('dim', 128)}"
+    )
+
+
 def latency_frame(rows: pl.DataFrame) -> pl.DataFrame:
     """Latency rows as version, legend, panel (distribution), n, mean, low, high."""
     return rows.select(
@@ -342,7 +350,7 @@ def latency(rows: pl.DataFrame, config: dict[str, Any], out: Path) -> list[str]:
     caption = (
         f"Decode-step latency on {rows['gpu'][0]}: median of {config['repeats']}"
         " repeats of CUDA-graph replays; whiskers min to max. Batch 1,"
-        f" {config['kv_heads']} KV heads × 2 query heads, head dim 128, bf16 K and V;"
+        f" {shape(config)}, bf16 K and V;"
         f" every sparse version gives exact attention to about {KEEP} keys (exceptions:"
         f" docs/methods.md).{missing}"
         f" {describe(panels, DISTRIBUTIONS)} {NAMES}"
@@ -381,8 +389,8 @@ def fidelity(rows: pl.DataFrame, config: dict[str, Any], out: Path) -> list[str]
         caption = (
             "Output error against dense attention, |o − o_dense| / |o_dense| per head:"
             f" mean over {config['queries']} decode queries, ± SE over"
-            f" {len(config['seeds'])} seeds. 8 KV heads × 2 query heads, head dim"
-            f" 128; every sparse version gives exact attention to about {KEEP} keys"
+            f" {len(config['seeds'])} seeds. {shape(config)}; every sparse version"
+            f" gives exact attention to about {KEEP} keys"
             " and runs as its float32 PyTorch emulation, which selects the same keys"
             " as its kernel (tests/attention/test_registry.py)."
             f"{uniform} {describe(panels, DISTRIBUTIONS)}"

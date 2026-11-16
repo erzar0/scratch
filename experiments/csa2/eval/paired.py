@@ -15,25 +15,33 @@ LOGS = Path(__file__).resolve().parents[1] / "logs"
 BINS = ((0, 8192), (2048, 2560), (2560, 4096), (4096, 8192))
 
 
-def main(run: str, tags: list[str]) -> None:
-    vs = os.environ.get("BASE", "exact")
+def deltas(run: str, tag: str, vs: str) -> list[tuple[int, int, float, float, int]]:
+    """Per bin (start, end, mean change in loss vs rule `vs` per token, its standard
+    error, documents)."""
     base = torch.load(LOGS / f"rule_{run}_{vs}_tokens.pt")  # (rows, 4, 8192)
     pos, idx = base[:, 1].flatten(), base[:, 2].flatten()
     row = torch.arange(base.shape[0]).repeat_interleave(base.shape[2]).double()
     doc = row * 1e5 + (idx - pos)  # one id per document
+    d = (torch.load(LOGS / f"rule_{run}_{tag}_tokens.pt")[:, 0] - base[:, 0]).flatten()
+    out = []
+    for a, b in BINS:
+        m = (pos >= a) & (pos < b)
+        ids, inv = torch.unique(doc[m], return_inverse=True)
+        sums = torch.zeros(len(ids), dtype=torch.float64).index_add_(0, inv, d[m])
+        n = torch.zeros_like(sums).index_add_(0, inv, torch.ones_like(d[m]))
+        mean = sums.sum() / n.sum()  # cluster-robust SE of a ratio estimator
+        se = ((sums - mean * n).square().sum() * len(ids) / (len(ids) - 1)).sqrt()
+        out.append((a, b, mean.item(), (se / n.sum()).item(), len(ids)))
+    return out
+
+
+def main(run: str, tags: list[str]) -> None:
+    vs = os.environ.get("BASE", "exact")
     for tag in tags:
-        d = (
-            torch.load(LOGS / f"rule_{run}_{tag}_tokens.pt")[:, 0] - base[:, 0]
-        ).flatten()
-        out = []
-        for a, b in BINS:
-            m = (pos >= a) & (pos < b)
-            ids, inv = torch.unique(doc[m], return_inverse=True)
-            sums = torch.zeros(len(ids), dtype=torch.float64).index_add_(0, inv, d[m])
-            n = torch.zeros_like(sums).index_add_(0, inv, torch.ones_like(d[m]))
-            mean = sums.sum() / n.sum()  # cluster-robust SE of a ratio estimator
-            se = ((sums - mean * n).square().sum() * len(ids) / (len(ids) - 1)).sqrt()
-            out.append(f"{a}-{b}: {mean:+.4f} ± {se / n.sum():.4f} ({len(ids)} docs)")
+        out = [
+            f"{a}-{b}: {mean:+.4f} ± {se:.4f} ({docs} docs)"
+            for a, b, mean, se, docs in deltas(run, tag, vs)
+        ]
         print(f"{tag:26s}", " | ".join(out))
 
 

@@ -1,22 +1,27 @@
 """CSA2 vs our versions on every stat that must not get worse: final validation loss,
 training time and peak memory (record 91 run logs), KV cache for decode at batch 1
 (bytes from each layout) and decode time per token (picks + attention, Triton,
-runs/nanogpt/long_context/decode_heat.csv, decode_block.csv). Writes
-runs/nanogpt/csa2_scoreboard.csv with each value and its ratio to CSA2 (below 1 =
-better than CSA2). Record 91's own window keys are cached at their 96 real channels
-(the rest is zero padding). A version's decode time is the fastest of its listed
-decode rules at each length; listed rules pass the loss gate at eval (EXACT;
+runs/nanogpt/long_context/decode_heat.csv, decode_block.csv, decode_ref_picks.csv).
+Writes runs/nanogpt/csa2_scoreboard.csv with each value and its ratio to CSA2 (below 1 =
+better than CSA2). Record 91's own window keys are cached at their 96 real channels (the
+rest is zero padding). Eval loss also with the lm_head weights clipped to the training
+head's FP8 range (eval/variant_eval.py HEAD_CLIP), where measured: the logged validation
+loss uses them unclipped. A version's decode time is the fastest of its listed decode
+rules at each length; listed rules pass the loss gate at eval (EXACT;
 experiments/csa2/eval/rule_eval.py). Also writes runs/nanogpt/csa2_positions.csv:
 validation loss by position (rule_eval.py, exact picks; CSA2 with its own indexer,
 logs/rule_296a91a4_indexer.csv, recovered from that eval's printed output) and
-runs/nanogpt/csa2_rules.csv: run 7's loss by position under each eval rule (picks
-shared across groups, block prefilter; logs/rule_1b0702e3_<tag>.csv, oldest first).
+runs/nanogpt/csa2_rules.csv: run 7's loss by position under each eval rule (picks shared
+across groups, block prefilter; logs/rule_1b0702e3_<tag>.csv, oldest first) and
+runs/nanogpt/csa2_ref_rules.csv: the same for the V4.1 reference port (65614cd9) with
+our summed-query picks in place of its indexer (eval/ref_rule_eval.py).
     python experiments/csa2/scoreboard.py
 """
 
 import csv
 import re
-from dataclasses import dataclass
+from collections.abc import Callable
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 LOGS = Path.home() / "repos/modded-nanogpt-r91/logs"
@@ -54,6 +59,86 @@ REF_FP4 = Version(
     "CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",
     REF.run, 132, ((2, 72 + 17), (1, 72 + 17)), (), "indexer_fp4",
 )  # fmt: skip
+# round 4 (queue_round4.sh): the reference trained with our summed-query picks in
+# place of its indexer (src/nanogpt/csa2_ours.py); no index keys. Block-mean 64
+# blocks fails the gate on these runs (+0.03 at 4096-8192): decode by exact picks
+OURS_REF = "V4.1 reference, trained with our"
+OURS_REF_EXACT = "V4.1 reference layout, summed query, exact picks"  # decode row
+C1 = Version(
+    f"{OURS_REF} exact picks",
+    "8ee7cd76-cdd7-4e9e-8fc5-356b9a9cc5ec",
+    DIM * 2,
+    ((2, DIM * 2), (1, DIM * 2)),
+    (OURS_REF_EXACT,),
+)
+C1_FP4 = Version(
+    f"{OURS_REF} exact picks, FP4 entries", C1.run, 132, ((2, 72), (1, 72)), (),
+    "fp4_exact",
+)  # fmt: skip
+C2 = Version(
+    f"{OURS_REF} tournament picks",
+    "7f71fcf2-d7fc-49e7-9fc8-559c821b4a58",
+    DIM * 2,
+    ((2, DIM * 2), (1, DIM * 2)),
+    # exact at eval: -0.0014, passes; block mean 256 blocks of 8: +0.0031 at
+    # 4096-8192, passes (64 and 128 blocks fail)
+    (
+        OURS_REF_EXACT,
+        "V4.1 reference layout, summed query, block-mean picks, best 256 blocks of 8",
+    ),
+    "tournament",
+)
+C2_FP4 = Version(
+    f"{OURS_REF} tournament picks, FP4 entries", C2.run, 132, ((2, 72), (1, 72)), (),
+    "fp4_tournament",
+)  # fmt: skip
+# C3: entries of 4 tokens at layers 1-9; block-mean 64 blocks of 8 passes (-0.0037):
+# its means (one per 8 entries, both sources) are cached too
+R4 = "V4.1 reference, entries of 4 tokens at layers 1-9"  # decode_ref_picks.py rows
+C3 = Version(
+    f"{OURS_REF} tournament picks, 4-token entries",
+    "87d9531c-3007-4568-ac42-855982849471",
+    DIM * 2,
+    ((4, DIM * 2),) * 2 + ((32, DIM * 2),) * 2,
+    (f"{R4}, summed query, exact picks",
+     f"{R4}, summed query, block-mean picks, best 64 blocks of 8",
+     f"{R4}, summed query, block-mean picks, best 64 blocks of 8, one launch"),
+    "tournament",
+)  # fmt: skip
+C3_FP4 = Version(
+    f"{C3.name}, FP4 entries, FP8 means", C3.run, 132,
+    ((4, 72),) * 2 + ((32, 132),) * 2, (), "fp4_tournament",
+)  # fmt: skip
+# C3 retrained with the stage-switch fix (LR ramp at stage starts); block mean 64
+# blocks of 8 passes (-0.0055 at 4096-8192), FP4 too
+C3S = Version(f"{C3.name}, smooth stage switches",
+              "9624b171-a72f-43a2-b4c5-223e1b41a764", C3.window_bytes, C3.entries,
+              C3.decode, "tournament")  # fmt: skip
+C3S_FP4 = Version(f"{C3S.name}, FP4 entries, FP8 means", C3S.run, 132,
+                  C3_FP4.entries, (), "fp4_tournament")  # fmt: skip
+# round 5: parameter-free block (src/nanogpt/csa2_pf.py): C2's layout, entries = mean
+# of the layer's own kv, no compressor, indexer or sink
+PF = "parameter-free CSA2, V4.1 layout, summed query"  # decode_ref_picks.py rows
+C5 = Version(
+    "Parameter-free V4.1 block, tournament picks",
+    "fa3176f4-4264-4efe-accb-b49d7c9d7d9c",
+    DIM * 2,
+    ((2, DIM * 2), (1, DIM * 2)),
+    # gates vs tournament as C2's: exact -0.0016, block mean 256 blocks of 8 -0.0002 at
+    # 4096-8192 pass; 64 blocks +0.028 fails
+    (f"{PF}, exact picks", f"{PF}, block-mean picks, best 256 blocks of 8"),
+    "tournament",
+)
+C5_FP4 = Version(
+    f"{C5.name}, FP4 entries", C5.run, 132, ((2, 72), (1, 72)), (), "fp4_tournament",
+)  # fmt: skip
+# round 6: C5 with a constant sink logit ln 128 in every head, no parameter
+# (src/nanogpt/csa2_pf_sink.py); decode = C5's (a constant sink costs what none does)
+C6 = replace(
+    C5, name="Parameter-free V4.1 block, fixed sink ln 128, tournament picks",
+    run="5be6bb81-dfbf-4690-a598-e1422bbbe1e1",
+)  # fmt: skip
+C6_FP4 = replace(C5_FP4, name=f"{C6.name}, FP4 entries", run=C6.run)
 CSA2 = Version(
     "CSA2, our port of the V4.1 report",
     "296a91a4-55af-4b0b-be1a-3da00a57f95d",
@@ -76,6 +161,18 @@ WIN = {1: "1 shared K=V window head", 2: "2 shared K=V window heads",
 VERSIONS = (  # the first is the baseline of every ratio
     REF,
     REF_FP4,
+    C1,
+    C1_FP4,
+    C2,
+    C2_FP4,
+    C3,
+    C3_FP4,
+    C3S,
+    C3S_FP4,
+    C5,
+    C5_FP4,
+    C6,
+    C6_FP4,
     CSA2,
     Version(f"{LAYOUT}, exact top 64 entries",
             "5f0cf619-be55-44ea-ad17-e182a1b0858a", OURS_WINDOW, OURS_ENTRIES, EXACT),
@@ -144,7 +241,7 @@ def cache_mib(v: Version, n: int) -> float:
 
 def decode_us() -> dict[tuple[str, int], float]:
     out: dict[tuple[str, int], float] = {}
-    for name in ("decode_heat", "decode_block"):
+    for name in ("decode_heat", "decode_block", "decode_ref_picks"):
         with (RUNS / f"long_context/{name}.csv").open() as f:
             out |= {
                 (r["version"], int(r["n"])): float(r["us_per_token"])
@@ -159,10 +256,20 @@ def eval_csv(v: Version) -> list[dict[str, str]]:
         return list(csv.DictReader(f))
 
 
+def hclip(rule: str) -> str:
+    """Eval tag of rule with lm_head clipped as in training (queue_head_clip.sh)."""
+    base = rule.replace("fp4_", "").replace("_fp4", "")
+    return "fp4_" * (base != rule) + "hclip_" + base
+
+
 def stats(v: Version, decode: dict[tuple[str, int], float]) -> dict[str, float]:
     out = log_stats(v.run)
     (row,) = [r for r in eval_csv(v) if (r["start"], r["end"]) == ("0", "8192")]
     out["Eval loss (8192-token rows, eval rule)"] = float(row["loss"])
+    clipped = replace(v, rule=hclip(v.rule))
+    if (EVAL / f"rule_{v.run[:8]}_{clipped.rule}.csv").exists():
+        (row,) = [r for r in eval_csv(clipped) if r["start"] + r["end"] == "08192"]
+        out["Eval loss, lm_head clipped as in training"] = float(row["loss"])
     for n in LENGTHS:
         out[f"KV cache at {n // 1024}K tokens (MiB)"] = cache_mib(v, n)
     for n in LENGTHS:
@@ -210,19 +317,39 @@ def rule_name(tag: str) -> str:
     return name + ", picks at layers 0, 4" * shared + f", {fp8}" * bool(fp8)
 
 
-def rules() -> list[tuple[str, str, str]]:
-    """Run 7's loss by position under each eval rule (no retraining)."""
+REF_RUN = "65614cd9"  # V4.1 reference port; eval/ref_rule_eval.py tags
+REF_RULES = {
+    "indexer": "its learned indexer (as trained)",
+    "summed_exact": "summed query, exact picks",
+    "summed_block1": "summed query, block-mean picks, best 64 blocks of 8",
+    "summed_block4": "summed query, block-mean picks, best 256 blocks of 8",
+    "indexer_fp4": "its learned indexer, FP4 caches",
+    "summed_exact_fp4": "summed query, exact picks, FP4 entries",
+    "summed_block1_fp4": "summed query, block-mean picks, 64 blocks, FP4 entries",
+    "indexer_yarn4": "its learned indexer, YaRN 4x at eval",
+    "summed_exact_yarn4": "summed query, exact picks, YaRN 4x at eval",
+    "summed_exact_top128": "summed query, exact picks, 128 per query",
+}  # not plotted (far off the axis): YaRN with its attention scale (+0.17 to
+# +0.18), layer 9 reusing layer 5's picks (+0.22)
+
+
+def rules(
+    run: str = RUN7, name: Callable[[str], str | None] = rule_name
+) -> list[tuple[str, str, str]]:
+    """A run's loss by position under each eval rule (no retraining), oldest first;
+    tags name() maps to None are left out."""
     out, bins = [], {"08192": "all positions"}
-    for path in sorted(
-        EVAL.glob(f"rule_{RUN7}_*.csv"), key=lambda p: p.stat().st_mtime
-    ):
-        tag = path.stem.removeprefix(f"rule_{RUN7}_")
+    for path in sorted(EVAL.glob(f"rule_{run}_*.csv"), key=lambda p: p.stat().st_mtime):
+        tag = path.stem.removeprefix(f"rule_{run}_")
         if tag.startswith("lean"):  # code check (same model, lean script), not a rule
+            continue
+        label = name(tag)
+        if label is None:
             continue
         with path.open() as f:
             out += [
                 (
-                    rule_name(tag),
+                    label,
                     bins.get(
                         r["start"] + r["end"], f"positions {r['start']}-{r['end']}"
                     ),
@@ -250,6 +377,9 @@ def main() -> None:
         csv.writer(f).writerows([("version", "positions", "loss"), *loss])
     with (RUNS / "csa2_rules.csv").open("w", newline="") as f:
         csv.writer(f).writerows([("rule", "positions", "loss"), *rules()])
+    with (RUNS / "csa2_ref_rules.csv").open("w", newline="") as f:
+        ref = rules(REF_RUN, REF_RULES.get)
+        csv.writer(f).writerows([("rule", "positions", "loss"), *ref])
 
 
 if __name__ == "__main__":

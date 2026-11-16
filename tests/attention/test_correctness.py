@@ -9,8 +9,11 @@ copies), so the budget test runs on outlier-channels data, which has no copies;
 block and bracket tournaments end with n / 2^rounds keys, fewer than the budget
 (but more than half) unless n is the budget times a power of two; shuffled blocks
 with a growing budget keep the same winners per 1024-key block at every length, so
-budget * n / 32K keys, and are not dense on short contexts. The DeepSeek-V4 CSA
-layer is latency only (no emulation), so it is not here.
+budget * n / 32K keys, and are not dense on short contexts; the DeepSeek-V4.1 CSA2
+rows with our picks attend the budget plus their 128-key window (the parameter-free
+row: budget entries of 4 keys each, so it covers 4 x budget + 128 keys). The
+DeepSeek-V4 CSA and V4.1 CSA2 layers are latency only (no emulation), so they are not
+here.
 """
 
 import pytest
@@ -18,6 +21,9 @@ import torch
 
 from attention import harness
 from attention.block_topk import BlockTopK
+from attention.csa2_block_mean import Csa2BlockMean
+from attention.csa2_exact_picks import Csa2ExactPicks
+from attention.csa2_parameter_free import Csa2ParameterFree
 from attention.dense import dense
 from attention.registry import Version, versions
 from attention.tournament.shuffled_blocks_growing import GrowingShuffledBlocks
@@ -68,6 +74,10 @@ def test_budget(version: Version, n: int) -> None:
         assert torch.equal(selected, chunk.valid.sum(-1).expand(2, -1))
     elif isinstance(method, BlockTopK):  # a block may straddle the recent window
         assert bool((selected <= KEEP).all() & (selected > KEEP - method.block).all())
+    elif isinstance(method, Csa2ExactPicks | Csa2BlockMean):  # window on top
+        assert bool((selected == KEEP + method.window).all())
+    elif isinstance(method, Csa2ParameterFree):  # keep entries of ratio keys
+        assert bool((selected == KEEP * method.ratio + method.window).all())
     elif version.id in QUOTAS and n != N:
         assert bool((selected <= KEEP).all() & (selected > KEEP // 2).all())
     else:

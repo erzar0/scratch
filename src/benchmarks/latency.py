@@ -1,9 +1,10 @@
 """Latency: one decode step of each version's fast implementation on the GPU.
 
-Batch 1, one new token; `kv_heads` KV heads of 2 query heads, head dim 128, bf16
-K and V from synthetic.qkv. Each budget in `budgets` (default KEEP) runs where the
-length is at least MIN_RATIO times it. Timed by common.timing (CUDA-graph replays,
-medians of `repeats`); state kept at cache-write time is built before the timing.
+Batch 1, one new token; `kv_heads` KV heads of `query_heads` (default 2) query
+heads, head dim `dim` (default 128), bf16 K and V from synthetic.qkv. Each budget
+in `budgets` (default KEEP) runs where the length is at least MIN_RATIO times it.
+Timed by common.timing (CUDA-graph replays, medians of `repeats`); state kept at
+cache-write time is built before the timing.
 """
 
 from functools import partial
@@ -29,7 +30,14 @@ def run(
     for distribution in config["distributions"]:
         for n in config["lengths"]:
             q, k, v = synthetic.qkv(
-                distribution, n, 1, 0, groups=config["kv_heads"], device=device
+                distribution,
+                n,
+                1,
+                0,
+                groups=config["kv_heads"],
+                size=config.get("query_heads", 2),
+                dim=config.get("dim", 128),
+                device=device,
             )
             q = q[:, :, 0].bfloat16()
             kv = KV(k.bfloat16(), v.bfloat16())

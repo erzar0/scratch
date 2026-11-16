@@ -16,6 +16,10 @@ latency.png: Decode-step latency on NVIDIA GeForce RTX 4070 Ti SUPER: median of 
 | DeepSeek-V4 CSA | transformers | 334 (330–336) | 500 (499–503) | 809 (808–810) | 1642 (1640–1646) | 3085 (3080–3087) |
 | DeepSeek-V4 CSA, V4-Flash size | transformers | 747 (746–1014) | 893 (892–1312) | 1164 (1162–1558) | 1732 (1731–1734) | 2893 (2892–3037) |
 | DeepSeek-V4.1 CSA2 | PyTorch | 110 (110–114) | 168 (165–191) | 221 (216–221) | 376 (374–377) | 646 (641–714) |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 125 (106–129) | 159 (152–165) | 243 (217–264) | 402 (392–424) | 677 (653–713) |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 141 (123–171) | 155 (127–170) | 154 (136–169) | 168 (150–210) | 277 (219–304) |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 201 (162–221) | 370 (355–386) | 396 (385–419) | 442 (382–498) | 479 (463–514) |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 54 (54–55) | 62 (62–62) | 76 (76–76) | 106 (106–106) | 182 (182–183) |
 | Block top-k | PyTorch | 93 (92–95) | 103 (102–104) | 129 (127–132) | 176 (171–177) | 255 (252–265) |
 | Double indexing: mean | PyTorch | 150 (134–157) | 139 (120–148) | 131 (129–152) | 136 (124–141) | 128 (128–133) |
 | Double indexing: bound | PyTorch | 148 (130–174) | 144 (138–158) | 157 (135–159) | 135 (131–141) | 138 (137–144) |
@@ -45,6 +49,10 @@ latency.png: Decode-step latency on NVIDIA GeForce RTX 4070 Ti SUPER: median of 
 | DeepSeek-V4 CSA | transformers | 335 (332–336) | 501 (500–505) | 825 (820–827) | 1645 (1643–1648) | 3085 (3082–3087) |
 | DeepSeek-V4 CSA, V4-Flash size | transformers | 748 (747–1060) | 894 (893–1011) | 1165 (1161–1167) | 1731 (1729–1852) | 2897 (2891–2904) |
 | DeepSeek-V4.1 CSA2 | PyTorch | 110 (110–111) | 162 (162–178) | 239 (215–247) | 362 (355–377) | 631 (627–634) |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 116 (92–127) | 160 (129–162) | 241 (234–257) | 425 (403–440) | 674 (646–720) |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 158 (132–169) | 145 (127–175) | 182 (143–204) | 176 (157–217) | 267 (245–283) |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 197 (155–219) | 365 (355–434) | 395 (380–443) | 435 (405–470) | 489 (469–519) |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 54 (54–54) | 61 (61–61) | 76 (76–76) | 107 (106–117) | 200 (182–201) |
 | Block top-k | PyTorch | 95 (93–113) | 102 (101–104) | 127 (126–128) | 186 (185–194) | 263 (261–265) |
 | Double indexing: mean | PyTorch | 119 (117–133) | 119 (118–134) | 120 (120–133) | 125 (123–138) | 194 (148–203) |
 | Double indexing: bound | PyTorch | 143 (124–172) | 166 (148–189) | 160 (149–182) | 142 (137–155) | 142 (140–171) |
@@ -75,6 +83,10 @@ fidelity.png: Output error against dense attention, |o − o_dense| / |o_dense| 
 | Exact top-k, summed query | PyTorch | 2.7 ± 0.0063 | 4.11 ± 0.011 | 6.03 ± 0.016 | 8.74 ± 0.027 | 12.5 ± 0.032 |
 | SparQ | Triton | 3.18 ± 0.0073 | 4.87 ± 0.013 | 7.22 ± 0.02 | 10.6 ± 0.033 | 15.4 ± 0.038 |
 | Loki | PyTorch | 3.43 ± 0.0079 | 5.16 ± 0.016 | 7.53 ± 0.019 | 10.9 ± 0.034 | 15.6 ± 0.042 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 2.51 ± 0.006 | 3.89 ± 0.011 | 5.76 ± 0.015 | 8.4 ± 0.026 | 12.1 ± 0.031 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 2.57 ± 0.006 | 4.01 ± 0.012 | 5.94 ± 0.017 | 8.64 ± 0.025 | 12.4 ± 0.032 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 2.51 ± 0.006 | 3.89 ± 0.011 | 5.79 ± 0.016 | 8.48 ± 0.027 | 12.2 ± 0.031 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 1.74 ± 0.0051 | 2.37 ± 0.0084 | 3.24 ± 0.0076 | 4.46 ± 0.017 | 6.16 ± 0.017 |
 | Block top-k | PyTorch | 3.52 ± 0.0083 | 5.26 ± 0.016 | 7.65 ± 0.02 | 11.1 ± 0.036 | 15.9 ± 0.042 |
 | Double indexing: mean | PyTorch | 3.56 ± 0.0085 | 5.26 ± 0.016 | 7.56 ± 0.018 | 10.8 ± 0.031 | 15.4 ± 0.047 |
 | Double indexing: bound | PyTorch | 3.6 ± 0.0088 | 5.33 ± 0.014 | 7.65 ± 0.023 | 11 ± 0.034 | 15.5 ± 0.043 |
@@ -101,6 +113,10 @@ fidelity.png: Output error against dense attention, |o − o_dense| / |o_dense| 
 | Exact top-k, summed query | PyTorch | 1.51 ± 0.0075 | 2.3 ± 0.0055 | 3.37 ± 0.012 | 4.86 ± 0.021 | 6.94 ± 0.03 |
 | SparQ | Triton | 1.14 ± 0.0079 | 1.82 ± 0.0077 | 2.79 ± 0.018 | 4.21 ± 0.021 | 6.36 ± 0.035 |
 | Loki | PyTorch | 1.22 ± 0.0084 | 2.02 ± 0.011 | 3.25 ± 0.024 | 5.12 ± 0.028 | 7.95 ± 0.048 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 1.42 ± 0.0071 | 2.19 ± 0.0057 | 3.25 ± 0.01 | 4.7 ± 0.02 | 6.74 ± 0.028 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 1.56 ± 0.0056 | 2.51 ± 0.0053 | 3.74 ± 0.011 | 5.4 ± 0.022 | 7.73 ± 0.034 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 1.42 ± 0.0071 | 2.19 ± 0.0057 | 3.33 ± 0.0097 | 4.94 ± 0.021 | 7.16 ± 0.022 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 2.05 ± 0.015 | 2.42 ± 0.024 | 2.92 ± 0.039 | 3.54 ± 0.018 | 4.56 ± 0.042 |
 | Block top-k | PyTorch | 2.59 ± 0.0077 | 3.82 ± 0.0078 | 5.52 ± 0.014 | 7.86 ± 0.037 | 11.2 ± 0.045 |
 | Double indexing: mean | PyTorch | 2.72 ± 0.0072 | 3.95 ± 0.01 | 5.57 ± 0.015 | 7.74 ± 0.031 | 10.8 ± 0.031 |
 | Double indexing: bound | PyTorch | 2.82 ± 0.0077 | 4.27 ± 0.0089 | 6.31 ± 0.022 | 9.16 ± 0.049 | 13.3 ± 0.049 |
@@ -127,6 +143,10 @@ fidelity.png: Output error against dense attention, |o − o_dense| / |o_dense| 
 | Exact top-k, summed query | PyTorch | 0.0319 ± 0.00098 | 0.0625 ± 0.0021 | 0.124 ± 0.0035 | 0.227 ± 0.0074 | 0.48 ± 0.026 |
 | SparQ | Triton | 0.0217 ± 0.00067 | 0.0453 ± 0.0013 | 0.0913 ± 0.0027 | 0.174 ± 0.0041 | 0.364 ± 0.017 |
 | Loki | PyTorch | 0.0191 ± 0.00062 | 0.0416 ± 0.0013 | 0.087 ± 0.0027 | 0.171 ± 0.0045 | 0.371 ± 0.018 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.031 ± 0.00098 | 0.0616 ± 0.0021 | 0.123 ± 0.0035 | 0.225 ± 0.0073 | 0.477 ± 0.026 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.0462 ± 0.001 | 0.115 ± 0.003 | 0.236 ± 0.0038 | 0.435 ± 0.0085 | 0.813 ± 0.028 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.031 ± 0.00098 | 0.0616 ± 0.0021 | 0.132 ± 0.0037 | 0.269 ± 0.0075 | 0.587 ± 0.026 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 1.24 ± 0.0093 | 1.26 ± 0.009 | 1.29 ± 0.0082 | 1.34 ± 0.0064 | 1.48 ± 0.018 |
 | Block top-k | PyTorch | 0.173 ± 0.0048 | 0.243 ± 0.0052 | 0.364 ± 0.0059 | 0.582 ± 0.012 | 1.02 ± 0.034 |
 | Double indexing: mean | PyTorch | 0.8 ± 0.0057 | 1.08 ± 0.0081 | 1.34 ± 0.0093 | 1.58 ± 0.012 | 1.88 ± 0.038 |
 | Double indexing: bound | PyTorch | 0.838 ± 0.012 | 1.06 ± 0.0056 | 1.28 ± 0.013 | 1.49 ± 0.016 | 1.85 ± 0.029 |
@@ -157,6 +177,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.92 ± 0.028 | 1.88 ± 0.046 | 3.62 ± 0.079 | 6.59 ± 0.088 | 12.1 ± 0.39 |
 | SparQ | Triton | 0.914 ± 0.029 | 1.9 ± 0.048 | 3.76 ± 0.085 | 7.08 ± 0.1 | 13.6 ± 0.45 |
 | Loki | PyTorch | 0.872 ± 0.027 | 1.82 ± 0.044 | 3.58 ± 0.08 | 6.71 ± 0.091 | 12.8 ± 0.42 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.878 ± 0.027 | 1.82 ± 0.043 | 3.52 ± 0.076 | 6.42 ± 0.085 | 11.8 ± 0.37 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.961 ± 0.026 | 2.14 ± 0.046 | 4.37 ± 0.083 | 8.36 ± 0.098 | 15.9 ± 0.43 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.878 ± 0.027 | 1.82 ± 0.043 | 3.62 ± 0.077 | 6.93 ± 0.09 | 13.4 ± 0.4 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 1.41 ± 0.017 | 1.72 ± 0.01 | 2.43 ± 0.017 | 3.88 ± 0.027 | 6.46 ± 0.07 |
 | Block top-k | PyTorch | 1.88 ± 0.029 | 3.51 ± 0.062 | 6.57 ± 0.11 | 12 ± 0.13 | 22.3 ± 0.58 |
 | Double indexing: mean | PyTorch | 2.27 ± 0.031 | 4.07 ± 0.063 | 7.1 ± 0.092 | 11.9 ± 0.11 | 20 ± 0.34 |
 | Double indexing: bound | PyTorch | 2.32 ± 0.034 | 4.08 ± 0.056 | 7.16 ± 0.097 | 12.2 ± 0.13 | 20.8 ± 0.45 |
@@ -183,6 +207,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.00219 ± 0.00023 | 0.00343 ± 0.00017 | 0.00517 ± 0.00045 | 0.00697 ± 0.00076 | 0.0118 ± 0.001 |
 | SparQ | Triton | 6e-05 ± 8.6e-06 | 0.000267 ± 0.00012 | 0.000504 ± 9.4e-05 | 0.000814 ± 0.00013 | 0.00244 ± 0.00016 |
 | Loki | PyTorch | 2.82e-05 ± 1.6e-06 | 0.000108 ± 1.3e-05 | 0.000584 ± 0.00021 | 0.00206 ± 0.00027 | 0.00707 ± 0.00095 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.00213 ± 0.00023 | 0.0034 ± 0.00016 | 0.00516 ± 0.00045 | 0.007 ± 0.00076 | 0.0118 ± 0.001 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.00796 ± 0.00078 | 0.0332 ± 0.0021 | 0.0791 ± 0.0025 | 0.158 ± 0.003 | 0.248 ± 0.0049 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.0021 ± 0.00021 | 0.0034 ± 0.00016 | 0.00858 ± 0.00056 | 0.0291 ± 0.00094 | 0.0749 ± 0.0021 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 1.26 ± 0.017 | 1.28 ± 0.012 | 1.28 ± 0.011 | 1.26 ± 0.0073 | 1.26 ± 0.019 |
 | Block top-k | PyTorch | 0.0978 ± 0.0051 | 0.135 ± 0.0055 | 0.189 ± 0.0029 | 0.29 ± 0.0049 | 0.4 ± 0.0048 |
 | Double indexing: mean | PyTorch | 0.768 ± 0.0066 | 1.03 ± 0.0086 | 1.21 ± 0.0089 | 1.32 ± 0.011 | 1.35 ± 0.019 |
 | Double indexing: bound | PyTorch | 0.796 ± 0.012 | 0.994 ± 0.0062 | 1.15 ± 0.011 | 1.24 ± 0.011 | 1.32 ± 0.012 |
@@ -209,6 +237,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.00705 ± 0.00037 | 0.0165 ± 0.0011 | 0.0258 ± 0.0018 | 0.0418 ± 0.0014 | 0.0676 ± 0.0032 |
 | SparQ | Triton | 0.000961 ± 8.2e-05 | 0.00324 ± 0.00019 | 0.00779 ± 0.00056 | 0.0162 ± 0.00053 | 0.0329 ± 0.0016 |
 | Loki | PyTorch | 0.00028 ± 1.3e-05 | 0.00185 ± 0.00011 | 0.00562 ± 0.00039 | 0.0138 ± 0.00042 | 0.0325 ± 0.0016 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.007 ± 0.00038 | 0.0164 ± 0.0011 | 0.0256 ± 0.0017 | 0.0418 ± 0.0014 | 0.0676 ± 0.0032 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.00712 ± 0.00039 | 0.018 ± 0.0012 | 0.033 ± 0.0019 | 0.0595 ± 0.0014 | 0.103 ± 0.0044 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.007 ± 0.00038 | 0.0164 ± 0.0011 | 0.0257 ± 0.0018 | 0.0431 ± 0.0014 | 0.073 ± 0.0035 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.839 ± 0.0066 | 0.793 ± 0.0065 | 0.769 ± 0.0092 | 0.752 ± 0.0093 | 0.73 ± 0.004 |
 | Block top-k | PyTorch | 0.0364 ± 0.0016 | 0.0551 ± 0.0024 | 0.0878 ± 0.0055 | 0.127 ± 0.0025 | 0.187 ± 0.0049 |
 | Double indexing: mean | PyTorch | 0.132 ± 0.0076 | 0.204 ± 0.017 | 0.284 ± 0.014 | 0.336 ± 0.012 | 0.431 ± 0.013 |
 | Double indexing: bound | PyTorch | 0.0573 ± 0.0024 | 0.101 ± 0.0026 | 0.151 ± 0.0061 | 0.228 ± 0.004 | 0.276 ± 0.0072 |
@@ -235,6 +267,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.135 ± 0.0034 | 0.141 ± 0.0015 | 0.15 ± 0.0026 | 0.161 ± 0.0032 | 0.188 ± 0.0033 |
 | SparQ | Triton | 0.0845 ± 0.0024 | 0.0927 ± 0.0016 | 0.103 ± 0.0016 | 0.116 ± 0.0018 | 0.142 ± 0.0035 |
 | Loki | PyTorch | 0.0821 ± 0.0023 | 0.0897 ± 0.0016 | 0.0984 ± 0.0015 | 0.111 ± 0.0017 | 0.136 ± 0.0036 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.132 ± 0.0034 | 0.14 ± 0.0015 | 0.149 ± 0.0026 | 0.161 ± 0.0031 | 0.188 ± 0.0033 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.348 ± 0.009 | 0.548 ± 0.0093 | 0.681 ± 0.011 | 0.77 ± 0.0099 | 0.824 ± 0.024 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.132 ± 0.0034 | 0.14 ± 0.0014 | 0.221 ± 0.0046 | 0.32 ± 0.0055 | 0.41 ± 0.012 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 2.48 ± 0.017 | 2.82 ± 0.018 | 3.06 ± 0.017 | 3.23 ± 0.031 | 3.3 ± 0.041 |
 | Block top-k | PyTorch | 0.995 ± 0.022 | 1.2 ± 0.02 | 1.32 ± 0.022 | 1.4 ± 0.018 | 1.41 ± 0.044 |
 | Double indexing: mean | PyTorch | 1.54 ± 0.022 | 2.04 ± 0.015 | 2.55 ± 0.021 | 3.1 ± 0.02 | 3.71 ± 0.018 |
 | Double indexing: bound | PyTorch | 1.78 ± 0.016 | 2.39 ± 0.016 | 3.09 ± 0.019 | 3.79 ± 0.019 | 4.45 ± 0.018 |
@@ -263,6 +299,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.205 ± 0.00015 | 0.125 ± 0.00011 | 0.0745 ± 8.1e-05 | 0.044 ± 5.4e-05 | 0.0257 ± 3.3e-05 |
 | SparQ | Triton | 0.168 ± 0.00015 | 0.0992 ± 7.7e-05 | 0.0579 ± 6.6e-05 | 0.0335 ± 4.1e-05 | 0.0193 ± 2.5e-05 |
 | Loki | PyTorch | 0.129 ± 0.00011 | 0.0711 ± 6.5e-05 | 0.0388 ± 4.5e-05 | 0.0211 ± 2.3e-05 | 0.0115 ± 1e-05 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.22 ± 0.00015 | 0.132 ± 0.00011 | 0.0784 ± 8.2e-05 | 0.0459 ± 5.4e-05 | 0.0267 ± 3.4e-05 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.208 ± 0.00013 | 0.115 ± 8.5e-05 | 0.0623 ± 4.9e-05 | 0.0335 ± 3.2e-05 | 0.0179 ± 1.8e-05 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.22 ± 0.00015 | 0.132 ± 0.00011 | 0.0755 ± 7.4e-05 | 0.0417 ± 4.6e-05 | 0.0227 ± 2.6e-05 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.391 ± 0.00011 | 0.221 ± 9.1e-05 | 0.123 ± 5.4e-05 | 0.0677 ± 3.7e-05 | 0.037 ± 2.3e-05 |
 | Block top-k | PyTorch | 0.12 ± 6.7e-05 | 0.0659 ± 4.1e-05 | 0.0361 ± 1.7e-05 | 0.0197 ± 1.4e-05 | 0.0107 ± 8e-06 |
 | Double indexing: mean | PyTorch | 0.104 ± 4.5e-05 | 0.0534 ± 2.7e-05 | 0.0274 ± 9.3e-06 | 0.014 ± 7.5e-06 | 0.00717 ± 4.2e-06 |
 | Double indexing: bound | PyTorch | 0.0975 ± 5.3e-05 | 0.0491 ± 1.6e-05 | 0.0247 ± 7.6e-06 | 0.0124 ± 6.2e-06 | 0.00625 ± 2e-06 |
@@ -289,6 +329,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.442 ± 0.0015 | 0.344 ± 0.00079 | 0.263 ± 0.0013 | 0.2 ± 0.001 | 0.15 ± 0.0011 |
 | SparQ | Triton | 0.518 ± 0.0015 | 0.414 ± 0.0011 | 0.327 ± 0.0016 | 0.258 ± 0.0011 | 0.201 ± 0.001 |
 | Loki | PyTorch | 0.518 ± 0.0015 | 0.415 ± 0.0011 | 0.328 ± 0.0016 | 0.259 ± 0.0012 | 0.201 ± 0.0011 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.453 ± 0.0015 | 0.35 ± 0.00079 | 0.266 ± 0.0013 | 0.202 ± 0.001 | 0.151 ± 0.0011 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.407 ± 0.0012 | 0.263 ± 0.00071 | 0.163 ± 0.00077 | 0.0999 ± 0.00058 | 0.0595 ± 0.00036 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.453 ± 0.0015 | 0.35 ± 0.00079 | 0.246 ± 0.0012 | 0.162 ± 0.00083 | 0.102 ± 0.0007 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.514 ± 0.00058 | 0.336 ± 0.00057 | 0.214 ± 0.00076 | 0.136 ± 0.00044 | 0.0844 ± 0.00042 |
 | Block top-k | PyTorch | 0.222 ± 0.00076 | 0.144 ± 0.00049 | 0.0929 ± 0.00045 | 0.0602 ± 0.0004 | 0.038 ± 0.00029 |
 | Double indexing: mean | PyTorch | 0.161 ± 0.00035 | 0.0877 ± 0.00025 | 0.0471 ± 0.00028 | 0.0251 ± 0.00018 | 0.0132 ± 0.00013 |
 | Double indexing: bound | PyTorch | 0.191 ± 0.00064 | 0.118 ± 0.00089 | 0.074 ± 0.00067 | 0.0476 ± 0.00056 | 0.0307 ± 0.00047 |
@@ -315,6 +359,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.975 ± 0.00082 | 0.955 ± 0.0014 | 0.924 ± 0.0019 | 0.88 ± 0.0021 | 0.807 ± 0.0069 |
 | SparQ | Triton | 0.981 ± 0.00059 | 0.962 ± 0.001 | 0.933 ± 0.0017 | 0.89 ± 0.0018 | 0.82 ± 0.0064 |
 | Loki | PyTorch | 0.983 ± 0.00056 | 0.965 ± 0.001 | 0.936 ± 0.0017 | 0.894 ± 0.0018 | 0.823 ± 0.0064 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.976 ± 0.00081 | 0.956 ± 0.0014 | 0.925 ± 0.0019 | 0.88 ± 0.0021 | 0.808 ± 0.0069 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.967 ± 0.00069 | 0.927 ± 0.0015 | 0.87 ± 0.0016 | 0.791 ± 0.0018 | 0.689 ± 0.0057 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.976 ± 0.00081 | 0.956 ± 0.0014 | 0.919 ± 0.002 | 0.861 ± 0.0019 | 0.767 ± 0.0062 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.97 ± 0.00062 | 0.942 ± 0.0011 | 0.902 ± 0.0018 | 0.846 ± 0.0019 | 0.764 ± 0.0058 |
 | Block top-k | PyTorch | 0.898 ± 0.0019 | 0.866 ± 0.0021 | 0.821 ± 0.0015 | 0.749 ± 0.0019 | 0.657 ± 0.0051 |
 | Double indexing: mean | PyTorch | 0.607 ± 0.0027 | 0.47 ± 0.0034 | 0.354 ± 0.0038 | 0.269 ± 0.0044 | 0.216 ± 0.01 |
 | Double indexing: bound | PyTorch | 0.585 ± 0.0061 | 0.48 ± 0.0031 | 0.385 ± 0.0052 | 0.313 ± 0.0042 | 0.244 ± 0.006 |
@@ -341,6 +389,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.591 ± 0.0094 | 0.43 ± 0.0075 | 0.291 ± 0.0061 | 0.195 ± 0.0033 | 0.121 ± 0.0069 |
 | SparQ | Triton | 0.586 ± 0.0093 | 0.425 ± 0.0075 | 0.288 ± 0.006 | 0.194 ± 0.0033 | 0.121 ± 0.0068 |
 | Loki | PyTorch | 0.599 ± 0.0092 | 0.437 ± 0.0074 | 0.297 ± 0.006 | 0.2 ± 0.0032 | 0.125 ± 0.0069 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.599 ± 0.0092 | 0.435 ± 0.0075 | 0.294 ± 0.0061 | 0.197 ± 0.0033 | 0.122 ± 0.0069 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.573 ± 0.0085 | 0.384 ± 0.0062 | 0.237 ± 0.0045 | 0.143 ± 0.0022 | 0.0797 ± 0.0042 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.599 ± 0.0092 | 0.435 ± 0.0075 | 0.286 ± 0.0059 | 0.18 ± 0.0029 | 0.103 ± 0.0057 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.657 ± 0.0062 | 0.455 ± 0.0055 | 0.292 ± 0.0047 | 0.182 ± 0.0023 | 0.106 ± 0.0048 |
 | Block top-k | PyTorch | 0.396 ± 0.0043 | 0.274 ± 0.0041 | 0.176 ± 0.0034 | 0.109 ± 0.0017 | 0.0631 ± 0.0035 |
 | Double indexing: mean | PyTorch | 0.291 ± 0.0043 | 0.17 ± 0.0034 | 0.0918 ± 0.0022 | 0.0506 ± 0.0013 | 0.0289 ± 0.0022 |
 | Double indexing: bound | PyTorch | 0.281 ± 0.0051 | 0.171 ± 0.0029 | 0.095 ± 0.0026 | 0.0548 ± 0.0014 | 0.0294 ± 0.0021 |
@@ -367,6 +419,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.999 ± 0.00015 | 0.998 ± 9.7e-05 | 0.997 ± 0.00021 | 0.996 ± 0.00043 | 0.993 ± 0.00039 |
 | SparQ | Triton | 1 ± 5.1e-06 | 1 ± 6.4e-05 | 1 ± 4.7e-05 | 0.999 ± 8.5e-05 | 0.998 ± 9.3e-05 |
 | Loki | PyTorch | 1 ± 1.6e-06 | 1 ± 8.1e-06 | 1 ± 0.00015 | 0.999 ± 0.00016 | 0.995 ± 0.0007 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.999 ± 0.00014 | 0.998 ± 9.6e-05 | 0.997 ± 0.00021 | 0.996 ± 0.00043 | 0.993 ± 0.00039 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.996 ± 0.00034 | 0.985 ± 0.00087 | 0.965 ± 0.001 | 0.929 ± 0.0014 | 0.887 ± 0.0022 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.999 ± 0.00013 | 0.998 ± 9.7e-05 | 0.996 ± 0.00027 | 0.986 ± 0.00047 | 0.966 ± 0.0009 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.997 ± 0.0002 | 0.995 ± 0.00011 | 0.992 ± 0.00023 | 0.984 ± 0.00065 | 0.973 ± 0.0011 |
 | Block top-k | PyTorch | 0.956 ± 0.0021 | 0.939 ± 0.0024 | 0.915 ± 0.0011 | 0.868 ± 0.0022 | 0.816 ± 0.002 |
 | Double indexing: mean | PyTorch | 0.632 ± 0.0032 | 0.49 ± 0.0037 | 0.372 ± 0.0041 | 0.287 ± 0.0046 | 0.239 ± 0.011 |
 | Double indexing: bound | PyTorch | 0.613 ± 0.0062 | 0.507 ± 0.0035 | 0.415 ± 0.0049 | 0.348 ± 0.0042 | 0.29 ± 0.0053 |
@@ -393,6 +449,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.996 ± 0.00023 | 0.99 ± 0.00069 | 0.984 ± 0.0011 | 0.973 ± 0.00079 | 0.956 ± 0.0019 |
 | SparQ | Triton | 0.999 ± 4.9e-05 | 0.997 ± 0.00014 | 0.994 ± 0.00042 | 0.986 ± 0.00039 | 0.973 ± 0.0012 |
 | Loki | PyTorch | 1 ± 1.2e-05 | 0.998 ± 9.6e-05 | 0.995 ± 0.00032 | 0.988 ± 0.00033 | 0.974 ± 0.0012 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.996 ± 0.00022 | 0.99 ± 0.00069 | 0.984 ± 0.0011 | 0.973 ± 0.00078 | 0.956 ± 0.0019 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.996 ± 0.00023 | 0.989 ± 0.00072 | 0.981 ± 0.0011 | 0.967 ± 0.00077 | 0.944 ± 0.0023 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.996 ± 0.00022 | 0.99 ± 0.00069 | 0.984 ± 0.0011 | 0.973 ± 0.00078 | 0.954 ± 0.002 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.999 ± 0.00014 | 0.996 ± 0.00027 | 0.991 ± 0.00043 | 0.98 ± 0.00056 | 0.963 ± 0.0016 |
 | Block top-k | PyTorch | 0.982 ± 0.00074 | 0.974 ± 0.001 | 0.958 ± 0.0024 | 0.94 ± 0.0011 | 0.912 ± 0.002 |
 | Double indexing: mean | PyTorch | 0.924 ± 0.0049 | 0.879 ± 0.012 | 0.838 ± 0.0085 | 0.81 ± 0.0074 | 0.762 ± 0.0078 |
 | Double indexing: bound | PyTorch | 0.968 ± 0.0013 | 0.943 ± 0.0016 | 0.915 ± 0.0034 | 0.875 ± 0.002 | 0.851 ± 0.0035 |
@@ -419,6 +479,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.911 ± 0.002 | 0.908 ± 0.001 | 0.904 ± 0.0013 | 0.897 ± 0.0013 | 0.885 ± 0.002 |
 | SparQ | Triton | 0.932 ± 0.0019 | 0.927 ± 0.0011 | 0.921 ± 0.0011 | 0.913 ± 0.001 | 0.899 ± 0.0021 |
 | Loki | PyTorch | 0.934 ± 0.0017 | 0.93 ± 0.0012 | 0.924 ± 0.0011 | 0.916 ± 0.001 | 0.903 ± 0.0021 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.912 ± 0.002 | 0.909 ± 0.001 | 0.904 ± 0.0013 | 0.897 ± 0.0013 | 0.885 ± 0.002 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.843 ± 0.0048 | 0.75 ± 0.0053 | 0.683 ± 0.0057 | 0.638 ± 0.0048 | 0.615 ± 0.011 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.912 ± 0.002 | 0.909 ± 0.001 | 0.887 ± 0.0019 | 0.849 ± 0.0023 | 0.809 ± 0.0063 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.85 ± 0.0067 | 0.795 ± 0.0065 | 0.775 ± 0.0068 | 0.765 ± 0.005 | 0.766 ± 0.011 |
 | Block top-k | PyTorch | 0.537 ± 0.0094 | 0.46 ± 0.0078 | 0.426 ± 0.0074 | 0.412 ± 0.0062 | 0.428 ± 0.013 |
 | Double indexing: mean | PyTorch | 0.331 ± 0.0063 | 0.225 ± 0.0023 | 0.16 ± 0.0019 | 0.119 ± 0.0009 | 0.0944 ± 0.0013 |
 | Double indexing: bound | PyTorch | 0.274 ± 0.0039 | 0.181 ± 0.0029 | 0.123 ± 0.0015 | 0.0915 ± 0.0011 | 0.0688 ± 0.00083 |
@@ -447,6 +511,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.817 ± 0.00051 | 0.745 ± 0.00073 | 0.672 ± 0.00097 | 0.601 ± 0.0012 | 0.535 ± 0.0011 |
 | SparQ | Triton | 0.665 ± 0.00075 | 0.587 ± 0.0004 | 0.521 ± 0.00067 | 0.464 ± 0.00059 | 0.415 ± 0.0006 |
 | Loki | PyTorch | 0.38 ± 0.00072 | 0.283 ± 0.00065 | 0.21 ± 0.00041 | 0.158 ± 0.00045 | 0.119 ± 0.00034 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.823 ± 0.00053 | 0.748 ± 0.00073 | 0.674 ± 0.00098 | 0.602 ± 0.0012 | 0.535 ± 0.0011 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.71 ± 0.00055 | 0.512 ± 0.00063 | 0.357 ± 0.00038 | 0.246 ± 0.00041 | 0.167 ± 0.0004 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.823 ± 0.00053 | 0.748 ± 0.00073 | 0.607 ± 0.0008 | 0.455 ± 0.0007 | 0.33 ± 0.00066 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.681 ± 0.00061 | 0.512 ± 0.00042 | 0.379 ± 0.00048 | 0.277 ± 0.0006 | 0.2 ± 0.00042 |
 | Block top-k | PyTorch | 0.329 ± 0.00062 | 0.244 ± 0.00036 | 0.183 ± 0.00018 | 0.138 ± 0.00036 | 0.104 ± 0.00031 |
 | Double indexing: mean | PyTorch | 0.228 ± 0.00039 | 0.135 ± 0.00028 | 0.0793 ± 0.00019 | 0.0463 ± 0.00015 | 0.0268 ± 0.00019 |
 | Double indexing: bound | PyTorch | 0.195 ± 0.00042 | 0.108 ± 0.00028 | 0.0602 ± 0.0002 | 0.0331 ± 0.00014 | 0.0185 ± 0.00011 |
@@ -473,6 +541,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.753 ± 0.0024 | 0.718 ± 0.0019 | 0.678 ± 0.0023 | 0.644 ± 0.0013 | 0.604 ± 0.0029 |
 | SparQ | Triton | 0.975 ± 0.00036 | 0.967 ± 0.00064 | 0.961 ± 0.00053 | 0.957 ± 0.0004 | 0.952 ± 0.00032 |
 | Loki | PyTorch | 0.973 ± 0.00045 | 0.962 ± 0.00046 | 0.951 ± 0.00059 | 0.941 ± 0.0005 | 0.929 ± 0.00046 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.76 ± 0.0024 | 0.722 ± 0.0019 | 0.68 ± 0.0023 | 0.645 ± 0.0013 | 0.605 ± 0.0029 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.652 ± 0.0017 | 0.484 ± 0.0011 | 0.347 ± 0.0011 | 0.245 ± 0.00067 | 0.17 ± 0.00068 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.76 ± 0.0024 | 0.722 ± 0.0019 | 0.607 ± 0.0019 | 0.473 ± 0.00083 | 0.351 ± 0.0013 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.644 ± 0.00086 | 0.489 ± 0.0011 | 0.368 ± 0.00075 | 0.276 ± 0.00068 | 0.205 ± 0.00063 |
 | Block top-k | PyTorch | 0.316 ± 0.00068 | 0.244 ± 0.0008 | 0.19 ± 0.00045 | 0.148 ± 0.00031 | 0.115 ± 0.00047 |
 | Double indexing: mean | PyTorch | 0.22 ± 0.00059 | 0.133 ± 0.00047 | 0.0803 ± 0.00041 | 0.0479 ± 0.0005 | 0.0285 ± 0.00015 |
 | Double indexing: bound | PyTorch | 0.239 ± 0.0005 | 0.164 ± 0.0005 | 0.118 ± 0.00042 | 0.0903 ± 0.00048 | 0.0716 ± 0.00052 |
@@ -499,6 +571,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.952 ± 0.0024 | 0.926 ± 0.0031 | 0.899 ± 0.0032 | 0.872 ± 0.0033 | 0.833 ± 0.0075 |
 | SparQ | Triton | 0.988 ± 0.00067 | 0.975 ± 0.0015 | 0.96 ± 0.0015 | 0.945 ± 0.0021 | 0.92 ± 0.0046 |
 | Loki | PyTorch | 0.999 ± 9.9e-05 | 0.997 ± 0.00027 | 0.993 ± 0.00024 | 0.985 ± 0.00045 | 0.972 ± 0.0018 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.953 ± 0.0024 | 0.927 ± 0.0031 | 0.9 ± 0.0032 | 0.872 ± 0.0033 | 0.833 ± 0.0075 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.87 ± 0.0023 | 0.71 ± 0.0033 | 0.565 ± 0.0026 | 0.435 ± 0.002 | 0.328 ± 0.0035 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.953 ± 0.0024 | 0.926 ± 0.0031 | 0.847 ± 0.0033 | 0.712 ± 0.0032 | 0.567 ± 0.006 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.849 ± 0.0023 | 0.733 ± 0.004 | 0.624 ± 0.0036 | 0.517 ± 0.0029 | 0.418 ± 0.005 |
 | Block top-k | PyTorch | 0.418 ± 0.00096 | 0.35 ± 0.0022 | 0.29 ± 0.0019 | 0.238 ± 0.0013 | 0.193 ± 0.0016 |
 | Double indexing: mean | PyTorch | 0.313 ± 0.00084 | 0.212 ± 0.0011 | 0.141 ± 0.00067 | 0.0926 ± 0.0007 | 0.0661 ± 0.00066 |
 | Double indexing: bound | PyTorch | 0.301 ± 0.0016 | 0.212 ± 0.0011 | 0.149 ± 0.0012 | 0.11 ± 0.00089 | 0.0833 ± 0.0012 |
@@ -525,6 +601,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.984 ± 0.0011 | 0.974 ± 0.0014 | 0.962 ± 0.0014 | 0.943 ± 0.0023 | 0.911 ± 0.0055 |
 | SparQ | Triton | 0.995 ± 0.00045 | 0.986 ± 0.0012 | 0.976 ± 0.0011 | 0.965 ± 0.0018 | 0.946 ± 0.0047 |
 | Loki | PyTorch | 1 ± 6.8e-06 | 1 ± 4.2e-05 | 0.999 ± 6e-05 | 0.998 ± 0.00013 | 0.996 ± 0.00043 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.984 ± 0.0011 | 0.975 ± 0.0014 | 0.962 ± 0.0014 | 0.943 ± 0.0023 | 0.911 ± 0.0055 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.902 ± 0.0015 | 0.75 ± 0.0023 | 0.604 ± 0.0024 | 0.467 ± 0.0019 | 0.353 ± 0.0033 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.984 ± 0.0011 | 0.975 ± 0.0014 | 0.905 ± 0.0019 | 0.767 ± 0.0024 | 0.613 ± 0.0051 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.88 ± 0.0019 | 0.774 ± 0.0035 | 0.67 ± 0.0034 | 0.558 ± 0.003 | 0.453 ± 0.0049 |
 | Block top-k | PyTorch | 0.465 ± 0.0013 | 0.402 ± 0.002 | 0.345 ± 0.0018 | 0.286 ± 0.0016 | 0.235 ± 0.0018 |
 | Double indexing: mean | PyTorch | 0.336 ± 0.00093 | 0.228 ± 0.00099 | 0.152 ± 0.0007 | 0.0998 ± 0.00073 | 0.0706 ± 0.00072 |
 | Double indexing: bound | PyTorch | 0.324 ± 0.0015 | 0.232 ± 0.0013 | 0.166 ± 0.0013 | 0.124 ± 0.001 | 0.0959 ± 0.0013 |
@@ -551,6 +631,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.948 ± 0.0026 | 0.918 ± 0.0035 | 0.886 ± 0.0034 | 0.852 ± 0.0038 | 0.796 ± 0.0093 |
 | SparQ | Triton | 0.985 ± 0.00066 | 0.97 ± 0.0016 | 0.952 ± 0.0016 | 0.932 ± 0.002 | 0.901 ± 0.0043 |
 | Loki | PyTorch | 0.991 ± 0.00062 | 0.979 ± 0.0011 | 0.96 ± 0.0014 | 0.93 ± 0.0015 | 0.9 ± 0.0027 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.949 ± 0.0025 | 0.919 ± 0.0035 | 0.887 ± 0.0034 | 0.852 ± 0.0038 | 0.796 ± 0.0093 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.865 ± 0.0025 | 0.701 ± 0.0034 | 0.554 ± 0.0028 | 0.423 ± 0.002 | 0.314 ± 0.0038 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.949 ± 0.0025 | 0.919 ± 0.0035 | 0.834 ± 0.0036 | 0.695 ± 0.0034 | 0.542 ± 0.0069 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.842 ± 0.0025 | 0.722 ± 0.0041 | 0.61 ± 0.0037 | 0.501 ± 0.003 | 0.398 ± 0.0055 |
 | Block top-k | PyTorch | 0.402 ± 0.001 | 0.33 ± 0.0024 | 0.269 ± 0.002 | 0.217 ± 0.0011 | 0.171 ± 0.0018 |
 | Double indexing: mean | PyTorch | 0.304 ± 0.00093 | 0.204 ± 0.0012 | 0.134 ± 0.00074 | 0.0875 ± 0.00076 | 0.0613 ± 0.00073 |
 | Double indexing: bound | PyTorch | 0.292 ± 0.0017 | 0.205 ± 0.0011 | 0.143 ± 0.0012 | 0.105 ± 0.00094 | 0.077 ± 0.0011 |
@@ -577,6 +661,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.964 ± 0.0012 | 0.947 ± 0.0019 | 0.941 ± 0.0015 | 0.94 ± 0.0016 | 0.923 ± 0.0033 |
 | SparQ | Triton | 0.993 ± 0.00025 | 0.99 ± 0.00047 | 0.987 ± 0.00059 | 0.984 ± 0.00073 | 0.975 ± 0.001 |
 | Loki | PyTorch | 0.999 ± 5.3e-05 | 0.996 ± 0.00028 | 0.992 ± 0.00042 | 0.986 ± 0.0004 | 0.97 ± 0.0012 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.964 ± 0.0012 | 0.947 ± 0.0019 | 0.942 ± 0.0015 | 0.94 ± 0.0016 | 0.923 ± 0.0033 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.964 ± 0.0012 | 0.944 ± 0.0019 | 0.934 ± 0.0016 | 0.924 ± 0.0015 | 0.901 ± 0.0034 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.964 ± 0.0012 | 0.947 ± 0.0019 | 0.942 ± 0.0015 | 0.938 ± 0.0016 | 0.919 ± 0.0034 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.995 ± 0.00017 | 0.985 ± 0.00071 | 0.974 ± 0.00071 | 0.96 ± 0.00072 | 0.943 ± 0.0017 |
 | Block top-k | PyTorch | 0.888 ± 0.0024 | 0.874 ± 0.0023 | 0.862 ± 0.0024 | 0.855 ± 0.0016 | 0.842 ± 0.0014 |
 | Double indexing: mean | PyTorch | 0.759 ± 0.0035 | 0.687 ± 0.0063 | 0.639 ± 0.0066 | 0.617 ± 0.0049 | 0.592 ± 0.0068 |
 | Double indexing: bound | PyTorch | 0.827 ± 0.0037 | 0.761 ± 0.0047 | 0.703 ± 0.004 | 0.685 ± 0.0027 | 0.692 ± 0.0044 |
@@ -603,6 +691,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.756 ± 0.0034 | 0.766 ± 0.0036 | 0.771 ± 0.0014 | 0.78 ± 0.0016 | 0.781 ± 0.0019 |
 | SparQ | Triton | 0.946 ± 0.0011 | 0.94 ± 0.0013 | 0.936 ± 0.00081 | 0.936 ± 0.00081 | 0.933 ± 0.002 |
 | Loki | PyTorch | 0.968 ± 0.00096 | 0.967 ± 0.00078 | 0.967 ± 0.00092 | 0.966 ± 0.0011 | 0.963 ± 0.0018 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.759 ± 0.0034 | 0.767 ± 0.0036 | 0.772 ± 0.0015 | 0.78 ± 0.0016 | 0.781 ± 0.0019 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.658 ± 0.002 | 0.57 ± 0.0021 | 0.514 ± 0.0034 | 0.476 ± 0.0026 | 0.454 ± 0.0072 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.759 ± 0.0033 | 0.767 ± 0.0035 | 0.735 ± 0.00085 | 0.698 ± 0.0017 | 0.655 ± 0.0036 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.654 ± 0.0036 | 0.583 ± 0.0034 | 0.56 ± 0.0039 | 0.549 ± 0.0026 | 0.549 ± 0.0073 |
 | Block top-k | PyTorch | 0.324 ± 0.0043 | 0.292 ± 0.0037 | 0.28 ± 0.0041 | 0.275 ± 0.0031 | 0.284 ± 0.0083 |
 | Double indexing: mean | PyTorch | 0.225 ± 0.0031 | 0.161 ± 0.002 | 0.123 ± 0.0016 | 0.0947 ± 0.0013 | 0.0761 ± 0.00096 |
 | Double indexing: bound | PyTorch | 0.187 ± 0.0022 | 0.128 ± 0.0014 | 0.0918 ± 0.0011 | 0.0688 ± 0.00055 | 0.0534 ± 0.00085 |
@@ -631,6 +723,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
 | SparQ | Triton | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Loki | PyTorch | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.539 ± 0 | 0.52 ± 0 | 0.51 ± 0 | 0.505 ± 0 | 0.502 ± 0 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.361 ± 1.2e-06 | 0.211 ± 5.5e-07 | 0.137 ± 2.8e-07 | 0.0995 ± 7.3e-08 | 0.081 ± 1.2e-08 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.601 ± 0 | 0.582 ± 0 | 0.324 ± 2.9e-07 | 0.193 ± 1.4e-07 | 0.128 ± 5.8e-08 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.17 ± 0 | 0.148 ± 0 | 0.136 ± 0 | 0.131 ± 0 | 0.128 ± 0 |
 | Block top-k | PyTorch | 0.188 ± 6.6e-07 | 0.156 ± 2e-07 | 0.141 ± 6.8e-08 | 0.133 ± 3e-08 | 0.129 ± 8.3e-09 |
 | Double indexing: mean | PyTorch | 0.103 ± 6.3e-07 | 0.0551 ± 2.3e-07 | 0.0314 ± 1.2e-07 | 0.0196 ± 6e-08 | 0.0137 ± 2.4e-08 |
 | Double indexing: bound | PyTorch | 0.11 ± 7.2e-07 | 0.0629 ± 2e-07 | 0.0392 ± 1.8e-07 | 0.0274 ± 7e-08 | 0.0215 ± 5.4e-08 |
@@ -657,6 +753,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
 | SparQ | Triton | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Loki | PyTorch | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.539 ± 0 | 0.52 ± 0 | 0.51 ± 0 | 0.505 ± 0 | 0.502 ± 0 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.361 ± 1.9e-06 | 0.211 ± 6.8e-07 | 0.137 ± 2.5e-07 | 0.0995 ± 1e-07 | 0.081 ± 2.7e-08 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.601 ± 0 | 0.582 ± 0 | 0.324 ± 2.6e-07 | 0.193 ± 1.5e-07 | 0.128 ± 6.6e-08 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.17 ± 0 | 0.148 ± 0 | 0.136 ± 0 | 0.131 ± 0 | 0.128 ± 0 |
 | Block top-k | PyTorch | 0.188 ± 6.3e-07 | 0.156 ± 2.3e-07 | 0.141 ± 4e-08 | 0.133 ± 1.7e-08 | 0.129 ± 7.6e-09 |
 | Double indexing: mean | PyTorch | 0.103 ± 5.7e-07 | 0.0551 ± 3e-07 | 0.0314 ± 1.1e-07 | 0.0196 ± 4.9e-08 | 0.0137 ± 2.5e-08 |
 | Double indexing: bound | PyTorch | 0.11 ± 7e-07 | 0.0629 ± 3e-07 | 0.0392 ± 1.4e-07 | 0.0274 ± 7.5e-08 | 0.0215 ± 3.2e-08 |
@@ -683,6 +783,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
 | SparQ | Triton | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Loki | PyTorch | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.539 ± 0 | 0.52 ± 0 | 0.51 ± 0 | 0.505 ± 0 | 0.502 ± 0 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.361 ± 2e-06 | 0.211 ± 6.7e-07 | 0.137 ± 3e-07 | 0.0995 ± 7.9e-08 | 0.081 ± 2.3e-08 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.601 ± 0 | 0.582 ± 0 | 0.324 ± 4.2e-07 | 0.193 ± 2.2e-07 | 0.128 ± 8.8e-08 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.17 ± 0 | 0.148 ± 0 | 0.136 ± 0 | 0.131 ± 0 | 0.128 ± 0 |
 | Block top-k | PyTorch | 0.188 ± 7e-07 | 0.156 ± 1.5e-07 | 0.141 ± 6.5e-08 | 0.133 ± 1.4e-08 | 0.129 ± 4.9e-09 |
 | Double indexing: mean | PyTorch | 0.103 ± 6.8e-07 | 0.0551 ± 3.3e-07 | 0.0314 ± 1.5e-07 | 0.0196 ± 4.8e-08 | 0.0137 ± 2.9e-08 |
 | Double indexing: bound | PyTorch | 0.11 ± 5.6e-07 | 0.0629 ± 2.8e-07 | 0.0392 ± 1.7e-07 | 0.0274 ± 8e-08 | 0.0215 ± 3.4e-08 |
@@ -709,6 +813,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
 | SparQ | Triton | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Loki | PyTorch | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.539 ± 0 | 0.52 ± 0 | 0.51 ± 0 | 0.505 ± 0 | 0.502 ± 0 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.361 ± 2e-06 | 0.211 ± 6.7e-07 | 0.137 ± 3e-07 | 0.0995 ± 8.1e-08 | 0.081 ± 2.3e-08 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.601 ± 0 | 0.582 ± 0 | 0.324 ± 4.2e-07 | 0.193 ± 2.2e-07 | 0.128 ± 8.8e-08 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.17 ± 0 | 0.148 ± 0 | 0.136 ± 0 | 0.131 ± 0 | 0.128 ± 0 |
 | Block top-k | PyTorch | 0.188 ± 6.8e-07 | 0.156 ± 1.2e-07 | 0.141 ± 7.9e-08 | 0.133 ± 1.6e-08 | 0.129 ± 4.6e-09 |
 | Double indexing: mean | PyTorch | 0.103 ± 7.6e-07 | 0.0551 ± 2.9e-07 | 0.0314 ± 1.5e-07 | 0.0196 ± 4.3e-08 | 0.0137 ± 3.3e-08 |
 | Double indexing: bound | PyTorch | 0.11 ± 6.1e-07 | 0.0629 ± 2.8e-07 | 0.0392 ± 2e-07 | 0.0274 ± 8.5e-08 | 0.0215 ± 3.9e-08 |
@@ -735,6 +843,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
 | SparQ | Triton | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Loki | PyTorch | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.539 ± 0 | 0.52 ± 0 | 0.51 ± 0 | 0.505 ± 0 | 0.502 ± 0 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.361 ± 2e-06 | 0.211 ± 6.7e-07 | 0.137 ± 3e-07 | 0.0995 ± 7.9e-08 | 0.081 ± 2.3e-08 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.601 ± 0 | 0.582 ± 0 | 0.324 ± 4.2e-07 | 0.193 ± 2.2e-07 | 0.128 ± 8.8e-08 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.17 ± 0 | 0.148 ± 0 | 0.136 ± 0 | 0.131 ± 0 | 0.128 ± 0 |
 | Block top-k | PyTorch | 0.188 ± 6.5e-07 | 0.156 ± 1.5e-07 | 0.141 ± 5.5e-08 | 0.133 ± 1.4e-08 | 0.129 ± 5.1e-09 |
 | Double indexing: mean | PyTorch | 0.103 ± 6.2e-07 | 0.0551 ± 3.1e-07 | 0.0314 ± 1.5e-07 | 0.0196 ± 5.1e-08 | 0.0137 ± 2.9e-08 |
 | Double indexing: bound | PyTorch | 0.11 ± 4.2e-07 | 0.0629 ± 1.9e-07 | 0.0392 ± 1.6e-07 | 0.0274 ± 7.6e-08 | 0.0215 ± 3.5e-08 |
@@ -761,6 +873,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
 | SparQ | Triton | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Loki | PyTorch | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.539 ± 0 | 0.52 ± 0 | 0.51 ± 0 | 0.505 ± 0 | 0.502 ± 0 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.361 ± 2.2e-06 | 0.211 ± 1.8e-06 | 0.137 ± 6.1e-07 | 0.0995 ± 2.3e-07 | 0.081 ± 5.5e-08 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.601 ± 0 | 0.582 ± 0 | 0.324 ± 1e-06 | 0.193 ± 2.9e-07 | 0.128 ± 1.6e-07 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.17 ± 0 | 0.148 ± 0 | 0.136 ± 0 | 0.131 ± 0 | 0.128 ± 0 |
 | Block top-k | PyTorch | 0.188 ± 2.7e-07 | 0.156 ± 1.6e-07 | 0.141 ± 5e-08 | 0.133 ± 1.8e-08 | 0.129 ± 4.9e-09 |
 | Double indexing: mean | PyTorch | 0.103 ± 3.8e-07 | 0.0551 ± 1.2e-07 | 0.0314 ± 8.8e-08 | 0.0196 ± 1.7e-08 | 0.0137 ± 3e-09 |
 | Double indexing: bound | PyTorch | 0.111 ± 3.7e-07 | 0.0629 ± 1.3e-07 | 0.0392 ± 8e-08 | 0.0274 ± 2.4e-08 | 0.0215 ± 8.2e-09 |
@@ -787,6 +903,10 @@ fidelity-harder.png: Output error against dense attention, |o − o_dense| / |o_
 | Exact top-k, summed query | PyTorch | 0.531 ± 0 | 0.516 ± 0 | 0.508 ± 0 | 0.504 ± 0 | 0.502 ± 0 |
 | SparQ | Triton | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
 | Loki | PyTorch | 0.188 ± 0 | 0.156 ± 0 | 0.141 ± 0 | 0.133 ± 0 | 0.129 ± 0 |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.539 ± 0 | 0.52 ± 0 | 0.51 ± 0 | 0.505 ± 0 | 0.502 ± 0 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.361 ± 2.8e-06 | 0.211 ± 7.4e-07 | 0.137 ± 2.6e-07 | 0.0995 ± 1.3e-07 | 0.081 ± 4.2e-08 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.601 ± 0 | 0.582 ± 0 | 0.324 ± 5e-07 | 0.193 ± 2.1e-07 | 0.128 ± 9.2e-08 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 0.17 ± 0 | 0.148 ± 0 | 0.136 ± 0 | 0.131 ± 0 | 0.128 ± 0 |
 | Block top-k | PyTorch | 0.188 ± 2.3e-07 | 0.156 ± 1.1e-07 | 0.141 ± 4.2e-08 | 0.133 ± 9.9e-09 | 0.129 ± 4.2e-09 |
 | Double indexing: mean | PyTorch | 0.103 ± 3.8e-07 | 0.0551 ± 2e-07 | 0.0314 ± 5.6e-08 | 0.0196 ± 2.4e-08 | 0.0137 ± 1.6e-08 |
 | Double indexing: bound | PyTorch | 0.111 ± 4.8e-07 | 0.0629 ± 1.7e-07 | 0.0392 ± 4.1e-08 | 0.0274 ± 1.5e-08 | 0.0215 ± 2.9e-08 |
@@ -820,6 +940,10 @@ budget.png: Every version at each budget, the number of keys attended exactly: l
 | DeepSeek-V4 CSA | transformers | 812 (809–815) | 821 (819–823) | 825 (820–827) | 823 (821–829) | 826 (823–829) |
 | DeepSeek-V4 CSA, V4-Flash size | transformers | 1151 (1148–1153) | 1159 (1157–1293) | 1165 (1161–1167) | 1163 (1161–1252) | 1159 (1158–1470) |
 | DeepSeek-V4.1 CSA2 | PyTorch | 203 (203–228) | 220 (211–233) | 239 (215–247) | 230 (230–238) | 255 (255–255) |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 219 (176–237) | 232 (228–265) | 241 (234–257) | 279 (260–302) | 396 (351–429) |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 86 (86–112) | 119 (106–131) | 182 (143–204) | 265 (224–288) | 504 (482–514) |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 136 (112–155) | 199 (161–221) | 395 (380–443) | 655 (639–674) | 845 (728–861) |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 67 (67–67) | 72 (72–72) | 76 (76–76) | 93 (93–100) | 118 (118–121) |
 | Block top-k | PyTorch | 104 (104–105) | 112 (111–115) | 127 (126–128) | 164 (162–169) | 221 (213–223) |
 | Double indexing: mean | PyTorch | 97 (95–100) | 103 (103–104) | 120 (120–133) | 161 (160–162) | 225 (222–238) |
 | Double indexing: bound | PyTorch | 114 (112–149) | 135 (125–159) | 160 (149–182) | 195 (166–205) | 231 (229–236) |
@@ -849,6 +973,10 @@ budget.png: Every version at each budget, the number of keys attended exactly: l
 | DeepSeek-V4 CSA | transformers | not run | not run | not run | not run | not run |
 | DeepSeek-V4 CSA, V4-Flash size | transformers | not run | not run | not run | not run | not run |
 | DeepSeek-V4.1 CSA2 | PyTorch | not run | not run | not run | not run | not run |
+| DeepSeek-V4.1 CSA2, exact picks | PyTorch | 0.194 ± 0.0043 | 0.156 ± 0.0039 | 0.123 ± 0.0035 | 0.103 ± 0.003 | 0.0846 ± 0.0025 |
+| DeepSeek-V4.1 CSA2, block-mean picks | PyTorch | 0.488 ± 0.0047 | 0.346 ± 0.0043 | 0.236 ± 0.0038 | 0.154 ± 0.0039 | 0.0992 ± 0.0028 |
+| DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch | 0.272 ± 0.0039 | 0.188 ± 0.0045 | 0.132 ± 0.0037 | 0.103 ± 0.003 | 0.0846 ± 0.0025 |
+| DeepSeek-V4.1 CSA2, parameter-free | PyTorch | 1.35 ± 0.0096 | 1.32 ± 0.009 | 1.29 ± 0.0082 | 1.26 ± 0.0073 | 1.23 ± 0.0063 |
 | Block top-k | PyTorch | 0.757 ± 0.0076 | 0.526 ± 0.0061 | 0.364 ± 0.0059 | 0.255 ± 0.0039 | 0.177 ± 0.004 |
 | Double indexing: mean | PyTorch | 1.59 ± 0.016 | 1.49 ± 0.013 | 1.34 ± 0.0093 | 1.11 ± 0.007 | 0.766 ± 0.0045 |
 | Double indexing: bound | PyTorch | 1.7 ± 0.015 | 1.52 ± 0.015 | 1.28 ± 0.013 | 0.957 ± 0.013 | 0.582 ± 0.0065 |

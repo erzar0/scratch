@@ -1,0 +1,37 @@
+version,format,n,mib
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",bf16,8192,30.0
+"parameter-free, summed query, exact picks",bf16,8192,25.0
+"parameter-free, summed query, best 2048 blocks of 8",bf16,8192,27.5
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",FP8,8192,15.0
+"parameter-free, summed query, exact picks",FP8,8192,12.5
+"parameter-free, summed query, best 2048 blocks of 8",FP8,8192,13.75
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",FP4,8192,9.53
+"parameter-free, summed query, exact picks",FP4,8192,8.2
+"parameter-free, summed query, best 2048 blocks of 8",FP4,8192,8.91
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",bf16,32768,105.0
+"parameter-free, summed query, exact picks",bf16,32768,85.0
+"parameter-free, summed query, best 2048 blocks of 8",bf16,32768,95.0
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",FP8,32768,52.5
+"parameter-free, summed query, exact picks",FP8,32768,42.5
+"parameter-free, summed query, best 2048 blocks of 8",FP8,32768,47.5
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",FP4,32768,30.39
+"parameter-free, summed query, exact picks",FP4,32768,25.08
+"parameter-free, summed query, best 2048 blocks of 8",FP4,32768,27.89
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",bf16,131072,405.0
+"parameter-free, summed query, exact picks",bf16,131072,325.0
+"parameter-free, summed query, best 2048 blocks of 8",bf16,131072,365.0
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",FP8,131072,202.5
+"parameter-free, summed query, exact picks",FP8,131072,162.5
+"parameter-free, summed query, best 2048 blocks of 8",FP8,131072,182.5
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",FP4,131072,113.83
+"parameter-free, summed query, exact picks",FP4,131072,92.58
+"parameter-free, summed query, best 2048 blocks of 8",FP4,131072,103.83
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",bf16,524288,1605.0
+"parameter-free, summed query, exact picks",bf16,524288,1285.0
+"parameter-free, summed query, best 2048 blocks of 8",bf16,524288,1445.0
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",FP8,524288,802.5
+"parameter-free, summed query, exact picks",FP8,524288,642.5
+"parameter-free, summed query, best 2048 blocks of 8",FP8,524288,722.5
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",FP4,524288,447.58
+"parameter-free, summed query, exact picks",FP4,524288,362.58
+"parameter-free, summed query, best 2048 blocks of 8",FP4,524288,407.58

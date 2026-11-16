@@ -1,6 +1,7 @@
 """Fused CSA2-layout decode (src/nanogpt/csa2_decode.py) = PyTorch: top64 = torch.topk
 of the exact and indexer scores (one block and many); prefilter64 = the decode rule
-csa2_select_decode.prefilter; csa2_attend and b_attend (6
+csa2_select_decode.prefilter; top 256 and in-place block entries (within) = torch.topk;
+csa2_attend and b_attend (6
 heads and MQA) = the attention written out; routed channels (csa2_route): top64 on
 q's top 2 blocks and b_attend with the picks' own query. Needs CUDA:
     uv run python -m tests.nanogpt.test_csa2_decode
@@ -43,6 +44,27 @@ def picks_match() -> None:
         assert set(got.tolist()) == set(score.topk(64).indices.tolist()), n
     cleared()
     print("top64: = torch.topk (exact, indexer; 1 to 8 merge groups)")
+
+
+def block_picks_match() -> None:
+    """top64 top=256 = torch.topk(256); within = torch.topk over the gathered entries
+    of the given blocks of 8 (real entry ids)."""
+    off = torch.arange(8, device="cuda")
+    for n in (2048, 131072, 1048576):
+        keys, q = rand(n, D), rand(D, dtype=torch.float32)
+        means = keys.view(-1, 8, D).float().mean(1).to(BF)
+        score = means.float() @ q
+        if len(means) >= 256:
+            got = csa2_decode.top64(q, means, top=256)
+            assert set(got.tolist()) == set(score.topk(256).indices.tolist()), n
+        for pool in (64, 256):
+            blocks = score.topk(min(pool, len(means))).indices
+            cand = (blocks[:, None] * 8 + off).flatten()
+            want = cand[(keys[cand].float() @ q).topk(64).indices]
+            got = csa2_decode.top64(q, keys, within=blocks)
+            assert set(got.tolist()) == set(want.tolist()), (n, pool)
+    cleared()
+    print("top64 top=256 and within blocks of 8: = torch.topk")
 
 
 def routed_picks_match() -> None:
@@ -147,6 +169,7 @@ def b_matches() -> None:
 if __name__ == "__main__":
     torch.manual_seed(0)
     picks_match()
+    block_picks_match()
     routed_picks_match()
     prefilter_matches()
     csa2_matches()

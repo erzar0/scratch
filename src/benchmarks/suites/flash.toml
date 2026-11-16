@@ -1,0 +1,25 @@
+# V4.1-Flash-1017's attention shape (one shared K=V head, 64 query heads of 512),
+# random tensors only: no model weights. Versions run as named on the command line
+# (benchmarks.run --versions); Triton kernels assume 2 query heads, skip them.
+name = "flash"
+
+[latency]
+lengths = [8192, 32768, 131072]
+budgets = [512]
+distributions = ["llm-like"]
+kv_heads = 1
+query_heads = 64
+dim = 512
+repeats = 5
+
+[fidelity]
+lengths = [8192, 32768, 131072]
+budgets = [512]
+distributions = [
+    "iid", "outlier-channels", "llm-like", "flat", "sharp", "local", "many-needles",
+]
+kv_heads = 1
+query_heads = 64
+dim = 512
+queries = 32
+seeds = [0, 1, 2]

@@ -1,0 +1,91 @@
+version,part,n,us_per_token
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",Picks,8192,725.0
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",Attention,8192,1502.2
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",Picks + attention,8192,2231.3
+"parameter-free, summed query, exact picks",Picks,8192,340.0
+"parameter-free, summed query, exact picks",Attention,8192,1504.3
+"parameter-free, summed query, exact picks",Picks + attention,8192,1845.2
+"parameter-free, summed query, best 2048 blocks of 8",Picks,8192,340.0
+"parameter-free, summed query, best 2048 blocks of 8",Attention,8192,1502.2
+"parameter-free, summed query, best 2048 blocks of 8",Picks + attention,8192,1845.2
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks",Picks,8192,340.0
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks",Attention,8192,1505.3
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks",Picks + attention,8192,1846.3
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks, FP8 caches",Picks,8192,562.2
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks, FP8 caches",Attention,8192,1870.8
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks, FP8 caches",Picks + attention,8192,2428.9
+"parameter-free, summed query, exact picks, FP8 caches",Picks,8192,238.6
+"parameter-free, summed query, exact picks, FP8 caches",Attention,8192,1870.8
+"parameter-free, summed query, exact picks, FP8 caches",Picks + attention,8192,2101.2
+"parameter-free, summed query, best 2048 blocks of 8, FP8 caches",Picks,8192,238.6
+"parameter-free, summed query, best 2048 blocks of 8, FP8 caches",Attention,8192,1870.8
+"parameter-free, summed query, best 2048 blocks of 8, FP8 caches",Picks + attention,8192,2103.3
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks, FP8 caches",Picks,8192,238.6
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks, FP8 caches",Attention,8192,1870.8
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks, FP8 caches",Picks + attention,8192,2103.3
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",Picks,32768,931.8
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",Attention,32768,1503.2
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",Picks + attention,32768,2436.1
+"parameter-free, summed query, exact picks",Picks,32768,537.6
+"parameter-free, summed query, exact picks",Attention,32768,1504.3
+"parameter-free, summed query, exact picks",Picks + attention,32768,2027.0
+"parameter-free, summed query, best 2048 blocks of 8",Picks,32768,555.0
+"parameter-free, summed query, best 2048 blocks of 8",Attention,32768,1502.2
+"parameter-free, summed query, best 2048 blocks of 8",Picks + attention,32768,2049.0
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks",Picks,32768,487.4
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks",Attention,32768,1505.3
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks",Picks + attention,32768,1981.4
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks, FP8 caches",Picks,32768,879.6
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks, FP8 caches",Attention,32768,1869.8
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks, FP8 caches",Picks + attention,32768,2734.1
+"parameter-free, summed query, exact picks, FP8 caches",Picks,32768,402.4
+"parameter-free, summed query, exact picks, FP8 caches",Attention,32768,1871.9
+"parameter-free, summed query, exact picks, FP8 caches",Picks + attention,32768,2268.2
+"parameter-free, summed query, best 2048 blocks of 8, FP8 caches",Picks,32768,402.4
+"parameter-free, summed query, best 2048 blocks of 8, FP8 caches",Attention,32768,1870.8
+"parameter-free, summed query, best 2048 blocks of 8, FP8 caches",Picks + attention,32768,2268.2
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks, FP8 caches",Picks,32768,337.4
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks, FP8 caches",Attention,32768,1871.9
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks, FP8 caches",Picks + attention,32768,2202.6
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",Picks,131072,1362.9
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",Attention,131072,1499.1
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",Picks + attention,131072,2854.9
+"parameter-free, summed query, exact picks",Picks,131072,1916.9
+"parameter-free, summed query, exact picks",Attention,131072,1497.1
+"parameter-free, summed query, exact picks",Picks + attention,131072,3471.4
+"parameter-free, summed query, best 2048 blocks of 8",Picks,131072,952.3
+"parameter-free, summed query, best 2048 blocks of 8",Attention,131072,1500.2
+"parameter-free, summed query, best 2048 blocks of 8",Picks + attention,131072,2440.2
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks",Picks,131072,702.5
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks",Attention,131072,1498.1
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks",Picks + attention,131072,2184.2
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks, FP8 caches",Picks,131072,1254.4
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks, FP8 caches",Attention,131072,1872.9
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks, FP8 caches",Picks + attention,131072,3117.1
+"parameter-free, summed query, exact picks, FP8 caches",Picks,131072,1209.3
+"parameter-free, summed query, exact picks, FP8 caches",Attention,131072,1873.9
+"parameter-free, summed query, exact picks, FP8 caches",Picks + attention,131072,3102.7
+"parameter-free, summed query, best 2048 blocks of 8, FP8 caches",Picks,131072,752.6
+"parameter-free, summed query, best 2048 blocks of 8, FP8 caches",Attention,131072,1873.9
+"parameter-free, summed query, best 2048 blocks of 8, FP8 caches",Picks + attention,131072,2612.2
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks, FP8 caches",Picks,131072,511.0
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks, FP8 caches",Attention,131072,1873.4
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks, FP8 caches",Picks + attention,131072,2372.6
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",Picks,524288,3421.7
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",Attention,524288,1502.2
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks",Picks + attention,524288,4935.7
+"parameter-free, summed query, best 2048 blocks of 8",Picks,524288,1494.0
+"parameter-free, summed query, best 2048 blocks of 8",Attention,524288,1500.2
+"parameter-free, summed query, best 2048 blocks of 8",Picks + attention,524288,3035.1
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks",Picks,524288,902.1
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks",Attention,524288,1497.1
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks",Picks + attention,524288,2392.1
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks, FP8 caches",Picks,524288,2785.3
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks, FP8 caches",Attention,524288,1874.9
+"V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks, FP8 caches",Picks + attention,524288,4658.2
+"parameter-free, summed query, best 2048 blocks of 8, FP8 caches",Picks,524288,817.2
+"parameter-free, summed query, best 2048 blocks of 8, FP8 caches",Attention,524288,1871.4
+"parameter-free, summed query, best 2048 blocks of 8, FP8 caches",Picks + attention,524288,2687.0
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks, FP8 caches",Picks,524288,621.6
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks, FP8 caches",Attention,524288,1871.4
+"parameter-free, summed query, best 2048 blocks of 8, layers 24-36 inside layer 20's blocks, FP8 caches",Picks + attention,524288,2477.1

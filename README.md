@@ -50,6 +50,7 @@ docs/papers/              reference papers (PDF)
   - Shuffled blocks, growing budget: budget × 1024 ÷ 32768 winners per 1024-key block, so budget × n ÷ 32K keys; not dense on short contexts.
   - DeepSeek-V4 CSA: 128 raw recent keys plus top-budget compressed entries; latency only.
   - DeepSeek-V4.1 CSA2: 128 recent keys plus the top-budget keys by a random indexer; latency only.
+  - DeepSeek-V4.1 CSA2 with our picks (exact, block-mean, block-mean wide pool): 128 recent keys plus budget picks before them, so budget + 128 keys.
 - Figures are paper-style (7 pt serif, vector PDF + PNG), without titles; each caption (shape, dtype, distribution, repeats or seeds) is in `tables.md`.
 - Every figure lists the versions in registry order, one row each.
 
@@ -65,6 +66,16 @@ docs/papers/              reference papers (PDF)
 | `deepseek-v4/csa` | DeepSeek-V4 CSA | transformers |
 | `deepseek-v4/csa-flash` | DeepSeek-V4 CSA, V4-Flash size | transformers |
 | `deepseek-v4.1/csa2` | DeepSeek-V4.1 CSA2 | PyTorch |
+| `deepseek-v4.1/csa2-exact-picks` | DeepSeek-V4.1 CSA2, exact picks | PyTorch |
+| `deepseek-v4.1/csa2-block-mean` | DeepSeek-V4.1 CSA2, block-mean picks | PyTorch |
+| `deepseek-v4.1/csa2-block-mean-wide` | DeepSeek-V4.1 CSA2, block-mean picks, wide pool | PyTorch |
+| `deepseek-v4.1/csa2-block-mean-half-wide` | DeepSeek-V4.1 CSA2, block-mean picks, half-wide pool | PyTorch |
+| `deepseek-v4.1/csa2-block-mean-fp4-wide` | DeepSeek-V4.1 CSA2, FP4 block-mean picks, wide pool | PyTorch |
+| `deepseek-v4.1/csa2-sign-sketch` | DeepSeek-V4.1 CSA2, sign-sketch picks | PyTorch |
+| `deepseek-v4.1/csa2-pca-sketch` | DeepSeek-V4.1 CSA2, PCA-sketch picks | PyTorch |
+| `deepseek-v4.1/csa2-random-sketch` | DeepSeek-V4.1 CSA2, random-sketch picks | PyTorch |
+| `deepseek-v4.1/csa2-channel-sketch` | DeepSeek-V4.1 CSA2, top-channel picks | PyTorch |
+| `deepseek-v4.1/csa2-head-max` | DeepSeek-V4.1 CSA2, max-over-heads picks | PyTorch |
 | `block-topk/flat` | Block top-k | PyTorch |
 | `block-topk/double-indexing-mean` | Double indexing: mean | PyTorch |
 | `block-topk/double-indexing-bound` | Double indexing: bound | PyTorch |

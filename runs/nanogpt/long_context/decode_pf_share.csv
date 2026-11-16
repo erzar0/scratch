@@ -1,0 +1,271 @@
+version,part,n,us_per_token
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,4096,46.08
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,4096,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,4096,74.75
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,4096,25.6
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,4096,31.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,4096,54.27
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks,4096,18.43
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Attention,4096,31.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks + attention,4096,48.13
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,4096,44.03
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,4096,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,4096,72.7
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks,4096,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Attention,4096,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks + attention,4096,58.37
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,4096,46.08
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,4096,28.67
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,4096,71.68
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,4096,23.55
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,4096,28.67
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,4096,49.15
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks,4096,17.41
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Attention,4096,28.67
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,4096,43.01
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,4096,37.89
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,4096,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,4096,63.49
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks,4096,23.55
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Attention,4096,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,4096,49.15
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,8192,49.15
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,8192,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,8192,78.85
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,8192,34.82
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,8192,30.72
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,8192,62.46
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks,8192,25.6
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Attention,8192,30.72
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks + attention,8192,53.25
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,8192,54.27
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,8192,30.72
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,8192,81.92
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks,8192,39.94
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Attention,8192,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks + attention,8192,66.56
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,8192,50.18
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,8192,28.67
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,8192,76.8
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,8192,30.72
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,8192,28.67
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,8192,55.3
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks,8192,20.48
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Attention,8192,28.67
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,8192,46.08
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,8192,47.1
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,8192,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,8192,71.68
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks,8192,32.77
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Attention,8192,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,8192,58.37
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,16384,57.34
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,16384,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,16384,87.04
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,16384,44.03
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,16384,31.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,16384,71.68
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks,16384,33.79
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Attention,16384,31.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks + attention,16384,61.44
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,16384,52.22
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,16384,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,16384,80.9
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks,16384,36.86
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Attention,16384,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks + attention,16384,65.54
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,16384,54.27
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,16384,29.7
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,16384,80.9
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,16384,36.86
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,16384,29.7
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,16384,63.49
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks,16384,26.62
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Attention,16384,29.7
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,16384,53.25
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,16384,49.15
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,16384,29.7
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,16384,74.75
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks,16384,34.82
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Attention,16384,29.7
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,16384,60.42
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,32768,66.05
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,32768,30.72
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,32768,95.23
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,32768,60.42
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,32768,30.72
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,32768,87.04
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks,32768,47.1
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Attention,32768,30.72
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks + attention,32768,74.75
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,32768,56.32
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,32768,30.72
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,32768,83.97
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks,32768,38.91
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Attention,32768,30.72
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks + attention,32768,66.56
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,32768,65.54
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,32768,28.67
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,32768,92.16
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,32768,46.08
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,32768,28.67
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,32768,71.68
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks,32768,33.79
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Attention,32768,28.67
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,32768,60.42
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,32768,53.25
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,32768,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,32768,78.85
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks,32768,37.89
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Attention,32768,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,32768,63.49
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,65536,87.04
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,65536,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,65536,115.71
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,65536,90.11
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,65536,31.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,65536,117.76
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks,65536,73.73
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Attention,65536,31.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks + attention,65536,101.38
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,65536,62.46
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,65536,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,65536,89.09
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks,65536,44.03
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Attention,65536,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks + attention,65536,71.68
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,65536,80.9
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,65536,28.67
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,65536,108.54
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,65536,63.49
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,65536,28.67
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,65536,89.09
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks,65536,49.15
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Attention,65536,28.67
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,65536,74.75
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,65536,57.34
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,65536,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,65536,82.94
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks,65536,39.94
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Attention,65536,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,65536,65.54
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,131072,123.9
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,131072,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,131072,152.58
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,131072,164.86
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,131072,31.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,131072,188.42
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks,131072,128.0
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Attention,131072,31.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks + attention,131072,154.62
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,131072,71.68
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,131072,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,131072,99.33
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks,131072,52.22
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Attention,131072,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks + attention,131072,78.85
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,131072,109.57
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,131072,28.67
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,131072,136.19
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,131072,99.33
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,131072,28.67
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,131072,124.93
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks,131072,77.82
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Attention,131072,28.67
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,131072,103.42
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,131072,64.51
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,131072,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,131072,90.11
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks,131072,46.08
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Attention,131072,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,131072,71.68
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,262144,130.05
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,262144,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,262144,159.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,262144,375.81
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,262144,31.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,262144,403.46
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks,262144,238.59
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Attention,262144,31.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks + attention,262144,266.24
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,262144,97.28
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,262144,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,262144,124.93
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks,262144,70.66
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Attention,262144,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks + attention,262144,98.3
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,262144,106.5
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,262144,28.67
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,262144,133.12
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,262144,187.39
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,262144,28.67
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,262144,211.97
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks,262144,140.29
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Attention,262144,28.67
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,262144,165.89
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,262144,84.99
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,262144,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,262144,110.59
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks,262144,58.37
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Attention,262144,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,262144,83.97
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,524288,193.54
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,524288,30.72
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,524288,223.23
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,524288,690.18
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,524288,30.72
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,524288,716.8
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks,524288,437.25
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Attention,524288,30.72
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks + attention,524288,463.87
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,524288,139.26
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,524288,30.72
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,524288,166.91
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks,524288,106.5
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Attention,524288,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks + attention,524288,133.12
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,524288,144.9
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,524288,29.7
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,524288,172.03
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,524288,415.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,524288,29.7
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,524288,442.37
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks,524288,266.24
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Attention,524288,29.7
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,524288,290.82
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,524288,114.69
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,524288,29.7
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,524288,140.29
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks,524288,80.9
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Attention,524288,29.7
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,524288,106.5
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks,1048576,313.34
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Attention,1048576,31.74
+"CSA2, V4.1 reference layout (TensorRT-LLM decode)",Picks + attention,1048576,342.02
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks,1048576,1388.54
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Attention,1048576,31.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks",Picks + attention,1048576,1414.14
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks,1048576,847.87
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Attention,1048576,31.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks",Picks + attention,1048576,874.5
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks,1048576,223.23
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Attention,1048576,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8",Picks + attention,1048576,250.88
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks,1048576,167.94
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Attention,1048576,31.74
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks",Picks + attention,1048576,195.58
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks,1048576,218.11
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Attention,1048576,29.7
+"CSA2, V4.1 reference layout (TensorRT-LLM decode), FP8 caches",Picks + attention,1048576,244.74
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks,1048576,855.04
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Attention,1048576,29.7
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, FP8 caches",Picks + attention,1048576,881.15
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks,1048576,527.36
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Attention,1048576,28.67
+"parameter-free CSA2, V4.1 layout, summed query, exact picks, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,1048576,551.94
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks,1048576,167.94
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Attention,1048576,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, FP8 caches",Picks + attention,1048576,193.54
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks,1048576,119.81
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Attention,1048576,28.67
+"parameter-free CSA2, V4.1 layout, summed query, block-mean picks, best 256 blocks of 8, layer 9 reuses layer 5's picks, FP8 caches",Picks + attention,1048576,145.41

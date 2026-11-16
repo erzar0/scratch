@@ -18,7 +18,13 @@ from typing import Any
 from attention import fast_pytorch as fp
 from attention.bandit import BoundBandit
 from attention.block_topk import BlockTopK
+from attention.csa2_block_mean import Csa2BlockMean
+from attention.csa2_block_mean_fp4 import Csa2BlockMeanFp4
+from attention.csa2_exact_picks import Csa2ExactPicks
+from attention.csa2_head_max import Csa2HeadMax
+from attention.csa2_parameter_free import Csa2ParameterFree
 from attention.csa2_reference import Csa2Reference
+from attention.csa2_sketch_picks import Csa2SketchPicks
 from attention.deepseek_csa import LibraryCsa, LibraryCsaFlash
 from attention.dense import dense
 from attention.exact_topk import ExactTopK
@@ -180,6 +186,31 @@ def versions(keep: int = KEEP) -> dict[str, Version]:
     exact_bound = BoundBandit("exact", 0.25, keep=keep)
     gauss_bound = BoundBandit("gauss", 1.0, keep=keep)
     growing = GrowingShuffledBlocks(keep=keep)
+    exact_picks = Csa2ExactPicks(keep)
+    block_mean = Csa2BlockMean(keep)
+    block_mean_wide = Csa2BlockMean(keep, pool=4)
+    block_mean_half = Csa2BlockMean(keep, pool=2)
+    block_mean_fp4 = Csa2BlockMeanFp4(keep, pool=4)
+    sketches = [
+        ("sign-sketch", "sign-sketch picks", Csa2SketchPicks(keep)),
+        (
+            "pca-sketch",
+            "PCA-sketch picks",
+            Csa2SketchPicks(keep, sketch="pca", fraction=8),
+        ),
+        (
+            "random-sketch",
+            "random-sketch picks",
+            Csa2SketchPicks(keep, sketch="random", fraction=8),
+        ),
+        (
+            "channel-sketch",
+            "top-channel picks",
+            Csa2SketchPicks(keep, sketch="channels", fraction=8),
+        ),
+    ]
+    head_max = Csa2HeadMax(keep)
+    parameter_free = Csa2ParameterFree(keep)
     out = [
         Version("dense", "Dense", "PyTorch", dense, fp.dense),
         Version(
@@ -220,6 +251,65 @@ def versions(keep: int = KEEP) -> dict[str, Version]:
             "PyTorch",
             None,
             Csa2Reference(keep),
+        ),
+        Version(
+            "deepseek-v4.1/csa2-exact-picks",
+            "DeepSeek-V4.1 CSA2, exact picks",
+            "PyTorch",
+            exact_picks,
+            fp.csa2_exact_picks(exact_picks),
+        ),
+        Version(
+            "deepseek-v4.1/csa2-block-mean",
+            "DeepSeek-V4.1 CSA2, block-mean picks",
+            "PyTorch",
+            block_mean,
+            fp.csa2_block_mean(block_mean),
+        ),
+        Version(
+            "deepseek-v4.1/csa2-block-mean-wide",
+            "DeepSeek-V4.1 CSA2, block-mean picks, wide pool",
+            "PyTorch",
+            block_mean_wide,
+            fp.csa2_block_mean(block_mean_wide),
+        ),
+        Version(
+            "deepseek-v4.1/csa2-block-mean-half-wide",
+            "DeepSeek-V4.1 CSA2, block-mean picks, half-wide pool",
+            "PyTorch",
+            block_mean_half,
+            fp.csa2_block_mean(block_mean_half),
+        ),
+        Version(
+            "deepseek-v4.1/csa2-block-mean-fp4-wide",
+            "DeepSeek-V4.1 CSA2, FP4 block-mean picks, wide pool",
+            "PyTorch",
+            block_mean_fp4,
+            fp.csa2_block_mean(block_mean_fp4),
+        ),
+        *(
+            Version(
+                f"deepseek-v4.1/csa2-{tag}",
+                f"DeepSeek-V4.1 CSA2, {name}",
+                "PyTorch",
+                rule,
+                fp.csa2_sketch_picks(rule),
+            )
+            for tag, name, rule in sketches
+        ),
+        Version(
+            "deepseek-v4.1/csa2-head-max",
+            "DeepSeek-V4.1 CSA2, max-over-heads picks",
+            "PyTorch",
+            head_max,
+            fp.csa2_head_max(head_max),
+        ),
+        Version(
+            "deepseek-v4.1/csa2-parameter-free",
+            "DeepSeek-V4.1 CSA2, parameter-free",
+            "PyTorch",
+            parameter_free,
+            fp.csa2_parameter_free(parameter_free),
         ),
         Version("block-topk/flat", "Block top-k", "PyTorch", flat, fp.block_topk(flat)),
         Version(

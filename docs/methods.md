@@ -191,6 +191,79 @@ Not timed: the layer's projections, cache writes, V4.1's 4-bit cache, and its ca
 | rope | 16 | The output's last 16 numbers are turned back by RoPE (DeepSeek's code). |
 | Kernel | PyTorch | Batch = 8 sequences, one per KV head of the other rows, 2 query heads each. Values are not read: each key is its own value. |
 
+### DeepSeek-V4.1 CSA2 with our picks
+
+Ids: `deepseek-v4.1/csa2-exact-picks`, `deepseek-v4.1/csa2-block-mean`, `deepseek-v4.1/csa2-block-mean-wide`.
+Names: DeepSeek-V4.1 CSA2, exact picks; DeepSeek-V4.1 CSA2, block-mean picks; DeepSeek-V4.1 CSA2, block-mean picks, wide pool.
+
+V4.1's layout (the last 128 keys always read, plus k picked keys) with its learned parts taken out: no indexer, no sink, no squeezing (one card per key), and the suite's values.
+The indexer is replaced by our summed query (see Exact top-k, summed query), which has no weights, so these rows have fidelity results.
+
+- Exact picks: score every key before the window with the summed query; read the best k plus the window.
+- Block-mean picks: V4.1's two-step search with our score. Cut the keys into blocks of 8; score each block's mean key (kept as keys are written) with the summed query; keep the best blocks; score their keys exactly; read the best k plus the window.
+  - Pool = k blocks: our nanogpt rule (64 blocks of 8 for 64 picks), which passed our eval check.
+  - Wide pool = 4k blocks: V4.1's proportion (2048 blocks of 8 for 512 picks).
+
+Budget exception: picks never fall inside the window, so these rows read exactly k + 128 keys, 128 more than the other rows.
+On raw keys a pick inside the window would be a second copy of a window key; in V4.1 it is a separate squeezed card.
+V4.1 always keeps its newest, part-filled block; here that block lies in the window anyway.
+
+| Setting | Value | Meaning |
+|---|---|---|
+| keep | 512 (budget) | Picked keys, on top of the window (V4.1: 512). |
+| window | 128 | The 128 most recent keys, always read (V4.1: 128). |
+| block | 8 | Keys per block (V4.1: 8). Block-mean rows only. |
+| pool | 1 or 4 | Blocks kept per pick: 1 (block-mean) or 4 (wide pool). |
+| Kernel | PyTorch | Score with the summed query, then `torch.topk`. At 8 KV heads, PyTorch top-k is faster than our one-head Triton top-k. |
+
+### DeepSeek-V4.1 CSA2 with our picks: cheaper first step
+
+Ids: `deepseek-v4.1/csa2-block-mean-half-wide`, `deepseek-v4.1/csa2-block-mean-fp4-wide`, `deepseek-v4.1/csa2-sign-sketch`, `deepseek-v4.1/csa2-pca-sketch`, `deepseek-v4.1/csa2-random-sketch`, `deepseek-v4.1/csa2-channel-sketch`, `deepseek-v4.1/csa2-head-max`.
+Names: DeepSeek-V4.1 CSA2, block-mean picks, half-wide pool; DeepSeek-V4.1 CSA2, FP4 block-mean picks, wide pool; DeepSeek-V4.1 CSA2, sign-sketch picks; DeepSeek-V4.1 CSA2, PCA-sketch picks; DeepSeek-V4.1 CSA2, random-sketch picks; DeepSeek-V4.1 CSA2, top-channel picks; DeepSeek-V4.1 CSA2, max-over-heads picks.
+
+Variants of the rows above that try to read fewer bytes per key in the first step, or to pick better at the same cost.
+At V4.1-Flash size the first step reads every key before the window at each pick layer, so its bytes per key set the decode speed at long context.
+Same layout, same budget exception (k + 128 keys read), no learned parts.
+
+- Half-wide pool: block-mean picks with 2k blocks (half of V4.1's 4k): half the keys rescored exactly.
+- FP4 block means: the wide pool, with each block's mean stored in V4.1's FP4 format (4-bit values, one 8-bit scale per 16 numbers): about half the bytes of an 8-bit mean.
+- Sketch picks: a small summary of every key, kept as keys are written, scores every key before the window; the best 4k keys are scored exactly; the best k of those are read with the window.
+  - Sign sketch: turn each key by one fixed random rotation, keep 1 bit (the sign) per number plus one size per key (as RaBitQ). 128 numbers cost 16 bytes.
+  - PCA sketch: the key's first D/8 coordinates along the keys' main directions (as Loki).
+  - Random sketch: D/8 random projections of the key.
+  - Top-channel sketch: no extra storage; read only the 16-number block(s) of the key where the summed query is largest (as SparQ), D/8 numbers in all.
+- Max over heads: exact picks, but a key's score is its largest logit over the query heads instead of their sum, so a key one head needs is not outvoted by the others.
+
+Code: `src/attention/csa2_sketch_picks.py`, `src/attention/csa2_block_mean_fp4.py`, `src/attention/csa2_head_max.py`.
+
+| Setting | Value | Meaning |
+|---|---|---|
+| keep | 512 (budget) | Picked keys, on top of the window. |
+| window | 128 | The 128 most recent keys, always read. |
+| pool | 2 or 4 | Blocks (block-mean rows) or keys (sketch rows) kept per pick for the exact score. |
+| sketch | sign, pca, random, channels | What the first step stores or reads per key. |
+| fraction | 1 or 8 | Sketch width: D/fraction numbers (sign: D bits). |
+| Kernel | PyTorch | Sketches kept at write time; score them with the summed query, `torch.topk`, gather the candidates, score exactly, `torch.topk`. |
+
+### DeepSeek-V4.1 CSA2, parameter-free
+
+Id: `deepseek-v4.1/csa2-parameter-free`.
+
+Code: `src/attention/csa2_parameter_free.py`; the model layer is `src/nanogpt/csa2_pf.py`.
+V4.1's layout with nothing learned of its own, so it can replace any model's attention.
+V4.1 squeezes every 4 keys into one card with a small learned network; here a card is simply the average of 4 neighbouring keys (and of their 4 values), kept as keys are written.
+The summed query scores the cards that end before the window; the best k cards are read with the last 128 keys, in one softmax, with no sink.
+
+Budget exception: k cards cover 4k keys but cost k reads, so this row reads k + 128 rows like the other V4.1 rows.
+The suite's keys already carry their rotation, so a card averages rotated keys; the model layer averages before rotating and rotates the card at its first token.
+
+| Setting | Value | Meaning |
+|---|---|---|
+| keep | 512 (budget) | Cards picked, on top of the window (V4.1: 512). |
+| window | 128 | The 128 most recent keys, always read (V4.1: 128). |
+| ratio | 4 | Keys per card (V4.1: 4 in its ratio-4 layers). |
+| Kernel | PyTorch | Card averages kept at write time; score with the summed query, `torch.topk`, then attention over the gathered cards and the window. |
+
 ### Block top-k
 
 Id: `block-topk/flat`.

@@ -16,14 +16,14 @@ M, TOP, DIMS = 4, 64, 16
 DOCS = (300, 2048, 900)  # 812 entries; the 2048 document reaches 3 rounds
 
 
-def packed() -> tuple[Tensor, Tensor, Tensor]:
+def packed(device: str = "cuda") -> tuple[Tensor, Tensor, Tensor]:
     """q (S, 3, 128), kv (S // M, 128), starts (S,) for DOCS in one row."""
     g = torch.Generator().manual_seed(0)
     length = sum(DOCS)
-    q = torch.randn(length, 3, 128, generator=g).cuda()
-    kv = torch.randn(length // M, 128, generator=g).cuda()
+    q = torch.randn(length, 3, 128, generator=g).to(device)
+    kv = torch.randn(length // M, 128, generator=g).to(device)
     first = torch.tensor((0, *DOCS[:-1])).cumsum(0)
-    starts = first.repeat_interleave(torch.tensor(DOCS)).cuda()
+    starts = first.repeat_interleave(torch.tensor(DOCS)).to(device)
     return q, kv, starts
 
 

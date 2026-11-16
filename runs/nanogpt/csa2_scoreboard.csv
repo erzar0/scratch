@@ -3,22 +3,156 @@ version,stat,value,ratio
 "CSA2, V4.1-Flash-1017 reference code",Training time (h),2.5597,1.0000
 "CSA2, V4.1-Flash-1017 reference code",Peak training memory (MiB),7066.0000,1.0000
 "CSA2, V4.1-Flash-1017 reference code","Eval loss (8192-token rows, eval rule)",3.5400,1.0000
+"CSA2, V4.1-Flash-1017 reference code","Eval loss, lm_head clipped as in training",3.5215,1.0000
 "CSA2, V4.1-Flash-1017 reference code",KV cache at 8K tokens (MiB),4.0625,1.0000
 "CSA2, V4.1-Flash-1017 reference code",KV cache at 32K tokens (MiB),15.3125,1.0000
 "CSA2, V4.1-Flash-1017 reference code",KV cache at 128K tokens (MiB),60.3125,1.0000
 "CSA2, V4.1-Flash-1017 reference code",KV cache at 512K tokens (MiB),240.3125,1.0000
-"CSA2, V4.1-Flash-1017 reference code",Decode at 8K tokens (us per token),79.8700,1.0000
-"CSA2, V4.1-Flash-1017 reference code",Decode at 32K tokens (us per token),99.3300,1.0000
-"CSA2, V4.1-Flash-1017 reference code",Decode at 128K tokens (us per token),159.7400,1.0000
-"CSA2, V4.1-Flash-1017 reference code",Decode at 512K tokens (us per token),226.3000,1.0000
+"CSA2, V4.1-Flash-1017 reference code",Decode at 8K tokens (us per token),79.0100,1.0000
+"CSA2, V4.1-Flash-1017 reference code",Decode at 32K tokens (us per token),95.7400,1.0000
+"CSA2, V4.1-Flash-1017 reference code",Decode at 128K tokens (us per token),153.3400,1.0000
+"CSA2, V4.1-Flash-1017 reference code",Decode at 512K tokens (us per token),222.3400,1.0000
 "CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",Final validation loss,3.5243,1.0000
 "CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",Training time (h),2.5597,1.0000
 "CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",Peak training memory (MiB),7066.0000,1.0000
 "CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches","Eval loss (8192-token rows, eval rule)",3.5436,1.0010
+"CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches","Eval loss, lm_head clipped as in training",3.5250,1.0010
 "CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",KV cache at 8K tokens (MiB),1.2041,0.2964
 "CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",KV cache at 32K tokens (MiB),4.3330,0.2830
 "CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",KV cache at 128K tokens (MiB),16.8486,0.2794
 "CSA2, V4.1-Flash-1017 reference code, TensorRT-LLM FP4 caches",KV cache at 512K tokens (MiB),66.9111,0.2784
+"V4.1 reference, trained with our exact picks",Final validation loss,3.5769,1.0149
+"V4.1 reference, trained with our exact picks",Training time (h),2.1958,0.8578
+"V4.1 reference, trained with our exact picks",Peak training memory (MiB),7001.0000,0.9908
+"V4.1 reference, trained with our exact picks","Eval loss (8192-token rows, eval rule)",3.5912,1.0144
+"V4.1 reference, trained with our exact picks","Eval loss, lm_head clipped as in training",3.5034,0.9949
+"V4.1 reference, trained with our exact picks",KV cache at 8K tokens (MiB),3.3125,0.8154
+"V4.1 reference, trained with our exact picks",KV cache at 32K tokens (MiB),12.3125,0.8041
+"V4.1 reference, trained with our exact picks",KV cache at 128K tokens (MiB),48.3125,0.8010
+"V4.1 reference, trained with our exact picks",KV cache at 512K tokens (MiB),192.3125,0.8003
+"V4.1 reference, trained with our exact picks",Decode at 8K tokens (us per token),62.4000,0.7898
+"V4.1 reference, trained with our exact picks",Decode at 32K tokens (us per token),88.3500,0.9228
+"V4.1 reference, trained with our exact picks",Decode at 128K tokens (us per token),194.6600,1.2695
+"V4.1 reference, trained with our exact picks",Decode at 512K tokens (us per token),726.8500,3.2691
+"V4.1 reference, trained with our exact picks, FP4 entries",Final validation loss,3.5769,1.0149
+"V4.1 reference, trained with our exact picks, FP4 entries",Training time (h),2.1958,0.8578
+"V4.1 reference, trained with our exact picks, FP4 entries",Peak training memory (MiB),7001.0000,0.9908
+"V4.1 reference, trained with our exact picks, FP4 entries","Eval loss (8192-token rows, eval rule)",3.5943,1.0153
+"V4.1 reference, trained with our exact picks, FP4 entries","Eval loss, lm_head clipped as in training",3.5064,0.9957
+"V4.1 reference, trained with our exact picks, FP4 entries",KV cache at 8K tokens (MiB),1.0049,0.2474
+"V4.1 reference, trained with our exact picks, FP4 entries",KV cache at 32K tokens (MiB),3.5361,0.2309
+"V4.1 reference, trained with our exact picks, FP4 entries",KV cache at 128K tokens (MiB),13.6611,0.2265
+"V4.1 reference, trained with our exact picks, FP4 entries",KV cache at 512K tokens (MiB),54.1611,0.2254
+"V4.1 reference, trained with our tournament picks",Final validation loss,3.5035,0.9941
+"V4.1 reference, trained with our tournament picks",Training time (h),2.1712,0.8482
+"V4.1 reference, trained with our tournament picks",Peak training memory (MiB),7001.0000,0.9908
+"V4.1 reference, trained with our tournament picks","Eval loss (8192-token rows, eval rule)",3.5168,0.9934
+"V4.1 reference, trained with our tournament picks","Eval loss, lm_head clipped as in training",3.5039,0.9950
+"V4.1 reference, trained with our tournament picks",KV cache at 8K tokens (MiB),3.3125,0.8154
+"V4.1 reference, trained with our tournament picks",KV cache at 32K tokens (MiB),12.3125,0.8041
+"V4.1 reference, trained with our tournament picks",KV cache at 128K tokens (MiB),48.3125,0.8010
+"V4.1 reference, trained with our tournament picks",KV cache at 512K tokens (MiB),192.3125,0.8003
+"V4.1 reference, trained with our tournament picks",Decode at 8K tokens (us per token),62.4000,0.7898
+"V4.1 reference, trained with our tournament picks",Decode at 32K tokens (us per token),86.5000,0.9035
+"V4.1 reference, trained with our tournament picks",Decode at 128K tokens (us per token),100.4500,0.6551
+"V4.1 reference, trained with our tournament picks",Decode at 512K tokens (us per token),168.6400,0.7585
+"V4.1 reference, trained with our tournament picks, FP4 entries",Final validation loss,3.5035,0.9941
+"V4.1 reference, trained with our tournament picks, FP4 entries",Training time (h),2.1712,0.8482
+"V4.1 reference, trained with our tournament picks, FP4 entries",Peak training memory (MiB),7001.0000,0.9908
+"V4.1 reference, trained with our tournament picks, FP4 entries","Eval loss (8192-token rows, eval rule)",3.5199,0.9943
+"V4.1 reference, trained with our tournament picks, FP4 entries","Eval loss, lm_head clipped as in training",3.5070,0.9959
+"V4.1 reference, trained with our tournament picks, FP4 entries",KV cache at 8K tokens (MiB),1.0049,0.2474
+"V4.1 reference, trained with our tournament picks, FP4 entries",KV cache at 32K tokens (MiB),3.5361,0.2309
+"V4.1 reference, trained with our tournament picks, FP4 entries",KV cache at 128K tokens (MiB),13.6611,0.2265
+"V4.1 reference, trained with our tournament picks, FP4 entries",KV cache at 512K tokens (MiB),54.1611,0.2254
+"V4.1 reference, trained with our tournament picks, 4-token entries",Final validation loss,3.6285,1.0296
+"V4.1 reference, trained with our tournament picks, 4-token entries",Training time (h),2.0684,0.8081
+"V4.1 reference, trained with our tournament picks, 4-token entries",Peak training memory (MiB),6993.0000,0.9897
+"V4.1 reference, trained with our tournament picks, 4-token entries","Eval loss (8192-token rows, eval rule)",3.6463,1.0300
+"V4.1 reference, trained with our tournament picks, 4-token entries","Eval loss, lm_head clipped as in training",3.5528,1.0089
+"V4.1 reference, trained with our tournament picks, 4-token entries",KV cache at 8K tokens (MiB),1.4375,0.3538
+"V4.1 reference, trained with our tournament picks, 4-token entries",KV cache at 32K tokens (MiB),4.8125,0.3143
+"V4.1 reference, trained with our tournament picks, 4-token entries",KV cache at 128K tokens (MiB),18.3125,0.3036
+"V4.1 reference, trained with our tournament picks, 4-token entries",KV cache at 512K tokens (MiB),72.3125,0.3009
+"V4.1 reference, trained with our tournament picks, 4-token entries",Decode at 8K tokens (us per token),51.8100,0.6557
+"V4.1 reference, trained with our tournament picks, 4-token entries",Decode at 32K tokens (us per token),59.4700,0.6212
+"V4.1 reference, trained with our tournament picks, 4-token entries",Decode at 128K tokens (us per token),68.0300,0.4437
+"V4.1 reference, trained with our tournament picks, 4-token entries",Decode at 512K tokens (us per token),89.2200,0.4013
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means",Final validation loss,3.6285,1.0296
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means",Training time (h),2.0684,0.8081
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means",Peak training memory (MiB),6993.0000,0.9897
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means","Eval loss (8192-token rows, eval rule)",3.6486,1.0307
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means","Eval loss, lm_head clipped as in training",3.5550,1.0095
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means",KV cache at 8K tokens (MiB),0.5068,0.1248
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means",KV cache at 32K tokens (MiB),1.5439,0.1008
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means",KV cache at 128K tokens (MiB),5.6924,0.0944
+"V4.1 reference, trained with our tournament picks, 4-token entries, FP4 entries, FP8 means",KV cache at 512K tokens (MiB),22.2861,0.0927
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",Final validation loss,3.5478,1.0067
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",Training time (h),2.0498,0.8008
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",Peak training memory (MiB),6993.0000,0.9897
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches","Eval loss (8192-token rows, eval rule)",3.5622,1.0063
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches","Eval loss, lm_head clipped as in training",3.5412,1.0056
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",KV cache at 8K tokens (MiB),1.4375,0.3538
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",KV cache at 32K tokens (MiB),4.8125,0.3143
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",KV cache at 128K tokens (MiB),18.3125,0.3036
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",KV cache at 512K tokens (MiB),72.3125,0.3009
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",Decode at 8K tokens (us per token),51.8100,0.6557
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",Decode at 32K tokens (us per token),59.4700,0.6212
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",Decode at 128K tokens (us per token),68.0300,0.4437
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches",Decode at 512K tokens (us per token),89.2200,0.4013
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means",Final validation loss,3.5478,1.0067
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means",Training time (h),2.0498,0.8008
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means",Peak training memory (MiB),6993.0000,0.9897
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means","Eval loss (8192-token rows, eval rule)",3.5642,1.0068
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means","Eval loss, lm_head clipped as in training",3.5432,1.0062
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means",KV cache at 8K tokens (MiB),0.5068,0.1248
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means",KV cache at 32K tokens (MiB),1.5439,0.1008
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means",KV cache at 128K tokens (MiB),5.6924,0.0944
+"V4.1 reference, trained with our tournament picks, 4-token entries, smooth stage switches, FP4 entries, FP8 means",KV cache at 512K tokens (MiB),22.2861,0.0927
+"Parameter-free V4.1 block, tournament picks",Final validation loss,3.5148,0.9973
+"Parameter-free V4.1 block, tournament picks",Training time (h),2.0371,0.7958
+"Parameter-free V4.1 block, tournament picks",Peak training memory (MiB),6990.0000,0.9892
+"Parameter-free V4.1 block, tournament picks","Eval loss (8192-token rows, eval rule)",3.5260,0.9960
+"Parameter-free V4.1 block, tournament picks","Eval loss, lm_head clipped as in training",3.4882,0.9905
+"Parameter-free V4.1 block, tournament picks",KV cache at 8K tokens (MiB),3.3125,0.8154
+"Parameter-free V4.1 block, tournament picks",KV cache at 32K tokens (MiB),12.3125,0.8041
+"Parameter-free V4.1 block, tournament picks",KV cache at 128K tokens (MiB),48.3125,0.8010
+"Parameter-free V4.1 block, tournament picks",KV cache at 512K tokens (MiB),192.3125,0.8003
+"Parameter-free V4.1 block, tournament picks",Decode at 8K tokens (us per token),61.5000,0.7784
+"Parameter-free V4.1 block, tournament picks",Decode at 32K tokens (us per token),85.6600,0.8947
+"Parameter-free V4.1 block, tournament picks",Decode at 128K tokens (us per token),99.4900,0.6488
+"Parameter-free V4.1 block, tournament picks",Decode at 512K tokens (us per token),168.3000,0.7569
+"Parameter-free V4.1 block, tournament picks, FP4 entries",Final validation loss,3.5148,0.9973
+"Parameter-free V4.1 block, tournament picks, FP4 entries",Training time (h),2.0371,0.7958
+"Parameter-free V4.1 block, tournament picks, FP4 entries",Peak training memory (MiB),6990.0000,0.9892
+"Parameter-free V4.1 block, tournament picks, FP4 entries","Eval loss (8192-token rows, eval rule)",3.5287,0.9968
+"Parameter-free V4.1 block, tournament picks, FP4 entries","Eval loss, lm_head clipped as in training",3.4910,0.9913
+"Parameter-free V4.1 block, tournament picks, FP4 entries",KV cache at 8K tokens (MiB),1.0049,0.2474
+"Parameter-free V4.1 block, tournament picks, FP4 entries",KV cache at 32K tokens (MiB),3.5361,0.2309
+"Parameter-free V4.1 block, tournament picks, FP4 entries",KV cache at 128K tokens (MiB),13.6611,0.2265
+"Parameter-free V4.1 block, tournament picks, FP4 entries",KV cache at 512K tokens (MiB),54.1611,0.2254
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",Final validation loss,3.8203,1.0840
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",Training time (h),2.2249,0.8692
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",Peak training memory (MiB),6990.0000,0.9892
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks","Eval loss (8192-token rows, eval rule)",3.8258,1.0807
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks","Eval loss, lm_head clipped as in training",3.4976,0.9932
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",KV cache at 8K tokens (MiB),3.3125,0.8154
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",KV cache at 32K tokens (MiB),12.3125,0.8041
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",KV cache at 128K tokens (MiB),48.3125,0.8010
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",KV cache at 512K tokens (MiB),192.3125,0.8003
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",Decode at 8K tokens (us per token),61.5000,0.7784
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",Decode at 32K tokens (us per token),85.6600,0.8947
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",Decode at 128K tokens (us per token),99.4900,0.6488
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks",Decode at 512K tokens (us per token),168.3000,0.7569
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries",Final validation loss,3.8203,1.0840
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries",Training time (h),2.2249,0.8692
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries",Peak training memory (MiB),6990.0000,0.9892
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries","Eval loss (8192-token rows, eval rule)",3.8287,1.0815
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries","Eval loss, lm_head clipped as in training",3.5000,0.9939
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries",KV cache at 8K tokens (MiB),1.0049,0.2474
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries",KV cache at 32K tokens (MiB),3.5361,0.2309
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries",KV cache at 128K tokens (MiB),13.6611,0.2265
+"Parameter-free V4.1 block, fixed sink ln 128, tournament picks, FP4 entries",KV cache at 512K tokens (MiB),54.1611,0.2254
 "CSA2, our port of the V4.1 report",Final validation loss,3.6532,1.0366
 "CSA2, our port of the V4.1 report",Training time (h),3.0062,1.1744
 "CSA2, our port of the V4.1 report",Peak training memory (MiB),10329.0000,1.4618
@@ -27,10 +161,10 @@ version,stat,value,ratio
 "CSA2, our port of the V4.1 report",KV cache at 32K tokens (MiB),7.8125,0.5102
 "CSA2, our port of the V4.1 report",KV cache at 128K tokens (MiB),30.3125,0.5026
 "CSA2, our port of the V4.1 report",KV cache at 512K tokens (MiB),120.3125,0.5007
-"CSA2, our port of the V4.1 report",Decode at 8K tokens (us per token),56.3200,0.7051
-"CSA2, our port of the V4.1 report",Decode at 32K tokens (us per token),77.8200,0.7834
-"CSA2, our port of the V4.1 report",Decode at 128K tokens (us per token),102.4000,0.6410
-"CSA2, our port of the V4.1 report",Decode at 512K tokens (us per token),165.8900,0.7331
+"CSA2, our port of the V4.1 report",Decode at 8K tokens (us per token),56.3200,0.7128
+"CSA2, our port of the V4.1 report",Decode at 32K tokens (us per token),77.8200,0.8128
+"CSA2, our port of the V4.1 report",Decode at 128K tokens (us per token),102.4000,0.6678
+"CSA2, our port of the V4.1 report",Decode at 512K tokens (us per token),165.8900,0.7461
 "CSA2 KV layout in stripped record 91, exact top 64 entries",Final validation loss,3.5839,1.0169
 "CSA2 KV layout in stripped record 91, exact top 64 entries",Training time (h),2.0104,0.7854
 "CSA2 KV layout in stripped record 91, exact top 64 entries",Peak training memory (MiB),7517.0000,1.0638
@@ -39,10 +173,10 @@ version,stat,value,ratio
 "CSA2 KV layout in stripped record 91, exact top 64 entries",KV cache at 32K tokens (MiB),9.2812,0.6061
 "CSA2 KV layout in stripped record 91, exact top 64 entries",KV cache at 128K tokens (MiB),27.2812,0.4523
 "CSA2 KV layout in stripped record 91, exact top 64 entries",KV cache at 512K tokens (MiB),99.2812,0.4131
-"CSA2 KV layout in stripped record 91, exact top 64 entries",Decode at 8K tokens (us per token),76.8000,0.9616
-"CSA2 KV layout in stripped record 91, exact top 64 entries",Decode at 32K tokens (us per token),95.2300,0.9587
-"CSA2 KV layout in stripped record 91, exact top 64 entries",Decode at 128K tokens (us per token),131.0700,0.8205
-"CSA2 KV layout in stripped record 91, exact top 64 entries",Decode at 512K tokens (us per token),234.5000,1.0362
+"CSA2 KV layout in stripped record 91, exact top 64 entries",Decode at 8K tokens (us per token),76.8000,0.9720
+"CSA2 KV layout in stripped record 91, exact top 64 entries",Decode at 32K tokens (us per token),95.2300,0.9947
+"CSA2 KV layout in stripped record 91, exact top 64 entries",Decode at 128K tokens (us per token),131.0700,0.8548
+"CSA2 KV layout in stripped record 91, exact top 64 entries",Decode at 512K tokens (us per token),234.5000,1.0547
 "CSA2 KV layout in stripped record 91, tournament top 64 entries",Final validation loss,3.5071,0.9951
 "CSA2 KV layout in stripped record 91, tournament top 64 entries",Training time (h),2.7598,1.0782
 "CSA2 KV layout in stripped record 91, tournament top 64 entries",Peak training memory (MiB),7517.0000,1.0638
@@ -51,10 +185,10 @@ version,stat,value,ratio
 "CSA2 KV layout in stripped record 91, tournament top 64 entries",KV cache at 32K tokens (MiB),9.2812,0.6061
 "CSA2 KV layout in stripped record 91, tournament top 64 entries",KV cache at 128K tokens (MiB),27.2812,0.4523
 "CSA2 KV layout in stripped record 91, tournament top 64 entries",KV cache at 512K tokens (MiB),99.2812,0.4131
-"CSA2 KV layout in stripped record 91, tournament top 64 entries",Decode at 8K tokens (us per token),76.8000,0.9616
-"CSA2 KV layout in stripped record 91, tournament top 64 entries",Decode at 32K tokens (us per token),95.2300,0.9587
-"CSA2 KV layout in stripped record 91, tournament top 64 entries",Decode at 128K tokens (us per token),131.0700,0.8205
-"CSA2 KV layout in stripped record 91, tournament top 64 entries",Decode at 512K tokens (us per token),310.2700,1.3711
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",Decode at 8K tokens (us per token),76.8000,0.9720
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",Decode at 32K tokens (us per token),95.2300,0.9947
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",Decode at 128K tokens (us per token),131.0700,0.8548
+"CSA2 KV layout in stripped record 91, tournament top 64 entries",Decode at 512K tokens (us per token),310.2700,1.3955
 "CSA2 KV layout in stripped record 91, MQA window, XSA on mean value, tournament top 64 entries",Final validation loss,3.7633,1.0678
 "CSA2 KV layout in stripped record 91, MQA window, XSA on mean value, tournament top 64 entries",Training time (h),1.9697,0.7695
 "CSA2 KV layout in stripped record 91, MQA window, XSA on mean value, tournament top 64 entries",Peak training memory (MiB),7540.0000,1.0671
@@ -79,10 +213,10 @@ version,stat,value,ratio
 "CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",KV cache at 32K tokens (MiB),6.3125,0.4122
 "CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",KV cache at 128K tokens (MiB),24.3125,0.4031
 "CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",KV cache at 512K tokens (MiB),96.3125,0.4008
-"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",Decode at 8K tokens (us per token),70.6600,0.8847
-"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",Decode at 32K tokens (us per token),93.1800,0.9381
-"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",Decode at 128K tokens (us per token),126.9800,0.7949
-"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",Decode at 512K tokens (us per token),308.2200,1.3620
+"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",Decode at 8K tokens (us per token),70.6600,0.8943
+"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",Decode at 32K tokens (us per token),93.1800,0.9733
+"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",Decode at 128K tokens (us per token),126.9800,0.8281
+"CSA2 KV layout in stripped record 91, exact, 1 shared K=V window head",Decode at 512K tokens (us per token),308.2200,1.3863
 "CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",Final validation loss,3.6491,1.0354
 "CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",Training time (h),1.9333,0.7553
 "CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",Peak training memory (MiB),7529.0000,1.0655
@@ -91,10 +225,10 @@ version,stat,value,ratio
 "CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",KV cache at 32K tokens (MiB),6.6250,0.4327
 "CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",KV cache at 128K tokens (MiB),24.6250,0.4083
 "CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",KV cache at 512K tokens (MiB),96.6250,0.4021
-"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",Decode at 8K tokens (us per token),72.7000,0.9102
-"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",Decode at 32K tokens (us per token),93.1800,0.9381
-"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",Decode at 128K tokens (us per token),128.0000,0.8013
-"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",Decode at 512K tokens (us per token),308.2200,1.3620
+"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",Decode at 8K tokens (us per token),72.7000,0.9201
+"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",Decode at 32K tokens (us per token),93.1800,0.9733
+"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",Decode at 128K tokens (us per token),128.0000,0.8347
+"CSA2 KV layout in stripped record 91, exact, 2 shared K=V window heads",Decode at 512K tokens (us per token),308.2200,1.3863
 "CSA2 KV layout in stripped record 91, exact, per-head K=V window",Final validation loss,3.6439,1.0339
 "CSA2 KV layout in stripped record 91, exact, per-head K=V window",Training time (h),1.9462,0.7603
 "CSA2 KV layout in stripped record 91, exact, per-head K=V window",Peak training memory (MiB),7665.0000,1.0848
@@ -103,10 +237,10 @@ version,stat,value,ratio
 "CSA2 KV layout in stripped record 91, exact, per-head K=V window",KV cache at 32K tokens (MiB),7.8750,0.5143
 "CSA2 KV layout in stripped record 91, exact, per-head K=V window",KV cache at 128K tokens (MiB),25.8750,0.4290
 "CSA2 KV layout in stripped record 91, exact, per-head K=V window",KV cache at 512K tokens (MiB),97.8750,0.4073
-"CSA2 KV layout in stripped record 91, exact, per-head K=V window",Decode at 8K tokens (us per token),74.7500,0.9359
-"CSA2 KV layout in stripped record 91, exact, per-head K=V window",Decode at 32K tokens (us per token),96.2600,0.9691
-"CSA2 KV layout in stripped record 91, exact, per-head K=V window",Decode at 128K tokens (us per token),129.0200,0.8077
-"CSA2 KV layout in stripped record 91, exact, per-head K=V window",Decode at 512K tokens (us per token),309.2500,1.3665
+"CSA2 KV layout in stripped record 91, exact, per-head K=V window",Decode at 8K tokens (us per token),74.7500,0.9461
+"CSA2 KV layout in stripped record 91, exact, per-head K=V window",Decode at 32K tokens (us per token),96.2600,1.0054
+"CSA2 KV layout in stripped record 91, exact, per-head K=V window",Decode at 128K tokens (us per token),129.0200,0.8414
+"CSA2 KV layout in stripped record 91, exact, per-head K=V window",Decode at 512K tokens (us per token),309.2500,1.3909
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers",Final validation loss,3.4921,0.9909
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers",Training time (h),1.9527,0.7629
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers",Peak training memory (MiB),7515.0000,1.0635
@@ -115,10 +249,10 @@ version,stat,value,ratio
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers",KV cache at 32K tokens (MiB),9.2812,0.6061
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers",KV cache at 128K tokens (MiB),27.2812,0.4523
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers",KV cache at 512K tokens (MiB),99.2812,0.4131
-"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",Decode at 8K tokens (us per token),63.4900,0.7949
-"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",Decode at 32K tokens (us per token),75.7800,0.7629
-"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",Decode at 128K tokens (us per token),108.5400,0.6795
-"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",Decode at 512K tokens (us per token),234.5000,1.0362
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",Decode at 8K tokens (us per token),63.4900,0.8036
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",Decode at 32K tokens (us per token),75.7800,0.7915
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",Decode at 128K tokens (us per token),108.5400,0.7078
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers",Decode at 512K tokens (us per token),234.5000,1.0547
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers, FP8 entries",Final validation loss,3.4921,0.9909
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers, FP8 entries",Training time (h),1.9527,0.7629
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers, FP8 entries",Peak training memory (MiB),7515.0000,1.0635
@@ -135,10 +269,10 @@ version,stat,value,ratio
 "CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",KV cache at 32K tokens (MiB),9.2812,0.6061
 "CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",KV cache at 128K tokens (MiB),27.2812,0.4523
 "CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",KV cache at 512K tokens (MiB),99.2812,0.4131
-"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",Decode at 8K tokens (us per token),55.3000,0.6924
-"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",Decode at 32K tokens (us per token),68.6100,0.6907
-"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",Decode at 128K tokens (us per token),83.9700,0.5257
-"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",Decode at 512K tokens (us per token),132.1000,0.5837
+"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",Decode at 8K tokens (us per token),55.3000,0.6999
+"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",Decode at 32K tokens (us per token),68.6100,0.7166
+"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",Decode at 128K tokens (us per token),83.9700,0.5476
+"CSA2 KV layout in stripped record 91, routed 2 of 6 blocks, picks every 4 layers",Decode at 512K tokens (us per token),132.1000,0.5941
 "CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",Final validation loss,3.5782,1.0153
 "CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",Training time (h),2.0870,0.8153
 "CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",Peak training memory (MiB),7788.0000,1.1022
@@ -147,10 +281,10 @@ version,stat,value,ratio
 "CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",KV cache at 32K tokens (MiB),6.3125,0.4122
 "CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",KV cache at 128K tokens (MiB),24.3125,0.4031
 "CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",KV cache at 512K tokens (MiB),96.3125,0.4008
-"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",Decode at 8K tokens (us per token),50.1800,0.6283
-"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",Decode at 32K tokens (us per token),63.4900,0.6392
-"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",Decode at 128K tokens (us per token),79.8700,0.5000
-"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",Decode at 512K tokens (us per token),129.0200,0.5701
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",Decode at 8K tokens (us per token),50.1800,0.6351
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",Decode at 32K tokens (us per token),63.4900,0.6632
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",Decode at 128K tokens (us per token),79.8700,0.5209
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head",Decode at 512K tokens (us per token),129.0200,0.5803
 "CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",Final validation loss,3.8416,1.0900
 "CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",Training time (h),2.0571,0.8037
 "CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",Peak training memory (MiB),7788.0000,1.1022
@@ -159,10 +293,10 @@ version,stat,value,ratio
 "CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",KV cache at 32K tokens (MiB),6.3125,0.4122
 "CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",KV cache at 128K tokens (MiB),24.3125,0.4031
 "CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",KV cache at 512K tokens (MiB),96.3125,0.4008
-"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",Decode at 8K tokens (us per token),50.1800,0.6283
-"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",Decode at 32K tokens (us per token),63.4900,0.6392
-"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",Decode at 128K tokens (us per token),79.8700,0.5000
-"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",Decode at 512K tokens (us per token),129.0200,0.5701
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",Decode at 8K tokens (us per token),50.1800,0.6351
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",Decode at 32K tokens (us per token),63.4900,0.6632
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",Decode at 128K tokens (us per token),79.8700,0.5209
+"CSA2 KV layout in stripped record 91, routed, picks every 4 layers, 1 shared K=V window head, seed 2",Decode at 512K tokens (us per token),129.0200,0.5803
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",Final validation loss,3.6004,1.0216
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",Training time (h),1.8480,0.7220
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",Peak training memory (MiB),7491.0000,1.0601
@@ -171,10 +305,10 @@ version,stat,value,ratio
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",KV cache at 32K tokens (MiB),6.3125,0.4122
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",KV cache at 128K tokens (MiB),24.3125,0.4031
 "CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",KV cache at 512K tokens (MiB),96.3125,0.4008
-"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",Decode at 8K tokens (us per token),49.1500,0.6154
-"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",Decode at 32K tokens (us per token),59.3900,0.5979
-"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",Decode at 128K tokens (us per token),69.6300,0.4359
-"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",Decode at 512K tokens (us per token),84.9900,0.3756
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",Decode at 8K tokens (us per token),49.1500,0.6221
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",Decode at 32K tokens (us per token),59.3900,0.6203
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",Decode at 128K tokens (us per token),69.6300,0.4541
+"CSA2 KV layout in stripped record 91, exact, picks every 4 layers, 1 shared K=V window head",Decode at 512K tokens (us per token),84.9900,0.3823
 "CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",Final validation loss,3.6136,1.0253
 "CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",Training time (h),1.8220,0.7118
 "CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",Peak training memory (MiB),7489.0000,1.0599
@@ -183,7 +317,7 @@ version,stat,value,ratio
 "CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",KV cache at 32K tokens (MiB),6.3125,0.4122
 "CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",KV cache at 128K tokens (MiB),24.3125,0.4031
 "CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",KV cache at 512K tokens (MiB),96.3125,0.4008
-"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",Decode at 8K tokens (us per token),49.1500,0.6154
-"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",Decode at 32K tokens (us per token),59.3900,0.5979
-"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",Decode at 128K tokens (us per token),80.9000,0.5064
-"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",Decode at 512K tokens (us per token),167.9400,0.7421
+"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",Decode at 8K tokens (us per token),49.1500,0.6221
+"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",Decode at 32K tokens (us per token),59.3900,0.6203
+"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",Decode at 128K tokens (us per token),80.9000,0.5276
+"CSA2 KV layout in stripped record 91, exact, picks at layers 0, 4, 1 shared K=V window head",Decode at 512K tokens (us per token),167.9400,0.7553

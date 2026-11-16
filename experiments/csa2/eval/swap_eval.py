@@ -1,6 +1,7 @@
 """packed_val.py with non-strict checkpoint loading, so a CSA2 checkpoint runs under
-our picks (its indexer weights dropped; the dropped keys are printed).
-python swap_eval.py SCRIPT RUN ROWS OUT.csv"""
+our picks (its indexer weights dropped; the dropped keys are printed) or under
+csa2_pf (also its compressor and sink). With RULE ..., rule_eval.py's picks.
+python swap_eval.py SCRIPT RUN ROWS OUT.csv [RULE ...]"""
 
 import sys
 
@@ -17,4 +18,7 @@ def load(self, state, strict=True, assign=False):
 
 
 torch.nn.Module.load_state_dict = load
-packed_val.main(*sys.argv[1:5])
+if len(sys.argv) > 5:
+    import rule_eval  # noqa: F401  (runs packed_val with its rule)
+else:
+    packed_val.main(*sys.argv[1:5])

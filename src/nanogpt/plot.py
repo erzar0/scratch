@@ -252,10 +252,12 @@ def panels(
 ) -> tuple[Figure, list[Axes]]:
     """count side-by-side axes sharing one row per name, names left-aligned on the
     first; `below` inches at the bottom for x labels and a legend."""
-    width = 5.5  # inches
     height = below + 0.155 * len(names)  # x axis and label, then the rows
-    fig = plt.figure(figsize=(width, height), dpi=300)  # measure text as saved
+    fig = plt.figure(figsize=(5.5, height), dpi=300)  # measure text as saved
     pad = label_pad(fig, names)
+    # long names widen the figure instead of squeezing the panels below 1.5 inches
+    width = max(5.5, (0.03 + pad + gap * (count - 1) + 1.5 * count) / 0.98)
+    fig.set_size_inches(width, height)
     panel = (0.98 * width - 0.03 - pad - gap * (count - 1)) / count
     bottom, rows = below / height, 0.155 * len(names) / height
     left = (0.03 + pad) / width
@@ -306,11 +308,13 @@ def row_figure(labels: list[str]) -> tuple[Figure, Axes]:
     fig, ax = plt.subplots(
         figsize=(5.5, 0.42 + 0.155 * max(len(labels), 4)), dpi=300, layout="constrained"
     )
+    pad = label_pad(fig, labels)
+    fig.set_size_inches(max(5.5, pad + 3.2), fig.get_figheight())  # axes >= ~3 in
     rows = range(len(labels))
     for row in rows[1::2]:
         ax.axhspan(row - 0.5, row + 0.5, color=style.BAND, lw=0, zorder=0)
     ax.set_yticks(rows, labels, ha="left")
-    ax.tick_params(axis="y", length=0, pad=label_pad(fig, labels) * 72)
+    ax.tick_params(axis="y", length=0, pad=pad * 72)
     ax.set_ylim(len(labels) - 0.5, -0.5)
     for side in ("left", "right", "top"):
         ax.spines[side].set_visible(False)
@@ -606,12 +610,14 @@ def csa2_decode() -> None:
 
 
 CSA2_REF_DECODE = "CSA2, V4.1 reference layout (TensorRT-LLM decode)"
+FLASH_REF = "V4.1-Flash-1017 attention, its indexer, 2048 candidate blocks"
 
 
 def decode_heat(name: str = "decode_heat", base: str = "CSA2, learned indexer") -> None:
     """Decode time per token (10 attention layers, batch 1, Triton) by part and
     context, CSA2 vs our pick rules (experiments/csa2/bench/decode_heat.py; name
-    decode_block: bench/decode_block.py): cells in microseconds, color = time
+    decode_block: bench/decode_block.py; decode_flash: bench/decode_flash.py, 40
+    layers at V4.1-Flash-1017's size): cells in microseconds, color = time
     relative to the base version's in the same part and context (blue faster, red
     slower, log scale)."""
     from matplotlib.colors import LinearSegmentedColormap
@@ -624,7 +630,10 @@ def decode_heat(name: str = "decode_heat", base: str = "CSA2, learned indexer") 
     fig, axes = plt.subplots(
         len(parts),
         1,
-        figsize=(7.5, len(parts) * (0.3 + 0.12 * len(versions))),
+        figsize=(
+            4.5 + 0.05 * max(map(len, versions)),  # room for long version names
+            0.6 + len(parts) * (0.3 + 0.12 * len(versions)),
+        ),
         layout="constrained",
     )
     for ax, part in zip(axes, parts, strict=True):
@@ -635,6 +644,8 @@ def decode_heat(name: str = "decode_heat", base: str = "CSA2, learned indexer") 
         ratio = us / us[versions.index(base)]
         image = ax.imshow(np.log2(ratio), cmap=cmap, vmin=-2, vmax=2, aspect="auto")
         for (r, c), value in np.ndenumerate(us):
+            if np.isnan(value):  # not measured (decode_flash: exact past 128K)
+                continue
             dark = abs(np.log2(ratio[r, c])) > 1.2
             ax.text(c, r, f"{value:.0f}", ha="center", va="center", fontsize=6,
                     color=style.SURFACE if dark else style.INK)  # fmt: skip
@@ -650,8 +661,11 @@ def decode_heat(name: str = "decode_heat", base: str = "CSA2, learned indexer") 
         for spine in ax.spines.values():
             spine.set_visible(False)
     axes[-1].set_xlabel("context (tokens)")
-    bar = fig.colorbar(image, ax=axes, shrink=0.5, pad=0.02, ticks=[-2, -1, 0, 1, 2])
-    bar.ax.set_yticklabels(["0.25x", "0.5x", "1x = CSA2", "2x", "4x"])
+    bar = fig.colorbar(
+        image, ax=axes, location="bottom", shrink=0.4, aspect=30, pad=0.01,
+        ticks=[-2, -1, 0, 1, 2],
+    )  # fmt: skip
+    bar.ax.set_xticklabels(["0.25x", "0.5x", "1x", "2x", "4x"])
     bar.set_label(f"time relative to {base}")
     bar.outline.set_visible(False)
     style.save(fig, LONG / name)
@@ -715,6 +729,109 @@ def csa2_scoreboard() -> None:
     style.save(fig, OUT / "csa2_scoreboard")
 
 
+RULE_HEAT = {  # panel: (value -> colour in [-1, 1], cell text)
+    "Loss": (lambda v, ref: (v - ref) / 0.1, "{:.4f}"),
+    "Change vs trained rule": (lambda v, ref: v / 0.02, "{:+.4f}"),
+}
+
+
+def csa2_rule_heat() -> None:
+    """experiments/csa2/rule_table.py's table: one row per model and decode rule,
+    panels stacked (loss; change vs the run's trained rule; training; KV cache;
+    decode with bf16 and FP8 caches), the value in every cell. Colour, blue better:
+    loss minus the V4.1 reference's (full at 0.1 nats); change vs the trained rule
+    (full at 0.02; outlined: fails the gate); the rest the ratio to the reference
+    (full at 0.25x / 4x, log scale). Grey: not applicable."""
+    from matplotlib.colors import LinearSegmentedColormap
+    from matplotlib.patches import Rectangle
+    from matplotlib.transforms import blended_transform_factory
+
+    table = pl.read_csv(OUT / "csa2_rule_table.csv").with_columns(
+        label=pl.col("model") + ": " + pl.col("picks")
+    )
+    labels = table["label"].unique(maintain_order=True).to_list()
+    rows = table.unique("label", maintain_order=True)
+    models, picks = rows["model"].to_list(), rows["picks"].to_list()
+    groups = {m: [i for i, x in enumerate(models) if x == m] for m in models}
+    names = table["panel"].unique(maintain_order=True).to_list()
+    cmap = LinearSegmentedColormap.from_list("vs", ["#2a78d6", "#f0efec", "#e34948"])
+    cmap.set_bad(style.BAND)
+    cell, row, foot = 0.44, 0.15, 0.55  # inches
+    stats = {n: table.filter(pl.col("panel") == n)["stat"].unique(maintain_order=True)
+             .to_list() for n in names}  # fmt: skip
+    heads = {n: [textwrap.fill(c, 11) for c in cols] for n, cols in stats.items()}
+    head = {n: 0.2 + 0.075 * max(h.count("\n") + 1 for h in heads[n]) for n in names}
+    fig = plt.figure(dpi=300)
+    wrapped = {m: textwrap.fill(m, 34) for m in groups}
+    left = label_pad(fig, list(wrapped.values()))  # model column, then picks
+    pad = left + label_pad(fig, picks)
+    width = pad + cell * max(map(len, stats.values())) + 0.05
+    height = sum(head.values()) + len(names) * row * len(labels) + foot
+    fig.set_size_inches(width, height)
+    top = height
+    for name in names:
+        cols = stats[name]
+        part = table.filter(pl.col("panel") == name)
+        value = np.full((len(labels), len(cols)), np.nan)
+        for d in part.iter_rows(named=True):
+            if d["value"] is not None:
+                value[labels.index(d["label"]), cols.index(d["stat"])] = d["value"]
+        colour_of, text = RULE_HEAT.get(
+            name, (lambda v, ref: np.log2(v / ref) / 2, None)
+        )
+        with np.errstate(divide="ignore", invalid="ignore"):
+            colour = colour_of(value, value[0])
+        bottom = top - head[name] - row * len(labels)
+        ax = fig.add_axes((pad / width, bottom / height, cell * len(cols) / width,
+                           row * len(labels) / height))  # fmt: skip
+        ax.imshow(np.clip(colour, -1, 1), cmap=cmap, vmin=-1, vmax=1, aspect="auto")
+        for (r, c), v in np.ndenumerate(value):
+            if np.isnan(v):
+                ax.text(c, r, "–", ha="center", va="center", fontsize=5,
+                        color=style.MUTED)  # fmt: skip
+                continue
+            fmt = text or ("{:.0f}" if v >= 100 else "{:.2f}" if v < 10 else "{:.1f}")
+            ink = style.SURFACE if abs(colour[r, c]) > 0.6 else style.INK
+            ax.text(c, r, fmt.format(v), ha="center", va="center", fontsize=5,
+                    color=ink)  # fmt: skip
+            gate = 0.005 if cols[c].startswith("All") else 0.01
+            if name == "Change vs trained rule" and v > gate:
+                ax.add_patch(Rectangle((c - 0.5, r - 0.5), 1, 1, fill=False,
+                                       ec=style.INK, lw=0.8))  # fmt: skip
+        at = blended_transform_factory(fig.transFigure, ax.transData)
+        for m, idx in groups.items():
+            ax.text(0.04 / width, sum(idx) / len(idx), wrapped[m], transform=at,
+                    va="center", linespacing=1.1)  # fmt: skip
+            if idx[0]:  # white line between models
+                ax.axhline(idx[0] - 0.5, color=style.SURFACE, lw=1.5)
+        for r, p in enumerate(picks):
+            ax.text(left / width, r, p, transform=at, va="center")
+        ax.set_yticks([])
+        ax.xaxis.tick_top()
+        ax.set_xticks(range(len(cols)), heads[name], fontsize=5)
+        ax.tick_params(length=0, pad=1)
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+        fig.text(0.04 / width, (top - 0.05) / height, name, va="top", fontsize=8)
+        top = bottom
+    fig.text(
+        0.01,
+        0.1 / height,
+        "\n".join(textwrap.wrap(
+            "Blue better, red worse. Loss: minus the V4.1 reference's, full colour at"
+            " 0.1 nats; evals clip the lm_head weights to their training (FP8) range,"
+            " the logged final validation loss does not. Change vs trained rule: per"
+            " token vs the run's own picks in"
+            " the same cache format, full colour at 0.02; outlined cells fail the gate"
+            " (all positions above +0.005 or a range past 2048 above +0.01). Other"
+            " panels: ratio to the V4.1 reference, full colour at 0.25x and 4x."
+            " Dash: not applicable (tournament picks are the training rule; the"
+            " reference has no other rule).", int(width * 22))),
+        fontsize=5.5, va="bottom",
+    )  # fmt: skip
+    style.save(fig, OUT / "csa2_rule_heat")
+
+
 def csa2_positions() -> None:
     """Validation loss by position, one row per version (CSA2 first): record 91
     validation rows of 8192 tokens; training documents end by 2048
@@ -729,12 +846,14 @@ def csa2_positions() -> None:
     dot_rows(table, rows, "loss", "positions", xlabel, OUT / "csa2_positions")
 
 
-def csa2_rules() -> None:
-    """Run 7's validation loss under each eval rule minus exact picks (its first
-    row) on the same tokens, no retraining: picks shared across groups, block
-    prefilter (experiments/csa2/scoreboard.py). Bins the gate checks: all positions
-    (at most +0.005) and each bin past 2048 (at most +0.01, dotted line)."""
-    table = pl.read_csv(OUT / "csa2_rules.csv")
+def csa2_rules(
+    name: str = "csa2_rules", model: str = "run 7", vs: str = "exact picks"
+) -> None:
+    """A model's validation loss under each eval rule minus its first row (run 7:
+    exact picks; V4.1 reference: its indexer) on the same tokens, no retraining
+    (experiments/csa2/scoreboard.py). Bins the gate checks: all positions (at most
+    +0.005) and each bin past 2048 (at most +0.01, dotted line)."""
+    table = pl.read_csv(OUT / f"{name}.csv")
     exact = table["rule"][0]
     base = table.filter(pl.col("rule") == exact).select("positions", exact="loss")
     table = (
@@ -745,8 +864,8 @@ def csa2_rules() -> None:
         .rename({"positions": "bin"})
     )
     rows = {r: pl.col("rule") == r for r in table["rule"].unique(maintain_order=True)}
-    xlabel = "run 7 validation loss minus exact picks (dotted: gate per bin)"
-    dot_rows(table, rows, "change", "bin", xlabel, OUT / "csa2_rules", lines=(0, 0.01))
+    xlabel = f"{model} validation loss minus {vs} (dotted: gate per bin)"
+    dot_rows(table, rows, "change", "bin", xlabel, OUT / name, lines=(0, 0.01))
 
 
 def csa2_profile() -> None:
@@ -1114,6 +1233,7 @@ if __name__ == "__main__":
     finals()
     csa2_positions()
     csa2_rules()
+    csa2_rules("csa2_ref_rules", "V4.1 reference", "its indexer")
     groups()
     attention_cost()
     for extra, csv in (
@@ -1138,8 +1258,18 @@ if __name__ == "__main__":
         (csa2_decode, LONG / "csa2_decode"),
         (decode_heat, LONG / "decode_heat"),
         (lambda: decode_heat("decode_block", CSA2_REF_DECODE), LONG / "decode_block"),
+        (
+            lambda: decode_heat("decode_ref_picks", CSA2_REF_DECODE),
+            LONG / "decode_ref_picks",
+        ),
+        (
+            lambda: decode_heat("decode_pf_share", CSA2_REF_DECODE),
+            LONG / "decode_pf_share",
+        ),
+        (lambda: decode_heat("decode_flash", FLASH_REF), LONG / "decode_flash"),
         (train_window, TRAINING / "train_window"),
         (csa2_scoreboard, OUT / "csa2_scoreboard"),
+        (csa2_rule_heat, OUT / "csa2_rule_table"),
         (csa2_profile, TRAINING / "csa2_profile"),
         (long_scaling, LONG / "long_scaling"),
         (step_profile, TRAINING / "step_profile"),
