@@ -10,14 +10,32 @@ from __future__ import annotations
 
 import argparse
 import logging
+import os
 import subprocess
+import sys
 import time
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 
-import torch
-import torch.nn.functional as F
+
+def _bootstrap_venv() -> None:
+    """Switch to virtual environment if running under unconfigured python."""
+    if not sys.argv or sys.argv[0] == "-c":
+        return
+    for venv_name in [".venv/bin/python", ".env/bin/python"]:
+        cand = Path(__file__).resolve().parent / venv_name
+        if cand.exists() and sys.executable != str(cand):
+            try:
+                import torch  # noqa: F401
+            except ImportError:
+                os.execv(str(cand), [str(cand), *sys.argv])
+
+
+_bootstrap_venv()
+
+import torch  # noqa: E402
+import torch.nn.functional as F  # noqa: E402
 
 try:
     import polars as pl
@@ -33,7 +51,7 @@ try:
 except ImportError:
     HAS_WANDB = False
 
-from test_iq1m_h200 import (
+from test_iq1m_h200 import (  # noqa: E402
     BLOCK_SIZE,
     DIM,
     HEAD_DIM,
