@@ -3,7 +3,7 @@
 
 Evaluates standard DeepSeek CSA2 attention against the parameter-free replacement
 (summed-query with two-level block-mean prefiltering and sink removal) across
-context lengths from 8K to 1M tokens.
+context lengths from 512 to 1M tokens.
 
 Measures:
     1. Decode latency distribution (median, min, max, std us) via CUDA events or timer.
@@ -347,7 +347,8 @@ class DeepSeekStandardAttention(torch.nn.Module):
         idx_scores = torch.matmul(q_idx, index_k_cache.mT) * self.scale
         agg_scores = idx_scores.sum(dim=0)
 
-        topk_indices = torch.topk(agg_scores, k=INDEX_TOPK, dim=-1).indices
+        k_val = min(INDEX_TOPK, agg_scores.shape[-1])
+        topk_indices = torch.topk(agg_scores, k=k_val, dim=-1).indices
         gathered_kv = kv_cache[topk_indices]
 
         all_k = torch.cat([window_kv, gathered_kv], dim=0)
@@ -689,8 +690,10 @@ def benchmark_context(
         repeats=cfg.repeats,
     )
 
-    ds_bytes = (n_entries * INDEX_HEAD_DIM * 2) + (INDEX_TOPK * HEAD_DIM * 2)
-    pf_bytes = (n_blocks * HEAD_DIM * 2) + (INDEX_TOPK * HEAD_DIM * 2)
+    ds_bytes = (n_entries * INDEX_HEAD_DIM * 2) + (
+        min(INDEX_TOPK, n_entries) * HEAD_DIM * 2
+    )
+    pf_bytes = (n_blocks * HEAD_DIM * 2) + (min(INDEX_TOPK, n_entries) * HEAD_DIM * 2)
     ds_bw = (ds_bytes / 1e9) / (ds_lat.median_us / 1e6)
     pf_bw = (pf_bytes / 1e9) / (pf_lat.median_us / 1e6)
 
@@ -838,7 +841,7 @@ def main() -> None:
         "--contexts",
         type=int,
         nargs="+",
-        default=[8192, 16384, 32768, 65536, 131072, 262144],
+        default=[512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144],
         help="Context lengths to benchmark.",
     )
     parser.add_argument(
@@ -972,7 +975,9 @@ def main() -> None:
         rows.append(row)
         wandb_tracker.log_metrics(row)
 
-        ctx_str = f"{ctx // 1024}K" if ctx < 1048576 else "1M"
+        ctx_str = (
+            f"{ctx}" if ctx < 1024 else (f"{ctx // 1024}K" if ctx < 1048576 else "1M")
+        )
         ds_lat_fmt = f"{row.ds_latency_median_us:.1f}±{row.ds_latency_std_us:.1f}"
         pf_lat_fmt = f"{row.pf_latency_median_us:.1f}±{row.pf_latency_std_us:.1f}"
 
