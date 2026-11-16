@@ -30,15 +30,15 @@ if command -v uv &> /dev/null; then
     # shellcheck disable=SC1091
     source .venv/bin/activate
     echo "Installing dependencies via uv pip..."
-    uv pip install -U huggingface_hub hf_transfer gguf torch polars orjson wandb
+    uv pip install -U huggingface_hub hf_transfer gguf torch polars orjson wandb datasets
 elif command -v pip &> /dev/null; then
-    pip install -U huggingface_hub hf_transfer gguf torch polars orjson wandb
+    pip install -U huggingface_hub hf_transfer gguf torch polars orjson wandb datasets
 elif python3 -m pip --version &> /dev/null; then
-    python3 -m pip install -U huggingface_hub hf_transfer gguf torch polars orjson wandb
+    python3 -m pip install -U huggingface_hub hf_transfer gguf torch polars orjson wandb datasets
 else
     echo "Neither uv nor pip found; installing python3-pip..."
     sudo apt-get update -qq && sudo apt-get install -y -qq python3-pip python3-venv
-    python3 -m pip install -U huggingface_hub hf_transfer gguf torch polars orjson wandb
+    python3 -m pip install -U huggingface_hub hf_transfer gguf torch polars orjson wandb datasets
 fi
 
 PYTHON_BIN="python3"

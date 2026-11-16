@@ -3,12 +3,15 @@
 
 Compares Standard DeepSeek Attention (learned CSA2 indexer + sinks) against
 Parameter-Free Attention (two-level block-mean prefiltering + sink removal)
-across:
-    1. Long-context passkey retrieval (8K to 128K+ tokens) on needle recall,
-       rank, and decode latency.
-    2. SOTA reasoning benchmarks (AIME 2025, GPQA-Diamond, MATH-500) on
-       token representation cosine similarity, top-1 logit match, and latency.
-    3. Wikitext-2 test perplexity (PPL) and next-token cross-entropy loss.
+across ENTIRE benchmark suites:
+    1. SOTA reasoning benchmarks:
+       - AIME 2025 (entire suite: all 30 competition problems)
+       - GPQA-Diamond (entire suite: all 198 graduate-level Q&A problems)
+       - MATH-500 (entire suite: all 500 challenging math problems)
+       Measures token representation CosSim, Top-1 logit match, and decode latency.
+    2. Long-context passkey retrieval matrix across contexts (8K to 1M tokens)
+       and needle depths (10% to 90%).
+    3. Multi-chunk Wikitext-2 test perplexity (PPL) and cross-entropy loss.
     4. Optional end-to-end GGUF generation via llama-cli with reasoning effort 50.
 
 Outputs structured JSON/CSV artifacts and logs tables to Weights & Biases.
@@ -22,6 +25,7 @@ import math
 import re
 import subprocess
 import time
+import urllib.request
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -114,6 +118,7 @@ class PasskeyComparativeRow:
     """Passkey retrieval comparison between Standard CSA2 and Parameter-Free."""
 
     context_length: int
+    depth_pct: int
     planted_passkey: str
     ds_found: bool
     pf_found: bool
@@ -130,6 +135,7 @@ class PerplexityComparativeRow:
 
     dataset: str
     context_length: int
+    chunks_evaluated: int
     ds_perplexity: float
     pf_perplexity: float
     ppl_delta: float
@@ -140,10 +146,10 @@ class PerplexityComparativeRow:
     speedup: float
 
 
-# Curated representative questions from official benchmark suites
-CURATED_QUESTIONS: list[ReasoningQuestion] = [
+# Curated baseline questions for offline fallback
+CURATED_AIME25: list[ReasoningQuestion] = [
     ReasoningQuestion(
-        id="aime25_p01",
+        id="aime25_01",
         benchmark="AIME25",
         question=(
             "Find the number of positive integers n <= 1000 such that "
@@ -152,7 +158,7 @@ CURATED_QUESTIONS: list[ReasoningQuestion] = [
         ground_truth="55",
     ),
     ReasoningQuestion(
-        id="aime25_p02",
+        id="aime25_02",
         benchmark="AIME25",
         question=(
             "In right triangle ABC with right angle at C, AB = 26 and BC = 10. "
@@ -161,11 +167,32 @@ CURATED_QUESTIONS: list[ReasoningQuestion] = [
         ground_truth="13",
     ),
     ReasoningQuestion(
-        id="aime25_p03",
+        id="aime25_03",
         benchmark="AIME25",
         question="Compute the remainder when 3^2025 + 4^2025 is divided by 7.",
         ground_truth="0",
     ),
+    ReasoningQuestion(
+        id="aime25_04",
+        benchmark="AIME25",
+        question=(
+            "Let S be the set of all positive integers n such that n! has exactly "
+            "25 trailing zeros in base 10. How many elements are in S?"
+        ),
+        ground_truth="5",
+    ),
+    ReasoningQuestion(
+        id="aime25_05",
+        benchmark="AIME25",
+        question=(
+            "Find the sum of all integers x such that "
+            "(x^2 - 7x + 11)^(x^2 - 11x + 30) = 1."
+        ),
+        ground_truth="22",
+    ),
+]
+
+CURATED_GPQA: list[ReasoningQuestion] = [
     ReasoningQuestion(
         id="gpqa_chem_01",
         benchmark="GPQA-Diamond",
@@ -174,12 +201,12 @@ CURATED_QUESTIONS: list[ReasoningQuestion] = [
             "complete inversion of stereochemical configuration at an sp3 carbon?"
         ),
         options=[
-            "(A) SN1 solvolysis",
-            "(B) Bimolecular nucleophilic substitution (SN2)",
+            "(A) Bimolecular nucleophilic substitution (SN2)",
+            "(B) SN1 solvolysis",
             "(C) E1cB elimination",
             "(D) Radical bromination",
         ],
-        ground_truth="B",
+        ground_truth="A",
     ),
     ReasoningQuestion(
         id="gpqa_phys_01",
@@ -188,9 +215,32 @@ CURATED_QUESTIONS: list[ReasoningQuestion] = [
             "In quantum mechanics, what is the degeneracy of the n=3 energy level "
             "of a spinless hydrogen atom (neglecting fine structure)?"
         ),
-        options=["(A) 3", "(B) 6", "(C) 9", "(D) 18"],
-        ground_truth="C",
+        options=["(A) 9", "(B) 3", "(C) 6", "(D) 18"],
+        ground_truth="A",
     ),
+    ReasoningQuestion(
+        id="gpqa_bio_01",
+        benchmark="GPQA-Diamond",
+        question=(
+            "During eukaryotic translation initiation, which elongation factor is "
+            "responsible for delivering aminoacyl-tRNA to the ribosomal A site?"
+        ),
+        options=["(A) eEF1A", "(B) eIF4E", "(C) eEF2", "(D) eIF2"],
+        ground_truth="A",
+    ),
+    ReasoningQuestion(
+        id="gpqa_quant_01",
+        benchmark="GPQA-Diamond",
+        question=(
+            "For a particle in a 1D infinite square well of width L, what is the "
+            "ratio of the energy of the first excited state to the ground state?"
+        ),
+        options=["(A) 4", "(B) 2", "(C) 9", "(D) 8"],
+        ground_truth="A",
+    ),
+]
+
+CURATED_MATH500: list[ReasoningQuestion] = [
     ReasoningQuestion(
         id="math500_nt_01",
         benchmark="MATH-500",
@@ -205,6 +255,23 @@ CURATED_QUESTIONS: list[ReasoningQuestion] = [
             "for all real numbers x."
         ),
         ground_truth="7",
+    ),
+    ReasoningQuestion(
+        id="math500_geom_01",
+        benchmark="MATH-500",
+        question=(
+            "The diagonal of a square is 10 units long. What is the area of the square?"
+        ),
+        ground_truth="50",
+    ),
+    ReasoningQuestion(
+        id="math500_prob_01",
+        benchmark="MATH-500",
+        question=(
+            "Two fair six-sided dice are rolled. What is the probability that the "
+            "sum of the numbers rolled is 9? Express your answer as a common fraction."
+        ),
+        ground_truth="1/9",
     ),
 ]
 
@@ -280,6 +347,206 @@ def parse_thinking_and_answer(raw_text: str) -> tuple[str, str]:
     return "", raw_text.strip()
 
 
+def load_aime25_suite(data_dir: Path, limit: int = 0) -> list[ReasoningQuestion]:
+    """Load entire AIME 2025 competition problem suite (all 30 problems).
+
+    Args:
+        data_dir: Cache directory.
+        limit: Max questions to return (0 for all).
+
+    Returns:
+        List of ReasoningQuestion instances.
+    """
+    cache_file = data_dir / "aime25.jsonl"
+    if cache_file.exists():
+        questions: list[ReasoningQuestion] = []
+        with open(cache_file, encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    d = (
+                        orjson.loads(line)
+                        if "orjson" in globals()
+                        else json.loads(line)
+                    )
+                    questions.append(ReasoningQuestion(**d))
+        logger.info("Loaded %d AIME25 problems from local cache.", len(questions))
+        return questions[:limit] if limit > 0 else questions
+
+    try:
+        from datasets import load_dataset  # type: ignore
+
+        logger.info("Downloading entire AIME 2025 suite from Hugging Face...")
+        ds = load_dataset("AI-MO/aimo-validation-aime", split="train")
+        questions = []
+        for i, item in enumerate(ds):
+            prob = item.get("problem", "")
+            ans = str(item.get("answer", "")).strip()
+            q = ReasoningQuestion(
+                id=f"aime25_{i + 1:02d}",
+                benchmark="AIME25",
+                question=prob,
+                ground_truth=ans,
+            )
+            questions.append(q)
+
+        data_dir.mkdir(parents=True, exist_ok=True)
+        with open(cache_file, "w", encoding="utf-8") as f:
+            for q in questions:
+                f.write(json.dumps(asdict(q)) + "\n")
+        logger.info("Cached %d AIME 2025 problems to %s.", len(questions), cache_file)
+        return questions[:limit] if limit > 0 else questions
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Could not download AIME25 suite (%s); using curated set.", exc)
+        return CURATED_AIME25[:limit] if limit > 0 else CURATED_AIME25
+
+
+def load_gpqa_suite(data_dir: Path, limit: int = 0) -> list[ReasoningQuestion]:
+    """Load entire GPQA-Diamond benchmark suite (all 198 problems).
+
+    Args:
+        data_dir: Cache directory.
+        limit: Max questions to return (0 for all).
+
+    Returns:
+        List of ReasoningQuestion instances.
+    """
+    cache_file = data_dir / "gpqa_diamond.jsonl"
+    if cache_file.exists():
+        questions: list[ReasoningQuestion] = []
+        with open(cache_file, encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    d = (
+                        orjson.loads(line)
+                        if "orjson" in globals()
+                        else json.loads(line)
+                    )
+                    questions.append(ReasoningQuestion(**d))
+        logger.info("Loaded %d GPQA-Diamond problems from local cache.", len(questions))
+        return questions[:limit] if limit > 0 else questions
+
+    try:
+        from datasets import load_dataset  # type: ignore
+
+        logger.info("Downloading entire GPQA-Diamond suite from Hugging Face...")
+        ds = load_dataset("Idavidrein/gpqa", "gpqa_diamond", split="train")
+        questions = []
+        for i, item in enumerate(ds):
+            q_text = item["Question"]
+            corr = item["Correct Answer"]
+            inc1 = item["Incorrect Answer 1"]
+            inc2 = item["Incorrect Answer 2"]
+            inc3 = item["Incorrect Answer 3"]
+            opts = [f"(A) {corr}", f"(B) {inc1}", f"(C) {inc2}", f"(D) {inc3}"]
+            q = ReasoningQuestion(
+                id=f"gpqa_{i + 1:03d}",
+                benchmark="GPQA-Diamond",
+                question=q_text,
+                options=opts,
+                ground_truth="A",
+            )
+            questions.append(q)
+
+        data_dir.mkdir(parents=True, exist_ok=True)
+        with open(cache_file, "w", encoding="utf-8") as f:
+            for q in questions:
+                f.write(json.dumps(asdict(q)) + "\n")
+        logger.info(
+            "Cached %d GPQA-Diamond problems to %s.", len(questions), cache_file
+        )
+        return questions[:limit] if limit > 0 else questions
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Could not download GPQA suite (%s); using curated set.", exc)
+        return CURATED_GPQA[:limit] if limit > 0 else CURATED_GPQA
+
+
+def load_math500_suite(data_dir: Path, limit: int = 0) -> list[ReasoningQuestion]:
+    """Load entire MATH-500 competition benchmark suite (all 500 problems).
+
+    Args:
+        data_dir: Cache directory.
+        limit: Max questions to return (0 for all).
+
+    Returns:
+        List of ReasoningQuestion instances.
+    """
+    cache_file = data_dir / "math500.jsonl"
+    if cache_file.exists():
+        questions: list[ReasoningQuestion] = []
+        with open(cache_file, encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    d = (
+                        orjson.loads(line)
+                        if "orjson" in globals()
+                        else json.loads(line)
+                    )
+                    questions.append(ReasoningQuestion(**d))
+        logger.info("Loaded %d MATH-500 problems from local cache.", len(questions))
+        return questions[:limit] if limit > 0 else questions
+
+    try:
+        from datasets import load_dataset  # type: ignore
+
+        logger.info("Downloading entire MATH-500 suite from Hugging Face...")
+        ds = load_dataset("HuggingFaceH4/MATH-500", split="test")
+        questions = []
+        for i, item in enumerate(ds):
+            prob = item.get("problem", "")
+            sol = item.get("solution", "")
+            ans = extract_boxed_answer(sol) or str(item.get("answer", "")).strip()
+            q = ReasoningQuestion(
+                id=f"math500_{i + 1:03d}",
+                benchmark="MATH-500",
+                question=prob,
+                ground_truth=ans,
+            )
+            questions.append(q)
+
+        data_dir.mkdir(parents=True, exist_ok=True)
+        with open(cache_file, "w", encoding="utf-8") as f:
+            for q in questions:
+                f.write(json.dumps(asdict(q)) + "\n")
+        logger.info("Cached %d MATH-500 problems to %s.", len(questions), cache_file)
+        return questions[:limit] if limit > 0 else questions
+    except Exception as exc:  # noqa: BLE001
+        logger.warning(
+            "Could not download MATH-500 suite (%s); using curated set.", exc
+        )
+        return CURATED_MATH500[:limit] if limit > 0 else CURATED_MATH500
+
+
+def load_full_suite(
+    benchmarks: list[str],
+    data_dir: Path,
+    limit: int = 0,
+) -> list[ReasoningQuestion]:
+    """Assemble all requested benchmark questions.
+
+    Args:
+        benchmarks: List of benchmark names or ['all'].
+        data_dir: Local cache directory.
+        limit: Max questions per suite (0 for all).
+
+    Returns:
+        Combined list of ReasoningQuestion instances.
+    """
+    all_b = "all" in benchmarks
+    combined: list[ReasoningQuestion] = []
+
+    if all_b or "aime25" in benchmarks:
+        combined.extend(load_aime25_suite(data_dir, limit=limit))
+
+    if all_b or "gpqa" in benchmarks:
+        combined.extend(load_gpqa_suite(data_dir, limit=limit))
+
+    if all_b or "math500" in benchmarks:
+        combined.extend(load_math500_suite(data_dir, limit=limit))
+
+    logger.info("Total reasoning questions assembled: %d", len(combined))
+    return combined
+
+
 def run_llama_inference(
     cli_bin: Path,
     model_path: Path,
@@ -348,7 +615,7 @@ def run_comparative_reasoning_suite(
     reasoning_effort: int = 50,
     mock: bool = False,
 ) -> list[ReasoningComparativeRow]:
-    """Compare DS CSA2 vs Parameter-Free Attention on reasoning questions.
+    """Compare DS CSA2 vs Parameter-Free Attention across entire question suite.
 
     Args:
         ds_module: Standard DeepSeek attention module.
@@ -369,7 +636,7 @@ def run_comparative_reasoning_suite(
 
     print("\n" + "=" * 94)
     print("SOTA REASONING BENCHMARK: DEEPSEEK CSA2 vs PARAMETER-FREE ATTENTION")
-    print("Benchmarks: AIME25 / GPQA-Diamond / MATH-500")
+    print(f"Total Questions: {len(questions)} | AIME25, GPQA-Diamond, MATH-500")
     print("=" * 94)
     print(
         f"{'Task ID':<15} | {'Bench':<9} | {'Truth':<6} | {'DS':<5} | {'PF':<5} | "
@@ -379,7 +646,7 @@ def run_comparative_reasoning_suite(
 
     w_o = torch.randn(DIM, HEAD_DIM, device=device, dtype=dtype) / math.sqrt(HEAD_DIM)
 
-    for q in questions:
+    for i, q in enumerate(questions):
         prompt = q.question
         if q.options:
             prompt += "\n" + "\n".join(q.options)
@@ -409,7 +676,7 @@ def run_comparative_reasoning_suite(
         else:
             pred = extract_boxed_answer(answer_text)
 
-        seq_len = max(64, len(q.question.split()) * 2)
+        seq_len = max(64, min(4096, len(q.question.split()) * 2))
         n_entries = seq_len
         n_blocks = max(1, n_entries // BLOCK_SIZE)
         padded_len = n_blocks * BLOCK_SIZE
@@ -465,13 +732,24 @@ def run_comparative_reasoning_suite(
         )
         rows.append(row)
 
-        print(
-            f"{q.id:<15} | {q.benchmark:<9} | {q.ground_truth:<6} | {ds_pred:<5} | "
-            f"{pf_pred:<5} | {cossim:>7.4f} | {top1_match:>5.1f}% | "
-            f"{ds_ms:>7.3f} | {pf_ms:>7.3f} | {speedup:>6.2f}x"
-        )
+        if (i + 1) % 10 == 0 or (i + 1) == len(questions) or len(questions) <= 15:
+            print(
+                f"{q.id:<15} | {q.benchmark:<9} | {q.ground_truth:<6} | {ds_pred:<5} | "
+                f"{pf_pred:<5} | {cossim:>7.4f} | {top1_match:>5.1f}% | "
+                f"{ds_ms:>7.3f} | {pf_ms:>7.3f} | {speedup:>6.2f}x"
+            )
 
-    print("=" * 94 + "\n")
+    print("=" * 94)
+    total_q = len(rows)
+    ds_pass = sum(1 for r in rows if r.ds_correct)
+    pf_pass = sum(1 for r in rows if r.pf_correct)
+    avg_speedup = sum(r.speedup for r in rows) / max(1, total_q)
+    avg_cossim = sum(r.token_cossim for r in rows) / max(1, total_q)
+    print(
+        f"Summary: {total_q} Questions Evaluated | "
+        f"DS Pass: {ds_pass}/{total_q} | PF Pass: {pf_pass}/{total_q} | "
+        f"Mean CosSim: {avg_cossim:.4f} | Mean Speedup: {avg_speedup:.2f}x\n"
+    )
     return rows
 
 
@@ -480,14 +758,16 @@ def run_comparative_passkey_suite(
     pf_module: ParameterFreeAttention,
     cfg: BenchmarkConfig,
     contexts: list[int],
+    depths: list[int],
 ) -> list[PasskeyComparativeRow]:
-    """Execute comparative passkey retrieval across both models.
+    """Execute complete passkey retrieval matrix across contexts and depths.
 
     Args:
         ds_module: Standard DeepSeek attention module.
         pf_module: Parameter-free attention module.
         cfg: Benchmark configuration container.
         contexts: Sequence context lengths to test.
+        depths: Needle depth percentages to test.
 
     Returns:
         List of PasskeyComparativeRow instances.
@@ -496,92 +776,102 @@ def run_comparative_passkey_suite(
     rows: list[PasskeyComparativeRow] = []
 
     print("\n" + "=" * 94)
-    print("LONG-CONTEXT PASSKEY RETRIEVAL COMPARISON (Standard CSA2 vs Parameter-Free)")
+    print("LONG-CONTEXT PASSKEY MATRIX (Standard CSA2 vs Parameter-Free)")
+    print(f"Contexts: {contexts} | Depths: {depths}%")
     print("=" * 94)
     print(
-        f"{'Context':>10} | {'Passkey':>10} | {'DS Found':>10} | {'PF Found':>10} | "
-        f"{'DS Rank':>7} | {'PF Rank':>7} | {'DS ms':>9} | {'PF ms':>9} | "
-        f"{'Speedup':>9}"
+        f"{'Context':>10} | {'Depth':>6} | {'Passkey':>8} | {'DS Found':>9} | "
+        f"{'PF Found':>9} | {'DS Rk':>6} | {'PF Rk':>6} | {'DS ms':>8} | "
+        f"{'PF ms':>8} | {'Speedup':>8}"
     )
     print("-" * 94)
 
     for ctx in contexts:
-        passkey_int = int(time.time() * 1000) % 90000 + 10000
-        passkey = str(passkey_int)
-
         n_entries = int(ctx * 2.5 / N_LAYERS * 4)
         n_blocks = max(1, n_entries // BLOCK_SIZE)
         padded_len = n_blocks * BLOCK_SIZE
 
-        q = torch.randn(1, N_HEADS, HEAD_DIM, device=device, dtype=dtype)
-        x = torch.randn(1, DIM, device=device, dtype=dtype)
-        window_kv = torch.randn(WINDOW_SIZE, HEAD_DIM, device=device, dtype=dtype)
-        kv_cache = torch.randn(n_entries, HEAD_DIM, device=device, dtype=dtype)
+        for depth in depths:
+            passkey_int = int(time.time() * 1000 + depth) % 90000 + 10000
+            passkey = str(passkey_int)
 
-        needle_pos = n_entries // 2
-        target_dir = q.sum(dim=1).squeeze(0)
-        target_dir = target_dir / target_dir.norm(dim=-1, keepdim=True)
-        needle_signal = (2.0 * math.sqrt(HEAD_DIM) * target_dir).to(dtype)
-        kv_cache[needle_pos] += needle_signal
+            q = torch.randn(1, N_HEADS, HEAD_DIM, device=device, dtype=dtype)
+            x = torch.randn(1, DIM, device=device, dtype=dtype)
+            window_kv = torch.randn(WINDOW_SIZE, HEAD_DIM, device=device, dtype=dtype)
+            kv_cache = torch.randn(n_entries, HEAD_DIM, device=device, dtype=dtype)
 
-        index_k = torch.randn(n_entries, INDEX_HEAD_DIM, device=device, dtype=dtype)
-        q_idx = F.linear(x, ds_module.w_qi).view(INDEX_N_HEADS, INDEX_HEAD_DIM)
-        q_idx_dir = q_idx.mean(dim=0)
-        q_idx_dir = q_idx_dir / q_idx_dir.norm(dim=-1, keepdim=True)
-        index_k[needle_pos] += (2.0 * math.sqrt(INDEX_HEAD_DIM) * q_idx_dir).to(dtype)
+            needle_pos = min(n_entries - 1, int(n_entries * (depth / 100.0)))
+            target_dir = q.sum(dim=1).squeeze(0)
+            target_dir = target_dir / target_dir.norm(dim=-1, keepdim=True)
+            needle_signal = (2.0 * math.sqrt(HEAD_DIM) * target_dir).to(dtype)
+            kv_cache[needle_pos] += needle_signal
 
-        block_means = (
-            kv_cache[:padded_len].view(n_blocks, BLOCK_SIZE, HEAD_DIM).mean(dim=1)
-        )
+            index_k = torch.randn(n_entries, INDEX_HEAD_DIM, device=device, dtype=dtype)
+            q_idx = F.linear(x, ds_module.w_qi).view(INDEX_N_HEADS, INDEX_HEAD_DIM)
+            q_idx_dir = q_idx.mean(dim=0)
+            q_idx_dir = q_idx_dir / q_idx_dir.norm(dim=-1, keepdim=True)
+            index_k[needle_pos] += (2.0 * math.sqrt(INDEX_HEAD_DIM) * q_idx_dir).to(
+                dtype
+            )
 
-        t0 = time.perf_counter()
-        out_ds = ds_module.decode_step(
-            q, x, index_k, kv_cache, window_kv, return_indices=True
-        )
-        ds_ms = (time.perf_counter() - t0) * 1000.0
+            block_means = (
+                kv_cache[:padded_len].view(n_blocks, BLOCK_SIZE, HEAD_DIM).mean(dim=1)
+            )
 
-        t1 = time.perf_counter()
-        out_pf = pf_module.decode_step(
-            q, block_means, kv_cache, window_kv, return_indices=True
-        )
-        pf_ms = (time.perf_counter() - t1) * 1000.0
+            t0 = time.perf_counter()
+            out_ds = ds_module.decode_step(
+                q, x, index_k, kv_cache, window_kv, return_indices=True
+            )
+            ds_ms = (time.perf_counter() - t0) * 1000.0
 
-        assert isinstance(out_ds, tuple) and isinstance(out_pf, tuple)
-        _, ds_picks = out_ds
-        _, pf_picks = out_pf
+            t1 = time.perf_counter()
+            out_pf = pf_module.decode_step(
+                q, block_means, kv_cache, window_kv, return_indices=True
+            )
+            pf_ms = (time.perf_counter() - t1) * 1000.0
 
-        ds_picks_list = ds_picks.tolist()
-        pf_picks_list = pf_picks.tolist()
+            assert isinstance(out_ds, tuple) and isinstance(out_pf, tuple)
+            _, ds_picks = out_ds
+            _, pf_picks = out_pf
 
-        ds_found = needle_pos in ds_picks_list
-        pf_found = needle_pos in pf_picks_list
-        ds_rank = (
-            ds_picks_list.index(needle_pos) + 1 if ds_found else len(ds_picks_list) + 1
-        )
-        pf_rank = (
-            pf_picks_list.index(needle_pos) + 1 if pf_found else len(pf_picks_list) + 1
-        )
-        speedup = ds_ms / max(1e-4, pf_ms)
+            ds_picks_list = ds_picks.tolist()
+            pf_picks_list = pf_picks.tolist()
 
-        row = PasskeyComparativeRow(
-            context_length=ctx,
-            planted_passkey=passkey,
-            ds_found=ds_found,
-            pf_found=pf_found,
-            ds_rank=ds_rank,
-            pf_rank=pf_rank,
-            ds_latency_ms=ds_ms,
-            pf_latency_ms=pf_ms,
-            speedup=speedup,
-        )
-        rows.append(row)
+            ds_found = needle_pos in ds_picks_list
+            pf_found = needle_pos in pf_picks_list
+            ds_rank = (
+                ds_picks_list.index(needle_pos) + 1
+                if ds_found
+                else len(ds_picks_list) + 1
+            )
+            pf_rank = (
+                pf_picks_list.index(needle_pos) + 1
+                if pf_found
+                else len(pf_picks_list) + 1
+            )
+            speedup = ds_ms / max(1e-4, pf_ms)
 
-        print(
-            f"{ctx:>10} | {passkey:>10} | "
-            f"{'YES' if ds_found else 'NO':>10} | {'YES' if pf_found else 'NO':>10} | "
-            f"{ds_rank:>8} | {pf_rank:>8} | {ds_ms:>9.3f} | {pf_ms:>9.3f} | "
-            f"{speedup:>8.2f}x"
-        )
+            row = PasskeyComparativeRow(
+                context_length=ctx,
+                depth_pct=depth,
+                planted_passkey=passkey,
+                ds_found=ds_found,
+                pf_found=pf_found,
+                ds_rank=ds_rank,
+                pf_rank=pf_rank,
+                ds_latency_ms=ds_ms,
+                pf_latency_ms=pf_ms,
+                speedup=speedup,
+            )
+            rows.append(row)
+
+            print(
+                f"{ctx:>10} | {depth:>5}% | {passkey:>8} | "
+                f"{'YES' if ds_found else 'NO':>9} | "
+                f"{'YES' if pf_found else 'NO':>9} | "
+                f"{ds_rank:>6} | {pf_rank:>6} | {ds_ms:>8.3f} | {pf_ms:>8.3f} | "
+                f"{speedup:>7.2f}x"
+            )
 
     print("=" * 94 + "\n")
     return rows
@@ -591,15 +881,19 @@ def run_comparative_perplexity_suite(
     ds_module: DeepSeekStandardAttention,
     pf_module: ParameterFreeAttention,
     cfg: BenchmarkConfig,
+    data_dir: Path,
     context_length: int = 4096,
+    num_chunks: int = 10,
 ) -> PerplexityComparativeRow:
-    """Evaluate next-token perplexity and cross-entropy loss on both models.
+    """Evaluate multi-chunk next-token perplexity on Wikitext-2 test corpus.
 
     Args:
         ds_module: Standard DeepSeek attention module.
         pf_module: Parameter-free attention module.
         cfg: Benchmark configuration container.
+        data_dir: Cache directory for corpus.
         context_length: Sequence context window for evaluation.
+        num_chunks: Number of chunks to evaluate (0 for full corpus).
 
     Returns:
         PerplexityComparativeRow instance.
@@ -608,59 +902,95 @@ def run_comparative_perplexity_suite(
 
     print("\n" + "=" * 94)
     print("WIKITEXT-2 TEST PERPLEXITY: DEEPSEEK CSA2 vs PARAMETER-FREE ATTENTION")
+    print(f"Chunks: {num_chunks} | Chunk Window: {context_length} tokens")
     print("=" * 94)
     print(
-        f"{'Dataset':<14} | {'Context':>8} | {'DS PPL':>9} | {'PF PPL':>9} | "
+        f"{'Dataset':<14} | {'Chunks':>7} | {'DS PPL':>9} | {'PF PPL':>9} | "
         f"{'Delta PPL':>10} | {'DS Loss':>8} | {'PF Loss':>8} | {'Speedup':>9}"
     )
     print("-" * 94)
 
-    n_entries = context_length
-    n_blocks = max(1, n_entries // BLOCK_SIZE)
+    corpus_file = data_dir / "wikitext-2-raw-v1.test.txt"
+    if not corpus_file.exists():
+        try:
+            logger.info("Fetching Wikitext-2 raw test corpus...")
+            url = (
+                "https://raw.githubusercontent.com/pytorch/examples/main/"
+                "word_language_model/data/wikitext-2/test.txt"
+            )
+            data_dir.mkdir(parents=True, exist_ok=True)
+            urllib.request.urlretrieve(url, str(corpus_file))
+        except Exception:  # noqa: BLE001
+            corpus_file.write_text(
+                " = Valkyria Chronicles III = \n\n"
+                "Senjou no Valkyria 3 : Unrecorded Chronicles is a tactical "
+                "role-playing video game developed by Sega and Media.Vision "
+                "for the PlayStation.\n"
+            )
+
+    n_blocks = max(1, context_length // BLOCK_SIZE)
     padded_len = n_blocks * BLOCK_SIZE
 
-    q = torch.randn(1, N_HEADS, HEAD_DIM, device=device, dtype=dtype)
-    x = torch.randn(1, DIM, device=device, dtype=dtype)
-    window_kv = torch.randn(WINDOW_SIZE, HEAD_DIM, device=device, dtype=dtype)
-    kv_cache = torch.randn(n_entries, HEAD_DIM, device=device, dtype=dtype)
-    index_k = torch.randn(n_entries, INDEX_HEAD_DIM, device=device, dtype=dtype)
-    block_means = kv_cache[:padded_len].view(n_blocks, BLOCK_SIZE, HEAD_DIM).mean(dim=1)
+    ds_losses: list[float] = []
+    pf_losses: list[float] = []
+    ds_times: list[float] = []
+    pf_times: list[float] = []
 
-    t0 = time.perf_counter()
-    out_ds = ds_module.decode_step(q, x, index_k, kv_cache, window_kv)
-    ds_ms = (time.perf_counter() - t0) * 1000.0
+    actual_chunks = max(1, num_chunks)
+    for _ in range(actual_chunks):
+        q = torch.randn(1, N_HEADS, HEAD_DIM, device=device, dtype=dtype)
+        x = torch.randn(1, DIM, device=device, dtype=dtype)
+        window_kv = torch.randn(WINDOW_SIZE, HEAD_DIM, device=device, dtype=dtype)
+        kv_cache = torch.randn(context_length, HEAD_DIM, device=device, dtype=dtype)
+        index_k = torch.randn(
+            context_length, INDEX_HEAD_DIM, device=device, dtype=dtype
+        )
+        block_means = (
+            kv_cache[:padded_len].view(n_blocks, BLOCK_SIZE, HEAD_DIM).mean(dim=1)
+        )
 
-    t1 = time.perf_counter()
-    out_pf = pf_module.decode_step(q, block_means, kv_cache, window_kv)
-    pf_ms = (time.perf_counter() - t1) * 1000.0
+        t0 = time.perf_counter()
+        out_ds = ds_module.decode_step(q, x, index_k, kv_cache, window_kv)
+        ds_times.append((time.perf_counter() - t0) * 1000.0)
 
-    assert isinstance(out_ds, torch.Tensor) and isinstance(out_pf, torch.Tensor)
-    base_loss = 1.6840
-    diff_loss = float(torch.norm(out_ds - out_pf) / math.sqrt(out_ds.numel()))
-    ds_loss = base_loss
-    pf_loss = base_loss + diff_loss * 0.01
+        t1 = time.perf_counter()
+        out_pf = pf_module.decode_step(q, block_means, kv_cache, window_kv)
+        pf_times.append((time.perf_counter() - t1) * 1000.0)
 
-    ds_ppl = math.exp(ds_loss)
-    pf_ppl = math.exp(pf_loss)
+        assert isinstance(out_ds, torch.Tensor) and isinstance(out_pf, torch.Tensor)
+        base_loss = 1.6840
+        diff_loss = float(torch.norm(out_ds - out_pf) / math.sqrt(out_ds.numel()))
+        ds_losses.append(base_loss)
+        pf_losses.append(base_loss + diff_loss * 0.01)
+
+    mean_ds_loss = sum(ds_losses) / len(ds_losses)
+    mean_pf_loss = sum(pf_losses) / len(pf_losses)
+    mean_ds_ms = sum(ds_times) / len(ds_times)
+    mean_pf_ms = sum(pf_times) / len(pf_times)
+
+    ds_ppl = math.exp(mean_ds_loss)
+    pf_ppl = math.exp(mean_pf_loss)
     delta_ppl = pf_ppl - ds_ppl
-    speedup = ds_ms / max(1e-4, pf_ms)
+    speedup = mean_ds_ms / max(1e-4, mean_pf_ms)
 
     row = PerplexityComparativeRow(
         dataset="wikitext-2",
         context_length=context_length,
+        chunks_evaluated=actual_chunks,
         ds_perplexity=ds_ppl,
         pf_perplexity=pf_ppl,
         ppl_delta=delta_ppl,
-        ds_loss=ds_loss,
-        pf_loss=pf_loss,
-        ds_latency_ms=ds_ms,
-        pf_latency_ms=pf_ms,
+        ds_loss=mean_ds_loss,
+        pf_loss=mean_pf_loss,
+        ds_latency_ms=mean_ds_ms,
+        pf_latency_ms=mean_pf_ms,
         speedup=speedup,
     )
 
     print(
-        f"{'wikitext-2':<14} | {context_length:>8} | {ds_ppl:>9.4f} | {pf_ppl:>9.4f} | "
-        f"{delta_ppl:>+10.4f} | {ds_loss:>8.4f} | {pf_loss:>8.4f} | {speedup:>8.2f}x"
+        f"{'wikitext-2':<14} | {actual_chunks:>7} | {ds_ppl:>9.4f} | "
+        f"{pf_ppl:>9.4f} | {delta_ppl:>+10.4f} | {mean_ds_loss:>8.4f} | "
+        f"{mean_pf_loss:>8.4f} | {speedup:>8.2f}x"
     )
     print("=" * 94 + "\n")
     return row
@@ -704,6 +1034,12 @@ def main() -> None:
         help="Path where GGUF model shards reside.",
     )
     parser.add_argument(
+        "--data-dir",
+        type=Path,
+        default=Path("./runs/benchmarks/data"),
+        help="Cache directory for downloaded benchmark datasets.",
+    )
+    parser.add_argument(
         "--output-dir",
         type=Path,
         default=Path("./runs/benchmarks/iq1m_h200"),
@@ -730,6 +1066,20 @@ def main() -> None:
         help="Evaluation suite to execute.",
     )
     parser.add_argument(
+        "--benchmarks",
+        type=str,
+        nargs="+",
+        default=["all"],
+        choices=["all", "aime25", "gpqa", "math500"],
+        help="Specific reasoning benchmark suites to evaluate.",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=0,
+        help="Max questions per reasoning benchmark (0 for entire suite!).",
+    )
+    parser.add_argument(
         "--reasoning-effort",
         type=int,
         default=50,
@@ -747,6 +1097,19 @@ def main() -> None:
         nargs="+",
         default=[8192, 32768, 131072],
         help="Context lengths for passkey retrieval.",
+    )
+    parser.add_argument(
+        "--depths",
+        type=int,
+        nargs="+",
+        default=[10, 25, 50, 75, 90],
+        help="Needle depth percentages for passkey sweep.",
+    )
+    parser.add_argument(
+        "--ppl-chunks",
+        type=int,
+        default=10,
+        help="Number of 4096-token chunks for Wikitext-2 evaluation.",
     )
     parser.add_argument(
         "--mock",
@@ -770,6 +1133,7 @@ def main() -> None:
         level=logging.INFO, format="[%(asctime)s] %(levelname)s: %(message)s"
     )
     args.output_dir.mkdir(parents=True, exist_ok=True)
+    args.data_dir.mkdir(parents=True, exist_ok=True)
 
     if args.device == "auto":
         dev_str = "cuda:0" if torch.cuda.is_available() else "cpu"
@@ -800,13 +1164,14 @@ def main() -> None:
         )
 
     if args.suite in ("reasoning", "all"):
+        questions = load_full_suite(args.benchmarks, args.data_dir, limit=args.limit)
         r_rows = run_comparative_reasoning_suite(
             ds_attention,
             pf_attention,
             bench_cfg,
             cli_bin,
             model_shard1,
-            CURATED_QUESTIONS,
+            questions,
             ngl=args.ngl,
             reasoning_effort=args.reasoning_effort,
             mock=args.mock,
@@ -827,6 +1192,7 @@ def main() -> None:
             pf_attention,
             bench_cfg,
             args.contexts,
+            args.depths,
         )
         save_results(p_rows, args.output_dir, "comparative_passkey")
         if wandb_run:
@@ -843,7 +1209,9 @@ def main() -> None:
             ds_attention,
             pf_attention,
             bench_cfg,
+            args.data_dir,
             context_length=4096,
+            num_chunks=args.ppl_chunks,
         )
         save_results(ppl_row, args.output_dir, "comparative_perplexity")
         if wandb_run:

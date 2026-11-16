@@ -7,6 +7,7 @@ from eval_downstream_h200 import (
     ReasoningQuestion,
     extract_boxed_answer,
     extract_mcq_answer,
+    load_full_suite,
     parse_thinking_and_answer,
     run_comparative_passkey_suite,
     run_comparative_perplexity_suite,
@@ -66,6 +67,17 @@ def test_parse_thinking_and_answer() -> None:
     assert answer == "The remainder is \\boxed{0}."
 
 
+def test_load_full_suite(tmp_path: Path) -> None:
+    """Verify full suite loader across all benchmarks."""
+    # Act
+    questions = load_full_suite(["all"], tmp_path, limit=2)
+
+    # Assert
+    assert len(questions) >= 2
+    benchmarks = {q.benchmark for q in questions}
+    assert "AIME25" in benchmarks or "GPQA-Diamond" in benchmarks
+
+
 def test_run_comparative_reasoning_suite_mock() -> None:
     """Verify comparative reasoning evaluation across both models."""
     # Arrange
@@ -114,7 +126,9 @@ def test_run_comparative_passkey_suite() -> None:
     pf_att = ParameterFreeAttention(device=device, dtype=dtype)
 
     # Act
-    results = run_comparative_passkey_suite(ds_att, pf_att, cfg, contexts=[512])
+    results = run_comparative_passkey_suite(
+        ds_att, pf_att, cfg, contexts=[512], depths=[50]
+    )
 
     # Assert
     assert len(results) == 1
@@ -123,7 +137,7 @@ def test_run_comparative_passkey_suite() -> None:
     assert results[0].speedup > 0.0
 
 
-def test_run_comparative_perplexity_suite() -> None:
+def test_run_comparative_perplexity_suite(tmp_path: Path) -> None:
     """Verify comparative perplexity calculation on both models."""
     # Arrange
     device = torch.device("cpu")
@@ -133,7 +147,9 @@ def test_run_comparative_perplexity_suite() -> None:
     pf_att = ParameterFreeAttention(device=device, dtype=dtype)
 
     # Act
-    row = run_comparative_perplexity_suite(ds_att, pf_att, cfg, context_length=512)
+    row = run_comparative_perplexity_suite(
+        ds_att, pf_att, cfg, tmp_path, context_length=512, num_chunks=2
+    )
 
     # Assert
     assert row.dataset == "wikitext-2"
