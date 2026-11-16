@@ -1066,6 +1066,23 @@ def main() -> None:
         help="Evaluation suite to execute.",
     )
     parser.add_argument(
+        "--mode",
+        type=str,
+        default=None,
+        help="Optional alias for benchmark suite mode.",
+    )
+    parser.add_argument(
+        "--eval-accuracy",
+        action="store_true",
+        help="Optional flag forwarded from test suite.",
+    )
+    parser.add_argument(
+        "--repeats",
+        type=int,
+        default=0,
+        help="Optional repeats forwarded from test suite.",
+    )
+    parser.add_argument(
         "--benchmarks",
         type=str,
         nargs="+",
@@ -1095,7 +1112,20 @@ def main() -> None:
         "--contexts",
         type=int,
         nargs="+",
-        default=[8192, 32768, 131072],
+        default=[
+            512,
+            1024,
+            2048,
+            4096,
+            8192,
+            16384,
+            32768,
+            65536,
+            131072,
+            262144,
+            524288,
+            1048576,
+        ],
         help="Context lengths for passkey retrieval.",
     )
     parser.add_argument(

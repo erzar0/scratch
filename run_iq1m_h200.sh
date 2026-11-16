@@ -130,20 +130,14 @@ if [ "$RUN_DOWNSTREAM" = true ]; then
     "$BENCH_BIN" -m "$MODEL_DIR/DeepSeek-V4.1-Flash-1017-GSQ-RCO-IQ1_M-00001-of-00006.gguf" \
         -ngl 99 -p 512,2048 -n 128 -b 1
 
-    WANDB_FLAG=""
-    if [[ "$*" == *"--wandb"* ]]; then
-        WANDB_FLAG="--wandb"
-    fi
-
     echo "Running SOTA downstream reasoning evaluations (AIME25, GPQA-D, MATH-500, Passkey, Perplexity)..."
     "$PYTHON_BIN" eval_downstream_h200.py \
         --model-dir "$MODEL_DIR" \
         --output-dir "$OUTPUT_DIR" \
         --llama-dir "$LLAMA_DIR" \
-        --suite all \
         --reasoning-effort 50 \
         --ngl 99 \
-        $WANDB_FLAG
+        "$@"
 else
     echo "Pass --reasoning or --llamacpp to run SOTA downstream tasks (AIME25, GPQA-D, MATH-500, Perplexity, Passkey)."
 fi

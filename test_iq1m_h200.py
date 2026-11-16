@@ -1871,7 +1871,20 @@ def main() -> None:
         "--contexts",
         type=int,
         nargs="+",
-        default=[512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144],
+        default=[
+            512,
+            1024,
+            2048,
+            4096,
+            8192,
+            16384,
+            32768,
+            65536,
+            131072,
+            262144,
+            524288,
+            1048576,
+        ],
         help="Context lengths to benchmark.",
     )
     parser.add_argument(
@@ -2081,29 +2094,27 @@ def main() -> None:
         save_benchmark_artifacts(rows, metadata, args.output_dir, name="context")
 
     if args.mode == "niah" or run_all:
-        niah_ctxs = [
-            c for c in [8192, 32768, 131072, 262144, 1048576] if c in args.contexts
-        ]
-        if not niah_ctxs:
-            niah_ctxs = args.contexts
-        niah_rows = run_niah_suite(niah_ctxs, ds_attention, pf_attention, bench_cfg)
+        niah_rows = run_niah_suite(args.contexts, ds_attention, pf_attention, bench_cfg)
         niah_df = pl.DataFrame([asdict(r) for r in niah_rows])
         wandb_tracker.log_dataframe_table("niah_benchmark_table", niah_df)
         save_benchmark_artifacts(niah_rows, metadata, args.output_dir, name="niah")
 
     if args.mode == "heads" or run_all:
-        head_ctxs = [
-            c for c in [1024, 8192, 32768, 131072, 524288] if c in args.contexts
-        ]
-        if not head_ctxs:
-            head_ctxs = args.contexts
-        head_rows = run_heads_suite(head_ctxs, ds_attention, pf_attention, bench_cfg)
+        head_rows = run_heads_suite(
+            args.contexts, ds_attention, pf_attention, bench_cfg
+        )
         head_df = pl.DataFrame([asdict(r) for r in head_rows])
         wandb_tracker.log_dataframe_table("head_diversity_table", head_df)
         save_benchmark_artifacts(head_rows, metadata, args.output_dir, name="heads")
 
     if args.mode == "prefill" or run_all:
-        prefill_lens = [1024, 4096, 16384, 65536, 131072]
+        prefill_lens = [
+            c
+            for c in [512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144]
+            if c in args.contexts
+        ]
+        if not prefill_lens:
+            prefill_lens = [1024, 4096, 16384, 65536, 131072]
         prefill_rows = run_prefill_suite(
             prefill_lens, ds_attention, pf_attention, bench_cfg
         )
@@ -2124,12 +2135,7 @@ def main() -> None:
         save_benchmark_artifacts(topk_rows, metadata, args.output_dir, name="topk")
 
     if args.mode == "moe" or run_all:
-        moe_ctxs = [
-            c for c in [1024, 8192, 32768, 131072, 524288] if c in args.contexts
-        ]
-        if not moe_ctxs:
-            moe_ctxs = args.contexts
-        moe_rows = run_moe_suite(moe_ctxs, ds_attention, pf_attention, bench_cfg)
+        moe_rows = run_moe_suite(args.contexts, ds_attention, pf_attention, bench_cfg)
         moe_df = pl.DataFrame([asdict(r) for r in moe_rows])
         wandb_tracker.log_dataframe_table("moe_routing_table", moe_df)
         save_benchmark_artifacts(moe_rows, metadata, args.output_dir, name="moe")
